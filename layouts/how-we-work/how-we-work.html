@@ -1,9 +1,11 @@
 {{- define "main" }}
   {{- .Content -}}
+  {{- $section := . }}
   {{- range $index, $block := sort (where .Pages "Params.category" "how-we-work") "File.Path" }}
     <div>
       {{ printf "%02d /" (math.Add $index 1) }}
       <h2>{{ $block.Title }}</h2>
+      <img src="{{ $section.Resources.Get .Params.image }}" alt="{{ .Title }}">
       {{ $block.Content }}
     </div>
   {{- end }}
