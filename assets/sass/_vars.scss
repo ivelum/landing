@@ -1,0 +1,23 @@
+// Colors
+$font-color-dark: #18171a;
+$font-color-default: #3c3a40;
+$primary-orange: #ff5a00;
+$primary-violet: #3d0f9a;
+$white: #fff;
+
+// Typography
+$font-size-default: 1rem;
+$font-size-bigger: 1.125rem;
+$font-weight-default: 500;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+$line-height-default: 2;
+
+// Links
+$link-primary-color: $primary-violet;
+$link-primary-hover-color: $primary-violet;
+$link-primary-decoration: none;
+$link-primary-hover-decoration: none;
+
+// Breakpoints
+$grid-breakpoints: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px);

@@ -1,0 +1,52 @@
+@mixin transition($transitions...) {
+  $unfolded-transitions: ();
+  @each $transition in $transitions {
+    $unfolded-transitions: append($unfolded-transitions, unfold-transition($transition), comma);
+  }
+  transition: $unfolded-transitions;
+}
+
+@function unfold-transition ($transition) {
+  $property: all;
+  $duration: 0.35s;
+  $easing: cubic-bezier(0, 0.5, 0.5, 1);
+  $delay: null;
+  $default-properties: ($property, $duration, $easing, $delay);
+  $unfolded-transition: ();
+  @for $i from 1 through length($default-properties) {
+    $p: null;
+    @if $i <= length($transition) {
+      $p: nth($transition, $i);
+    } @else {
+      $p: nth($default-properties, $i);
+    }
+    $unfolded-transition: append($unfolded-transition, $p);
+  }
+  @return $unfolded-transition;
+}
+
+@mixin media-up($name, $mq-breakpoints: $grid-breakpoints) {
+  @if map-has-key($mq-breakpoints, $name) {
+    $name: map-get($mq-breakpoints, $name);
+  }
+  @media screen and (min-width: #{$name}) {
+    @content;
+  }
+}
+
+@mixin stylized-scrollbar {
+  &::-webkit-scrollbar {
+    appearance: none;
+    height: 6px;
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $primary-orange;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-track-piece {
+    background-color: #2c2c2c;
+  }
+}
