@@ -1,4 +1,4 @@
-baseURL = 'https://ivelum.com/'
+baseURL = 'https://hugo.ivelum.com/'
 languageCode = 'en-us'
 title = "ivelum"
 disableKinds = ['taxonomy', 'term', 'RSS']
@@ -11,4 +11,4 @@ enableRobotsTXT = true
 [deployment]
   [[deployment.targets]]
   name = "s3"
-  URL = "s3://ivelum.com?region=eu-north-1"
+  URL = "s3://hugo.ivelum.com?region=eu-north-1"
