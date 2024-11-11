@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: peaceiris/actions-hugo@v2
+      - uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: '0.138.0'
           extended: true
