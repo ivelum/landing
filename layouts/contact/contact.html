@@ -1,0 +1,33 @@
+{{ define "main" }}
+  <h1>Contact</h1>
+
+  {{- range sort (where .Pages "Params.category" "address") "File.Path" }}
+  <div>
+    <h2>{{ .Title }}</h2>
+    {{ .Content }}
+  </div>
+  {{- end }}
+
+  <h2>Live Сhat</h2>
+  <p>
+    We're online from 10 AM to 8 PM, EET <span id="timezone-hint"></span>
+  </p>
+  <p id="chat-status">Currently online</p>
+  <a href="#">Chat now</a>
+
+  {{- with .GetPage "consultation" }}
+    <h2>{{ .Title }}</h2>
+    {{ .Content }}
+  {{- end }}
+
+  {{- .Content -}}
+  <ul>
+  {{- range .Resources.Match "img/flags/*.svg" }}
+    {{- $country := index (split (path.Split .Name).File ".") 0 }}
+    <li>
+      <img src="{{ .RelPermalink }}" width="20" height="20" alt="{{ $country }}"> {{ $country }}
+    </li>
+  {{- end }}
+  </ul>
+
+{{- end }}

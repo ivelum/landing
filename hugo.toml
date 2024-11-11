@@ -1,0 +1,13 @@
+baseURL = 'https://ivelum.com/'
+languageCode = 'en-us'
+title = "ivelum"
+disableKinds = ['taxonomy', 'term', 'RSS']
+
+[output]
+  home = ['html']
+  section = ['html']
+
+[deployment]
+  [[deployment.targets]]
+  name = "s3"
+  URL = "s3://ivelum.com?region=eu-north-1"

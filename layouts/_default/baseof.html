@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>{{ .Title }}</title>
+  <meta name="description" content="{{ .Description }}">
+  <link rel="canonical" href="{{ .Permalink }}">
+  <meta property="og:title" content="{{ .Title }}">
+  <meta property="og:description" content="{{ .Description }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ .Title }}">
+  <meta name="twitter:description" content="{{ .Description }}">
+  <meta name="twitter:url" content="{{ .Permalink }}">
+{{- with resources.Get "sass/main.scss" }}
+  {{- $opts := dict "transpiler" "libsass" "targetPath" "css/style.css" }}
+  {{- with . | toCSS $opts }}
+    {{- if hugo.IsDevelopment }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}">
+    {{- else }}
+      {{- with . | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+</head>
+<body>
+  <ul>
+    <li><a href="/">About</a></li>
+    <li><a href="/how-we-work/">How we work</a></li>
+    <li><a href="/solutions/">Solutions</a></li>
+    <li><a href="/teamplify/">Teamplify</a></li>
+    <li><a href="/contact/">Contact</a></li>
+    <li><a href="#talk">Talk to us</a></li>
+  </ul>
+{{- block "main" . }}
+{{- end }}
+  <h2 id="talk">Let's talk</h2>
+</body>
+</html>

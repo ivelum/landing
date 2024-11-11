@@ -1,0 +1,8 @@
+{{- define "main" }}
+  <h1>Teamplify</h1>
+  {{- .Content -}}
+  {{- (.GetPage "team-management").Content }}
+  {{- (.GetPage "insights").Content }}
+  <img src="{{ (.Resources.Get "img/missing-piece.svg").RelPermalink }}" alt="The missing piece that focuses on people">
+  <img src="{{ (.Resources.Get "img/teamplify.svg").RelPermalink }}" alt="Teamplify">
+{{- end }}

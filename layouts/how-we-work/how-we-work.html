@@ -1,0 +1,10 @@
+{{- define "main" }}
+  {{- .Content -}}
+  {{- range $index, $block := sort (where .Pages "Params.category" "how-we-work") "File.Path" }}
+    <div>
+      {{ printf "%02d /" (math.Add $index 1) }}
+      <h2>{{ $block.Title }}</h2>
+      {{ $block.Content }}
+    </div>
+  {{- end }}
+{{- end }}
