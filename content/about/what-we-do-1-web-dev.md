@@ -1,6 +1,7 @@
 ---
 category: what-we-do
 title: Web Development
+image: img/web-development.svg
 ---
 
 We engage with projects on all stages – from rapid prototyping to scaling to

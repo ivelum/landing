@@ -1,4 +1,5 @@
 {{- define "main" }}
+  {{- $section := . }}
   {{- .Content }}
 
   {{- range sort (where .Pages "Params.category" "about") "File.Path" }}
@@ -11,6 +12,7 @@
   {{- range sort (where .Pages "Params.category" "what-we-do") "File.Path" }}
     <div>
       <h2>{{ .Title }}</h2>
+      <img src="{{ $section.Resources.Get .Params.image }}" alt="{{ .Title }}">
       {{ .Content }}
     </div>
   {{- end }}
@@ -18,7 +20,6 @@
   <a href="#talk">Let&apos;s talk</a>
 
   <h2>What our clients say</h2>
-  {{- $section := . }}
   {{- range sort (where .Pages "Params.category" "testimonials") "File.Path" }}
     <div>
       <h2>

@@ -1,6 +1,7 @@
 ---
 category: what-we-do
 title: Operations
+image: img/operations.svg
 ---
 
 No need to choose between frequent releases and great uptime – you can have

@@ -1,6 +1,7 @@
 ---
 category: what-we-do
 title: UX & UI
+image: img/ux-ui.svg
 ---
 
 Great design is beautiful, user-friendly, and goes hand-in-hand with 
