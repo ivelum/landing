@@ -30,14 +30,25 @@
 {{- end }}
 </head>
 <body>
-  <ul>
-    <li><a href="/">About</a></li>
-    <li><a href="/how-we-work/">How we work</a></li>
-    <li><a href="/solutions/">Solutions</a></li>
-    <li><a href="/teamplify/">Teamplify</a></li>
-    <li><a href="/contact/">Contact</a></li>
-    <li><a href="#talk">Talk to us</a></li>
-  </ul>
+  <div class="header">
+    <div class="header--wrapper">
+      <a class="header--logo" href="/">
+        <img src="/img/logo.svg" alt="ivelum">
+      </a>
+      <div class="header--menu">
+        <div class="header--menu-inner">
+          <a class="header--menu-item" href="/">About</a>
+          <a class="header--menu-item" href="/how-we-work/">How we work</a>
+          <a class="header--menu-item" href="/solutions/">Solutions</a>
+          <a class="header--menu-item" href="/teamplify/">Teamplify</a>
+          <a class="header--menu-item" href="/contact/">Contact</a>
+        </div>
+        <div class="header--button-wrapper">
+          <a class="header--button" href="#talk">Talk to us</a>
+        </div>
+      </div>
+    </div>
+  </div>
 {{- block "main" . }}
 {{- end }}
   <h2 id="talk">Let's talk</h2>

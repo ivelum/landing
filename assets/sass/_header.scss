@@ -1,0 +1,245 @@
+@import './vars';
+@import './mixins';
+
+.header {
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 100;
+  @include media-up(md) {
+    top: 1rem;
+  }
+  @include media-up(xl) {
+    top: 2rem;
+  }
+
+  &--wrapper {
+    align-items: center;
+    display: flex;
+    height: $header-height-mobile;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: $container-default-max-width;
+    padding: 0 1.25rem;
+    width: 100%;
+  }
+
+  &--logo {
+    position: relative;
+    z-index: 200;
+
+    &-disabled {
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+
+  &--menu {
+    background: linear-gradient(0deg, #5e00a9, #3d0f9a);
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 150;
+    @include media-up(md) {
+      align-items: center;
+      background: none;
+      bottom: auto;
+      clip-path: none !important;
+      flex-direction: row;
+      opacity: 1 !important;
+      position: static;
+    }
+  }
+
+  &--menu-inner {
+    align-items: flex-start;
+    border-bottom: 1px solid rgba($white, 0.1);
+    border-top: 1px solid rgba($white, 0.1);
+    display: flex;
+    flex-direction: column;
+    margin-top: $header-height-mobile;
+    padding: 1.75rem 1.25rem 2rem;
+    @include media-up(md) {
+      border: 0;
+      flex-direction: row;
+      gap: 1rem;
+      margin-top: 0;
+      opacity: 1 !important;
+      padding: 0;
+    }
+    @include media-up(lg) {
+      gap: 2rem;
+    }
+  }
+
+  &--menu-item {
+    appearance: none;
+    background: none;
+    border: 0;
+    color: $white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1.375rem;
+    padding: 0.125rem 0;
+    position: relative;
+    text-rendering: geometricPrecision;
+    @include media-up(md) {
+      font-size: 0.875rem;
+      padding: 0;
+    }
+    @include media-up(lg) {
+      font-size: 1rem;
+    }
+
+    &::after {
+      @include transition(transform 0.4s cubic-bezier(0, 0.5, 0.5, 1));
+      background-color: $white;
+      bottom: 0.5rem;
+      content: '';
+      height: 1px;
+      left: 0;
+      position: absolute;
+      right: 0;
+      transform: scaleX(0);
+      transform-origin: left center;
+      @include media-up(md) {
+        bottom: 0.25rem;
+      }
+    }
+
+    &:hover,
+    &-active {
+      color: $white;
+
+      &::after {
+        transform: none;
+      }
+    }
+
+    &-active {
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+
+  &--button-wrapper {
+    margin-left: 1.25rem;
+    margin-top: 2rem;
+    @include media-up(md) {
+      margin-top: 0;
+      opacity: 1 !important;
+    }
+    @include media-up(lg) {
+      margin-left: 2.5rem;
+    }
+  }
+
+  &--button {
+    @include transition(background-color 0.5s);
+    align-self: flex-start;
+    appearance: none;
+    background-color: $white;
+    border-radius: 2rem;
+    color: $primary-violet;
+    cursor: pointer;
+    display: inline-flex;
+    font-weight: $font-weight-default;
+    gap: 0.5rem;
+    line-height: 1;
+    outline: none;
+    padding: 1rem 1.5rem 0.8125rem;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    z-index: 1;
+    @include media-up(md) {
+      font-size: 0.875rem;
+    }
+    @include media-up(lg) {
+      font-size: 1rem;
+    }
+
+    &:hover {
+      background-color: lighten($primary-violet, 55%);
+    }
+
+    svg {
+      margin-top: -1px;
+    }
+  }
+}
+
+.dark {
+  .header--logo :global(.logo-g-text) path {
+    fill: $primary-violet;
+    transition-delay: 0.15s;
+    @include media-up(md) {
+      transition-delay: unset;
+    }
+  }
+
+  .header--logo :global(.logo-g-sign) path {
+    fill: $primary-orange;
+    transition-delay: 0.15s;
+    @include media-up(md) {
+      transition-delay: unset;
+    }
+  }
+
+  .header--logo.active :global(.logo-g-text) path {
+    fill: $white;
+    transition-delay: 0.1s;
+    @include media-up(md) {
+      transition-delay: unset;
+    }
+  }
+
+  .header--logo.active :global(.logo-g-sign) path {
+    fill: $white;
+    transition-delay: 0.1s;
+    @include media-up(md) {
+      transition-delay: unset;
+    }
+  }
+
+  .header--burger span,
+  .header--burger::before,
+  .header--burger::after {
+    background-color: $font-color-dark;
+  }
+
+  .header--burger.active::before,
+  .header--burger.active::after {
+    background-color: $white;
+  }
+
+  .header--menu-item {
+    @include media-up(md) {
+      color: $font-color-default;
+    }
+
+    &::after {
+      @include media-up(md) {
+        background-color: $font-color-default;
+      }
+    }
+  }
+
+  .header--button {
+    @include media-up(md) {
+      background-color: $primary-orange;
+      color: $white;
+    }
+
+    &:hover {
+      @include media-up(md) {
+        background-color: lighten($primary-orange, 10%);
+      }
+    }
+  }
+}
