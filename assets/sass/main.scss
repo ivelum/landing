@@ -1,3 +1,4 @@
+@import './about';
 @import './fonts';
 @import './header';
 @import './typography';
@@ -13,4 +14,8 @@ body {
   line-height: $line-height-default;
   margin: 0;
   text-align: left;
+}
+
+html, * {
+  box-sizing: border-box;
 }

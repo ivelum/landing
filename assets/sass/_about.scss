@@ -1,0 +1,125 @@
+@import './vars';
+@import './mixins';
+
+.about {
+  &--hero {
+    background-color: #ded0ff;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+      background: linear-gradient(335deg, RGB(94 0 169 / 60%) 10%, rgba(223, 119, 119, 0) 60%);
+      bottom: 0;
+      content: '';
+      left: 0;
+      opacity: 0.6;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 3;
+    }
+
+    &-body {
+      max-width: $container-default-max-width;
+      padding: 0 1.25rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-60%);
+      width: 100%;
+      z-index: 10;
+    }
+
+    &-tagline {
+      color: $white;
+      @include media-up(xl) {
+        font-size: $font-size-bigger;
+      }
+    }
+
+    &-title {
+      color: $white;
+      margin-top: 1rem;
+      @include media-up(xl) {
+        margin-top: 2rem;
+      }
+    }
+
+    &-title-wrap {
+      overflow: hidden;
+    }
+
+    &-video {
+      aspect-ratio: 166 / 71;
+      flex-shrink: 0;
+      margin-bottom: 60px;
+      max-width: 1140px;
+      min-height: 440px;
+      object-fit: cover;
+      pointer-events: none;
+      position: relative;
+      user-select: none;
+      width: 300%;
+      z-index: 1;
+      @include media-up(lg) {
+        margin-bottom: 140px;
+        margin-top: -3rem;
+        max-width: 1660px;
+        width: 120%;
+      }
+    }
+  }
+
+  &--slider {
+    bottom: 2rem;
+    left: 0;
+    position: absolute;
+    right: 0;
+    z-index: 5;
+    @include media-up(lg) {
+      bottom: 4rem;
+    }
+
+    &-wrapper {
+      --gap: 3rem;
+      display: flex;
+      gap: var(--gap);
+      overflow: hidden;
+      position: relative;
+      user-select: none;
+      @include media-up(lg) {
+        --gap: 4rem;
+      }
+      @include media-up(xl) {
+        --gap: 5rem;
+      }
+    }
+
+    &-list {
+      align-items: center;
+      animation: move 60s linear infinite;
+      display: flex;
+      flex-shrink: 0;
+      gap: var(--gap);
+      justify-content: space-around;
+      min-width: 100%;
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
+    }
+
+    &-item {
+      flex: 0 0 auto;
+    }
+  }
+}
+
+@keyframes move {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}

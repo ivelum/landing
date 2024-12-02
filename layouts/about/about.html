@@ -1,6 +1,36 @@
 {{- define "main" }}
   {{- $section := . }}
-  {{- .Content }}
+  <div class="about--hero">
+    <div class="about--hero-body">
+      <div class="about--hero-tagline">Since 2003</div>
+      <h1 class="about--hero-title">
+        <div class="about--hero-title-wrap">Experts</div>
+        <div class="about--hero-title-wrap">in&nbsp;software</div>
+        <div class="about--hero-title-wrap">development</div>
+      </h1>
+      {{- /* TODO: Animations */}}
+    </div>
+    {{- /* TODO: Technology slider */}}
+    <video
+      class="about--hero-video"
+      poster="/img/hero-video-cover.png"
+      width="100%"
+      autoPlay
+      loop
+      muted
+      preload="auto"
+      playsInline
+      id="hero-video"
+    >
+      <source type="video/webm" src="/img/hero-video.webm" />
+      <source type="video/mp4" src="/img/hero-video.mp4" />
+      <img
+        class="about--hero-video"
+        src="/img/hero-video-cover.png"
+        alt="Experts in software development"
+      />
+    </video>
+  </div>
 
   {{- range sort (where .Pages "Params.category" "about") "File.Path" }}
     <div>

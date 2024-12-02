@@ -6,5 +6,3 @@ cascade:
   sitemap:
     disable: true
 ---
-
-# Experts in software development
