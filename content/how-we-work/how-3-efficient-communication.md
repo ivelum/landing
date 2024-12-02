@@ -4,8 +4,8 @@ title: Efficient communication
 image: img/efficient-communication.svg
 ---
 
-Productive communication and work transparency are crucial for project success. 
-We prefer to have open team communication by default. It greatly helps us keep 
+Productive communication and work transparency are crucial for project success.
+We prefer to have open team communication by default. It greatly helps us keep
 the team in sync and minimize distractions.
 
 Read more in Teamplify blog:
