@@ -112,6 +112,210 @@
       flex: 0 0 auto;
     }
   }
+
+  &--title {
+    color: $primary-violet;
+    margin-top: 3rem;
+    @include media-up(lg) {
+      margin-top: 4rem;
+    }
+    @include media-up(xl) {
+      margin-top: 6rem;
+    }
+  }
+
+  &--about-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 1rem;
+    @include media-up(md) {
+      flex-direction: row;
+      gap: 3rem;
+    }
+    @include media-up(lg) {
+      gap: 4rem;
+      margin-top: 2rem;
+    }
+    @include media-up(xl) {
+      gap: 5rem;
+      margin-top: 3rem;
+    }
+  }
+
+  &--about-item {
+    display: flex;
+    flex-direction: column;
+    @include media-up(md) {
+      width: 50%;
+    }
+  }
+
+  &--what-we-do-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+    width: 100%;
+    @include media-up(md) {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    @include media-up(lg) {
+      margin-top: 2.5rem;
+    }
+    @include media-up(xl) {
+      margin-top: 3.5rem;
+    }
+  }
+
+  &--what-we-do-item {
+    border: 1px solid $border-color-default;
+    margin-top: -1px;
+    padding: 1.5rem;
+    @include media-up(md) {
+      margin-left: -1px;
+      width: 50%;
+    }
+    @include media-up(lg) {
+      padding: 2rem;
+    }
+    @include media-up(xl) {
+      padding: 3rem;
+    }
+
+    &-title {
+      color: $font-color-dark;
+      margin-top: 1.5rem;
+      @include media-up(lg) {
+        margin-top: 2rem;
+      }
+      @include media-up(xl) {
+        margin-top: 3rem;
+      }
+    }
+
+    &-image {
+      display: block;
+      height: auto;
+      margin: auto;
+      max-width: 300px;
+      width: 100%;
+    }
+
+    &-text {
+      margin-top: 0.5rem;
+      @include media-up(lg) {
+        margin-top: 1rem;
+      }
+      @include media-up(xl) {
+        font-size: $font-size-bigger;
+        margin-top: 1.5rem;
+      }
+    }
+  }
+
+  &--action {
+    display: flex;
+    margin-top: 2rem;
+    position: relative;
+    @include media-up(md) {
+      margin-top: 3rem;
+    }
+    @include media-up(lg) {
+      margin-top: 4rem;
+    }
+    @include media-up(xl) {
+      margin-top: 6rem;
+    }
+
+    &-background {
+      height: auto;
+      margin: 0 auto;
+      max-width: 100%;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    &-button {
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &--testimonials-wrapper {
+    display: grid;
+    gap: 1.5rem 2rem;
+    margin-top: 1.5rem;
+    @include media-up(md) {
+      gap: 3rem 2.5rem;
+    }
+    @include media-up(lg) {
+      gap: 3rem 4rem;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 2.5rem;
+    }
+    @include media-up(xl) {
+      gap: 3.5rem 5rem;
+      margin-top: 3.5rem;
+    }
+  }
+
+  &--testimonials-item {
+    border-top: 1px solid $border-color-default;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 2rem;
+    @include media-up(md) {
+      padding-top: 2.5rem;
+    }
+    @include media-up(xl) {
+      gap: 0.5rem;
+      padding-top: 3.5rem;
+    }
+  }
+
+  &--testimonials-author {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    @include media-up(xl) {
+      gap: 1.5rem;
+    }
+
+    &-image {
+      border-radius: 50%;
+      display: flex;
+      height: auto;
+      margin-top: 0.25rem;
+      width: 2.75rem;
+    }
+
+    &-body {
+      line-height: 1.8;
+    }
+
+    &-name {
+      color: $font-color-dark;
+
+      > svg {
+        margin-bottom: 0.25rem;
+        margin-left: 0.375rem;
+      }
+    }
+  }
+
+  &--testimonials-body {
+    @include media-up(sm) {
+      padding-left: 3.75rem;
+    }
+    @include media-up(xl) {
+      font-size: $font-size-bigger;
+      padding-left: 4.25rem;
+    }
+  }
 }
 
 @keyframes move {

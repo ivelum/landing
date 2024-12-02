@@ -1,0 +1,82 @@
+@import './vars';
+@import './mixins';
+
+.btn {
+  @include transition(background-color, color, border);
+  align-items: center;
+  appearance: none;
+  background-color: $primary-orange;
+  border: 2px solid transparent;
+  border-radius: 2rem;
+  color: $white;
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: $font-weight-default;
+  gap: 1rem;
+  justify-content: center;
+  outline: none;
+  padding: 0.75rem 2.5rem 0.625rem;
+  text-align: center;
+  white-space: nowrap;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: lighten($primary-orange, 10%);
+    color: $white;
+  }
+
+  &-big {
+    padding: 1rem 3rem 0.875rem;
+  }
+
+  &-small {
+    padding: 0.5rem 2.5rem 0.375rem;
+  }
+
+  &-outline-violet {
+    background-color: $white;
+    border: 2px solid $primary-violet;
+    color: $primary-violet;
+
+    &:hover,
+    &:focus {
+      background-color: $white;
+      border-color: $primary-orange;
+      color: $primary-orange;
+    }
+  }
+
+  &-with-arrow {
+    gap: 1rem;
+
+    img, svg {
+      margin-top: -1px; // fix icon position
+      overflow: visible;
+    }
+
+    .arrow-head {
+      @include transition(transform 0.25s);
+      transform: translateX(0);
+    }
+
+    .arrow-body {
+      @include transition(transform 0.25s, opacity 0.2s);
+      opacity: 0;
+      transform: scaleX(1);
+      transform-origin: left center;
+    }
+
+    &:hover .arrow-head {
+      transform: translateX(6px);
+    }
+
+    &:hover .arrow-body {
+      opacity: 1;
+      transform: scaleX(2);
+    }
+  }
+}

@@ -1,4 +1,5 @@
 @import './about';
+@import './btn';
 @import './fonts';
 @import './header';
 @import './typography';
@@ -18,4 +19,15 @@ body {
 
 html, * {
   box-sizing: border-box;
+}
+
+img, svg {
+  vertical-align: middle;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: $container-default-max-width;
+  padding: 0 1.25rem;
+  width: 100%;
 }

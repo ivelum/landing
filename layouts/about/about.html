@@ -32,39 +32,99 @@
     </video>
   </div>
 
-  {{- range sort (where .Pages "Params.category" "about") "File.Path" }}
-    <div>
-      <h2>{{ .Title }}</h2>
-      {{ .Content }}
+  <div class="container">
+    <h2 class="about--title">About</h2>
+    <div class="about--about-wrapper">
+    {{- range sort (where .Pages "Params.category" "about") "File.Path" }}
+      <div class="about--about-item">
+        <h3>{{ .Title }}</h3>
+        {{- /* TODO: Smaller font size for the title */}}
+        {{ .Content }}
+        {{- /* TODO: Show the Teamplify link with the bird */}}
+        {{- /* TODO: Show the trailing link as a button */}}
+      </div>
+    {{- end }}
     </div>
-  {{- end }}
+  </div>
 
-  {{- range sort (where .Pages "Params.category" "what-we-do") "File.Path" }}
-    <div>
-      <h2>{{ .Title }}</h2>
-      <img src="{{ $section.Resources.Get .Params.image }}" alt="{{ .Title }}">
-      {{ .Content }}
+  <div class="container">
+    <h2 class="about--title">What we do</h2>
+    <div class="about--what-we-do-wrapper">
+    {{- range sort (where .Pages "Params.category" "what-we-do") "File.Path" }}
+      <div class="about--what-we-do-item">
+        <img
+          class="about--what-we-do-item-image"
+          src="{{ $section.Resources.Get .Params.image }}"
+          alt="{{ .Title }}"
+          width="260"
+          height="260"
+        >
+        <h3 class="about--what-we-do-item-title">{{ .Title }}</h3>
+        <div class="about--what-we-do-item-text">
+          {{ .Content }}
+        </div>
+      </div>
+    {{- end }}
     </div>
-  {{- end }}
+  </div>
 
-  <a href="#talk">Let&apos;s talk</a>
+  <div class="about--action">
+    <a
+      href="#talk"
+      {{- /* TODO: Smooth scroll */}}
+      class="btn btn-big btn-with-arrow about--action-button"
+    >
+      Let’s talk
+      {{ readFile "static/img/arrow-button.svg" | safeHTML }}
+    </a>
+    <img
+      class="about--action-background"
+      src="/img/got-a-project-in-mind.svg"
+      alt="Got a project in mind?"
+      width="738"
+      height="208"
+    >
+  </div>
 
-  <h2>What our clients say</h2>
-  {{- range sort (where .Pages "Params.category" "testimonials") "File.Path" }}
-    <div>
-      <h2>
-        <a href="{{ .Params.linkedin }}" target="_blank">
-          <img src="{{ $section.Resources.Get .Params.avatar }}" alt="{{ .Title }}">
-          {{ .Title }}
-        </a>
-      </h2>
-      {{ .Content }}
+  <div class="container">
+    <h2 class="about--title">What our clients say</h2>
+    <div class="about--testimonials-wrapper">
+    {{- range sort (where .Pages "Params.category" "testimonials") "File.Path" }}
+      <div class="about--testimonials-item">
+        <div class="about--testimonials-author">
+          <img
+            class="about--testimonials-author-image"
+            src="{{ $section.Resources.Get .Params.avatar }}"
+            alt="{{ .Title }}"
+          >
+          <div class="about--testimonials-author-body">
+            <a
+              class="about--testimonials-author-name"
+              href="{{ .Params.linkedin }}"
+              target="_blank"
+            >
+              {{ .Title }}
+              {{ readFile "static/img/ico-linkedin.svg" | safeHTML }}
+            </a>
+          </div>
+        </div>
+        <div class="about--testimonials-body">
+          {{ .Content }}
+        </div>
+      </div>
+    {{- end }}
     </div>
-  {{- end }}
+  </div>
 
-  <h2>Team</h2>
+  <div class="container">
+    <h2 class="about--title">Team</h2>
+  </div>
   {{- range .Resources.Match "img/team/*.jpg" }}
     <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="">
   {{- end }}
-  {{- (.GetPage "team").Content }}
+  {{- /* TODO: Swiper */}}
+
+  <div class="container">
+    {{- (.GetPage "team").Content }}
+  </div>
 {{- end }}
