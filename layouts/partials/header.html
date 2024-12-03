@@ -1,21 +1,82 @@
-<div class="header">
+<div class="header" data-scroll-lock-fill-gap x-data="header">
   <div class="header--wrapper">
     <a class="header--logo" href="/">
       <img src="/img/logo.svg" alt="ivelum">
+      {{- /* TODO: Remove underline from the link */}}
+      {{- /* TODO: Disable the link on the index page */}}
+      {{- /* TODO: Light mode for Teamplify, Contact, and Privacy policy */}}
     </a>
-    <div class="header--menu">
+    <div class="header--menu" x-bind:class="isMenuOpen && 'is-open'">
       <div class="header--menu-inner">
-        <a class="header--menu-item" href="/">About</a>
-        <a class="header--menu-item" href="/how-we-work/">How we work</a>
-        <a class="header--menu-item" href="/solutions/">Solutions</a>
-        <a class="header--menu-item" href="/teamplify/">Teamplify</a>
-        <a class="header--menu-item" href="/contact/">Contact</a>
-      </div>
-      <div class="header--button-wrapper">
-        <a class="header--button" href="#talk">
-          <img src="/img/ico-talk.svg" alt="ivelum">Talk to us
-        </a>
+        <div class="header--menu-items">
+          <a class="header--menu-item" href="/">About</a>
+          <a class="header--menu-item" href="/how-we-work/">How we work</a>
+          <a class="header--menu-item" href="/solutions/">Solutions</a>
+          <a class="header--menu-item" href="/teamplify/">Teamplify</a>
+          <a class="header--menu-item" href="/contact/">Contact</a>
+          {{- /* TODO: Underline and disable the link on the current page */}}
+        </div>
+        <div class="header--button-wrapper">
+          <a class="header--button" x-on:click="talkToUs">
+            <img src="/img/ico-talk.svg" alt="ivelum">Talk to us
+            {{- /* TODO: Smooth scroll */}}
+          </a>
+        </div>
       </div>
     </div>
+    <button
+      type="button"
+      class="header--burger"
+      x-bind:class="isMenuOpen && 'is-open'"
+      x-on:click="toggleMenu"
+      aria-label="Menu"
+    >
+      <span />
+    </button>
   </div>
 </div>
+
+<script>
+{
+  const mediaMd = '(min-width: 768px)';
+
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('header', () => ({
+      isMenuOpen: false,
+
+      init() {
+        this.handleWidthChange = this.handleWidthChange.bind(this);
+        this.checkMediaMd = window.matchMedia(mediaMd);
+        this.checkMediaMd.addEventListener('change', this.handleWidthChange);
+      },
+
+      destroy() {
+        this.checkMediaMd.removeEventListener('change', this.handleWidthChange);
+      },
+
+      handleWidthChange(e) {
+        if (e.matches) this.closeMenu();
+      },
+
+      closeMenu() {
+        this.isMenuOpen = false;
+        scrollLock.enablePageScroll();
+      },
+
+      openMenu() {
+        this.isMenuOpen = true;
+        scrollLock.disablePageScroll();
+      },
+
+      toggleMenu() {
+        (this.isMenuOpen) ? this.closeMenu() : this.openMenu();
+      },
+
+      talkToUs() {
+        this.closeMenu();
+        document.querySelector('.form-control-textarea')?.focus();
+      },
+    }));
+  });
+}
+</script>

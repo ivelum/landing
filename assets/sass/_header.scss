@@ -1,6 +1,8 @@
 @import './vars';
 @import './mixins';
 
+$header-menu-open-duration: 0.3s;
+
 .header {
   left: 0;
   position: absolute;
@@ -38,25 +40,47 @@
   &--menu {
     background: linear-gradient(0deg, #5e00a9, #3d0f9a);
     bottom: 0;
-    display: flex;
-    flex-direction: column;
     left: 0;
     position: fixed;
     right: 0;
     top: 0;
     z-index: 150;
+    clip-path: circle(0px at calc(100% - 36px) 36px);
+    transition: clip-path 0.2s ease-out;
+
     @include media-up(md) {
-      align-items: center;
       background: none;
       bottom: auto;
       clip-path: none !important;
-      flex-direction: row;
-      opacity: 1 !important;
       position: static;
+    }
+
+    &.is-open {
+      clip-path: circle((1000px * 2 + 200) at calc(100% - 36px) 36px);
+      transition: clip-path $header-menu-open-duration ease-in;
     }
   }
 
   &--menu-inner {
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transition: 0.5s;
+
+    @include media-up(md) {
+      opacity: 1 !important;
+      transition: 0s;
+      align-items: center;
+      flex-direction: row;
+    }
+  }
+
+  &--menu.is-open &--menu-inner {
+    opacity: 1;
+    transition-delay: $header-menu-open-duration;
+  }
+
+  &--menu-items {
     align-items: flex-start;
     border-bottom: 1px solid rgba($white, 0.1);
     border-top: 1px solid rgba($white, 0.1);
@@ -171,6 +195,75 @@
 
     img, svg {
       margin-top: -1px;
+    }
+  }
+
+  &--burger {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 1.25rem;
+    justify-content: center;
+    outline: none;
+    padding: 0;
+    position: relative;
+    width: 1.25rem;
+    z-index: 200;
+
+    @include media-up(md) {
+      display: none;
+    }
+
+    &::before,
+    &::after {
+      background-color: $white;
+      border-radius: 5px;
+      content: '';
+      height: 2px;
+      left: 0;
+      position: absolute;
+      width: 1.25rem;
+    }
+
+    &::before {
+      @include transition(all 0.25s);
+      top: 2px;
+    }
+
+    &::after {
+      @include transition(all 0.25s);
+      bottom: 2px;
+    }
+
+    span {
+      @include transition(transform 0.25s, background-color, opacity 0.2s);
+      background-color: $white;
+      border-radius: 5px;
+      display: block;
+      height: 2px;
+      transform-origin: left center;
+      width: 1.25rem;
+    }
+
+    &:hover span {
+      transform: scaleX(0.5);
+    }
+
+    &.is-open span {
+      opacity: 0;
+    }
+
+    &.is-open::before {
+      top: 9px;
+      transform: rotate(135deg);
+    }
+
+    &.is-open::after {
+      bottom: 9px;
+      transform: rotate(-135deg);
     }
   }
 }
