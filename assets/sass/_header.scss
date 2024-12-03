@@ -28,6 +28,7 @@ $header-menu-open-duration: 0.3s;
   }
 
   &--logo {
+    @include a-no-underline;
     position: relative;
     z-index: 200;
 
