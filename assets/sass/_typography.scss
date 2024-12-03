@@ -1,6 +1,10 @@
 @import './vars';
 @import './mixins';
 
+@mixin a-no-underline {
+  background-size: 0 1px;
+}
+
 a {
   @include transition(color 0.6s cubic-bezier(0, 0.5, 0.5, 1), background-size 0.4s cubic-bezier(0, 0.5, 0.5, 1));
   background-image: linear-gradient($primary-orange, $primary-orange);
@@ -12,7 +16,7 @@ a {
   text-decoration: none;
 
   &:hover {
-    background-size: 0 1px;
+    @include a-no-underline;
     color: $font-color-dark;
   }
 }

@@ -1,5 +1,6 @@
 @import './vars';
 @import './mixins';
+@import './typography';
 
 .btn {
   @include transition(background-color, color, border);
@@ -79,4 +80,8 @@
       transform: scaleX(2);
     }
   }
+}
+
+a.btn {
+  @include a-no-underline;
 }

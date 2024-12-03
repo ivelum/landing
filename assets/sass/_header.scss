@@ -141,6 +141,7 @@
 
   &--button {
     @include transition(background-color 0.5s);
+    @include a-no-underline;
     align-self: flex-start;
     appearance: none;
     background-color: $white;
