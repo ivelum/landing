@@ -4,10 +4,9 @@
     <a
       class="header--logo{{ if eq .RelPermalink "/" }} is-disabled{{ end }}"
       href="/"
+      ><img src="/img/logo.svg" alt="ivelum"></a
     >
-      <img src="/img/logo.svg" alt="ivelum">
-      {{- /* TODO: Light mode for Teamplify, Contact, and Privacy policy */}}
-    </a>
+    {{- /* TODO: Light mode for Teamplify, Contact, and Privacy policy */}}
     <div class="header--menu" x-bind:class="isMenuOpen && 'is-open'">
       <div class="header--menu-inner">
         <div class="header--menu-items">
@@ -30,9 +29,9 @@
           {{- end }}
         </div>
         <div class="header--button-wrapper">
-          <a class="header--button" x-on:click="talkToUs">
-            <img src="/img/ico-talk.svg" alt="ivelum">Talk to us
-          </a>
+          <a class="header--button" x-on:click="talkToUs"
+            ><img src="/img/ico-talk.svg" alt="ivelum">Talk to us</a
+          >
         </div>
       </div>
     </div>

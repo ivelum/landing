@@ -71,14 +71,12 @@
     <a
       class="btn btn-big btn-with-arrow about--action-button"
       onclick="window.talk.scrollIntoView({ behavior: 'smooth' })"
-    >
-      Let's talk
-      {{
+      >Let's talk{{
         readFile "static/img/arrow-button.svg"
         | strings.TrimSpace
         | safeHTML
-      -}}
-    </a>
+      }}</a
+    >
     <img
       class="about--action-background"
       src="/img/got-a-project-in-mind.svg"
@@ -104,14 +102,12 @@
               class="about--testimonials-author-name"
               href="{{ .Params.linkedin }}"
               target="_blank"
-            >
-              {{ .Title }}
-              {{-
+              >{{ .Title }}{{
                 readFile "static/img/ico-linkedin.svg"
                 | strings.TrimSpace
                 | safeHTML
-              }}
-            </a>
+              }}</a
+            >
           </div>
         </div>
         <div class="about--testimonials-body">
@@ -153,14 +149,12 @@
           href="https://www.instagram.com/ivelum_development/"
           class="about--team-about-social-link"
           target="_blank"
-        >
-          {{
+          >{{
             readFile "static/img/ico-instagram.svg"
             | strings.TrimSpace
             | safeHTML
-          -}}
-          ivelum_development
-        </a>
+          }}ivelum_development</a
+        >
       </div>
     </div>
   </div>
