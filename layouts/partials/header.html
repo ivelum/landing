@@ -18,7 +18,6 @@
         <div class="header--button-wrapper">
           <a class="header--button" x-on:click="talkToUs">
             <img src="/img/ico-talk.svg" alt="ivelum">Talk to us
-            {{- /* TODO: Smooth scroll */}}
           </a>
         </div>
       </div>
@@ -73,6 +72,7 @@
 
       talkToUs() {
         this.closeMenu();
+        window.talk.scrollIntoView({ behavior: 'smooth' });
         document.querySelector('.form-control-textarea')?.focus();
       },
     }));
