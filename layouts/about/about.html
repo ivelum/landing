@@ -75,7 +75,11 @@
       class="btn btn-big btn-with-arrow about--action-button"
     >
       Let’s talk
-      {{ readFile "static/img/arrow-button.svg" | safeHTML }}
+      {{
+        readFile "static/img/arrow-button.svg"
+        | strings.TrimSpace
+        | safeHTML
+      -}}
     </a>
     <img
       class="about--action-background"
@@ -104,7 +108,11 @@
               target="_blank"
             >
               {{ .Title }}
-              {{ readFile "static/img/ico-linkedin.svg" | safeHTML }}
+              {{-
+                readFile "static/img/ico-linkedin.svg"
+                | strings.TrimSpace
+                | safeHTML
+              }}
             </a>
           </div>
         </div>
@@ -148,7 +156,11 @@
           class="about--team-about-social-link"
           target="_blank"
         >
-          {{ readFile "static/img/ico-instagram.svg" | safeHTML }}
+          {{
+            readFile "static/img/ico-instagram.svg"
+            | strings.TrimSpace
+            | safeHTML
+          -}}
           ivelum_development
         </a>
       </div>
