@@ -71,7 +71,7 @@
     }
   }
 
-  &--slider {
+  &--tech-slider {
     bottom: 2rem;
     left: 0;
     position: absolute;
@@ -314,6 +314,76 @@
     @include media-up(xl) {
       font-size: $font-size-bigger;
       padding-left: 4.25rem;
+    }
+  }
+
+  &--team-slider-wrapper {
+    max-width: 100%;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &--team-slider {
+    --swiper-theme-color: #{$primary-orange};
+    margin-top: 1.5rem;
+    max-width: $container-default-max-width;
+    overflow: visible;
+    width: 100%;
+    @include media-up(lg) {
+      margin-top: 2.5rem;
+    }
+    @include media-up(xl) {
+      margin-top: 3.5rem;
+    }
+
+    img {
+      border-radius: $border-radius-default;
+      height: auto;
+      max-width: 100%;
+    }
+  }
+
+  &--team-about {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    @include media-up(lg) {
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 2.5rem;
+    }
+    @include media-up(xl) {
+      margin-top: 3.5rem;
+    }
+
+    &-text {
+      @include media-up(lg) {
+        flex: 0 0 auto;
+        width: 65%;
+      }
+      @include media-up(xl) {
+        font-size: $font-size-bigger;
+      }
+    }
+
+    &-social {
+      flex: 0 0 auto;
+      width: 25%;
+    }
+
+    &-social-link {
+      color: $primary-violet;
+      white-space: nowrap;
+
+      &:hover {
+        color: $primary-orange;
+      }
+
+      > svg {
+        margin-bottom: 0.125rem;
+        margin-right: 0.5rem;
+      }
     }
   }
 }

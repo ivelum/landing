@@ -16,6 +16,15 @@
   <meta name="twitter:title" content="{{ .Title }}">
   <meta name="twitter:description" content="{{ .Description }}">
   <meta name="twitter:url" content="{{ .Permalink }}">
+  <script type="importmap">
+    {
+      "imports": {
+        "swiper": "/vendor/swiper@11.1.15/swiper.min.mjs",
+        "swiper/modules/pagination": "/vendor/swiper@11.1.15/modules/pagination.min.mjs"
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="/vendor/swiper@11.1.15/swiper-bundle.min.css">
 {{- with resources.Get "sass/main.scss" }}
   {{- $opts := dict "transpiler" "libsass" "targetPath" "css/style.css" }}
   {{- with . | toCSS $opts }}
