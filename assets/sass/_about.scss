@@ -3,14 +3,14 @@
 
 .about {
   &--hero {
-    background-color: #ded0ff;
+    background-color: #3e14a8;
     display: flex;
     justify-content: center;
     overflow: hidden;
     position: relative;
 
     &::after {
-      background: linear-gradient(335deg, RGB(94 0 169 / 60%) 10%, rgba(223, 119, 119, 0) 60%);
+      background: linear-gradient(335deg, rgba(94, 0, 169, 0.6) 10%, rgba(223, 119, 119, 0) 60%);
       bottom: 0;
       content: '';
       left: 0;
