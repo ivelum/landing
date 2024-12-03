@@ -39,27 +39,7 @@
 {{- end }}
 </head>
 <body>
-  <div class="header">
-    <div class="header--wrapper">
-      <a class="header--logo" href="/">
-        <img src="/img/logo.svg" alt="ivelum">
-      </a>
-      <div class="header--menu">
-        <div class="header--menu-inner">
-          <a class="header--menu-item" href="/">About</a>
-          <a class="header--menu-item" href="/how-we-work/">How we work</a>
-          <a class="header--menu-item" href="/solutions/">Solutions</a>
-          <a class="header--menu-item" href="/teamplify/">Teamplify</a>
-          <a class="header--menu-item" href="/contact/">Contact</a>
-        </div>
-        <div class="header--button-wrapper">
-          <a class="header--button" href="#talk">
-            <img src="/img/ico-talk.svg" alt="ivelum">Talk to us
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+  {{ partial "header.html" }}
 {{- block "main" . }}
 {{- end }}
   <h2 id="talk">Let's talk</h2>
