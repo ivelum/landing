@@ -1,19 +1,33 @@
+{{- $section := . }}
 <div class="header" data-scroll-lock-fill-gap x-data="header">
   <div class="header--wrapper">
-    <a class="header--logo" href="/">
+    <a
+      class="header--logo{{ if eq .RelPermalink "/" }} is-disabled{{ end }}"
+      href="/"
+    >
       <img src="/img/logo.svg" alt="ivelum">
-      {{- /* TODO: Disable the link on the index page */}}
       {{- /* TODO: Light mode for Teamplify, Contact, and Privacy policy */}}
     </a>
     <div class="header--menu" x-bind:class="isMenuOpen && 'is-open'">
       <div class="header--menu-inner">
         <div class="header--menu-items">
-          <a class="header--menu-item" href="/">About</a>
-          <a class="header--menu-item" href="/how-we-work/">How we work</a>
-          <a class="header--menu-item" href="/solutions/">Solutions</a>
-          <a class="header--menu-item" href="/teamplify/">Teamplify</a>
-          <a class="header--menu-item" href="/contact/">Contact</a>
-          {{- /* TODO: Underline and disable the link on the current page */}}
+          {{- $items := dict
+            "/" "About"
+            "/how-we-work/" "How we work"
+            "/solutions/" "Solutions"
+            "/teamplify/" "Teamplify"
+            "/contact/" "Contact"
+          }}
+          {{- range $url, $text := $items }}
+          <a
+            class="
+              {{- "header--menu-item" }}
+              {{- if eq $section.RelPermalink $url }} is-active{{ end -}}
+            "
+            href="{{ $url }}"
+            >{{ $text }}</a
+          >
+          {{- end }}
         </div>
         <div class="header--button-wrapper">
           <a class="header--button" x-on:click="talkToUs">

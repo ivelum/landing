@@ -1,5 +1,6 @@
 @import './vars';
 @import './mixins';
+@import './typography';
 
 $header-menu-open-duration: 0.3s;
 
@@ -32,7 +33,7 @@ $header-menu-open-duration: 0.3s;
     position: relative;
     z-index: 200;
 
-    &-disabled {
+    &.is-disabled {
       cursor: default;
       pointer-events: none;
     }
@@ -138,7 +139,7 @@ $header-menu-open-duration: 0.3s;
     }
 
     &:hover,
-    &-active {
+    &.is-active {
       color: $white;
 
       &::after {
@@ -146,7 +147,7 @@ $header-menu-open-duration: 0.3s;
       }
     }
 
-    &-active {
+    &.is-active {
       cursor: default;
       pointer-events: none;
     }
