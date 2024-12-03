@@ -149,6 +149,12 @@
     @include media-up(md) {
       width: 50%;
     }
+
+    & > p:last-child > a {
+      @extend .btn;
+      @extend .btn-outline-violet;
+      @extend .btn-small;
+    }
   }
 
   &--what-we-do-wrapper {
