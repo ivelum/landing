@@ -17,18 +17,19 @@
   <meta name="twitter:description" content="{{ .Description }}">
   <meta name="twitter:url" content="{{ .Permalink }}">
   {{- /* TODO: Favicons */}}
-  <script src="/vendor/scroll-lock@2.1.5/dist/scroll-lock.min.js" defer></script>
   <script type="importmap">
     {
       "imports": {
-        "alpinejs": "/vendor/alpinejs@3.14.6/dist/module.esm.min.js",
-        "autosize": "/vendor/autosize@6.0.1/dist/autosize.esm.js",
-        "swiper": "/vendor/swiper@11.1.15/swiper.min.mjs",
-        "swiper/modules/pagination": "/vendor/swiper@11.1.15/modules/pagination.min.mjs"
+        "alpinejs": "/vendor/alpinejs@3.14.6.js",
+        "autosize": "/vendor/autosize@6.0.1.js",
+        "scroll-lock": "/vendor/scroll-lock@2.1.5.js",
+        "swiper": "/vendor/swiper@11.1.15.js",
+        "swiper/css": "/vendor/swiper@11.1.15-css.js",
+        "swiper/css/pagination": "/vendor/swiper@11.1.15-css-pagination.js",
+        "swiper/modules/pagination": "/vendor/swiper@11.1.15-modules-pagination.js",
       }
     }
   </script>
-  <link rel="stylesheet" href="/vendor/swiper@11.1.15/swiper-bundle.min.css">
 {{- with resources.Get "sass/main.scss" }}
   {{- $opts := dict "transpiler" "libsass" "targetPath" "css/style.css" }}
   {{- with . | toCSS $opts }}
