@@ -173,6 +173,7 @@
 </div>
 
 <script type="module">
+  import * as Sentry from '@sentry/browser';
   import Alpine from "alpinejs";
   import autosize from "autosize";
 
@@ -229,7 +230,10 @@
             event.target.reset();
           }
         } catch (e) {
-          // TODO: Log the error to Sentry.
+          Sentry.withScope((scope) => {
+            scope.setExtra('form_data', data);
+            Sentry.captureException(e);
+          });
         } finally {
           this.submitting = false;
         }

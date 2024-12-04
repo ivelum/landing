@@ -20,6 +20,7 @@
   <script type="importmap">
     {
       "imports": {
+        "@sentry/browser": "/vendor/@sentry-browser@8.42.0.js",
         "alpinejs": "/vendor/alpinejs@3.14.6.js",
         "autosize": "/vendor/autosize@6.0.1.js",
         "scroll-lock": "/vendor/scroll-lock@2.1.5.js",
@@ -27,6 +28,8 @@
         "swiper/css": "/vendor/swiper@11.1.15-css.js",
         "swiper/css/pagination": "/vendor/swiper@11.1.15-css-pagination.js",
         "swiper/modules/pagination": "/vendor/swiper@11.1.15-modules-pagination.js",
+        "/npm/": "https://cdn.jsdelivr.net/npm/"
+        {{- /* @sentry/browser loads some more modules from jsdelivr */}}
       }
     }
   </script>
@@ -54,7 +57,15 @@
 {{- end }}
   {{ partial "footer.html" . }}
   <script type="module">
+    import * as Sentry from '@sentry/browser';
     import Alpine from 'alpinejs';
+
+    Sentry.init({
+      dsn: 'https://5948ecb18a55aeee499e81c728ad9285@o202054.ingest.sentry.io'
+        + '/4506218350641152',
+      environment: '{{ hugo.Environment }}',
+    });
+
     Alpine.start();
   </script>
 </body>
