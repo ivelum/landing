@@ -10,21 +10,14 @@
     <div class="header--menu" x-bind:class="isMenuOpen && 'is-open'">
       <div class="header--menu-inner">
         <div class="header--menu-items">
-          {{- $items := slice
-            (dict "url" "/" "text" "About")
-            (dict "url" "/how-we-work/" "text" "How we work")
-            (dict "url" "/solutions/" "text" "Solutions")
-            (dict "url" "/teamplify/" "text" "Teamplify")
-            (dict "url" "/contact/" "text" "Contact")
-          }}
-          {{- range $items }}
+          {{- range site.Menus.main }}
           <a
             class="
               {{- "header--menu-item" }}
-              {{- if eq $section.RelPermalink .url }} is-active{{ end -}}
+              {{- if eq $section.RelPermalink .URL }} is-active{{ end -}}
             "
-            href="{{ .url }}"
-            >{{ .text }}</a
+            href="{{ .URL }}"
+            >{{ .Name }}</a
           >
           {{- end }}
         </div>
