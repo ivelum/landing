@@ -13,7 +13,7 @@
     {{- /* TODO: Technology slider */}}
     <video
       class="about--hero-video"
-      poster="/img/hero-video-cover.png"
+      poster="{{ .Resources.Get "img/hero-video-cover.png" }}"
       width="100%"
       autoPlay
       loop
@@ -22,11 +22,11 @@
       playsInline
       id="hero-video"
     >
-      <source type="video/webm" src="/img/hero-video.webm" />
-      <source type="video/mp4" src="/img/hero-video.mp4" />
+      <source type="video/webm" src="{{ .Resources.Get "img/hero-video.webm" }}" />
+      <source type="video/mp4" src="{{ .Resources.Get "img/hero-video.mp4" }}" />
       <img
         class="about--hero-video"
-        src="/img/hero-video-cover.png"
+        src="{{ .Resources.Get "img/hero-video-cover.png" }}"
         alt="Experts in software development"
       />
     </video>
@@ -79,7 +79,7 @@
     >
     <img
       class="about--action-background"
-      src="/img/got-a-project-in-mind.svg"
+      src="{{ .Resources.Get "img/got-a-project-in-mind.svg" }}"
       alt="Got a project in mind?"
       width="738"
       height="208"
