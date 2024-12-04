@@ -22,6 +22,7 @@
     {
       "imports": {
         "alpinejs": "/vendor/alpinejs@3.14.6/dist/module.esm.min.js",
+        "autosize": "/vendor/autosize@6.0.1/dist/autosize.esm.js",
         "swiper": "/vendor/swiper@11.1.15/swiper.min.mjs",
         "swiper/modules/pagination": "/vendor/swiper@11.1.15/modules/pagination.min.mjs"
       }
@@ -50,8 +51,7 @@
   {{ partial "header.html" . }}
 {{- block "main" . }}
 {{- end }}
-  <h2 id="talk">Let's talk</h2>
-  {{- /* TODO */}}
+  {{ partial "footer.html" . }}
   <script type="module">
     import Alpine from 'alpinejs';
     Alpine.start();

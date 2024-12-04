@@ -1,0 +1,229 @@
+@import './vars';
+@import './mixins';
+
+@keyframes submitting {
+  0% {
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 0.35;
+  }
+
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.contact-form {
+  &--form {
+    margin-top: 2rem;
+    @include media-up(xl) {
+      margin-top: 3rem;
+    }
+
+    &-subject {
+      display: grid;
+      margin-top: 1rem;
+      row-gap: 0.25rem;
+      @include media-up(md) {
+        gap: 0.5rem 3rem;
+        grid-template-columns: auto 1fr;
+      }
+      @include media-up(xl) {
+        margin-top: 1.5rem;
+      }
+    }
+
+    &-intro-text {
+      display: block;
+      margin-top: 2rem;
+      margin-bottom: 0rem;
+      max-width: 40rem;
+      @include media-up(xl) {
+        margin-top: 3rem;
+      }
+    }
+
+    &-submit {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 3rem;
+      @include media-up(sm) {
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  &--form-submitting {
+    animation: submitting 1s linear infinite;
+    pointer-events: none;
+  }
+
+  &--fast-answer {
+    font-size: 0.875rem;
+    opacity: 0.4;
+    text-align: center;
+
+    &-ico>svg {
+      margin-right: 0.5rem;
+      margin-top: -2px; // fix icon position
+    }
+  }
+
+  &--success {
+    font-size: $font-size-bigger;
+    margin-top: 2rem;
+    @include media-up(xl) {
+      margin-top: 3rem;
+    }
+
+    &-ico>svg {
+      margin-right: 0.75rem;
+      margin-top: -0.25rem;
+    }
+  }
+}
+
+.form-group {
+  position: relative;
+
+  & + & {
+    margin-top: 1.5rem;
+  }
+}
+
+.form-control {
+  @include transition(border);
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid rgba($white, 0.3);
+  color: $white;
+  display: block;
+  outline: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0.625rem 0;
+  width: 100%;
+
+  &:focus,
+  &:hover {
+    border-color: $white;
+  }
+
+  &--textarea {
+    overflow: auto;
+    resize: none;
+  }
+}
+
+.form-label-up {
+  input::placeholder {
+    opacity: 0;
+  }
+
+  label {
+    @include transition(all 0.2s cubic-bezier(0.5, 0, 0, 1));
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    transform: translateY(0.7em);
+  }
+
+  input:focus + label,
+  input:not(:placeholder-shown) + label {
+    font-size: 0.875rem;
+    opacity: 0.5;
+    transform: translateY(-0.9em);
+  }
+}
+
+.custom-radio {
+  position: relative;
+
+  &--input {
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+  }
+
+  label {
+    display: inline-block;
+  }
+
+  &--input + label {
+    @include transition(opacity);
+    cursor: pointer;
+    margin: 0;
+    min-width: 1.125rem;
+    opacity: 0.5;
+    padding: 0 0 0 (1.125rem + 1rem); // radio width + 1 rem padding
+    position: relative;
+    vertical-align: top;
+    width: 100%;
+
+    &::before {
+      @include transition(transform 0.15s, box-shadow 0.15s);
+      box-sizing: inherit;
+      background-color: $primary-violet;
+      border: 2px solid $white;
+      border-radius: 50%;
+      box-shadow: 0 0 0 $white;
+      content: '';
+      height: 1.125rem;
+      left: 0;
+      position: absolute;
+      top: 0.375rem;
+      vertical-align: text-top;
+      width: 1.125rem;
+    }
+
+    &::after {
+      @include transition(transform 0.3s, opacity 0.3s);
+      box-sizing: inherit;
+      background-image: url("data:image/svg+xml,%3Csvg width='9' height='6' viewBox='0 0 9 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.20711 0.292893C8.59763 0.683417 8.59763 1.31658 8.20711 1.70711L4.20711 5.70711C3.81658 6.09763 3.18342 6.09763 2.79289 5.70711L0.792893 3.70711C0.402369 3.31658 0.402369 2.68342 0.792893 2.29289C1.18342 1.90237 1.81658 1.90237 2.20711 2.29289L3.5 3.58579L6.79289 0.292893C7.18342 -0.0976311 7.81658 -0.0976311 8.20711 0.292893Z' fill='white'/%3E%3C/svg%3E");
+      content: '';
+      height: 6px;
+      left: 2px;
+      opacity: 0;
+      position: absolute;
+      top: 11px;
+      transform: scale(0);
+      width: 9px;
+    }
+  }
+
+  &--input:checked + label {
+    opacity: 1;
+
+    &::before {
+      box-shadow: 2px 1px 0 $white;
+      transform: translate3d(-2px, -1px, 0);
+    }
+
+    &::after {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &--input:disabled + label {
+    opacity: 0.4;
+    pointer-events: none;
+
+    &::before {
+      background-color: $font-color-gray;
+      opacity: 0.4;
+    }
+  }
+
+  &:hover &-input + label {
+    opacity: 1;
+  }
+}

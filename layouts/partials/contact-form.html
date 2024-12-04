@@ -1,0 +1,232 @@
+<div x-data="contactForm">
+  <template x-if="!formSent">
+    <form
+      x-on:submit.prevent="submitForm"
+      x-bind:class="submitting && 'contact-form--form-submitting'"
+    >
+      <div class="contact-form--form">
+        <p>How can we help?</p>
+
+        <div class="contact-form--form-subject">
+          <div class="custom-radio">
+            <input
+              type="radio"
+              name="subject"
+              value="mvp"
+              class="custom-radio--input"
+              id="mvp"
+              x-model="subject"
+              x-on:change="onChangeRadio"
+            >
+            <label for="mvp">Build an MVP</label>
+          </div>
+          <div class="custom-radio">
+            <input
+              type="radio"
+              name="subject"
+              value="boost-development-speed"
+              class="custom-radio--input"
+              id="boost-development-speed"
+              x-model="subject"
+              x-on:change="onChangeRadio"
+            />
+            <label for="boost-development-speed">Boost development speed</label>
+          </div>
+          <div class="custom-radio">
+            <input
+              type="radio"
+              name="subject"
+              value="help-with-existing-project"
+              class="custom-radio--input"
+              id="help-with-existing-project"
+              x-model="subject"
+              x-on:change="onChangeRadio"
+            />
+            <label for="help-with-existing-project">Help with an existing project</label>
+          </div>
+          <div class="custom-radio">
+            <input
+              type="radio"
+              name="subject"
+              value="other"
+              class="custom-radio--input"
+              id="other"
+              x-model="subject"
+              x-on:change="onChangeRadio"
+            />
+            <label for="other">Other</label>
+          </div>
+        </div>
+
+        <template x-if="subject === 'mvp'">
+          <p class="contact-form--form-intro-text">
+            New ventures are always exciting. Could you please (very briefly) tell
+            us what the project is about?
+          </p>
+        </template>
+        <template x-if="subject === 'boost-development-speed'">
+          <p class="contact-form--form-intro-text">
+            Software development is very complex, and, unfortunately, progress is
+            often slow. But that can probably be improved. What challenges are you
+            facing?
+          </p>
+        </template>
+        <template x-if="subject === 'help-with-existing-project'">
+          <p class="contact-form--form-intro-text">
+            Very briefly, what is your project about? If you could also mention
+            key technologies used in that project, that would be awesome.
+          </p>
+        </template>
+        <template x-if="subject === 'other'">
+          <p class="contact-form--form-intro-text">
+            We love discussing new projects and opportunities. What can we do for
+            you?
+          </p>
+        </template>
+
+        <div class="form-group">
+          <textarea
+            name="text"
+            required
+            class="form-control form-control--textarea"
+            aria-label="How can we help?"
+            x-ref="textarea"
+            rows="1"
+          ></textarea>
+        </div>
+
+        <div class="form-group form-label-up">
+          <input
+            type="text"
+            name="name"
+            required
+            class="form-control"
+            id="name"
+            placeholder="Your name"
+            aria-label="Your name"
+          >
+          <label for="name">Your name</label>
+        </div>
+
+        <div class="form-group form-label-up">
+          <input
+            type="text"
+            name="company"
+            required
+            class="form-control"
+            id="company"
+            placeholder="Company name"
+            aria-label="Company name"
+          >
+          <label for="company">Company</label>
+        </div>
+
+        <div class="form-group form-label-up">
+          <input
+            type="email"
+            name="email"
+            required
+            class="form-control"
+            id="email"
+            placeholder="Email"
+            aria-label="Email"
+          >
+          <label for="email">Email</label>
+        </div>
+
+        <div class="contact-form--form-submit">
+          <button
+            class="btn btn-with-arrow"
+            type="submit"
+            x-bind:disabled="submitting"
+          >
+            Submit
+            {{
+              readFile "static/img/arrow-button.svg"
+              | strings.TrimSpace
+              | safeHTML
+            }}
+          </button>
+
+          <div class="contact-form--fast-answer"
+            ><span class="contact-form--fast-answer-ico">{{
+              readFile "static/img/ico-clock.svg"
+              | strings.TrimSpace
+              | safeHTML
+            }}</span>We'll respond within 24 hours</div
+          >
+        </div>
+      </div>
+    </form>
+  </template>
+
+  <template x-if="formSent">
+    <div class="contact-form--success"
+      ><span class="contact-form--success-ico">{{
+        readFile "static/img/ico-success.svg"
+        | strings.TrimSpace
+        | safeHTML
+      }}</span>Thank you! Your message has been sent.</div
+    >
+  </template>
+</div>
+
+<script type="module">
+  import Alpine from "alpinejs";
+  import autosize from "autosize";
+
+  const isProduction = {{ hugo.IsProduction }};
+  const apiUrl = 'https://hc8ysi8rwl.execute-api.eu-north-1.amazonaws.com/handle/';
+
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('contactForm', () => ({
+      formSent: false,
+      submitting: false,
+      subject: 'mvp',
+
+      init() {
+        this.$nextTick(() => {
+          autosize(this.$refs.textarea);
+        });
+      },
+
+      destroy() {
+        autosize.destroy(this.$refs.textarea);
+      },
+
+      onChangeRadio() {
+        this.$refs.textarea.focus();
+      },
+
+      async submitForm(event) {
+        const formData = new FormData(event.target);
+        const data = Object.fromEntries(formData);
+
+        this.submitting = true;
+
+        try {
+          if (isProduction) {
+            const response = await fetch(apiUrl, {
+              method: 'POST',
+              mode: 'cors',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data),
+            });
+            const result = await response.json();
+            this.formSent = result.status === 'ok';
+          } else {
+            await new Promise((resolve) => setTimeout(resolve, 2000));
+            console.log(data);
+            this.formSent = true;
+          }
+        } catch (e) {
+          // TODO: Log the error to Sentry.
+        } finally {
+          this.submitting = false;
+        }
+      },
+    }));
+  });
+</script>

@@ -1,0 +1,86 @@
+@import './vars';
+
+.footer {
+  &--wrapper {
+    background: linear-gradient(180deg, #3d0f9a 52.09%, #5e00a9 100%);
+    color: $white;
+    margin-top: 3rem;
+    padding: 3rem 0;
+    @include media-up(lg) {
+      margin-top: 4rem;
+      padding: 4rem 0;
+    }
+    @include media-up(xl) {
+      margin-top: 6rem;
+      padding: 6rem 0;
+    }
+  }
+
+  &--title {
+    color: $white;
+  }
+
+  &--grid {
+    display: grid;
+    gap: 3rem;
+    @include media-up(lg) {
+      gap: 6rem;
+      grid-template-columns: 2fr 1fr;
+    }
+    @include media-up(xl) {
+      gap: 10rem;
+    }
+  }
+
+  &--contacts {
+    display: flex;
+    flex-direction: column;
+    @include media-up(xl) {
+      margin-top: 3rem;
+    }
+
+    &-block {
+      display: flex;
+      flex-direction: column;
+      margin-top: 1.5rem;
+      @include media-up(xl) {
+        margin-top: 2.5rem;
+      }
+    }
+
+    &-title {
+      opacity: 0.5;
+    }
+
+    &-body {
+      color: $white;
+
+      a {
+        color: $white;
+
+        &:hover {
+          color: rgba($white, 0.6);
+        }
+      }
+    }
+
+    &-copyright {
+      color: rgba($white, 0.4);
+      font-size: 0.875rem;
+      margin-top: 2rem;
+      @include media-up(lg) {
+        margin-top: auto;
+        padding: 0.75rem 0;
+      }
+
+      a {
+        color: rgba($white, 0.5);
+        margin-left: 0.5rem;
+
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+  }
+}

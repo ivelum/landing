@@ -1,6 +1,8 @@
 @import './about';
 @import './btn';
+@import './contact-form';
 @import './fonts';
+@import './footer';
 @import './header';
 @import './typography';
 @import './vars';
@@ -23,6 +25,17 @@ html, * {
 
 img, svg {
   vertical-align: middle;
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
 }
 
 .container {

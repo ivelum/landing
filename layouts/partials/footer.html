@@ -1,0 +1,39 @@
+<div class="footer--wrapper">
+  <div class="container">
+    <h2 id="talk" class="footer--title">Let's talk</h2>
+    <div class="footer--grid">
+      {{ partial "contact-form.html" . }}
+      <div class="footer--contacts">
+        {{
+          readFile "static/img/ico-asterisk.svg"
+          | strings.TrimSpace
+          | safeHTML
+        }}
+        <div class="footer--contacts-block">
+          <div class="footer--contacts-title">Get in touch</div>
+          <div class="footer--contacts-body">
+            <a href="mailto:info@ivelum.com">info@ivelum.com</a>
+          </div>
+        </div>
+        <div class="footer--contacts-block">
+          <div class="footer--contacts-title">Lithuania</div>
+          <div class="footer--contacts-body">
+            <a href="tel:+37067527718">+370 675 27718</a><br />
+            21 Upės g., Vilnius LT-08128, Lithuania
+          </div>
+        </div>
+        <div class="footer--contacts-block">
+          <div class="footer--contacts-title">Spain</div>
+          <div class="footer--contacts-body">
+            <a href="tel:+34670996329">+34 670 99 63 29</a><br />
+            45, Calle Beire, Madrid 28039, Spain
+          </div>
+        </div>
+        <div class="footer--contacts-copyright">
+          © ivelum 2003 – 2023 <a href="/privacy">Privacy Policy</a>
+          {{- /* TODO: Privacy policy  */}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
