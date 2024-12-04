@@ -17,11 +17,11 @@
   <meta name="twitter:description" content="{{ .Description }}">
   <meta name="twitter:url" content="{{ .Permalink }}">
   {{- /* TODO: Favicons */}}
-  <script src="/vendor/alpinejs@3.14.6/dist/cdn.min.js" defer></script>
   <script src="/vendor/scroll-lock@2.1.5/dist/scroll-lock.min.js" defer></script>
   <script type="importmap">
     {
       "imports": {
+        "alpinejs": "/vendor/alpinejs@3.14.6/dist/module.esm.min.js",
         "swiper": "/vendor/swiper@11.1.15/swiper.min.mjs",
         "swiper/modules/pagination": "/vendor/swiper@11.1.15/modules/pagination.min.mjs"
       }
@@ -52,5 +52,9 @@
 {{- end }}
   <h2 id="talk">Let's talk</h2>
   {{- /* TODO */}}
+  <script type="module">
+    import Alpine from 'alpinejs';
+    Alpine.start();
+  </script>
 </body>
 </html>
