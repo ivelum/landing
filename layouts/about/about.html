@@ -13,7 +13,7 @@
     {{- /* TODO: Technology slider */}}
     <video
       class="about--hero-video"
-      poster="{{ .Resources.Get "img/hero-video-cover.png" }}"
+      poster="{{ (.Resources.Get "img/hero-video-cover.png").RelPermalink }}"
       width="100%"
       autoPlay
       loop
@@ -22,11 +22,15 @@
       playsInline
       id="hero-video"
     >
-      <source type="video/webm" src="{{ .Resources.Get "img/hero-video.webm" }}" />
-      <source type="video/mp4" src="{{ .Resources.Get "img/hero-video.mp4" }}" />
+      <source type="video/webm" src="{{
+        (.Resources.Get "img/hero-video.webm").RelPermalink
+      }}" />
+      <source type="video/mp4" src="{{
+        (.Resources.Get "img/hero-video.mp4").RelPermalink
+      }}" />
       <img
         class="about--hero-video"
-        src="{{ .Resources.Get "img/hero-video-cover.png" }}"
+        src="{{ (.Resources.Get "img/hero-video-cover.png").RelPermalink }}"
         alt="Experts in software development"
       />
     </video>
@@ -53,7 +57,7 @@
       <div class="about--what-we-do-item">
         <img
           class="about--what-we-do-item-image"
-          src="{{ $section.Resources.Get .Params.image }}"
+          src="{{ ($section.Resources.Get .Params.image).RelPermalink }}"
           alt="{{ .Title }}"
           width="260"
           height="260"
@@ -79,7 +83,7 @@
     >
     <img
       class="about--action-background"
-      src="{{ .Resources.Get "img/got-a-project-in-mind.svg" }}"
+      src="{{ (.Resources.Get "img/got-a-project-in-mind.svg").RelPermalink }}"
       alt="Got a project in mind?"
       width="738"
       height="208"
@@ -94,7 +98,7 @@
         <div class="about--testimonials-author">
           <img
             class="about--testimonials-author-image"
-            src="{{ $section.Resources.Get .Params.avatar }}"
+            src="{{ ($section.Resources.Get .Params.avatar).RelPermalink }}"
             alt="{{ .Title }}"
           >
           <div class="about--testimonials-author-body">
