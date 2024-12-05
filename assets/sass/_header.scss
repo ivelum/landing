@@ -270,8 +270,8 @@ $header-menu-open-duration: 0.3s;
   }
 }
 
-.dark {
-  .header--logo :global(.logo-g-text) path {
+.is-light {
+  .header--logo .logo-g-text path {
     fill: $primary-violet;
     transition-delay: 0.15s;
     @include media-up(md) {
@@ -279,7 +279,7 @@ $header-menu-open-duration: 0.3s;
     }
   }
 
-  .header--logo :global(.logo-g-sign) path {
+  .header--logo .logo-g-sign path {
     fill: $primary-orange;
     transition-delay: 0.15s;
     @include media-up(md) {
@@ -287,7 +287,7 @@ $header-menu-open-duration: 0.3s;
     }
   }
 
-  .header--logo.active :global(.logo-g-text) path {
+  .header--logo.is-open .logo-g-text path {
     fill: $white;
     transition-delay: 0.1s;
     @include media-up(md) {
@@ -295,7 +295,7 @@ $header-menu-open-duration: 0.3s;
     }
   }
 
-  .header--logo.active :global(.logo-g-sign) path {
+  .header--logo.is-open .logo-g-sign path {
     fill: $white;
     transition-delay: 0.1s;
     @include media-up(md) {
@@ -309,8 +309,8 @@ $header-menu-open-duration: 0.3s;
     background-color: $font-color-dark;
   }
 
-  .header--burger.active::before,
-  .header--burger.active::after {
+  .header--burger.is-open::before,
+  .header--burger.is-open::after {
     background-color: $white;
   }
 

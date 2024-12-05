@@ -1,11 +1,12 @@
-<div class="header" data-scroll-lock-fill-gap x-data="header">
+{{- $isLight := in (slice "/teamplify/" "/contact/" "/privacy/") .RelPermalink }}
+<div class="header{{ if $isLight }} is-light{{ end }}" data-scroll-lock-fill-gap x-data="header">
   <div class="header--wrapper">
     <a
       class="header--logo{{ if eq .RelPermalink "/" }} is-disabled{{ end }}"
+      x-bind:class="isMenuOpen && 'is-open'"
       href="/"
-      ><img src="/img/logo.svg" alt="ivelum"></a
+      >{{ readFile "static/img/logo.svg" | strings.TrimSpace | safeHTML }}</a
     >
-    {{- /* TODO: Light mode for Teamplify, Contact, and Privacy policy */}}
     <div class="header--menu" x-bind:class="isMenuOpen && 'is-open'">
       <div class="header--menu-inner">
         <div class="header--menu-items">
@@ -22,7 +23,9 @@
         </div>
         <div class="header--button-wrapper">
           <a class="header--button" href="#talk" x-on:click.prevent="talkToUs"
-            ><img src="/img/ico-talk.svg" alt="ivelum">Talk to us</a
+            >{{
+              readFile "static/img/ico-talk.svg" | strings.TrimSpace | safeHTML
+            }}Talk to us</a
           >
         </div>
       </div>
