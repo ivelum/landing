@@ -50,6 +50,8 @@
   import Alpine from "alpinejs";
   import scrollLock from 'scroll-lock';
 
+  import talkToUs from '/js/talk-to-us.js';
+
   const mediaMd = '(min-width: 768px)';
 
   document.addEventListener('alpine:init', () => {
@@ -86,10 +88,7 @@
 
       talkToUs() {
         this.closeMenu();
-        window.talk.scrollIntoView({ behavior: 'smooth' });
-        document.querySelector('.form-control--textarea')?.focus(
-          { preventScroll: true },
-        );
+        talkToUs();
       },
     }));
   });

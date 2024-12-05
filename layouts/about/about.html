@@ -74,12 +74,19 @@
     <a
       class="btn btn-big btn-with-arrow about--action-button"
       href="#talk"
-      x-data
-      x-on:click.prevent="window.talk.scrollIntoView({ behavior: 'smooth' })"
+      x-data="LetsTalkButton"
+      x-on:click.prevent="talkToUs"
       >Let's talk{{
         readFile "static/img/arrow-button.svg" | strings.TrimSpace | safeHTML
       }}</a
     >
+    <script type="module">
+      import Alpine from "alpinejs";
+      import talkToUs from '/js/talk-to-us.js';
+      document.addEventListener('alpine:init', () => {
+        Alpine.data('LetsTalkButton', () => ({ talkToUs }));
+      });
+    </script>
     <img
       class="about--action-background"
       src="{{ (.Resources.Get "img/got-a-project-in-mind.svg").RelPermalink }}"
