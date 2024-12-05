@@ -1,4 +1,4 @@
-<div x-data="contactForm">
+<div x-data="ContactForm">
   <form
     x-show="!formSent"
     {{- /* Not using x-if to preserve the form state between page reloads. */}}
@@ -177,7 +177,7 @@
   const apiUrl = 'https://hc8ysi8rwl.execute-api.eu-north-1.amazonaws.com/handle/';
 
   document.addEventListener('alpine:init', () => {
-    Alpine.data('contactForm', () => ({
+    Alpine.data('ContactForm', () => ({
       formSent: false,
       submitting: false,
       subject: null,

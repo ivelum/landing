@@ -1,5 +1,9 @@
 {{- $isLight := in (slice "/teamplify/" "/contact/" "/privacy/") .RelPermalink }}
-<div class="header{{ if $isLight }} is-light{{ end }}" data-scroll-lock-fill-gap x-data="header">
+<div
+  class="header{{ if $isLight }} is-light{{ end }}"
+  data-scroll-lock-fill-gap
+  x-data="Header"
+>
   <div class="header--wrapper">
     <a
       class="header--logo{{ if eq .RelPermalink "/" }} is-disabled{{ end }}"
@@ -49,7 +53,7 @@
   const mediaMd = '(min-width: 768px)';
 
   document.addEventListener('alpine:init', () => {
-    Alpine.data('header', () => ({
+    Alpine.data('Header', () => ({
       isMenuOpen: false,
 
       init() {
