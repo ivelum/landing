@@ -6,7 +6,7 @@
       <div class="contact--address-wrapper">
         {{- range sort (where .Pages "Params.category" "address") "File.Path" }}
         <div class="contact--address-item">
-          <h2 class="contact--address-title">{{ .Title }}</h2>
+          <h3 class="contact--address-title">{{ .Title }}</h3>
           {{ .Content }}
         </div>
         {{- end }}

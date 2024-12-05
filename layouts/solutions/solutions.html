@@ -33,7 +33,7 @@
     {{- range sort (where .Pages "Params.category" "solutions") "File.Path" }}
       <div class="solutions--item">
         <div class="solutions--item-body">
-          <h2 class="solutions--item-title" id="{{ .Slug }}">{{ .Title }}</h2>
+          <h3 class="solutions--item-title" id="{{ .Slug }}">{{ .Title }}</h3>
           <div class="solutions--item-text">
             {{ .Content }}
           </div>
