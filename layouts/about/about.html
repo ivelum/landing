@@ -74,7 +74,9 @@
   <div class="about--action">
     <a
       class="btn btn-big btn-with-arrow about--action-button"
-      onclick="window.talk.scrollIntoView({ behavior: 'smooth' })"
+      href="#talk"
+      x-data
+      x-on:click.prevent="window.talk.scrollIntoView({ behavior: 'smooth' })"
       >Let's talk{{
         readFile "static/img/arrow-button.svg"
         | strings.TrimSpace
