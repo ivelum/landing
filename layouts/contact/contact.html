@@ -29,10 +29,14 @@
             >
             {{- /* TODO: Show the local time and the status */}}
           </p>
-          <button class="btn btn-outline-violet btn-small" type="button">
+          <button
+            class="btn btn-outline-violet btn-small"
+            type="button"
+            x-data="ChatButton"
+            x-on:click="openChat"
+          >
             Chat now
           </button>
-          {{- /* TODO: Implement the chat */}}
         </div>
         <div class="contact--inner">
           <div class="contact--method-title">
@@ -79,4 +83,29 @@
       </div>
     </div>
   </div>
+
+  <script type="module">
+    import Alpine from 'alpinejs';
+
+    document.addEventListener('alpine:init', () => {
+      Alpine.data('ChatButton', () => ({ openChat }));
+    });
+
+    function openChat() {
+      initChat();
+      window.$crisp.push(['do', 'chat:show']);
+      window.$crisp.push(['do', 'chat:open']);
+    }
+
+    function initChat() {
+      if (window.CRISP_WEBSITE_ID) return;
+      window.$crisp = [];
+      window.CRISP_WEBSITE_ID = '2aa7bcb2-8094-4624-b64e-112c2ca3a174';
+
+      const script = document.createElement('script');
+      script.src = 'https://client.crisp.chat/l.js';
+      script.async = 1;
+      document.getElementsByTagName('head')[0].appendChild(script);
+    }
+  </script>
 {{- end }}

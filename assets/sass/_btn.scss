@@ -25,7 +25,7 @@
   }
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     background-color: lighten($primary-orange, 10%);
     color: $white;
   }
@@ -44,7 +44,7 @@
     color: $primary-violet;
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       background-color: $white;
       border-color: $primary-orange;
       color: $primary-orange;
