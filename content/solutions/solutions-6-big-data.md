@@ -1,6 +1,7 @@
 ---
 category: solutions
 title: Big data
+slug: big-data
 image: img/solutions/big-data.svg
 ---
 

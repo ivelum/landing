@@ -1,6 +1,7 @@
 ---
 category: solutions
 title: Startups
+slug: startups
 image: img/solutions/startups.svg
 ---
 

@@ -1,6 +1,7 @@
 ---
 category: solutions
 title: ERP
+slug: erp
 image: img/solutions/erp.svg
 ---
 

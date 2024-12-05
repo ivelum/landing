@@ -1,6 +1,7 @@
 ---
 category: solutions
 title: Security
+slug: security
 image: img/solutions/security.svg
 ---
 

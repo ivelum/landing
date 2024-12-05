@@ -1,0 +1,155 @@
+@import './vars';
+@import './mixins';
+
+.solutions {
+  &--head {
+    background: linear-gradient(180deg, #331fab 14%, #5e00a9 100%);
+    display: flex;
+    padding-bottom: 2.5rem;
+    padding-top: 6.25rem;
+    @include media-up(md) {
+      padding-bottom: 5rem;
+      padding-top: 8.75rem;
+    }
+    @include media-up(xl) {
+      padding-bottom: 7.5rem;
+      padding-top: 12.5rem;
+    }
+
+    &-wrapper {
+      margin: auto 0;
+      width: 100%;
+    }
+
+    &-title {
+      color: $white;
+      overflow: hidden;
+    }
+  }
+
+  &--anchors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    @include media-up(xl) {
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    &-item {
+      @include transition(border);
+      @include a-no-underline;
+      border: 2px solid rgba(#8a57f3, 0.5);
+      border-radius: 2rem;
+      color: $white;
+      display: block;
+      font-size: 0.875rem;
+      padding: 0.125rem 1rem 0;
+      @include media-up(lg) {
+        font-size: $font-size-default;
+        padding: 0.25rem 1.5rem 0.1875rem;
+      }
+      @include media-up(xl) {
+        font-size: $font-size-bigger;
+      }
+
+      &:hover {
+        border-color: #8a57f3;
+        color: $white;
+      }
+    }
+  }
+
+  &--tagline {
+    color: $primary-violet;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+    text-align: center;
+    @include media-up(lg) {
+      margin: 4rem auto 0;
+    }
+    @include media-up(xl) {
+      margin: 6rem auto 0;
+    }
+
+    > p {
+      @extend h2;
+      max-width: 15em; // Break the line between "for" and "customers".
+      font-weight: $font-weight-semi-bold !important;
+
+      > strong {
+        font-weight: $font-weight-semi-bold;
+        color: $primary-orange;
+      }
+    }
+  }
+
+  &--list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+    @include media-up(lg) {
+      margin-top: 4rem;
+    }
+    @include media-up(xl) {
+      margin-top: 6rem;
+    }
+  }
+
+  &--item {
+    border-top: 1px solid $border-color-default;
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 3rem 0;
+    position: relative;
+    @include media-up(lg) {
+      align-items: center;
+      flex-direction: row;
+    }
+    @include media-up(xl) {
+      padding: 4.5rem 0;
+    }
+
+    &-image {
+      display: block;
+      height: auto;
+      margin: 0 auto;
+      max-width: 280px;
+      width: 100%;
+    }
+
+    &-body {
+      margin-top: 1rem;
+      @include media-up(lg) {
+        margin-top: 0;
+        width: 50%;
+      }
+    }
+
+    &-title {
+      margin-top: 1rem;
+      @include media-up(lg) {
+        margin-top: 0;
+      }
+    }
+
+    &-text {
+      margin-top: 1rem;
+      @include media-up(xl) {
+        margin-top: 1.5rem;
+      }
+    }
+
+    &-link {
+      color: $font-color-dark;
+      margin-top: 0.5rem;
+      @include media-up(xl) {
+        font-size: $font-size-bigger;
+        margin-top: 1.5rem;
+      }
+    }
+  }
+}
