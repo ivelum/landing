@@ -1,0 +1,187 @@
+@import './vars';
+@import './mixins';
+
+.how-we-work {
+  &--head {
+    background: linear-gradient(180deg, #331fab 14%, #5e00a9 100%);
+    display: flex;
+    height: 45vw;
+    max-height: 580px;
+    min-height: 240px;
+
+    &-image {
+      display: block;
+      height: auto;
+      margin: 0 auto -6%;
+      max-width: 1440px;
+      pointer-events: none;
+      user-select: none;
+      width: 100%;
+    }
+  }
+
+  $tagline-gap-xs: 1rem;
+  $tagline-gap-lg: 2rem;
+
+  &--tagline {
+
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: $tagline-gap-xs;
+    margin-top: 3rem;
+    @include media-up(lg) {
+      gap: $tagline-gap-lg;
+      margin-top: 4rem;
+    }
+    @include media-up(xl) {
+      margin-top: 6rem;
+    }
+
+    p:nth-child(1) {
+      @extend h2;
+      color: $primary-violet !important;
+      font-weight: $font-weight-semi-bold !important;
+      @include media-up(xl) {
+        font-size: 3.75rem;
+      }
+    }
+
+    p:nth-child(2) {
+      line-height: 0; // It's a single heart icon. Remove its line height.
+      margin: 0;
+    }
+
+    img {
+      animation: pulse 0.75s linear infinite normal forwards;
+    }
+
+    p:nth-child(3) {
+      @extend h3;
+      font-weight: $font-weight-default !important;
+      max-width: 400px;
+      @include media-up(lg) {
+        max-width: 540px;
+      }
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      animation-timing-function: cubic-bezier(0, 0, 0, 0.995);
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.2);
+    }
+
+    100% {
+      animation-timing-function: cubic-bezier(0, 0, 0, 0.995);
+      transform: scale(1);
+    }
+  }
+
+  &--video {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1.5rem - $tagline-gap-xs;
+    @include media-up(md) {
+      margin-top: 3rem - $tagline-gap-xs;
+    }
+    @include media-up(lg) {
+      margin-top: 3rem - $tagline-gap-lg;
+    }
+    @include media-up(xl) {
+      margin-top: 4.5rem - $tagline-gap-lg;
+    }
+
+    iframe {
+      aspect-ratio: 16/9;
+      height: auto;
+      max-width: $container-default-max-width * 0.8;
+      width: 100%;
+    }
+  }
+
+  &--list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+    @include media-up(lg) {
+      margin-top: 4rem;
+    }
+    @include media-up(xl) {
+      margin-top: 6rem;
+    }
+  }
+
+  &--item {
+    border-top: 1px solid $border-color-default;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 0;
+    position: relative;
+    @include media-up(lg) {
+      align-items: center;
+      flex-direction: row;
+    }
+    @include media-up(xl) {
+      padding: 4.5rem 0;
+    }
+
+    &-num {
+      color: $font-color-gray;
+      left: 0;
+      position: absolute;
+      top: 1rem;
+      @include media-up(lg) {
+        top: 3rem;
+      }
+      @include media-up(xl) {
+        top: 4.5rem;
+      }
+    }
+
+    &-image {
+      display: block;
+      height: auto;
+      margin: 0 auto;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    &-body {
+      margin-top: 1rem;
+      @include media-up(lg) {
+        margin-top: 0;
+        width: 50%;
+      }
+    }
+
+    &-title {
+      margin-top: 1rem;
+      @include media-up(lg) {
+        margin-top: 0;
+      }
+    }
+
+    &-text {
+      margin-top: 1rem;
+      @include media-up(xl) {
+        margin-top: 1.5rem;
+      }
+    }
+
+    &-link {
+      color: $font-color-dark;
+      margin-top: 0.5rem;
+      @include media-up(xl) {
+        font-size: $font-size-bigger;
+        margin-top: 1.5rem;
+      }
+    }
+  }
+}

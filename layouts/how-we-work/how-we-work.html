@@ -1,11 +1,35 @@
 {{- define "main" }}
-  {{- .Content -}}
-  {{- range $index, $block := sort (where .Pages "Params.category" "how-we-work") "File.Path" }}
-    <div>
-      {{ printf "%02d /" (math.Add $index 1) }}
-      <h2>{{ $block.Title }}</h2>
-      <img src="{{ $.Resources.Get .Params.image }}" alt="{{ .Title }}">
-      {{ $block.Content }}
+  <div class="how-we-work--head">
+    <img
+      class="how-we-work--head-image"
+      src="{{ (.Resources.Get "img/fast.svg").RelPermalink }}"
+      alt="How we work? FAST"
+    />
+  </div>
+  {{- /* TODO: Animations */}}
+
+  <div class="container">
+    <div class="how-we-work--tagline">
+      {{- .Content -}}
     </div>
-  {{- end }}
+
+    <div class="how-we-work--list">
+    {{- range $index, $_ := sort (where .Pages "Params.category" "how-we-work") "File.Path" }}
+      <div class="how-we-work--item">
+        <div class="how-we-work--item-num">{{ printf "%02d /" (math.Add $index 1) }}</div>
+        <img
+          class="how-we-work--item-image"
+          src="{{ $.Resources.Get .Params.image }}"
+          alt="{{ .Title }}"
+        >
+        <div class="how-we-work--item-body">
+          <h2 class="how-we-work--item-title">{{ .Title }}</h2>
+          <div class="how-we-work--item-text">
+            {{ .Content }}
+          </div>
+        </div>
+      </div>
+      {{- end }}
+    </div>
+  </div>
 {{- end }}
