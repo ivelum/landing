@@ -329,7 +329,7 @@
     width: 100%;
   }
 
-  &--team-slider {
+  &--team-slider.swiper { // Increase specificity over .swiper to override it.
     --swiper-theme-color: #{$primary-orange};
     margin-top: 1.5rem;
     max-width: $container-default-max-width;
