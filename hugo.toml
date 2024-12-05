@@ -5,10 +5,9 @@ disableKinds = ['taxonomy', 'term', 'RSS']
 enableRobotsTXT = true
 
 [output]
-  home = ['html']
-  section = ['html']
+home = ['html']
+section = ['html']
 
-[deployment]
-  [[deployment.targets]]
-  name = "s3"
-  URL = "s3://hugo.ivelum.com?region=eu-north-1"
+[[deployment.targets]]
+name = "s3"
+URL = "s3://hugo.ivelum.com?region=eu-north-1"
