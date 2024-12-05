@@ -4,6 +4,9 @@ title = "ivelum"
 disableKinds = ['taxonomy', 'term', 'RSS']
 enableRobotsTXT = true
 
+[markup.goldmark.extensions.typographer]
+disable = true
+
 [output]
 home = ['html']
 section = ['html']
