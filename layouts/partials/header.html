@@ -81,7 +81,9 @@
       talkToUs() {
         this.closeMenu();
         window.talk.scrollIntoView({ behavior: 'smooth' });
-        document.querySelector('.form-control-textarea')?.focus();
+        document.querySelector('.form-control--textarea')?.focus(
+          { preventScroll: true },
+        );
       },
     }));
   });
