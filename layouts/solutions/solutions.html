@@ -1,10 +1,9 @@
 {{- define "main" }}
   {{- .Content -}}
-  {{- $section := . }}
   {{- range sort (where .Pages "Params.category" "solutions") "File.Path" }}
     <div>
       <h2>{{ .Title }}</h2>
-      <img src="{{ $section.Resources.Get .Params.image }}" alt="{{ .Title }}">
+      <img src="{{ $.Resources.Get .Params.image }}" alt="{{ .Title }}">
       {{ .Content }}
     </div>
   {{- end }}

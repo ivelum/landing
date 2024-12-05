@@ -1,4 +1,3 @@
-{{- $section := . -}}
 <div class="header" data-scroll-lock-fill-gap x-data="header">
   <div class="header--wrapper">
     <a
@@ -14,7 +13,7 @@
           <a
             class="
               {{- "header--menu-item" }}
-              {{- if eq $section.RelPermalink .URL }} is-active{{ end -}}
+              {{- if eq $.RelPermalink .URL }} is-active{{ end -}}
             "
             href="{{ .URL }}"
             >{{ .Name }}</a

@@ -1,5 +1,4 @@
 {{- define "main" }}
-  {{- $section := . }}
   <div class="about--hero">
     <div class="about--hero-body">
       <div class="about--hero-tagline">Since 2003</div>
@@ -57,7 +56,7 @@
       <div class="about--what-we-do-item">
         <img
           class="about--what-we-do-item-image"
-          src="{{ ($section.Resources.Get .Params.image).RelPermalink }}"
+          src="{{ ($.Resources.Get .Params.image).RelPermalink }}"
           alt="{{ .Title }}"
           width="260"
           height="260"
@@ -100,7 +99,7 @@
         <div class="about--testimonials-author">
           <img
             class="about--testimonials-author-image"
-            src="{{ ($section.Resources.Get .Params.avatar).RelPermalink }}"
+            src="{{ ($.Resources.Get .Params.avatar).RelPermalink }}"
             alt="{{ .Title }}"
           >
           <div class="about--testimonials-author-body">
