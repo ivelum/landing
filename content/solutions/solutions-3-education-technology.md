@@ -1,6 +1,6 @@
 ---
 category: solutions
-title: Education Technology
+title: Education technology
 slug: education-technology
 image: img/solutions/education-technology.svg
 ---
