@@ -54,7 +54,8 @@
   &-with-arrow {
     gap: 1rem;
 
-    img, svg {
+    img,
+    svg {
       margin-top: -1px; // fix icon position
       overflow: visible;
     }

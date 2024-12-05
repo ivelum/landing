@@ -10,7 +10,11 @@
     position: relative;
 
     &::after {
-      background: linear-gradient(335deg, rgba(94, 0, 169, 0.6) 10%, rgba(223, 119, 119, 0) 60%);
+      background: linear-gradient(
+        335deg,
+        rgba(94, 0, 169, 0.6) 10%,
+        rgba(223, 119, 119, 0) 60%
+      );
       bottom: 0;
       content: '';
       left: 0;
@@ -329,7 +333,8 @@
     width: 100%;
   }
 
-  &--team-slider.swiper { // Increase specificity over .swiper to override it.
+  &--team-slider.swiper {
+    // Increase specificity over .swiper to override it.
     --swiper-theme-color: #{$primary-orange};
     margin-top: 1.5rem;
     max-width: $container-default-max-width;

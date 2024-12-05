@@ -22,7 +22,13 @@ $link-primary-decoration: none;
 $link-primary-hover-decoration: none;
 
 // Breakpoints
-$grid-breakpoints: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px);
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
 
 // Layout
 $container-default-max-width: 1120px;

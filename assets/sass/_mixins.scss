@@ -1,12 +1,16 @@
 @mixin transition($transitions...) {
   $unfolded-transitions: ();
   @each $transition in $transitions {
-    $unfolded-transitions: append($unfolded-transitions, unfold-transition($transition), comma);
+    $unfolded-transitions: append(
+      $unfolded-transitions,
+      unfold-transition($transition),
+      comma
+    );
   }
   transition: $unfolded-transitions;
 }
 
-@function unfold-transition ($transition) {
+@function unfold-transition($transition) {
   $property: all;
   $duration: 0.35s;
   $easing: cubic-bezier(0, 0.5, 0.5, 1);
