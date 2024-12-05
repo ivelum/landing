@@ -77,9 +77,7 @@
       x-data
       x-on:click.prevent="window.talk.scrollIntoView({ behavior: 'smooth' })"
       >Let's talk{{
-        readFile "static/img/arrow-button.svg"
-        | strings.TrimSpace
-        | safeHTML
+        readFile "static/img/arrow-button.svg" | strings.TrimSpace | safeHTML
       }}</a
     >
     <img

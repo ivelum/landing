@@ -150,25 +150,21 @@
           }}
         </button>
 
-        <div class="contact-form--fast-answer"
-          ><span class="contact-form--fast-answer-ico">{{
-            readFile "static/img/ico-clock.svg"
-            | strings.TrimSpace
-            | safeHTML
-          }}</span>We'll respond within 24 hours</div
-        >
+        <div class="contact-form--fast-answer">
+          <span class="contact-form--fast-answer-ico">{{
+            readFile "static/img/ico-clock.svg" | strings.TrimSpace | safeHTML
+          }}</span>We'll respond within 24 hours
+        </div>
       </div>
     </div>
   </form>
 
   <template x-if="formSent">
-    <div class="contact-form--success"
-      ><span class="contact-form--success-ico">{{
-        readFile "static/img/ico-success.svg"
-        | strings.TrimSpace
-        | safeHTML
-      }}</span>Thank you! Your message has been sent.</div
-    >
+    <div class="contact-form--success">
+      <span class="contact-form--success-ico">{{
+        readFile "static/img/ico-success.svg" | strings.TrimSpace | safeHTML
+      }}</span>Thank you! Your message has been sent.
+    </div>
   </template>
 </div>
 
