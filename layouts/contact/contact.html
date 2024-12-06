@@ -96,6 +96,10 @@
 
     function openChat() {
       initChat();
+      window.$crisp.push(['safe', true]);
+      // Sentry instruments methods document.addEventListener() and
+      // document.removeEventListener(), and Crisp complains about it. Disable
+      // the warnings.
       window.$crisp.push(['do', 'chat:show']);
       window.$crisp.push(['do', 'chat:open']);
     }
