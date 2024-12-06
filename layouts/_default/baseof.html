@@ -2,11 +2,29 @@
 <html lang="en">
 <head>
   <!-- TODO: REMOVE BEFORE LAUNCH -->
-  <meta name = "robots" content = "noindex">
+  <meta name="robots" content="noindex">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
   <title>{{ .Title }}</title>
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/img/favicon/apple-touch-icon.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="/img/favicon/favicon-32x32.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="/img/favicon/favicon-16x16.png"
+  />
+  <link rel="manifest" href="/img/favicon/site.webmanifest" />
   <meta name="description" content="{{ .Description }}">
   <link rel="canonical" href="{{ .Permalink }}">
   <meta property="og:title" content="{{ .Title }}">
@@ -16,7 +34,6 @@
   <meta name="twitter:title" content="{{ .Title }}">
   <meta name="twitter:description" content="{{ .Description }}">
   <meta name="twitter:url" content="{{ .Permalink }}">
-  {{- /* TODO: Favicons */}}
   <script type="importmap">
     {
       "imports": {
