@@ -2,16 +2,6 @@
 @import './mixins';
 
 .teamplify {
-  &--page {
-    margin-top: 6.25rem;
-    @include media-up(md) {
-      margin-top: 8.75rem;
-    }
-    @include media-up(xl) {
-      margin-top: 12.5rem;
-    }
-  }
-
   &--title {
     color: $primary-violet;
     overflow: hidden;

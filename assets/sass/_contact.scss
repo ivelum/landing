@@ -2,18 +2,8 @@
 @import './mixins';
 
 .contact {
-  &--page {
-    margin-top: 6.25rem;
-    @include media-up(md) {
-      margin-top: 8.75rem;
-    }
-    @include media-up(xl) {
-      margin-top: 12.5rem;
-    }
-
-    p {
-      margin: 0;
-    }
+  p {
+    margin: 0;
   }
 
   &--title {
