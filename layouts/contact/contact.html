@@ -98,6 +98,7 @@
   <script type="module">
     import Alpine from 'alpinejs';
 
+    const timeoutAfter = 15000;
     const timeoutError = new Error('Crisp timed out');
 
     document.addEventListener('alpine:init', () => {
@@ -139,7 +140,7 @@
         }]);
         const timeoutID = setTimeout(() => {
           reject(timeoutError);
-        }, 5000);
+        }, timeoutAfter);
         window.CRISP_WEBSITE_ID = '2aa7bcb2-8094-4624-b64e-112c2ca3a174';
 
         const script = document.createElement('script');
