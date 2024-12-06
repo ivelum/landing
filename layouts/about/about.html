@@ -151,7 +151,7 @@
               href="{{ .Params.linkedin }}"
               target="_blank"
               >{{ .Title }}{{
-                readFile "content/about/img/ico-instagram.svg"
+                ($.Resources.Get "img/ico-linkedin.svg").Content
                 | strings.TrimSpace
                 | safeHTML
               }}</a
@@ -198,7 +198,7 @@
           class="about--team-about-social-link"
           target="_blank"
           >{{
-            readFile "content/about/img/ico-instagram.svg"
+            ($.Resources.Get "img/ico-instagram.svg").Content
             | strings.TrimSpace
             | safeHTML
           }}ivelum_development</a

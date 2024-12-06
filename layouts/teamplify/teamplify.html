@@ -3,7 +3,7 @@
     <div class="container">
       <h1 class="teamplify--title">
         <span class="teamplify--title-ico">{{
-          readFile "content/teamplify/img/ico-teamplify.svg"
+          ($.Resources.Get "img/ico-teamplify.svg").Content
           | strings.TrimSpace
           | safeHTML
         }}</span>Teamplify

@@ -42,7 +42,7 @@
             <span x-bind:style="{ opacity: Number(!loading) }">Chat now</span>
             <template x-if="loading">
               <span class="contact--chatbox-loading">{{
-                readFile "content/contact/img/loading.svg"
+                ($.Resources.Get "img/loading.svg").Content
                 | strings.TrimSpace
                 | safeHTML
               }}</span>
