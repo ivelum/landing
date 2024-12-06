@@ -96,10 +96,6 @@
 
     function openChat() {
       initChat();
-      window.$crisp.push(['safe', true]);
-      // Sentry instruments methods document.addEventListener() and
-      // document.removeEventListener(), and Crisp complains about it. Disable
-      // the warnings.
       window.$crisp.push(['do', 'chat:show']);
       window.$crisp.push(['do', 'chat:open']);
     }
@@ -107,6 +103,10 @@
     function initChat() {
       if (window.CRISP_WEBSITE_ID) return;
       window.$crisp = [];
+      window.$crisp.push(['safe', true]);
+      // Sentry instruments methods document.addEventListener() and
+      // document.removeEventListener(), and Crisp complains about it. Disable
+      // the warnings.
       window.CRISP_WEBSITE_ID = '2aa7bcb2-8094-4624-b64e-112c2ca3a174';
 
       const script = document.createElement('script');
