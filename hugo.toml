@@ -7,6 +7,9 @@ enableRobotsTXT = true
 [markup.goldmark.extensions.typographer]
 disable = true
 
+[markup.goldmark.renderer]
+unsafe = true # For the <b> tags in Privacy policy.
+
 [output]
 home = ['html']
 section = ['html']

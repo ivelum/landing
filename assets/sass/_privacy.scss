@@ -1,0 +1,42 @@
+@import './vars';
+@import './mixins';
+
+.privacy {
+  &--page {
+    margin-top: 6.25rem;
+    @include media-up(md) {
+      margin-top: 8.75rem;
+    }
+    @include media-up(xl) {
+      margin-top: 12.5rem;
+    }
+  }
+
+  h1 {
+    color: $primary-violet;
+    overflow: hidden;
+
+    margin-bottom: 2rem;
+    @include media-up(lg) {
+      margin-bottom: 3rem;
+    }
+    @include media-up(xl) {
+      margin-bottom: 3.75rem;
+    }
+  }
+
+  h3 {
+    margin-top: 1rem;
+    @include media-up(lg) {
+      margin-top: 2rem;
+    }
+    @include media-up(xl) {
+      margin-top: 3rem;
+    }
+  }
+
+  b {
+    color: $primary-violet;
+    font-weight: unset;
+  }
+}
