@@ -23,11 +23,14 @@
           </div>
           <p>
             We're online from 10 AM to 8 PM, EET<br />
-            <span
-              class="contact--chatbox-status is-online"
-              >Currently online</span
-            >
-            {{- /* TODO: Show the local time and the status */}}
+            <span x-data="ChatStatus">
+              <span x-text="localTime()"></span><br />
+              <span
+                class="contact--chatbox-status"
+                x-bind:class="isOnline() ? 'is-online' : 'is-offline'"
+                x-text="currentStatus()"
+              ></span>
+            </span>
           </p>
           <button
             class="btn btn-outline-violet btn-small"
@@ -107,5 +110,57 @@
       script.async = 1;
       document.getElementsByTagName('head')[0].appendChild(script);
     }
+
+    document.addEventListener('alpine:init', () => {
+      Alpine.data('ChatStatus', () => {
+        const startWorkHour = 10; // Start of working hours in Vilnius
+        const endWorkHour = 20; // End of working hours in Vilnius
+
+        const date = new Date();
+        const utcDate = new Date(
+          date.toLocaleString('en-US', { timeZone: 'UTC' }),
+        );
+        const vilDate = new Date(
+          date.toLocaleString('en-US', { timeZone: 'Europe/Vilnius' }),
+        );
+        const vilOffset = (vilDate.getTime() - utcDate.getTime()) / 3600000;
+        const localOffset = -new Date().getTimezoneOffset() / 60;
+
+        const formatHours = (hourString) => {
+          const hour = +hourString % 24;
+          return (hour % 12 || 12) + (hour < 12 ? ' AM' : ' PM');
+        };
+
+        const getLocalDate = (hour) => {
+          const dt = new Date();
+          dt.setUTCHours(hour - vilOffset);
+          dt.setMinutes(0);
+          return new Date(dt.toLocaleString('en-US')).toString();
+        };
+
+        const localStart = getLocalDate(startWorkHour);
+        const localEnd = getLocalDate(endWorkHour);
+
+        const localTime = () => {
+          if (vilOffset === localOffset) return 'matches your time zone';
+          const start = formatHours(new Date(localStart).getHours());
+          const end = formatHours(new Date(localEnd).getHours());
+          return `(${start} – ${end} your time zone)`;
+        };
+
+        const isOnline = () => {
+          const current = new Date();
+          const start = new Date(localStart);
+          const end = new Date(localEnd);
+          return (start <= current && current < end);
+        };
+
+        const currentStatus = () => {
+          return `Currently ${isOnline() ? 'online' : 'offline'}`;
+        }
+
+        return { localTime, isOnline, currentStatus };
+      });
+    });
   </script>
 {{- end }}
