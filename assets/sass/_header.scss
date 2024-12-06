@@ -32,11 +32,6 @@ $header-menu-open-duration: 0.3s;
     @include a-no-underline;
     position: relative;
     z-index: 200;
-
-    &.is-disabled {
-      cursor: default;
-      pointer-events: none;
-    }
   }
 
   &--menu {
@@ -145,11 +140,6 @@ $header-menu-open-duration: 0.3s;
       &::after {
         transform: none;
       }
-    }
-
-    &.is-active {
-      cursor: default;
-      pointer-events: none;
     }
   }
 

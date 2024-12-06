@@ -6,7 +6,7 @@
 >
   <div class="header--wrapper">
     <a
-      class="header--logo{{ if eq .RelPermalink "/" }} is-disabled{{ end }}"
+      class="header--logo"
       x-bind:class="isMenuOpen && 'is-open'"
       href="/"
       >{{ readFile "static/img/logo.svg" | strings.TrimSpace | safeHTML }}</a
