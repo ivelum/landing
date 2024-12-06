@@ -5,7 +5,9 @@
       {{ partial "contact-form.html" . }}
       <div class="footer--contacts">
         {{
-          readFile "static/img/ico-asterisk.svg" | strings.TrimSpace | safeHTML
+          (resources.Get "img/ico-asterisk.svg").Content
+          | strings.TrimSpace
+          | safeHTML
         }}
         <div class="footer--contacts-block">
           <div class="footer--contacts-title">Get in touch</div>

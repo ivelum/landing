@@ -125,7 +125,7 @@
         >
           Submit
           {{
-            readFile "static/img/arrow-button.svg"
+            (resources.Get "img/arrow-button.svg").Content
             | strings.TrimSpace
             | safeHTML
           }}
@@ -133,7 +133,9 @@
 
         <div class="contact-form--fast-answer">
           <span class="contact-form--fast-answer-ico">{{
-            readFile "static/img/ico-clock.svg" | strings.TrimSpace | safeHTML
+            (resources.Get "img/ico-clock.svg").Content
+            | strings.TrimSpace
+            | safeHTML
           }}</span>We'll respond within 24 hours
         </div>
       </div>
@@ -143,7 +145,9 @@
   <template x-if="formSent">
     <div class="contact-form--success">
       <span class="contact-form--success-ico">{{
-        readFile "static/img/ico-success.svg" | strings.TrimSpace | safeHTML
+        (resources.Get "img/ico-success.svg").Content
+        | strings.TrimSpace
+        | safeHTML
       }}</span>Thank you! Your message has been sent.
     </div>
   </template>

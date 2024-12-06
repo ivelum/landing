@@ -115,7 +115,9 @@
       x-data="LetsTalkButton"
       x-on:click.prevent="talkToUs"
       >Let's talk{{
-        readFile "static/img/arrow-button.svg" | strings.TrimSpace | safeHTML
+        (resources.Get "img/arrow-button.svg").Content
+        | strings.TrimSpace
+        | safeHTML
       }}</a
     >
     <script type="module">

@@ -9,7 +9,7 @@
       class="header--logo"
       x-bind:class="isMenuOpen && 'is-open'"
       href="/"
-      >{{ readFile "static/img/logo.svg" | strings.TrimSpace | safeHTML }}</a
+      >{{ (resources.Get "img/logo.svg").Content | strings.TrimSpace | safeHTML }}</a
     >
     <div class="header--menu" x-bind:class="isMenuOpen && 'is-open'">
       <div class="header--menu-inner">
@@ -28,7 +28,9 @@
         <div class="header--button-wrapper">
           <a class="header--button" href="#talk" x-on:click.prevent="talkToUs"
             >{{
-              readFile "static/img/ico-talk.svg" | strings.TrimSpace | safeHTML
+              (resources.Get "img/ico-talk.svg").Content
+              | strings.TrimSpace
+              | safeHTML
             }}Talk to us</a
           >
         </div>
