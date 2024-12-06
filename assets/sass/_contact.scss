@@ -152,6 +152,20 @@
         }
       }
     }
+
+    &-button {
+      position: relative;
+    }
+
+    &-loading {
+      display: flex;
+      position: absolute;
+
+      > svg {
+        height: auto;
+        width: 1.5em;
+      }
+    }
   }
 
   &--team {

@@ -33,12 +33,20 @@
             </span>
           </p>
           <button
-            class="btn btn-outline-violet btn-small"
+            class="contact--chatbox-button btn btn-outline-violet btn-small"
             type="button"
             x-data="ChatButton"
             x-on:click="openChat"
+            x-bind:disabled="loading"
           >
-            Chat now
+            <span x-bind:style="{ opacity: Number(!loading) }">Chat now</span>
+            <template x-if="loading">
+              <span class="contact--chatbox-loading">{{
+                readFile "content/contact/img/loading.svg"
+                | strings.TrimSpace
+                | safeHTML
+              }}</span>
+            </template>
           </button>
         </div>
         <div class="contact--inner">
@@ -90,29 +98,55 @@
   <script type="module">
     import Alpine from 'alpinejs';
 
+    const timeoutError = new Error('Crisp timed out');
+
     document.addEventListener('alpine:init', () => {
-      Alpine.data('ChatButton', () => ({ openChat }));
+      Alpine.data('ChatButton', () => ({
+        loading: false,
+
+        async openChat() {
+          this.loading = true;
+          const chatInitialized = initChat();
+          window.$crisp.push(['do', 'chat:show']);
+          window.$crisp.push(['do', 'chat:open']);
+          try {
+            await chatInitialized;
+          } catch (e) {
+            if (e === timeoutError) return;
+            throw e;
+          } finally {
+            this.loading = false;
+          }
+        },
+      }));
     });
 
-    function openChat() {
-      initChat();
-      window.$crisp.push(['do', 'chat:show']);
-      window.$crisp.push(['do', 'chat:open']);
-    }
-
     function initChat() {
-      if (window.CRISP_WEBSITE_ID) return;
-      window.$crisp = [];
-      window.$crisp.push(['safe', true]);
-      // Sentry instruments methods document.addEventListener() and
-      // document.removeEventListener(), and Crisp complains about it. Disable
-      // the warnings.
-      window.CRISP_WEBSITE_ID = '2aa7bcb2-8094-4624-b64e-112c2ca3a174';
+      return new Promise((resolve, reject) => {
+        if (window.CRISP_WEBSITE_ID) {
+          resolve();
+          return;
+        }
 
-      const script = document.createElement('script');
-      script.src = 'https://client.crisp.chat/l.js';
-      script.async = 1;
-      document.getElementsByTagName('head')[0].appendChild(script);
+        window.$crisp = [];
+        window.$crisp.push(['safe', true]);
+        // Sentry instruments methods document.addEventListener() and
+        // document.removeEventListener(), and Crisp complains about it. Disable
+        // the warnings.
+        $crisp.push(['on', 'session:loaded', () => {
+          clearTimeout(timeoutID);
+          resolve();
+        }]);
+        const timeoutID = setTimeout(() => {
+          reject(timeoutError);
+        }, 5000);
+        window.CRISP_WEBSITE_ID = '2aa7bcb2-8094-4624-b64e-112c2ca3a174';
+
+        const script = document.createElement('script');
+        script.src = 'https://client.crisp.chat/l.js';
+        script.async = 1;
+        document.getElementsByTagName('head')[0].appendChild(script);
+      });
     }
 
     document.addEventListener('alpine:init', () => {
