@@ -9,7 +9,45 @@
       </h1>
       {{- /* TODO: Animations */}}
     </div>
-    {{- /* TODO: Technology slider */}}
+
+    {{- $logos := slice
+      (dict "name" "AWS" "w" 41 "h" 25)
+      (dict "name" "Django" "w" 68 "h" 24)
+      (dict "name" "Docker" "w" 116 "h" 26)
+      (dict "name" "GraphQL" "w" 111 "h" 32)
+      (dict "name" "JS" "w" 32 "h" 31)
+      (dict "name" "Python" "w" 121 "h" 32)
+      (dict "name" "React" "w" 100 "h" 34)
+      (dict "name" "Spark" "w" 49 "h" 25)
+    }}
+    <div class="about--tech-slider">
+      <div class="about--tech-slider-wrapper">
+        {{- range seq 2 }}
+        {{- /* Two lists are visible at all times to ensure continuity. */}}
+        <div class="about--tech-slider-list"{{ if eq . 2 }} aria-hidden="true"{{end}}>
+          {{- range seq 2 }}
+          {{- /* This loop defines how many logos are in a list and how tightly
+          they are packed. */}}
+          {{- range sort $logos "name" }}
+          <div class="about--tech-slider-item">
+            <img
+              src="{{
+                (
+                  .name | lower | printf "/img/logo-%s.svg" | $.Resources.Get
+                ).RelPermalink
+              }}"
+              alt="{{ .name }}"
+              width="{{ .w }}"
+              height="{{ .h }}"
+            />
+          </div>
+          {{- end }}
+          {{- end }}
+        </div>
+        {{- end }}
+      </div>
+    </div>
+
     <video
       class="about--hero-video"
       poster="{{ (.Resources.Get "img/hero-video-cover.png").RelPermalink }}"
