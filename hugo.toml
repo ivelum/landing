@@ -16,4 +16,4 @@ section = ['html']
 
 [[deployment.targets]]
 name = "s3"
-URL = "s3://hugo.ivelum.com?region=eu-north-1"
+URL = "s3://static.new.ivelum.com?region=eu-north-1"
