@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Send build notifications to Slack
-      - uses: ivelum/github-action-slack-notify-build@v1.6.0
+      - uses: ivelum/github-action-slack-notify-build@v1.7.2
         id: slack
         with:
           channel_id: C0528Q7QK3M
@@ -35,11 +35,12 @@ jobs:
 
       # Send notification on build or deploy failure
       - name: Notify slack fail
-        uses: ivelum/github-action-slack-notify-build@v1.6.0
+        uses: ivelum/github-action-slack-notify-build@v1.7.2
         if: failure()
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
+          message_id: ${{ needs.notify-build-start.outputs.status_message_id }}
           channel_id: C0528Q7QK3M
           status: FAILED
           color: '#d7263d'
@@ -51,7 +52,7 @@ jobs:
     steps:
       # Send notification on build success
       - name: Notify slack success
-        uses: ivelum/github-action-slack-notify-build@v1.6.0
+        uses: ivelum/github-action-slack-notify-build@v1.7.2
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
