@@ -1,4 +1,4 @@
-{{- range .Pages.ByDate.Reverse }}
+{{- range where .Pages.ByDate.Reverse "Params.sitemap.disable" "ne" true }}
   <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
   <time datetime="{{ .Date | time.Format "2006-01-02" }}">
     {{ .Date | time.Format ":date_medium" }}
