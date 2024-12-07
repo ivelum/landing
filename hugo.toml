@@ -2,7 +2,6 @@ baseURL = 'https://hugo.ivelum.com/'
 languageCode = 'en-us'
 title = "ivelum"
 disableKinds = ['taxonomy', 'term', 'RSS']
-enableRobotsTXT = true
 
 [markup.goldmark.extensions.typographer]
 disable = true
