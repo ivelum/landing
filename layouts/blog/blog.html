@@ -1,0 +1,7 @@
+{{- range .Pages.ByDate.Reverse }}
+  <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+  <time datetime="{{ .Date | time.Format "2006-01-02" }}">
+    {{ .Date | time.Format ":date_medium" }}
+  </time>
+  <p>{{ .Description }}</p>
+{{- end }}
