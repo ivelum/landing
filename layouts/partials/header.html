@@ -1,6 +1,5 @@
-{{- $isLight := in (slice "/teamplify/" "/contact/" "/privacy/") .RelPermalink }}
 <div
-  class="header{{ if $isLight }} is-light{{ end }}"
+  class="header{{ if not .Page.Params.darkHeader }} is-light{{ end }}"
   data-scroll-lock-fill-gap
   x-data="Header"
 >
