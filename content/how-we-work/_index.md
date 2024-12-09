@@ -1,11 +1,11 @@
 ---
 title: How we work - ivelum
 description: ivelum is a distributed team of engineers headquartered in Vilnius, Lithuania. We've been helping both start-ups and established businesses build their products since 2003
+layout: how-we-work
 menus:
   main:
     name: How we work
     weight: 20
-layout: how-we-work
 sitemap:
   disable: false
 cascade:
