@@ -1,7 +1,56 @@
-{{- range where .Pages.ByDate.Reverse "Params.sitemap.disable" "ne" true }}
-  <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-  <time datetime="{{ .Date | time.Format "2006-01-02" }}">
-    {{ .Date | time.Format ":date_medium" }}
-  </time>
-  <p>{{ .Description }}</p>
+{{- define "main" }}
+  {{- $logs := slice }}
+  {{- if hugo.IsDevelopment }}
+    {{- $logs = .Pages.ByDate.Reverse }}
+  {{- else }}
+    {{- $logs = where .Pages.ByDate.Reverse "Params.sitemap.disable" "ne" true }}
+  {{- end }}
+  <div class="page blog">
+    <div class="container">
+      <h1>Blog</h1>
+
+      <div class="blog--list">
+        {{- range $logs }}
+        <div class="blog--item">
+          {{- with .Resources.Get "poster.svg" }}
+            <img class="blog--item-poster" src="{{ .RelPermalink }}" />
+          {{- end }}
+
+          <div class="blog--item-content">
+            <h2 class=blog--item-title>{{ .Title }}</h2>
+
+            <p>{{ .Description }}</p>
+
+            <div class="blog--item-footer">
+              <div class="blog--item-meta">
+                <div class="blog--item-author">
+                  <img
+                    class="blog--item-userpic"
+                    src="{{ printf "/img/userpics/%s.png" (urlize .Params.author) }}"
+                  />
+                  {{ .Params.author }}
+                </div>
+
+                <div>
+                  <span class="blog--item-date-long">
+                    {{ time.Format ":date_long" .Params.date }}
+                  </span>
+
+                  <span class="blog--item-date-medium">
+                    {{ time.Format ":date_medium" .Params.date }}
+                  </span>
+                </div>
+              </div>
+
+              <div class="blog--item-link">
+                <a href="{{ .RelPermalink }}">Read full article</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{- end }}
+      </div>
+    </div>
+  </div>
 {{- end }}
+{{- /* TODO: Change the footer. */}}

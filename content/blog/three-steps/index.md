@@ -1,6 +1,7 @@
 ---
 title: Three important steps before jumping to the code
-description: As a developer, how do you start building a new feature? You may think, "It depends," and it certainly does. However, there could be frameworks that fit many situations, and I'd like to suggest one.
+description: Once you decide which feature you want to build, it’s time to decide how to actually build it.
+author: Denis Stebunov
 date: 2024-07-08T14:37:00+0200
 ---
 

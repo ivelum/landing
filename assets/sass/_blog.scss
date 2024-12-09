@@ -1,0 +1,119 @@
+@import './vars';
+@import './mixins';
+@import './typography';
+
+.blog {
+  &--list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2.667rem;
+    @include media-up(lg) {
+      gap: 4rem;
+    }
+    @include media-up(xl) {
+      gap: 5rem;
+    }
+  }
+
+  &--item {
+    display: flex;
+    border: 1px solid #D9D9D9;
+    border-radius: 0.375rem;
+
+    flex-direction: column;
+    @include media-up(lg) {
+      flex-direction: row;
+    }
+
+    font-size: $font-size-default;
+    @include media-up(xl) {
+      font-size: $font-size-bigger;
+    }
+  }
+
+  &--item-poster {
+    flex-shrink: 0;
+    object-fit: cover;
+    object-position: center;
+
+    max-inline-size: 100%;
+    max-height: 18.75rem;
+    border-radius: 0.375rem 0.375rem 0 0;
+    @include media-up(lg) {
+      width: 28.125rem;
+      max-inline-size: unset;
+      max-height: unset;
+      border-radius: 0.375rem 0 0 0.375rem;
+    }
+  }
+
+  &--item-content {
+    padding: 1.333rem;
+    @include media-up(lg) {
+      padding: 2rem;
+    }
+    @include media-up(xl) {
+      padding: 2.5rem;
+    }
+  }
+
+  &--item-title {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  &--item-footer {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: .625rem;
+  }
+
+  &--item-meta {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .625rem;
+    font-size: .875em;
+  }
+
+  &--item-author {
+    display: flex;
+    font-weight: 600;
+    align-items: center;
+    gap: .625rem;
+  }
+
+  &--item-userpic {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+  }
+
+  &--item-date-long {
+    display: none;
+    @include media-up(xl) {
+      display: unset;
+    }
+  }
+
+  &--item-date-medium {
+    display: unset;
+    @include media-up(xl) {
+      display: none;
+    }
+  }
+
+  &--item-link {
+    font-size: 1.125em;
+
+    &::after {
+      content: "↗";
+    }
+  }
+}
