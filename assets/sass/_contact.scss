@@ -6,25 +6,13 @@
     margin: 0;
   }
 
-  &--title {
-    color: $primary-violet;
-    overflow: hidden;
-  }
-
   &--address {
     &-wrapper {
       border: 1px solid $border-color-default;
       display: flex;
       flex-direction: column;
-      margin-top: 2rem;
       @include media-up(md) {
         flex-direction: row;
-      }
-      @include media-up(lg) {
-        margin-top: 3rem;
-      }
-      @include media-up(xl) {
-        margin-top: 3.75rem;
       }
     }
 

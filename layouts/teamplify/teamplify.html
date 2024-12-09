@@ -8,32 +8,30 @@
           | safeHTML
         }}</span>Teamplify
       </h1>
-      <div class="teamplify--wrapper">
-        <div class="teamplify--tagline">
-          {{- .Content -}}
+      <div class="teamplify--tagline">
+        {{- .Content -}}
+      </div>
+      <div class="teamplify--grid">
+        <div class="teamplify--illustration">
+          <img
+            src="{{ (.Resources.Get "img/missing-piece.svg").RelPermalink }}"
+            alt="Teamplify is the missing piece that focuses on people."
+            class="teamplify--illustration-text"
+          /><img
+            class="teamplify--illustration-image"
+            src="{{ (.Resources.Get "img/teamplify.svg").RelPermalink }}"
+            alt="The missing piece that focuses on people"
+          />
         </div>
-        <div class="teamplify--grid">
-          <div class="teamplify--illustration">
+        <div class="teamplify--description">
+          <div class="teamplify--piece">
             <img
-              src="{{ (.Resources.Get "img/missing-piece.svg").RelPermalink }}"
+              src="{{ (.Resources.Get "img/puzzle.svg").RelPermalink }}"
               alt="Teamplify is the missing piece that focuses on people."
-              class="teamplify--illustration-text"
-            /><img
-              class="teamplify--illustration-image"
-              src="{{ (.Resources.Get "img/teamplify.svg").RelPermalink }}"
-              alt="The missing piece that focuses on people"
-            />
+            />{{- (.GetPage "team-management").Content }}
           </div>
-          <div class="teamplify--description">
-            <div class="teamplify--piece">
-              <img
-                src="{{ (.Resources.Get "img/puzzle.svg").RelPermalink }}"
-                alt="Teamplify is the missing piece that focuses on people."
-              />{{- (.GetPage "team-management").Content }}
-            </div>
-            <div class="teamplify--text">
-              {{- (.GetPage "insights").Content }}
-            </div>
+          <div class="teamplify--text">
+            {{- (.GetPage "insights").Content }}
           </div>
         </div>
       </div>

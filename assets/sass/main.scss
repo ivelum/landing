@@ -44,20 +44,3 @@ textarea {
   line-height: inherit;
   margin: 0;
 }
-
-.page {
-  margin-top: 6.25rem;
-  @include media-up(md) {
-    margin-top: 8.75rem;
-  }
-  @include media-up(xl) {
-    margin-top: 12.5rem;
-  }
-}
-
-.container {
-  margin: 0 auto;
-  max-width: $container-default-max-width;
-  padding: 0 1.25rem;
-  width: 100%;
-}

@@ -2,19 +2,6 @@
 @import './mixins';
 
 .privacy {
-  h1 {
-    color: $primary-violet;
-    overflow: hidden;
-
-    margin-bottom: 2rem;
-    @include media-up(lg) {
-      margin-bottom: 3rem;
-    }
-    @include media-up(xl) {
-      margin-bottom: 3.75rem;
-    }
-  }
-
   h3 {
     margin-top: 1rem;
     @include media-up(lg) {

@@ -1,6 +1,23 @@
 @import './vars';
 @import './mixins';
 
+.page {
+  margin-top: 6.25rem;
+  @include media-up(md) {
+    margin-top: 8.75rem;
+  }
+  @include media-up(xl) {
+    margin-top: 12.5rem;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: $container-default-max-width;
+  padding: 0 1.25rem;
+  width: 100%;
+}
+
 @mixin a-no-underline {
   background-size: 0 1px;
 }
@@ -50,6 +67,21 @@ h1 {
   @include media-up(xl) {
     font-size: 4.5rem;
     line-height: 1.1;
+  }
+}
+
+.page {
+  h1 {
+    color: $primary-violet;
+    overflow: hidden;
+
+    margin-bottom: 2rem;
+    @include media-up(lg) {
+      margin-bottom: 3rem;
+    }
+    @include media-up(xl) {
+      margin-bottom: 3.75rem;
+    }
   }
 }
 

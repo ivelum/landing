@@ -2,28 +2,13 @@
 @import './mixins';
 
 .teamplify {
-  &--title {
-    color: $primary-violet;
-    overflow: hidden;
-
-    &-ico > svg {
-      height: auto;
-      margin-right: 0.75rem;
-      margin-top: -0.1em;
-      width: 0.75em;
-      @include media-up(xl) {
-        margin-right: 1.5rem;
-      }
-    }
-  }
-
-  &--wrapper {
-    margin-top: 2rem;
-    @include media-up(lg) {
-      margin-top: 3rem;
-    }
+  &--title-ico > svg {
+    height: auto;
+    margin-right: 0.75rem;
+    margin-top: -0.1em;
+    width: 0.75em;
     @include media-up(xl) {
-      margin-top: 3.75rem;
+      margin-right: 1.5rem;
     }
   }
 
