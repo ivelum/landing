@@ -22,6 +22,7 @@ Resources:
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: 404.html
+
   WebsiteBucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
@@ -35,6 +36,7 @@ Resources:
             Principal: "*"
             Resource:
               Fn::Sub: "arn:aws:s3:::${WebsiteBucket}/*"
+
   WebsiteDistribution:
     Type: AWS::CloudFront::Distribution
     DependsOn: WebsiteBucket
@@ -83,6 +85,7 @@ Resources:
             Ref: WebsiteCertificateARN
           MinimumProtocolVersion: TLSv1.2_2018
           SslSupportMethod: sni-only
+
   DeployUser:
     Type: AWS::IAM::User
     Properties:
@@ -112,6 +115,7 @@ Resources:
                 Effect: Allow
                 Resource: !GetAtt ContactFormLambda.Arn
           PolicyName: manage-static-website
+
   LambdaExecutionRole:
     Type: AWS::IAM::Role
     Properties:
@@ -134,6 +138,7 @@ Resources:
                   - "ses:SendEmail"
                   - "ses:SendRawEmail"
                 Resource: "*"
+
   ContactFormLambda:
     Type: "AWS::Lambda::Function"
     Properties:
@@ -274,4 +279,3 @@ Outputs:
   ContactFormInvokeURL:
     Value: !Sub 'https://${ContactFormAPIGateway}.execute-api.${AWS::Region}.amazonaws.com/${apiGatewayStageName}/'
     Description: URL for invoking the Contact Form API
-
