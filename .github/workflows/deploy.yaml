@@ -83,8 +83,6 @@ jobs:
       - env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          CONTACT_FORM_FROM_EMAIL: ${{ secrets.CONTACT_FORM_FROM_EMAIL }}
-          CONTACT_FORM_TO_EMAIL: ${{ secrets.CONTACT_FORM_TO_EMAIL }}
           PIPE_DRIVE_API_TOKEN: ${{ secrets.PIPE_DRIVE_API_TOKEN }}
           PIPE_DRIVE_LEAD_CUSTOM_DATA: ${{ secrets.PIPE_DRIVE_LEAD_CUSTOM_DATA }}
         run: python run.py deploy-lambda

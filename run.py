@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
+import json
 import os
 import time
 from pathlib import Path
+from shlex import quote
 
 import click
 
@@ -18,11 +20,6 @@ def cli():
 @cli.command(help='Deploy the contact form handler to production')
 @timing
 def deploy_lambda():
-    function_name = resource_details(
-        settings.PROJECT_NAME,
-        'ContactFormLambda',
-    )['PhysicalResourceId']
-
     package_path = Path('contact-form-handler')
     run(
         'pip install '
@@ -39,6 +36,10 @@ def deploy_lambda():
         cwd=package_path,
     )
 
+    function_name = resource_details(
+        settings.PROJECT_NAME,
+        'ContactFormLambda',
+    )['PhysicalResourceId']
     code_archive_path = f'fileb://{package_path}/{code_archive_name}'
     aws(
         f'lambda update-function-code '
@@ -67,23 +68,20 @@ def deploy_lambda():
             f'Reason: {status_reason_code} | {status_reason}.',
         )
 
-    from_email = os.environ['CONTACT_FORM_FROM_EMAIL']
-    to_email = os.environ['CONTACT_FORM_TO_EMAIL']
-    api_token = os.environ['PIPE_DRIVE_API_TOKEN']
-    lead_custom_data = os.getenv('PIPE_DRIVE_LEAD_CUSTOM_DATA').replace(
-        '"', '\\"',
-    )
-
+    environment = {
+        'Variables': {
+            'CONTACT_FORM_FROM_EMAIL': settings.CONTACT_FORM_FROM_EMAIL,
+            'CONTACT_FORM_TO_EMAIL': settings.CONTACT_FORM_TO_EMAIL,
+            'PIPE_DRIVE_API_TOKEN': os.environ['PIPE_DRIVE_API_TOKEN'],
+            'PIPE_DRIVE_LEAD_CUSTOM_DATA':
+                os.environ['PIPE_DRIVE_LEAD_CUSTOM_DATA'],
+        },
+    }
     aws(
         f'lambda update-function-configuration '
         f'--function-name {function_name} '
         '--timeout 50 '
-        f'--environment "Variables={{'
-        f"CONTACT_FORM_FROM_EMAIL='{from_email}',"
-        f'CONTACT_FORM_TO_EMAIL={to_email},'
-        f'PIPE_DRIVE_API_TOKEN={api_token},'
-        f"PIPE_DRIVE_LEAD_CUSTOM_DATA='{lead_custom_data}',"
-        f'}}"',
+        f'--environment {quote(json.dumps(environment))}',
     )
 
 
