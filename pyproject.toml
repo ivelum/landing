@@ -1,0 +1,25 @@
+[project]
+name = "landing"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = "== 3.13.*"
+
+[tool.flake8]
+max-line-length = 80
+exclude = [
+    ".git",
+    ".venv",
+    "node_modules",
+    "contact-form-handler/dependencies",
+    "public",
+]
+
+[tool.isort]
+line_length = 80
+lines_after_imports = 2
+multi_line_output = 2
+extend_skip = [
+    "contact-form-handler/dependencies",
+    "public",
+]

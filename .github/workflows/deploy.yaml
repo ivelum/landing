@@ -20,6 +20,30 @@ jobs:
     outputs:
       status_message_id: ${{ steps.slack.outputs.message_id }}
 
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: pyproject.toml
+
+      - uses: ./.github/actions/install-python-dependencies
+
+      - run: isort .
+      - run: flake8 .
+
+      # Send notification on check failure
+      - name: Notify slack fail
+        uses: ivelum/github-action-slack-notify-build@v1.7.2
+        if: failure()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        with:
+          channel_id: C0528Q7QK3M
+          status: FAILED
+          color: '#d7263d'
+
   deploy:
     runs-on: ubuntu-latest
     steps:
@@ -45,9 +69,40 @@ jobs:
           status: FAILED
           color: '#d7263d'
 
+  deploy-lambda:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: pyproject.toml
+
+      - uses: ./.github/actions/install-python-dependencies
+
+      - env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          CONTACT_FORM_FROM_EMAIL: ${{ secrets.CONTACT_FORM_FROM_EMAIL }}
+          CONTACT_FORM_TO_EMAIL: ${{ secrets.CONTACT_FORM_TO_EMAIL }}
+          PIPE_DRIVE_API_TOKEN: ${{ secrets.PIPE_DRIVE_API_TOKEN }}
+          PIPE_DRIVE_LEAD_CUSTOM_DATA: ${{ secrets.PIPE_DRIVE_LEAD_CUSTOM_DATA }}
+        run: python run.py deploy-lambda
+
+      # Send notification on build or deploy failure
+      - name: Notify slack fail
+        uses: ivelum/github-action-slack-notify-build@v1.7.2
+        if: failure()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        with:
+          channel_id: C0528Q7QK3M
+          status: FAILED
+          color: '#d7263d'
+
   notify-build-success:
     if: ${{ github.event_name == 'push' }}
-    needs: [ deploy, notify-build-start ]
+    needs: [notify-build-start, lint, deploy, deploy-lambda]
     runs-on: ubuntu-latest
     steps:
       # Send notification on build success

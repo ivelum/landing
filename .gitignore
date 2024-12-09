@@ -3,3 +3,7 @@
 .DS_Store
 public
 resources
+
+__pycache__/
+contact-form-handler.zip
+contact-form-handler/dependencies/
