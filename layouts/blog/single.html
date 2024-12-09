@@ -1,5 +1,48 @@
-<h1>{{ .Title }}</h1>
-<time datetime="{{ .Date | time.Format "2006-01-02" }}">
-  {{ .Date | time.Format ":date_medium" }}
-</time>
-{{ .Content }}
+{{- define "main" }}
+  <div class="page article">
+    <article class="narrow-container">
+      <h1 class="article--title">{{ .Title }}</h1>
+
+      <div class="article--subtitle">
+        <div class="article--meta">
+          <div>
+            <img
+              class="article--userpic"
+              src="{{ printf "/img/userpics/%s.png" (urlize .Params.author) }}"
+            />
+          </div>
+
+          <div class="article--author">{{ .Params.author }}</div>
+
+          <time datetime="{{ .Date | time.Format "2006-01-02" }}">
+            {{ .Date | time.Format ":date_long" }}
+          </time>
+
+          <div>|</div>
+
+          <div>
+            {{
+              T "minute_with_count" .ReadingTime
+              | printf "Estimated %s read"
+            }}
+          </div>
+        </div>
+
+        <div class="article--follow">
+          <div>Follow us:</div>
+          <div>
+            <img src="{{ (resources.Get "img/ico-x.svg").RelPermalink }}" />
+          </div>
+          <div>
+            <img
+              src="{{ (resources.Get "img/ico-youtube.svg").RelPermalink }}"
+            />
+          </div>
+          {{- /* TODO: Social links */}}
+        </div>
+      </div>
+
+      {{ .Content }}
+    </article>
+  </div>
+{{- end }}

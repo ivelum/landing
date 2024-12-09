@@ -18,6 +18,13 @@
   width: 100%;
 }
 
+.narrow-container {
+  margin: 0 auto;
+  max-width: $container-narrow-max-width;
+  padding: 0 1.25rem;
+  width: 100%;
+}
+
 @mixin a-no-underline {
   background-size: 0 1px;
 }

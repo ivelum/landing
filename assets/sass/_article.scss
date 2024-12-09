@@ -1,0 +1,57 @@
+@import './vars';
+@import './mixins';
+@import './typography';
+
+.article {
+  h1.article--title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    margin-top: 2.5rem;
+  }
+
+  h3 {
+    font-size: 1.225rem;
+    margin-top: 1.28rem;
+  }
+
+  &--subtitle {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: .75rem;
+    justify-content: space-between;
+    margin-bottom: 2.625rem;
+    font-size: .875rem;
+  }
+
+  &--meta {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: .75rem;
+  }
+
+  &--author {
+    font-weight: 600;
+  }
+
+  &--userpic {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 0.75rem;
+  }
+
+  &--follow {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
