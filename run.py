@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run
 import json
 import os
 import time
@@ -22,9 +22,9 @@ def cli():
 def deploy_lambda():
     package_path = Path('contact-form-handler')
     run(
-        'pip install '
+        'uv pip install '
         f'--target {package_path / "dependencies"} '
-        f'-r {package_path / "requirements.txt"}'
+        f'-r {package_path / "pyproject.toml"}'
     )
     package_path = Path('contact-form-handler')
     package_deps_path = package_path / 'dependencies'

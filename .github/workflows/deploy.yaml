@@ -24,14 +24,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: astral-sh/setup-uv@v4
         with:
-          python-version-file: pyproject.toml
+          version: '0.5.x'
+          enable-cache: true
 
-      - uses: ./.github/actions/install-python-dependencies
-
-      - run: isort .
-      - run: flake8 .
+      - run: uv run isort .
+      - run: uv run flake8 .
 
       # Send notification on check failure
       - name: Notify slack fail
@@ -74,18 +73,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: astral-sh/setup-uv@v4
         with:
-          python-version-file: pyproject.toml
-
-      - uses: ./.github/actions/install-python-dependencies
+          version: '0.5.x'
+          enable-cache: true
 
       - env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           PIPE_DRIVE_API_TOKEN: ${{ secrets.PIPE_DRIVE_API_TOKEN }}
           PIPE_DRIVE_LEAD_CUSTOM_DATA: ${{ secrets.PIPE_DRIVE_LEAD_CUSTOM_DATA }}
-        run: python run.py deploy-lambda
+        run: uv run run.py deploy-lambda
 
       # Send notification on build or deploy failure
       - name: Notify slack fail
