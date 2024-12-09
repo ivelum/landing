@@ -1,7 +1,6 @@
 ---
 category: solutions
 title: Media
-slug: media
 image: img/solutions/media.svg
 ---
 

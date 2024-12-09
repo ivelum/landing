@@ -1,7 +1,6 @@
 ---
 category: solutions
 title: Healthcare
-slug: healthcare
 image: img/solutions/healthcare.svg
 ---
 
