@@ -1,19 +1,20 @@
 @import './vars';
 
 .footer {
-  &--wrapper {
+  margin-top: 3rem;
+  padding: 3rem 0;
+  @include media-up(lg) {
+    margin-top: 4rem;
+    padding: 4rem 0;
+  }
+  @include media-up(xl) {
+    margin-top: 6rem;
+    padding: 6rem 0;
+  }
+
+  &--default {
     background: linear-gradient(180deg, #3d0f9a 52.09%, #5e00a9 100%);
     color: $white;
-    margin-top: 3rem;
-    padding: 3rem 0;
-    @include media-up(lg) {
-      margin-top: 4rem;
-      padding: 4rem 0;
-    }
-    @include media-up(xl) {
-      margin-top: 6rem;
-      padding: 6rem 0;
-    }
   }
 
   &--title {
@@ -80,6 +81,84 @@
         &:hover {
           color: $white;
         }
+      }
+    }
+  }
+
+  &--simple {
+    background: #eceefd;
+    color: $primary-violet;
+  }
+
+  &--logo {
+    @include a-no-underline;
+    .logo-g-text path {
+      fill: $primary-violet;
+    }
+    .logo-g-sign path {
+      fill: $primary-orange;
+    }
+  }
+
+  &--grid-simple {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    @include media-up(md) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &--menu {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    @include media-up(md) {
+      flex-direction: row;
+      gap: 1rem;
+    }
+    @include media-up(lg) {
+      gap: 2rem;
+    }
+  }
+
+  &--menu-item {
+    @include a-no-underline;
+    font-size: 0.875rem;
+    padding: 0.125rem 0;
+    position: relative;
+    text-rendering: geometricPrecision;
+    @include media-up(md) {
+      font-size: 0.875rem;
+      padding: 0;
+    }
+    @include media-up(lg) {
+      font-size: 1rem;
+    }
+
+    &::after {
+      @include transition(transform 0.4s cubic-bezier(0, 0.5, 0.5, 1));
+      background-color: $font-color-dark;
+      bottom: 0.5rem;
+      content: '';
+      height: 1px;
+      left: 0;
+      position: absolute;
+      right: 0;
+      transform: scaleX(0);
+      transform-origin: left center;
+      @include media-up(md) {
+        bottom: 0.25rem;
+      }
+    }
+
+    &:hover,
+    &.is-active {
+      color: $font-color-dark;
+      &::after {
+        transform: none;
       }
     }
   }

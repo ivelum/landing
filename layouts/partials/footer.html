@@ -1,9 +1,24 @@
-<div class="footer--wrapper">
+<div class="footer{{ if not .Page.Params.simpleFooter }} footer--default{{ else }} footer--simple{{ end }}">
   <div class="container">
-    <h2 id="talk" class="footer--title">Let's talk</h2>
-    <div class="footer--grid">
-      {{ partial "contact-form.html" . }}
-      <div class="footer--contacts">
+    {{ if .Params.simpleFooter }}
+      <div class="footer--grid-simple">
+        <a class="footer--logo" href="/">{{ (resources.Get "img/logo.svg").Content | strings.TrimSpace | safeHTML }}</a>
+        <div class="footer--menu">
+          {{- range site.Menus.main }}
+            <a
+              href="{{ .URL }}"
+              class="footer--menu-item {{- if eq $.RelPermalink .URL }} is-active{{ end -}}"
+            >
+              {{ .Name }}
+            </a>
+          {{- end }}
+        </div>
+      </div>
+    {{ else }}
+      <h2 id="talk" class="footer--title">Let's talk</h2>
+      <div class="footer--grid">
+        {{ partial "contact-form.html" . }}
+        <div class="footer--contacts">
         {{
           (resources.Get "img/ico-asterisk.svg").Content
           | strings.TrimSpace
@@ -33,6 +48,7 @@
           © ivelum 2003 – 2023 <a href="/privacy/">Privacy policy</a>
         </div>
       </div>
-    </div>
+      </div>
+    {{ end}}
   </div>
 </div>
