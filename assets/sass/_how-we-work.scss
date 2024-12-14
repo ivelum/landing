@@ -99,6 +99,7 @@
 
     iframe {
       aspect-ratio: 16/9;
+      border: none;
       height: auto;
       max-width: $container-default-max-width * 0.8;
       width: 100%;
@@ -174,12 +175,16 @@
       }
     }
 
-    &-link {
-      color: $font-color-dark;
-      margin-top: 0.5rem;
+    &-links {
+      margin: 0;
+      padding: 0;
+      list-style: none;
       @include media-up(xl) {
         font-size: $font-size-bigger;
-        margin-top: 1.5rem;
+      }
+
+      a {
+        @extend .link-underline;
       }
     }
   }

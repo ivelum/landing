@@ -9,6 +9,9 @@ disable = true
 [markup.goldmark.renderer]
 unsafe = true # For the <b> tags in Privacy policy.
 
+[markup.goldmark.parser.attribute]
+block = true
+
 [output]
 home = ['html']
 section = ['html']
