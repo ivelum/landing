@@ -1,0 +1,86 @@
+@import './vars';
+@import './mixins';
+
+.blog-navigation {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $border-color-default;
+  margin-top: 3rem;
+  @include media-up(md) {
+    flex-direction: row;
+    margin-top: 4rem;
+  }
+  @include media-up(xl) {
+    margin-top: 5rem;
+  }
+
+  &--item {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 1rem;
+    padding: 1.5rem;
+    @include media-up(md) {
+      padding: 2rem;
+    }
+    @include media-up(xl) {
+      padding: 3rem;
+    }
+
+    &:nth-child(2) {
+      border-top: 1px solid $border-color-default;
+      @include media-up(md) {
+        border-top: unset;
+        border-left: 1px solid $border-color-default;
+      }
+    }
+  }
+
+  &--link-prev,
+  &--link-next {
+    @include a-no-underline;
+
+    svg {
+      @include transition(transform 0.25s);
+      margin-top: -3px; // fix position
+    }
+  }
+
+  &--item:nth-child(2) &--link-next {
+    @include media-up(md) {
+      margin-left: auto;
+    }
+  }
+
+  &--link-prev:hover svg {
+    transform: translateX(-4px);
+  }
+
+  &--link-next:hover svg {
+    transform: translateX(4px);
+  }
+
+  &--content {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &--title {
+    @include a-no-underline;
+    color: $font-color-dark;
+    font-size: 1.25rem;
+    line-height: 1.5;
+
+    &:hover {
+      color: $primary-violet;
+    }
+  }
+
+  &--description {
+    font-size: .875rem;
+    color: $font-color-default;
+  }
+}
