@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="postNavigation">
+    {{ with .PrevInSection }}
+      <div class="postNavigation--item">
+        <a href="{{ .RelPermalink }}" class="postNavigation--link-prev">
+          {{(resources.Get "img/ico-arrow-left.svg").Content | strings.TrimSpace | safeHTML}}
+          Read previous
+        </a>
+        <div class="postNavigation--content">
+          <a href="{{ .RelPermalink }}" class="postNavigation--title">
+            {{ .Title }}
+          </a>
+          <div class="postNavigation--description">
+            {{ .Description }}
+          </div>
+        </div>
+      </div>
+    {{ end }}
+    {{ with .NextInSection }}
+      <div class="postNavigation--item">
+        <a href="{{ .RelPermalink }}" class="postNavigation--link-next">
+          Read next
+          {{(resources.Get "img/ico-arrow-right.svg").Content | strings.TrimSpace | safeHTML}}
+        </a>
+        <div class="postNavigation--content">
+          <a href="{{ .RelPermalink }}" class="postNavigation--title">
+            {{ .Title }}
+          </a>
+          <div class="postNavigation--description">
+            {{ .Description }}
+          </div>
+        </div>
+      </div>
+    {{ end }}
+  </div>
+</div>
