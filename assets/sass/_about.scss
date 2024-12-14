@@ -408,3 +408,40 @@
     transform: translateX(calc(-100% - var(--gap)));
   }
 }
+
+.teamplify-link {
+  @include transition(color);
+  background-size: 0 1px;
+  color: $primary-orange;
+  font-weight: $font-weight-semi-bold;
+  white-space: nowrap;
+
+  svg {
+    margin-bottom: 0.125rem;
+    margin-right: 0.375rem;
+  }
+
+  &:hover {
+    color: lighten($primary-orange, 10%);
+  }
+
+  &:hover svg {
+    animation: birdAnimation 0.5s linear infinite normal forwards;
+  }
+}
+
+@keyframes birdAnimation {
+  0% {
+    animation-timing-function: cubic-bezier(0, 0, 0, 0.995);
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(0, -3px);
+  }
+
+  100% {
+    animation-timing-function: cubic-bezier(0, 0, 0, 0.995);
+    transform: translate(0, 0);
+  }
+}
