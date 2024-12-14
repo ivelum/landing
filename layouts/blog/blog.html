@@ -1,3 +1,7 @@
+{{- define "header" }}
+  {{ partial "header.html" (dict "context" . "TalkToUsAbsolute" true) }}
+{{ end }}
+
 {{- define "main" }}
   {{- $logs := slice }}
   {{- if hugo.IsDevelopment }}
@@ -53,4 +57,7 @@
     </div>
   </div>
 {{- end }}
-{{- /* TODO: Change the footer. */}}
+
+{{- define "footer" }}
+  {{ partial "blog-footer.html" . }}
+{{- end }}

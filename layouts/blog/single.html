@@ -1,3 +1,7 @@
+{{- define "header" }}
+  {{ partial "header.html" (dict "context" . "TalkToUsAbsolute" true) }}
+{{ end }}
+
 {{- define "main" }}
   <div class="page article">
     <div class="article--back">
@@ -52,4 +56,8 @@
     </article>
     {{ partial "blog-navigation.html" . }}
   </div>
+{{- end }}
+
+{{- define "footer" }}
+  {{ partial "blog-footer.html" . }}
 {{- end }}

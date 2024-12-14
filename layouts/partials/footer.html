@@ -1,54 +1,38 @@
-<div class="footer{{ if not .Page.Params.simpleFooter }} footer--default{{ else }} footer--simple{{ end }}">
+<div class="footer footer--default">
   <div class="container">
-    {{ if .Params.simpleFooter }}
-      <div class="footer--grid-simple">
-        <a class="footer--logo" href="/">{{ (resources.Get "img/logo.svg").Content | strings.TrimSpace | safeHTML }}</a>
-        <div class="footer--menu">
-          {{- range site.Menus.main }}
-            <a
-              href="{{ .URL }}"
-              class="footer--menu-item {{- if eq $.RelPermalink .URL }} is-active{{ end -}}"
-            >
-              {{ .Name }}
-            </a>
-          {{- end }}
+    <h2 id="talk" class="footer--title">Let's talk</h2>
+    <div class="footer--grid">
+      {{ partial "contact-form.html" . }}
+      <div class="footer--contacts">
+      {{
+        (resources.Get "img/ico-asterisk.svg").Content
+        | strings.TrimSpace
+        | safeHTML
+      }}
+      <div class="footer--contacts-block">
+        <div class="footer--contacts-title">Get in touch</div>
+        <div class="footer--contacts-body">
+          <a href="mailto:info@ivelum.com">info@ivelum.com</a>
         </div>
       </div>
-    {{ else }}
-      <h2 id="talk" class="footer--title">Let's talk</h2>
-      <div class="footer--grid">
-        {{ partial "contact-form.html" . }}
-        <div class="footer--contacts">
-        {{
-          (resources.Get "img/ico-asterisk.svg").Content
-          | strings.TrimSpace
-          | safeHTML
-        }}
-        <div class="footer--contacts-block">
-          <div class="footer--contacts-title">Get in touch</div>
-          <div class="footer--contacts-body">
-            <a href="mailto:info@ivelum.com">info@ivelum.com</a>
-          </div>
-        </div>
-        <div class="footer--contacts-block">
-          <div class="footer--contacts-title">Lithuania</div>
-          <div class="footer--contacts-body">
-            <a href="tel:+37067527718">+370 675 27718</a><br />
-            21 Upės g., Vilnius LT-08128, Lithuania
-          </div>
-        </div>
-        <div class="footer--contacts-block">
-          <div class="footer--contacts-title">Spain</div>
-          <div class="footer--contacts-body">
-            <a href="tel:+34670996329">+34 670 99 63 29</a><br />
-            45, Calle Beire, Madrid 28039, Spain
-          </div>
-        </div>
-        <div class="footer--contacts-copyright">
-          © ivelum 2003 – 2023 <a href="/privacy/">Privacy policy</a>
+      <div class="footer--contacts-block">
+        <div class="footer--contacts-title">Lithuania</div>
+        <div class="footer--contacts-body">
+          <a href="tel:+37067527718">+370 675 27718</a><br />
+          21 Upės g., Vilnius LT-08128, Lithuania
         </div>
       </div>
+      <div class="footer--contacts-block">
+        <div class="footer--contacts-title">Spain</div>
+        <div class="footer--contacts-body">
+          <a href="tel:+34670996329">+34 670 99 63 29</a><br />
+          45, Calle Beire, Madrid 28039, Spain
+        </div>
       </div>
-    {{ end}}
+      <div class="footer--contacts-copyright">
+        © ivelum 2003 – 2023 <a href="/privacy/">Privacy policy</a>
+      </div>
+    </div>
+    </div>
   </div>
 </div>

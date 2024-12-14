@@ -25,15 +25,11 @@
           {{- end }}
         </div>
         <div class="header--button-wrapper">
-          <a
-            class="header--button"
-            {{ if .Params.simpleFooter }}
-              href="/contact/#talk"
-            {{ else }}
-              href="#talk"
-              x-on:click.prevent="talkToUs"
-            {{ end }}
-          >
+        {{- if .TalkToUsAbsolute }}
+          <a class="header--button" href="/contact/#talk">
+        {{- else }}
+          <a class="header--button" href="#talk" x-on:click.prevent="talkToUs">
+        {{- end }}
             {{ (resources.Get "img/ico-talk.svg").Content | strings.TrimSpace | safeHTML }}
             Talk to us
           </a>

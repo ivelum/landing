@@ -1,0 +1,17 @@
+<div class="footer footer--blog">
+  <div class="container">
+    <div class="footer--grid-simple">
+      <a class="footer--logo" href="/">{{ (resources.Get "img/logo.svg").Content | strings.TrimSpace | safeHTML }}</a>
+      <div class="footer--menu">
+        {{- range site.Menus.main }}
+          <a
+            href="{{ .URL }}"
+            class="footer--menu-item {{- if eq $.RelPermalink .URL }} is-active{{ end -}}"
+          >
+            {{ .Name }}
+          </a>
+        {{- end }}
+      </div>
+    </div>
+  </div>
+</div>

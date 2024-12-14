@@ -66,10 +66,18 @@
 {{- end }}
 </head>
 <body>
-  {{ partial "header.html" . }}
+
+{{- block "header" . }}
+  {{ partial "header.html" (dict "context" . "TalkToUsAbsolute" false) }}
+{{ end }}
+
 {{- block "main" . }}
 {{- end }}
+
+{{- block "footer" . }}
   {{ partial "footer.html" . }}
+{{- end }}
+
   <script type="module">
     import * as Sentry from '@sentry/browser';
     import Alpine from 'alpinejs';
