@@ -3,6 +3,8 @@
 @import './typography';
 
 .article {
+  position: relative;
+
   h1.article--title {
     font-size: 2.5rem;
     margin-bottom: 2rem;
@@ -16,6 +18,37 @@
   h3 {
     font-size: 1.225rem;
     margin-top: 1.28rem;
+  }
+
+  &--back {
+    margin: 0 auto;
+    max-width: $container-narrow-max-width;
+    padding: 0 1.25rem;
+    width: 100%;
+    @include media-up(lg) {
+      max-width: $container-default-max-width;
+    }
+  }
+
+  &--back-link {
+    @include a-no-underline;
+    color: $font-color-default;
+    display: inline-block;
+    font-size: .875rem;
+    margin-bottom: 1rem;
+    @include media-up(lg) {
+      position: absolute;
+      top: 0.5rem;
+    }
+
+    svg {
+      @include transition(transform 0.25s);
+      margin-top: -3px; // fix position
+    }
+
+    &:hover svg {
+      transform: translateX(-4px);
+    }
   }
 
   &--subtitle {

@@ -1,5 +1,11 @@
 {{- define "main" }}
   <div class="page article">
+    <div class="article--back">
+      <a class="article--back-link" href="/blog/">
+        {{(resources.Get "img/ico-arrow-left.svg").Content | strings.TrimSpace | safeHTML}}
+        Back
+      </a>
+    </div>
     <article class="narrow-container">
       <h1 class="article--title">{{ .Title }}</h1>
 
