@@ -16,6 +16,10 @@
 @import './typography';
 @import './vars';
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @include stylized-scrollbar;
   background-color: $white;
@@ -26,6 +30,7 @@ body {
   line-height: $line-height-default;
   margin: 0;
   text-align: left;
+  scroll-behavior: smooth;
 }
 
 html,
