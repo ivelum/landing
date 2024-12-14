@@ -79,9 +79,7 @@
     {{- range sort (where .Pages "Params.category" "about") "File.Path" }}
       <div class="about--about-item">
         <h3>{{ .Title }}</h3>
-        {{- /* TODO: Smaller font size for the title */}}
         {{ .Content }}
-        {{- /* TODO: Show the Teamplify link with the bird */}}
       </div>
     {{- end }}
     </div>

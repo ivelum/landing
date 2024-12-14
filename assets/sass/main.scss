@@ -16,8 +16,13 @@
 @import './typography';
 @import './vars';
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
 body {
@@ -31,11 +36,7 @@ body {
   margin: 0;
   text-align: left;
   scroll-behavior: smooth;
-}
-
-html,
-* {
-  box-sizing: border-box;
+  text-rendering: geometricPrecision;
 }
 
 img,

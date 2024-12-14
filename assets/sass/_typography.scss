@@ -128,6 +128,7 @@ h4 {
 
 p {
   font-size: inherit;
+  margin-bottom: 0;
   margin-top: 0.5rem;
   @include media-up(xl) {
     font-size: $font-size-bigger;
@@ -139,6 +140,29 @@ p {
   }
 }
 
+blockquote {
+  color: $font-color-dark;
+  margin: 0.5rem 0;
+  padding-left: 1rem;
+  position: relative;
+  @include media-up(xl) {
+    font-size: $font-size-bigger;
+    margin: 1rem 0;
+    padding-left: 2rem;
+  }
+
+  &::before {
+    background-color: $primary-violet;
+    border-radius: 0.125rem;
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 3px;
+  }
+}
+
 ul,
 li {
   font-size: inherit;
@@ -146,3 +170,4 @@ li {
     font-size: $font-size-bigger;
   }
 }
+

@@ -154,10 +154,24 @@
       width: 50%;
     }
 
-    & > p:last-child > a {
-      @extend .btn;
-      @extend .btn-outline-violet;
-      @extend .btn-small;
+    & > p:last-child {
+      margin-top: auto;
+      > a {
+        @extend .btn;
+        @extend .btn-outline-violet;
+        @extend .btn-small;
+        margin-top: 1.5rem;
+        @include media-up(xl) {
+          margin-top: 2rem;
+        }
+      }
+    }
+
+    h3 {
+      color: $font-color-dark;
+      font-size: $font-size-bigger;
+      font-weight: $font-weight-bold;
+      margin-bottom: 0.5rem;
     }
   }
 
