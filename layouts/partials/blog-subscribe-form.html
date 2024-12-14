@@ -1,0 +1,28 @@
+<div class="blog-subscribe">
+  <div class="blog-subscribe--title">Sign up for our newsletters!</div>
+  <div class="blog-subscribe--tagline">
+    We write about engineering and engineering management
+  </div>
+  <div class="blog-subscribe--form">
+    <div class="form-group form-label-up">
+      <input
+        type="text"
+        name="email"
+        required
+        class="form-control form-control--violet"
+        id="email"
+        placeholder="Email"
+        aria-label="Email"
+      >
+      <label for="email">Email</label>
+    </div>
+    <button class="btn btn-small btn-with-arrow" type="submit">
+      Submit
+      {{
+        (resources.Get "img/ico-mail.svg").Content
+        | strings.TrimSpace
+        | safeHTML
+      }}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+@import './vars';
+@import './mixins';
+
+.blog-subscribe {
+  background-color: #f6f7fc;
+  border-bottom: .5rem solid $primary-violet;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  @include media-up(md) {
+    padding: 2rem;
+    margin-top: 3rem;
+  }
+  @include media-up(xl) {
+    padding: 3rem;
+  }
+
+  &--title {
+    color: $font-color-dark;
+    font-size: 1.25rem;
+    font-weight: $font-weight-semi-bold;
+    line-height: 1.7;
+    @include media-up(lg) {
+      font-size: 1.5rem;
+      line-height: 1.6;
+    }
+  }
+
+  &--tagline {
+    font-size: $font-size-default;
+  }
+
+  &--form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    @include media-up(sm) {
+      flex-direction: row;
+    }
+    @include media-up(lg) {
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .form-group {
+      flex-grow: 1;
+    }
+  }
+}

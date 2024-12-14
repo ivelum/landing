@@ -120,6 +120,16 @@
     overflow: auto;
     resize: none;
   }
+
+  &--violet {
+    color: $font-color-default;
+    border-color: $primary-violet;
+
+    &:focus,
+    &:hover {
+      border-color: $font-color-default;
+    }
+  }
 }
 
 .form-label-up {
