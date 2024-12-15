@@ -6,50 +6,56 @@
   &--list {
     display: flex;
     flex-direction: column;
-
-    gap: 2.667rem;
+    gap: 2rem;
     @include media-up(lg) {
-      gap: 4rem;
+      gap: 3rem;
     }
     @include media-up(xl) {
-      gap: 5rem;
+      gap: 4rem;
     }
   }
 
   &--item {
+    border: 1px solid $border-color-default;
+    border-radius: $border-radius-default;
     display: flex;
-    border: 1px solid #D9D9D9;
-    border-radius: 0.375rem;
-
     flex-direction: column;
-    @include media-up(lg) {
+    overflow: hidden;
+    @include media-up(md) {
       flex-direction: row;
-    }
-
-    font-size: $font-size-default;
-    @include media-up(xl) {
-      font-size: $font-size-bigger;
     }
   }
 
   &--item-poster {
+    @include transition(opacity 0.35s);
     flex-shrink: 0;
+    max-height: 300px;
     object-fit: cover;
     object-position: center;
-
-    max-inline-size: 100%;
-    max-height: 18.75rem;
-    border-radius: 0.375rem 0.375rem 0 0;
-    @include media-up(lg) {
-      width: 28.125rem;
-      max-inline-size: unset;
+    width: 100%;
+    @include media-up(md) {
       max-height: unset;
-      border-radius: 0.375rem 0 0 0.375rem;
+      height: 100%;
+      width: 220px;
+    }
+    @include media-up(lg) {
+      width: 400px;
+    }
+    @include media-up(xl) {
+      width: 450px;
+    }
+
+    &:hover {
+      opacity: 0.75;
     }
   }
 
   &--item-content {
-    padding: 1.333rem;
+    display: flex;
+    font-size: $font-size-default;
+    flex-direction: column;
+    padding: 1.25rem;
+    width: 100%;
     @include media-up(lg) {
       padding: 2rem;
     }
@@ -59,61 +65,93 @@
   }
 
   &--item-title {
-    font-size: 1.5em;
-    font-weight: 600;
-    margin-bottom: 1rem;
+    color: $font-color-dark;
+    font-size: 1.125rem;
+    font-weight: $font-weight-semi-bold;
+    line-height: 1.6;
+    @include media-up(lg) {
+      font-size: 1.5rem;
+      line-height: 1.5;
+    }
+  }
+
+  .blog--item-description {
+    font-size: .875em;
+    line-height: 1.75;
+    margin-top: 0.5rem;
+    @include media-up(lg) {
+      font-size: $font-size-default;
+      margin-top: 1rem;
+      margin-bottom: auto;
+    }
   }
 
   &--item-footer {
-    margin-top: 1.25rem;
+    align-items: flex-start;
+    margin-top: 1rem;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: .625rem;
+    flex-direction: column;
+    gap: .5rem;
+    @include media-up(sm) {
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    @include media-up(lg) {
+      margin-top: 1.5rem;
+    }
   }
 
   &--item-meta {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: .625rem;
+    flex-direction: column;
     font-size: .875em;
+    @include media-up(sm) {
+      flex-direction: row;
+      gap: 1rem;
+    }
+    @include media-up(xl) {
+      gap: 1.5rem;
+    }
   }
 
   &--item-author {
     display: flex;
-    font-weight: 600;
+    font-weight: $font-weight-semi-bold;
     align-items: center;
-    gap: .625rem;
+    gap: .5rem;
   }
 
   &--item-userpic {
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
     border-radius: 1rem;
   }
 
-  &--item-date-long {
-    display: none;
-    @include media-up(xl) {
-      display: unset;
-    }
-  }
-
-  &--item-date-medium {
-    display: unset;
-    @include media-up(xl) {
-      display: none;
-    }
+  &--item-date {
+    color: $font-color-gray;
   }
 
   &--item-link {
-    font-size: 1.125em;
+    @extend .link-underline;
+    line-height: 1.5;
+    position: relative;
+    margin-right: 1.5rem;
 
-    &::after {
-      content: "↗";
+    &:after {
+      @include transition(transform 0.3s);
+      content: "";
+      background-image: url("data:image/svg+xml,%3Csvg width='16' height='17' viewBox='0 0 16 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3.21967 13.7686C3.51256 14.0615 3.98744 14.0615 4.28033 13.7686L11.5407 6.5082V10.708C11.5407 11.1222 11.8765 11.458 12.2907 11.458C12.705 11.458 13.0407 11.1222 13.0407 10.708V4.69754C13.0407 4.28333 12.705 3.94754 12.2907 3.94754H6.28033C5.86612 3.94754 5.53033 4.28333 5.53033 4.69754C5.53033 5.11176 5.86612 5.44754 6.28033 5.44754H10.4801L3.21967 12.708C2.92678 13.0008 2.92678 13.4757 3.21967 13.7686Z' fill='%233C3A40'/%3E%3C/svg%3E");
+      display: block;
+      height: 1rem;
+      position: absolute;
+      right: -1.5rem;
+      top: .125rem;
+      width: 1rem;
+    }
+
+    &:hover:after {
+      transform: translate3d(4px, -4px, 0);
     }
   }
 }
