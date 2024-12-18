@@ -1,5 +1,13 @@
 {
   "image": "mcr.microsoft.com/devcontainers/base:bookworm",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rusnasonov.vscode-hugo",
+        "sanaajani.taskrunnercode"
+      ]
+    }
+  },
   "features": {
     "ghcr.io/devcontainers/features/hugo:1": {
       "version": "0.136.5",
