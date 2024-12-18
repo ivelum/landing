@@ -26,7 +26,7 @@
     }
   }
 
-  &--item-poster {
+  &--item-thumbnail {
     @include transition(opacity 0.35s);
     flex-shrink: 0;
     max-height: 300px;

@@ -17,14 +17,14 @@
 
         {{- range $logs }}
           <div class="blog--item">
-            {{- $poster := .Resources.GetMatch "poster.png" }}
-            {{- $poster2x := $.Resources.GetMatch "poster@2x.png" }}
-            {{- if $poster }}
+            {{- $thumbnail := .Resources.GetMatch "thumbnail.png" }}
+            {{- $thumbnail2x := $.Resources.GetMatch "thumbnail@2x.png" }}
+            {{- if $thumbnail }}
               <a href="{{ .RelPermalink }}">
                 <img
-                  src="{{ $poster.RelPermalink }}"
-                  srcset="{{ $poster.RelPermalink }} 1x{{- if $poster2x }}, {{ $poster2x.RelPermalink }} 2x{{ end }}"
-                  class="blog--item-poster"
+                  src="{{ $thumbnail.RelPermalink }}"
+                  srcset="{{ $thumbnail.RelPermalink }} 1x{{- if $thumbnail2x }}, {{ $thumbnail2x.RelPermalink }} 2x{{ end }}"
+                  class="blog--item-thumbnail"
                 />
               </a>
             {{- end }}
