@@ -17,7 +17,7 @@ where did they stem from? Of course, the approach I propose here might not fit
 every situation. However, so many problems in my practice fall into these three
 buckets that I thought it was worth treating them as a checklist:
 
-## [#1: Understand "why"](#1-understand-why){#1-understand-why}
+## #1: Understand "why"
 
 - Who will be using this feature?
 - What problem are we trying to solve for them?
@@ -52,7 +52,7 @@ about asking or think it's none of their business. Please don't skip this step.
 Not only will it help you solve this particular problem at hand better, but
 it's also essential for your professional growth.
 
-## [#2: UX design](#2-ux-design){#2-ux-design}
+## #2: UX design
 
 Regardless of the interface you're building — a UI, API, or command line —
 consider the user interface carefully before jumping to writing code.
@@ -85,7 +85,7 @@ And if you're building an API or a command-line interface, your design would be
 the documentation and usage examples. It doesn't have to be polished at this
 stage but should include at least the most important use cases.
 
-## [#3: Data structures](#3-data-structures){#3-data-structures}
+## #3 - Data structures
 
 > "Bad programmers worry about the code. Good programmers worry about data
 > structures and their relationships." - Linus Torvalds.
@@ -122,7 +122,7 @@ relational databases, don't skip ER diagrams :)
 [![ER diagram example](dbdiagram.png)](dbdiagram.png)
 *Credit: [dbdiagram.io](https://dbdiagram.io)*
 
-## [Summary](#summary){#summary}
+## Summary
 
 When you start working on a new feature:
 

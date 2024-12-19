@@ -22,7 +22,7 @@ already built enough websites to
 [crash the stock market](https://en.wikipedia.org/wiki/Dot-com_bubble), even
 without jQuery! But that was going to change.
 
-## [2010-s: The rise of frontend frameworks](#2010-s-the-rise-of-frontend-frameworks){#2010-s-the-rise-of-frontend-frameworks}
+## 2010-s: The rise of frontend frameworks
 
 The major shift happened somewhere in the 2010-s when frontend frameworks
 emerged. A remarkable demonstration of what they made possible is Trello,
@@ -46,7 +46,7 @@ I'm not sure if it was pure coincidence or a result of Trello's popularity, but
 at that time [TODO list](https://todomvc.com/) had become a canonical example,
 showcasing the capabilities of JS frameworks.
 
-## [APIs](#apis){#apis}
+## APIs
 
 Simultaneously in the 2010-s there was an explosive growth of APIs:
 
@@ -60,7 +60,7 @@ application and a mobile app, and when needed, it can be exposed outside and
 used by external integrations. Widespread adoption of the REST API concept has
 further boosted the API development.
 
-## [Frontend developers](#frontend-developers){#frontend-developers}
+## Frontend developers
 
 Frontend frameworks were hot in the 2010-s. People were talking about them at
 conferences. At that time, the joke about "X days without a new JavaScript
@@ -103,7 +103,7 @@ better quality development due to higher specialization, but it's not always
 the case. It could be true for some projects and false for others due to the
 reasons outlined in the next section.
 
-## [What problems do full-stack developers solve](#what-problems-do-full-stack-developers-solve){#what-problems-do-full-stack-developers-solve}
+## What problems do full-stack developers solve
 
 [![Why go full-stack](why-go-full-stack.png)](why-go-full-stack.png)
 
@@ -165,7 +165,7 @@ which optimizations are possible. On the other hand, backend developers
 understand the internals very well, but they may not look at the product from
 the end user's perspective.
 
-## [State of modern frontend](#state-of-modern-frontend){#state-of-modern-frontend}
+## State of modern frontend
 
 What has changed in frontend development since the 2010-s? Well, many things,
 but most importantly – it has matured:
@@ -189,7 +189,7 @@ much easier to work with it than ten years ago. Yes, a large portion of
 complexity is still there, but it's no longer such a mess, so there are fewer
 reasons for backend developers to hate it.
 
-## [Should you hire full-stack developers?](#should-you-hire-full-stack-developers){#should-you-hire-full-stack-developers}
+## Should you hire full-stack developers?
 
 It depends. There could be no benefit from full-stack developers in areas of
 your project with little or no back-and-forth between the backend and frontend.
@@ -206,7 +206,7 @@ exist, and it is possible to find them.
 You can also have a hybrid team – some frontend and backend developers and
 some full-stack folks to take the best from both worlds.
 
-## [Should you become a full-stack developer?](#should-you-become-a-full-stack-developer){#should-you-become-a-full-stack-developer}
+## Should you become a full-stack developer?
 
 When you read these lines, I bet you already know the answer. It's perfectly
 fine if you don't want it – specialization is nothing wrong. Most job offers

@@ -21,7 +21,7 @@ migrations and provide quick recipes for the most common scenarios.
 - [Heavy DB operations](#heavy-db-operations)
 - [Conclusion](#conclusion)
 
-## [How does a deployment process work?](#how-does-a-deployment-process-work){#how-does-a-deployment-process-work}
+## How does a deployment process work?
 
 Let's take a look at a simplified deployment process for a typical web
 application. Most applications these days rely on load balancing and container
@@ -52,7 +52,7 @@ a database upgrade should look like this:
 
 [![Deployment process with the DB upgrade](deployment-process-with-DB-upgrade.svg)](deployment-process-with-DB-upgrade.svg)
 
-## [How to run the DB migration script](#how-to-run-the-db-migration-script){#how-to-run-the-db-migration-script}
+## How to run the DB migration script
 
 Please note that how you run a DB migration script matters. For example, it might be tempting to make it part of the
 application startup, like this:
@@ -90,7 +90,7 @@ For example, it could be a one-time Kubernetes task that is launched as
 a part of a deployment process or something like that. Just remember the main
 principle — launch it only once, and if it fails — roll back immediately.
 
-## [What can cause downtime during database migration?](#what-can-cause-downtime-during-database-migration){#what-can-cause-downtime-during-database-migration}
+## What can cause downtime during database migration?
 
 There are two main reasons for this:
 
@@ -109,7 +109,7 @@ Now, let's look at the most common cases related to the backward
 incompatibility problem. We'll also briefly talk about heavy DB operations at
 the end of this post.
 
-## [Example 1: downtime caused by a new column](#example-1-downtime-caused-by-a-new-column){#example-1-downtime-caused-by-a-new-column}
+## Example 1: downtime caused by a new column
 
 Let's say we're building a new feature — user avatars. After registration,
 every user will get a randomly generated avatar with an option to upload their
@@ -145,7 +145,7 @@ However, since we're talking about "zero-downtime deployments," this is not
 good enough for us. Let's see how we can deploy this new feature without any
 downtime.
 
-## [Solution](#solution-1){#solution-1}
+## Solution {#solution-1}
 
 The trick is to split the feature deployment into multiple phases and deploy
 them one by one, waiting for each phase to deploy completely before moving to
@@ -176,7 +176,7 @@ values in this field since the app version that we deployed on Phase 1 already
 generates avatars for all new users. Therefore, we can safely enforce the
 "non-null" constraint and deploy all the remaining avatar features.
 
-## [Example 2: downtime caused by a column removal](#example-2-downtime-caused-by-a-column-removal){#example-2-downtime-caused-by-a-column-removal}
+## Example 2: downtime caused by a column removal
 
 Let's say that the "User avatars" feature we described in the previous example
 didn't meet our expectations. It wasn't popular enough, so we decided to roll
@@ -195,7 +195,7 @@ execution, there will be a time when the previous application version is still
 running in production, but the `avatar` column no longer exists, so all
 functionality related to it will be broken. How could we avoid this?
 
-## [Solution](#solution-2){#solution-2}
+## Solution {#solution-2}
 
 Use the same technique as with the previous example — split the deployment into
 two phases:
@@ -220,7 +220,7 @@ any way.
 After Phase 1 is deployed, there are no more mentions of the `avatar` column
 anywhere in the application code, so we can safely drop it.
 
-## [Example 3: renaming a column or changing its data type](#example-3-renaming-a-column-or-changing-its-data-type){#example-3-renaming-a-column-or-changing-its-data-type}
+## Example 3: renaming a column or changing its data type
 
 Let's say we'd like to upgrade the avatars feature that we described in
 [example 1](#example-1-downtime-caused-by-a-new-column). Instead of storing
@@ -259,7 +259,7 @@ won't be able to read or write the data because the column name changed. The
 application will remain broken until its new version is fully deployed. How can
 we avoid this?
 
-## [Solution](#solution-3){#solution-3}
+## Solution {#solution-3}
 
 Use the same technique as with the previous examples — split the migration into
 phases. This case is more complicated — we need four phases:
@@ -310,7 +310,7 @@ After Phase 3 finishes deploying, we can remove the old column from the DB. No
 application changes are required in this phase since the application was
 already upgraded in the previous phases.
 
-## [Example 4: renaming a table](#example-4-renaming-a-table){#example-4-renaming-a-table}
+## Example 4: renaming a table
 
 Surprisingly, renaming a table is more straightforward than renaming a column.
 Imagine we'd like to rename the `Posts` table to more generic `Content`:
@@ -322,7 +322,7 @@ deployment. The previous app version, which still runs in production, will try
 to access the table using its old name, resulting in an error. Let's see how we
 can avoid this.
 
-## [Solution](#solution-4){#solution-4}
+## Solution {#solution-4}
 
 In this case, we need two deployment phases:
 
@@ -352,7 +352,7 @@ And the second phase is simply a cleanup — removing the view we no longer need
 > [renaming a column](#example-3-renaming-a-column-or-changing-its-data-type),
 > which we described above.
 
-## [A generic approach to maintaining backward DB compatibility](#a-generic-approach-to-maintaining-backward-db-compatibility){#a-generic-approach-to-maintaining-backward-db-compatibility}
+## A generic approach to maintaining backward DB compatibility
 
 As you can see, all three solutions above use the same technique — split the
 deployment of a new feature into two or more phases to avoid any downtime
@@ -380,7 +380,7 @@ Quick recap:
   [4](#example-4-renaming-a-table)) illustrate how exactly you can plan your
   deployment phases to avoid downtime caused by broken backward compatibility.
 
-## [Heavy DB operations](#heavy-db-operations){#heavy-db-operations}
+## Heavy DB operations
 
 Another common reason for downtime during the DB upgrade is that some
 modifications performed by the database migration script can cause a heavy load
@@ -432,7 +432,7 @@ painfully slow. What could we do?
   can carefully balance the load on the database while making sure that it
   doesn't cause slowness or downtime.
 
-## [Conclusion](#conclusion){#conclusion}
+## Conclusion
 
 While zero-downtime database migration requires some effort, it's not that
 complex. The two main reasons for downtime are:
