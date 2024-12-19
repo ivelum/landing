@@ -10,7 +10,7 @@ we communicate makes an enormous impact on our work. In this post, we talk
 about one of the best strategies for improving communication in a team:
 **making it open**.
 
-## What is open communication?
+## [What is open communication?](#what-is-open-communication){#what-is-open-communication}
 
 Over the years, we at ivelum have developed a work culture that relies on open
 communication, an approach borrowed from open-source communities. We prefer to
@@ -31,7 +31,7 @@ ivelum, we do the opposite. Many folks who join our teams notice that we
 communicate differently from how they used to do it at their previous job.
 We explain why and try our best to ensure a smooth transition.
 
-## Why?
+## [Why?](#why){#why}
 
 [![Boost team performance](rocket.png)](rocket.png)
 
@@ -39,7 +39,7 @@ Simple: **it boosts team performance - a lot.** Of course, it takes some
 adaptation effort for new team members, but the effect is so significant that
 it soon pays off.
 
-## Minimize distractions
+## [Minimize distractions](#minimize-distractions){#minimize-distractions}
 
 At first, it may seem that when all work communication is public, it might
 cause a lot of distraction. In reality, the opposite is true because of how
@@ -60,7 +60,7 @@ will respond when they have time. It greatly helps to minimize distractions,
 which is especially important for developers. To be productive with code,
 they need prolonged periods of focused work.
 
-## This is not "noise"
+## [This is not "noise"](#this-is-not-noise){#this-is-not-noise}
 
 Okay, reducing distractions is all well and good, but why would people in a
 team chat browse through lots of messages which are not addressed to them
@@ -82,7 +82,7 @@ Finally, proper organization of chat channels reduces the risk of information
 overload to a minimum. Each chat channel can be dedicated to a particular
 project or a team, and people follow only channels in which they're interested.
 
-## Why isn't everyone doing it?
+## [Why isn't everyone doing it?](#why-isnt-everyone-doing-it){#why-isnt-everyone-doing-it}
 
 Even when teams agree that they may benefit from open communication, they
 sometimes don't rush to implement it in practice.
@@ -103,7 +103,7 @@ the most secretive companies –
 [Apple – is now reconsidering its practices](https://www.fastcompany.com/90748492/apple-airpods-pro-creation)
 because the downsides are so significant.
 
-## Bottom line
+## [Bottom line](#bottom-line){#bottom-line}
 
 There are certain things that the most productive teams do differently.
 Of course, open communication is not a silver bullet that magically solves all
