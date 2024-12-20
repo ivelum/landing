@@ -3,10 +3,6 @@
 {{ end }}
 
 {{- define "main" }}
-  <script type="module">
-    import '/js/prettify.js';
-    import '/js/lightbox.js';
-  </script>
   <div class="page article">
     <div class="article--back">
       <a class="article--back-link" href="/blog/">
@@ -63,5 +59,9 @@
 {{- end }}
 
 {{- define "footer" }}
+  <script type="module">
+    import '/js/prettify.js';
+    import '/js/lightbox.js';
+  </script>
   {{ partial "blog-footer.html" . }}
 {{- end }}
