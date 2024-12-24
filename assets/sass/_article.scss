@@ -129,4 +129,12 @@
       vertical-align: top;
     }
   }
+
+  ol {
+    padding-inline-start: 1.25rem;
+
+    li {
+      padding-left: .5rem;
+    }
+  }
 }
