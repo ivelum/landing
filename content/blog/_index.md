@@ -6,7 +6,9 @@ menus:
   main:
     name: Blog
     weight: 45
+sitemap:
+  disable: false
 cascade:
   sitemap:
-    disable: true
+    disable: false
 ---
