@@ -40,12 +40,14 @@
 
         <div class="article--follow">
           <div>Follow us:</div>
-ку          <a href="https://www.linkedin.com/company/ivelum/" target="_blank">
+          <a href="https://www.linkedin.com/company/ivelum/" target="_blank">
             <img src="{{ (resources.Get "img/ico-linkedin.svg").RelPermalink }}" />
           </a>
         </div>
       </div>
-      {{ .Content }}
+      <div class="article--content">
+        {{ .Content }}
+      </div>
       {{/* partial "blog-subscribe-form.html" . */}}
     </article>
     {{ partial "blog-navigation.html" . }}

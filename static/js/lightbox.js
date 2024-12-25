@@ -8,16 +8,19 @@ window.addEventListener("load", function () {
   document.head.appendChild(link);
 
   link.href = '/vendor/photoswipe.css';
-  document.querySelectorAll('img').forEach(function (img) {
-    if (img.parentNode.tagName === "A") {
-      img.parentNode.setAttribute("data-pswp-width", img.naturalWidth);
-      img.parentNode.setAttribute("data-pswp-height", img.naturalHeight);
+  document
+    .getElementsByClassName("article--content")[0]
+    .querySelectorAll('img')
+    .forEach(function (img) {
+      if (img.parentNode.tagName === "A") {
+        img.parentNode.setAttribute("data-pswp-width", img.naturalWidth);
+        img.parentNode.setAttribute("data-pswp-height", img.naturalHeight);
 
-      const lightbox = new PhotoSwipeLightbox({
-        gallery: img.parentNode,
-        pswpModule: PhotoSwipe
-      });
-      lightbox.init();
-    }
-  });
+        const lightbox = new PhotoSwipeLightbox({
+          gallery: img.parentNode,
+          pswpModule: PhotoSwipe
+        });
+        lightbox.init();
+      }
+    });
 });
