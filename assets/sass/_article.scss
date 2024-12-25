@@ -82,6 +82,10 @@
     display: flex;
     flex-direction: row;
     gap: 1rem;
+
+    img {
+      margin-bottom: 2px;
+    }
   }
 
   img {
