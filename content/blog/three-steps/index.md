@@ -88,10 +88,10 @@ stage but should include at least the most important use cases.
 ## #3 - Data structures
 
 > "Bad programmers worry about the code. Good programmers worry about data
-> structures and their relationships." - Linus Torvalds.
+> structures and their relationships." - *Linus Torvalds*.
 
 > "Smart data structures and dumb code works a lot better than the other way
-> around." - Eric S. Raymond.
+> around." - *Eric S. Raymond*.
 
 Yes, data structures are important. Depending on the task, we may optimize them
 for data consistency, speed, storage requirements, and developer experience;
