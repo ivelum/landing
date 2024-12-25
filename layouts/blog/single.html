@@ -6,7 +6,7 @@
   <div class="page article">
     <div class="article--back">
       <a class="article--back-link" href="/blog/">
-        {{(resources.Get "img/ico-arrow-left.svg").Content | strings.TrimSpace | safeHTML}}
+        {{ (resources.Get "img/ico-arrow-left.svg").Content | strings.TrimSpace | safeHTML }}
         Back
       </a>
     </div>
@@ -56,7 +56,7 @@
         </div>
       </div>
       {{ .Content }}
-<!--      {{ partial "blog-subscribe-form.html" . }}-->
+      {{/* partial "blog-subscribe-form.html" . */}}
     </article>
     {{ partial "blog-navigation.html" . }}
   </div>
