@@ -54,7 +54,7 @@
 
   import talkToUs from '/js/talk-to-us.js';
 
-  const mediaMd = '(min-width: 768px)';
+  const mediaLg = '(min-width: 992px)';
 
   document.addEventListener('alpine:init', () => {
     Alpine.data('Header', () => ({
@@ -62,12 +62,12 @@
 
       init() {
         this.handleWidthChange = this.handleWidthChange.bind(this);
-        this.checkMediaMd = window.matchMedia(mediaMd);
-        this.checkMediaMd.addEventListener('change', this.handleWidthChange);
+        this.checkMediaLg = window.matchMedia(mediaLg);
+        this.checkMediaLg.addEventListener('change', this.handleWidthChange);
       },
 
       destroy() {
-        this.checkMediaMd.removeEventListener('change', this.handleWidthChange);
+        this.checkMediaLg.removeEventListener('change', this.handleWidthChange);
       },
 
       handleWidthChange(e) {
