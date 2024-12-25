@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>{{ .Title }}</title>
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/img/favicon/apple-touch-icon.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="/img/favicon/favicon-32x32.png"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="/img/favicon/favicon-16x16.png"
+  />
+  <link rel="manifest" href="/img/favicon/site.webmanifest" />
+  <script type="importmap">
+    {
+      "imports": {
+        "@sentry/browser": "/vendor/@sentry-browser@8.42.0.js",
+        "alpinejs": "/vendor/alpinejs@3.14.6.js",
+        "autosize": "/vendor/autosize@6.0.1.js",
+        "scroll-lock": "/vendor/scroll-lock@2.1.5.js",
+        "swiper": "/vendor/swiper@11.1.15.js",
+        "swiper/css": "/vendor/swiper@11.1.15-css.js",
+        "swiper/css/pagination": "/vendor/swiper@11.1.15-css-pagination.js",
+        "swiper/modules/pagination": "/vendor/swiper@11.1.15-modules-pagination.js",
+        "/npm/": "https://cdn.jsdelivr.net/npm/"
+        {{- /* @sentry/browser loads some more modules from jsdelivr */}}
+      }
+    }
+  </script>
+  {{- with resources.Get "sass/main.scss" }}
+    {{- $opts := dict "transpiler" "libsass" "targetPath" "css/style.css" }}
+    {{- with . | toCSS $opts }}
+      {{- if hugo.IsDevelopment }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}">
+      {{- else }}
+        {{- with . | minify | fingerprint }}
+          <link
+            rel="stylesheet"
+            href="{{ .RelPermalink }}"
+            integrity="{{ .Data.Integrity }}"
+            crossorigin="anonymous"
+          >
+        {{- end }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+</head>
+<body>
+
+<div class="page-not-found">
+  <div class="wrapper">
+    <a
+      class="footer--logo logo"
+      href="/"
+    >
+      {{ (resources.Get "img/logo.svg").Content | strings.TrimSpace | safeHTML }}
+    </a>
+    <h1>404</h1>
+    <h2>Page not found</h2>
+    <div class="link">
+      <a href="/">Go back to the beginning</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

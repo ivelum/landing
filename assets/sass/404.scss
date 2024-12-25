@@ -1,0 +1,81 @@
+@import './vars';
+@import './mixins';
+@import './typography';
+
+.page-not-found {
+  .wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 100vh;
+  }
+
+  .logo {
+    margin-top: 2rem;
+    @include media-up(md) {
+      margin-top: 3rem;
+    }
+  }
+
+  h1 {
+    color: $primary-violet;
+    font-size: 3rem;
+    font-weight: $font-weight-bold;
+    line-height: 1;
+    margin-top: auto;
+    position: relative;
+    @include media-up(sm) {
+      font-size: 6.375rem;
+    }
+    @include media-up(md) {
+      font-size: 12rem;
+    }
+
+    &::before,
+    &::after {
+      background-color: $primary-orange;
+      content: '';
+      display: block;
+      height: 2px;
+      position: absolute;
+      top: 50%;
+      width: 30px;
+      @include media-up(md) {
+        width: 100px;
+      }
+    }
+
+    &::before {
+      right: calc(100% + 1rem);
+      @include media-up(md) {
+        right: calc(100% + 2.5rem);
+      }
+    }
+
+    &::after {
+      left: calc(100% + 1rem);
+      @include media-up(md) {
+        left: calc(100% + 2.5rem);
+      }
+    }
+  }
+
+  h2 {
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
+    @include media-up(sm) {
+      font-size: 2rem;
+    }
+  }
+
+  .link {
+    margin-bottom: auto;
+    margin-top: 4rem;
+
+    a:hover {
+      color: $primary-orange;
+    }
+  }
+
+}
