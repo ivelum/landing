@@ -18,7 +18,7 @@ exclude = [
     ".git",
     ".venv",
     "node_modules",
-    "contact-form-handler/dependencies",
+    "lambda-functions/dependencies",
     "public",
 ]
 
@@ -27,6 +27,6 @@ line_length = 80
 lines_after_imports = 2
 multi_line_output = 2
 extend_skip = [
-    "contact-form-handler/dependencies",
+    "lambda-functions/dependencies",
     "public",
 ]

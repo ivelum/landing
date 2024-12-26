@@ -17,18 +17,18 @@ def cli():
     pass
 
 
-@cli.command(help='Deploy the contact form handler to production')
+@cli.command(help='Deploy the lambda functions to production')
 @timing
 def deploy_lambda():
-    package_path = Path('contact-form-handler')
+    package_path = Path('lambda-functions')
     run(
         'uv pip install '
         f'--target {package_path / "dependencies"} '
         f'-r {package_path / "pyproject.toml"}'
     )
-    package_path = Path('contact-form-handler')
+    package_path = Path('lambda-functions')
     package_deps_path = package_path / 'dependencies'
-    code_archive_name = 'contact-form-handler.zip'
+    code_archive_name = 'lambda-functions.zip'
 
     run(f'zip -qr ../{code_archive_name} .', cwd=package_deps_path)
     run(

@@ -172,15 +172,15 @@ Resources:
     Properties:
       CloudWatchRoleArn: !GetAtt ApiGatewayLoggingRole.Arn
 
-  ContactFormAPIGateway:
+  LandingAPIGateway:
     Type: 'AWS::ApiGateway::RestApi'
     DependsOn:
       - ContactFormLambda
       - ApiGatewayLoggingRole
     Properties:
-      Name: ContactFormAPIGateway
+      Name: LandingAPIGateway
       FailOnWarnings: 'true'
-      Description: 'Contact Form API Gateway'
+      Description: 'Landing API Gateway'
       EndpointConfiguration:
         Types:
           - REGIONAL
@@ -190,8 +190,8 @@ Resources:
     Properties:
       AuthorizationType: NONE
       HttpMethod: ANY
-      ResourceId: !GetAtt ContactFormAPIGateway.RootResourceId
-      RestApiId: !Ref ContactFormAPIGateway
+      ResourceId: !GetAtt LandingAPIGateway.RootResourceId
+      RestApiId: !Ref LandingAPIGateway
       Integration:
         IntegrationHttpMethod: POST
         Type: AWS
@@ -224,8 +224,8 @@ Resources:
     Properties:
       AuthorizationType: NONE
       HttpMethod: OPTIONS
-      ResourceId: !GetAtt ContactFormAPIGateway.RootResourceId
-      RestApiId: !Ref ContactFormAPIGateway
+      ResourceId: !GetAtt LandingAPIGateway.RootResourceId
+      RestApiId: !Ref LandingAPIGateway
       Integration:
         IntegrationResponses:
           - StatusCode: 200
@@ -246,24 +246,24 @@ Resources:
             method.response.header.Access-Control-Allow-Methods: true
             method.response.header.Access-Control-Allow-Headers: true
 
-  ContactFormAPIDeployment:
+  LandingAPIDeployment:
     Type: 'AWS::ApiGateway::Deployment'
     DependsOn:
       - ContactFormAPIMethod
     Properties:
-      RestApiId: !Ref ContactFormAPIGateway
+      RestApiId: !Ref LandingAPIGateway
 
   # Enable logging of all HTTP requests
-  ContactFormAPIStage:
+  LandingAPIStage:
     Type: AWS::ApiGateway::Stage
     Properties:
-      DeploymentId: !Ref ContactFormAPIDeployment
+      DeploymentId: !Ref LandingAPIDeployment
       MethodSettings:
         - HttpMethod: '*'
           LoggingLevel: INFO
-          ResourcePath: /*
+          ResourcePath: '/contact'
           DataTraceEnabled: true
-      RestApiId: !Ref ContactFormAPIGateway
+      RestApiId: !Ref LandingAPIGateway
       StageName: !Ref apiGatewayStageName
 
   # Create permission for API Gateway to invoke Lambda
@@ -273,9 +273,9 @@ Resources:
       Action: lambda:InvokeFunction
       FunctionName: !Ref ContactFormLambda
       Principal: apigateway.amazonaws.com
-      SourceArn: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${ContactFormAPIGateway}/*/*/'
+      SourceArn: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${LandingAPIGateway}/*/*/'
 
 Outputs:
   ContactFormInvokeURL:
-    Value: !Sub 'https://${ContactFormAPIGateway}.execute-api.${AWS::Region}.amazonaws.com/${apiGatewayStageName}/'
+    Value: !Sub 'https://${LandingAPIGateway}.execute-api.${AWS::Region}.amazonaws.com/${apiGatewayStageName}/contact'
     Description: URL for invoking the Contact Form API

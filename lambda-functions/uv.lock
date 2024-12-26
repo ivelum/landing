@@ -63,23 +63,6 @@ wheels = [
 ]
 
 [[package]]
-name = "contact-form-handler"
-version = "0.1.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "boto3" },
-    { name = "requests" },
-    { name = "sentry-sdk" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "boto3", specifier = "==1.29.1" },
-    { name = "requests", specifier = "==2.31.0" },
-    { name = "sentry-sdk", specifier = "==1.35.0" },
-]
-
-[[package]]
 name = "idna"
 version = "3.10"
 source = { registry = "https://pypi.org/simple" }
@@ -95,6 +78,23 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/00/2a/e867e8531cf3e36b41201936b7fa7ba7b5702dbef42922193f05c8976cd6/jmespath-1.0.1.tar.gz", hash = "sha256:90261b206d6defd58fdd5e85f478bf633a2901798906be2ad389150c5c60edbe", size = 25843 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/31/b4/b9b800c45527aadd64d5b442f9b932b00648617eb5d63d2c7a6587b7cafc/jmespath-1.0.1-py3-none-any.whl", hash = "sha256:02e2e4cc71b5bcab88332eebf907519190dd9e6e82107fa7f83b1003a6252980", size = 20256 },
+]
+
+[[package]]
+name = "landing"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "boto3" },
+    { name = "requests" },
+    { name = "sentry-sdk" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "boto3", specifier = "==1.29.1" },
+    { name = "requests", specifier = "==2.31.0" },
+    { name = "sentry-sdk", specifier = "==1.35.0" },
 ]
 
 [[package]]
