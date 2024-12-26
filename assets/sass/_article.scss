@@ -101,12 +101,20 @@
     font-size: 1rem;
     padding: 0 .375rem;
     line-height: 1.75;
-    white-space: pre-wrap;
   }
 
   pre {
-    background-color: transparent !important;
-    padding-left: 5px;
+    margin-left: 5px;
+    border: 1px solid #e6e8f0;
+    border-radius: 4px;
+    background-color: #f9fafc !important;
+    overflow: auto;
+
+    code {
+      border: unset;
+      border-radius: unset;
+      overflow: visible;
+    }
   }
 
   table {
