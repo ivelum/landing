@@ -66,7 +66,10 @@
       user-select: none;
       width: 300%;
       z-index: 1;
-      mask-image: linear-gradient(to bottom, black 90%, transparent);
+      mask-image: linear-gradient(to top, transparent, black 4rem),
+        linear-gradient(to right, transparent, black 4rem),
+        linear-gradient(to left, transparent, black 4rem);
+      mask-composite: intersect;
       @include media-up(lg) {
         margin-bottom: 140px;
         margin-top: -3rem;
