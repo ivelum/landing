@@ -113,7 +113,7 @@ Resources:
                   - lambda:UpdateFunctionCode
                   - lambda:UpdateFunctionConfiguration
                 Effect: Allow
-                Resource: !GetAtt ContactFormLambda.Arn
+                Resource: !GetAtt LandingContactFormLambda.Arn
           PolicyName: manage-static-website
 
   LambdaExecutionRole:
