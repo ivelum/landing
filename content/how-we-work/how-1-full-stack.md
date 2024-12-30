@@ -10,6 +10,6 @@ are skeptical about it being possible to find high-qualified full-stack
 developers. We know first-hand that it's hard but doable, and our team proves
 that it is possible. For most projects, it's a game changer.
 
-Read more in Teamplify blog:
-- [Why go full-stack in 2023?](https://teamplify.com/blog/why-go-full-stack/)
+Read more in our blog:
+- [Why go full-stack in 2023?](/blog/why-go-full-stack/)
 {.how-we-work--item-links}
