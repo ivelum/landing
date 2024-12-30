@@ -38,7 +38,7 @@ def deploy_lambda():
 
     function_name = resource_details(
         settings.PROJECT_NAME,
-        'ContactFormLambda',
+        'LandingContactFormLambda',
     )['PhysicalResourceId']
     code_archive_path = f'fileb://{package_path}/{code_archive_name}'
     aws(
