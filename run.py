@@ -32,7 +32,7 @@ def deploy_lambda():
 
     run(f'zip -qr ../{code_archive_name} .', cwd=package_deps_path)
     run(
-        f'zip -qg {code_archive_name} pipedrive.py lambda_function.py',
+        f'zip -qg {code_archive_name} pipedrive.py contact_form.py',
         cwd=package_path,
     )
 

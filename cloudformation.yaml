@@ -142,7 +142,20 @@ Resources:
   ContactFormLambda:
     Type: "AWS::Lambda::Function"
     Properties:
-      Handler: "lambda_function.lambda_handler"
+      Handler: "contact_form.lambda_handler"
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Code:
+        # use CF feature - it compares yaml config with its previous version
+        # without looking at the actual state of the lambda function
+        # this way we can update code, deps and env vars during deploy
+        ZipFile: import this
+      Runtime: "python3.9"
+      Timeout: 10
+
+  LandingContactFormLambda:
+    Type: "AWS::Lambda::Function"
+    Properties:
+      Handler: "contact_form.lambda_handler"
       Role: !GetAtt LambdaExecutionRole.Arn
       Code:
         # use CF feature - it compares yaml config with its previous version
@@ -172,10 +185,23 @@ Resources:
     Properties:
       CloudWatchRoleArn: !GetAtt ApiGatewayLoggingRole.Arn
 
-  LandingAPIGateway:
+  ContactFormAPIGateway:
     Type: 'AWS::ApiGateway::RestApi'
     DependsOn:
       - ContactFormLambda
+      - ApiGatewayLoggingRole
+    Properties:
+      Name: ContactFormAPIGateway
+      FailOnWarnings: 'true'
+      Description: 'Contact Form API Gateway'
+      EndpointConfiguration:
+        Types:
+          - REGIONAL
+
+  LandingAPIGateway:
+    Type: 'AWS::ApiGateway::RestApi'
+    DependsOn:
+      - LandingContactFormLambda
       - ApiGatewayLoggingRole
     Properties:
       Name: LandingAPIGateway
@@ -190,8 +216,8 @@ Resources:
     Properties:
       AuthorizationType: NONE
       HttpMethod: ANY
-      ResourceId: !GetAtt LandingAPIGateway.RootResourceId
-      RestApiId: !Ref LandingAPIGateway
+      ResourceId: !GetAtt ContactFormAPIGateway.RootResourceId
+      RestApiId: !Ref ContactFormAPIGateway
       Integration:
         IntegrationHttpMethod: POST
         Type: AWS
@@ -224,6 +250,67 @@ Resources:
     Properties:
       AuthorizationType: NONE
       HttpMethod: OPTIONS
+      ResourceId: !GetAtt ContactFormAPIGateway.RootResourceId
+      RestApiId: !Ref ContactFormAPIGateway
+      Integration:
+        IntegrationResponses:
+          - StatusCode: 200
+            ResponseParameters:
+              method.response.header.Access-Control-Allow-Origin: !Sub "'${CorsAllowedOrigins}'"
+              method.response.header.Access-Control-Allow-Methods: "'*'"
+              method.response.header.Access-Control-Allow-Headers: "'*'"
+            ResponseTemplates:
+              application/json: Empty
+        PassthroughBehavior: WHEN_NO_MATCH
+        RequestTemplates:
+          application/json: '{"statusCode": 200}'
+        Type: MOCK
+      MethodResponses:
+        - StatusCode: 200
+          ResponseParameters:
+            method.response.header.Access-Control-Allow-Origin: true
+            method.response.header.Access-Control-Allow-Methods: true
+            method.response.header.Access-Control-Allow-Headers: true
+
+  LandingContactFormAPIMethod:
+    Type: 'AWS::ApiGateway::Method'
+    Properties:
+      AuthorizationType: NONE
+      HttpMethod: ANY
+      ResourceId: !GetAtt LandingAPIGateway.RootResourceId
+      RestApiId: !Ref LandingAPIGateway
+      Integration:
+        IntegrationHttpMethod: POST
+        Type: AWS
+        Uri: !Sub
+          - arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${LambdaArn}/invocations
+          - LambdaArn: !GetAtt LandingContactFormLambda.Arn
+        IntegrationResponses:
+          - StatusCode: 200
+            ResponseParameters:
+              method.response.header.Access-Control-Allow-Origin: !Sub "'${CorsAllowedOrigins}'"
+              method.response.header.Access-Control-Allow-Methods: "'*'"
+              method.response.header.Access-Control-Allow-Headers: "'*'"
+            ResponseTemplates:
+              application/json: '{"status":"ok"}'
+        RequestParameters:
+          integration.request.header.X-Amz-Invocation-Type: "'Event'"
+      MethodResponses:
+        - StatusCode: 200
+          ResponseParameters:
+            method.response.header.Access-Control-Allow-Origin: true
+            method.response.header.Access-Control-Allow-Methods: true
+            method.response.header.Access-Control-Allow-Headers: true
+      RequestParameters:
+        method.request.header.Content-Type: false
+      RequestModels:
+        application/json: Empty
+
+  LandingContactFormAPIOptionsMethod:
+    Type: 'AWS::ApiGateway::Method'
+    Properties:
+      AuthorizationType: NONE
+      HttpMethod: OPTIONS
       ResourceId: !GetAtt LandingAPIGateway.RootResourceId
       RestApiId: !Ref LandingAPIGateway
       Integration:
@@ -246,12 +333,32 @@ Resources:
             method.response.header.Access-Control-Allow-Methods: true
             method.response.header.Access-Control-Allow-Headers: true
 
-  LandingAPIDeployment:
+  ContactFormAPIDeployment:
     Type: 'AWS::ApiGateway::Deployment'
     DependsOn:
       - ContactFormAPIMethod
     Properties:
+      RestApiId: !Ref ContactFormAPIGateway
+
+  LandingAPIDeployment:
+    Type: 'AWS::ApiGateway::Deployment'
+    DependsOn:
+      - LandingContactFormAPIMethod
+    Properties:
       RestApiId: !Ref LandingAPIGateway
+
+  # Enable logging of all HTTP requests
+  ContactFormAPIStage:
+    Type: AWS::ApiGateway::Stage
+    Properties:
+      DeploymentId: !Ref ContactFormAPIDeployment
+      MethodSettings:
+        - HttpMethod: '*'
+          LoggingLevel: INFO
+          ResourcePath: /*
+          DataTraceEnabled: true
+      RestApiId: !Ref ContactFormAPIGateway
+      StageName: !Ref apiGatewayStageName
 
   # Enable logging of all HTTP requests
   LandingAPIStage:
@@ -261,7 +368,7 @@ Resources:
       MethodSettings:
         - HttpMethod: '*'
           LoggingLevel: INFO
-          ResourcePath: '/contact'
+          ResourcePath: '/*'
           DataTraceEnabled: true
       RestApiId: !Ref LandingAPIGateway
       StageName: !Ref apiGatewayStageName
@@ -273,9 +380,21 @@ Resources:
       Action: lambda:InvokeFunction
       FunctionName: !Ref ContactFormLambda
       Principal: apigateway.amazonaws.com
+      SourceArn: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${ContactFormAPIGateway}/*/*/'
+
+  # Create permission for API Gateway to invoke Lambda
+  LandingAPIPermission:
+    Type: 'AWS::Lambda::Permission'
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref LandingContactFormLambda
+      Principal: apigateway.amazonaws.com
       SourceArn: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${LandingAPIGateway}/*/*/'
 
 Outputs:
   ContactFormInvokeURL:
-    Value: !Sub 'https://${LandingAPIGateway}.execute-api.${AWS::Region}.amazonaws.com/${apiGatewayStageName}/contact'
+    Value: !Sub 'https://${ContactFormAPIGateway}.execute-api.${AWS::Region}.amazonaws.com/${apiGatewayStageName}/'
+    Description: URL for invoking the Contact Form API
+  LandingContactFormInvokeURL:
+    Value: !Sub 'https://${LandingAPIGateway}.execute-api.${AWS::Region}.amazonaws.com/${apiGatewayStageName}/'
     Description: URL for invoking the Contact Form API
