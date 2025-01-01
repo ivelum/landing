@@ -11,7 +11,7 @@ cascade:
 
 # Privacy policy
 
-Thanks for entrusting <b>ivelum</b> with your information. Holding on to your
+Thanks for entrusting **ivelum** with your information. Holding on to your
 private information is a serious responsibility, and we want you to know how
 we're handling it.
 
@@ -29,7 +29,7 @@ users around the world, regardless of their country of origin or location.
 Of course, the short version doesn't tell you everything, so please read on for
 more details!
 
-### What information <b>ivelum</b> collect and why
+### What information **ivelum** collect and why
 
 "User Personal Information" is any personal information that you provide
 directly to us, such as your name, email address, and other contact information
@@ -85,13 +85,13 @@ We do not share, sell, rent, or trade User Personal Information with third
 parties for their commercial purposes, except where you have specifically told
 us to.
 
-We do not host advertising on <b>ivelum</b>. We may occasionally embed content
+We do not host advertising on **ivelum**. We may occasionally embed content
 from third-party sites, such as YouTube or Vimeo, and that content may include
 ads. While we try to minimize the amount of ads our embedded content contains,
 we can't always control what third parties show. Any advertisements on our site
-are not sponsored or tracked by <b>ivelum</b>.
+are not sponsored or tracked by **ivelum**.
 
-We do not disclose User Personal Information outside <b>ivelum</b>, except in
+We do not disclose User Personal Information outside **ivelum**, except in
 the situations listed in this section or in the section below on Compelled
 Disclosure.
 
@@ -122,7 +122,7 @@ require us to retain certain data.
 A cookie is a small piece of text that our web server stores on your computer or
 mobile device, which your browser sends to us when you return to our site.
 Cookies do not necessarily identify you if you are merely visiting
-<b>ivelum</b>.
+**ivelum**.
 
 We use cookies to enhance your browsing experience, analyze usage patterns, and
 deliver personalized content. Cookies also help us remember your preferences and
@@ -130,7 +130,7 @@ settings. For security reasons, we use cookies to identify a device. Using our
 website, you agree that we can place these types of cookies on your computer or
 device.
 
-<b>ivelum</b> sets the following cookies on our users for the following reasons:
+**ivelum** sets the following cookies on our users for the following reasons:
 
 - crisp-client* – two cookies with variable names used by Crisp chat.
 
@@ -141,13 +141,13 @@ can collect and the purpose for which they can process the information.
 
 ### How we respond to compelled disclosure
 
-<b>ivelum</b> may disclose personally-identifying information or other
+**ivelum** may disclose personally-identifying information or other
 information we collect about you to law enforcement in response to a valid
 subpoena, court order, warrant, or similar government order, or when we believe
 in good faith that disclosure is reasonably necessary to protect our property or
 rights, or those of third parties or the public at large.
 
-In complying with court orders and similar legal processes, <b>ivelum</b>
+In complying with court orders and similar legal processes, **ivelum**
 strives for transparency. When permitted, we will make a reasonable effort to
 notify users of any disclosure of their information unless we are prohibited by
 law or court order from doing so or in rare, exigent circumstances.
@@ -185,12 +185,12 @@ processing:
 
 ### Resolving complaints
 
-If you have concerns about how <b>ivelum</b> handles your User Personal
+If you have concerns about how **ivelum** handles your User Personal
 Information, please let us know immediately. We want to help. You may email us
 directly at info@ivelum.com with the subject line "Privacy Concerns". We will
 respond promptly — within 30 days at the latest.
 
-In the unlikely event that a dispute arises between you and <b>ivelum</b>
+In the unlikely event that a dispute arises between you and **ivelum**
 regarding our handling of your User Personal Information, we will do our best to
 resolve it. If we cannot, we have selected to cooperate with the relevant EU
 Data Protection Authority, or a panel established by the European data
