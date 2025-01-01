@@ -3,11 +3,9 @@
 {{ end }}
 
 {{- define "main" }}
-  {{- $logs := slice }}
-  {{- if hugo.IsDevelopment }}
-    {{- $logs = .Pages.ByDate.Reverse }}
-  {{- else }}
-    {{- $logs = where .Pages.ByDate.Reverse "Params.sitemap.disable" "ne" true }}
+  {{- $posts := .Pages.ByDate.Reverse }}
+  {{- if not hugo.IsDevelopment }}
+    {{- $posts = where $posts "Params.sitemap.disable" "ne" true }}
   {{- end }}
   <div class="page blog">
     <div class="container">
@@ -15,7 +13,7 @@
 
       <div class="blog--list">
 
-        {{- range $logs }}
+        {{- range $posts }}
           <div class="blog--item">
             {{- $thumbnail := .Resources.GetMatch "thumbnail.png" }}
             {{- $thumbnail2x := $.Resources.GetMatch "thumbnail@2x.png" }}
