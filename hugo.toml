@@ -1,4 +1,4 @@
-baseURL = 'https://hugo.ivelum.com/'
+baseURL = 'https://ivelum.com/'
 languageCode = 'en-us'
 title = "ivelum"
 disableKinds = ['taxonomy', 'term', 'RSS']
