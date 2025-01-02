@@ -33,7 +33,7 @@ reload to interact with the server. And it felt fast! Trello was very popular,
 thanks to its good design and a generous free plan, so many people tried it
 and are still using it.
 
-[![The rise of frontend frameworks](the-rise-of-frontend-frameworks.png)](the-rise-of-frontend-frameworks.png)
+![The rise of frontend frameworks](the-rise-of-frontend-frameworks.png)
 
 Trello wasn't the very first SPA, of course. Another famous example is GMail
 which was introduced in 2004. However, Trello was built on a frontend
@@ -50,7 +50,7 @@ showcasing the capabilities of JS frameworks.
 
 Simultaneously in the 2010-s there was an explosive growth of APIs:
 
-[![Growth in web APIs](growth-in-web-apis.png)](growth-in-web-apis.png)
+![Growth in web APIs](growth-in-web-apis.png)
 
 *Source: [Programmable Web](https://www.programmableweb.com/news/apis-show-faster-growth-rate-2019-previous-years/research/2019/07/17)*
 
@@ -66,7 +66,7 @@ Frontend frameworks were hot in the 2010-s. People were talking about them at
 conferences. At that time, the joke about "X days without a new JavaScript
 framework" wasn't so much of a joke.
 
-[![Days without a new JavaScript framework](days-without-new-javascript-framework.png)](days-without-new-javascript-framework.png)
+![Days without a new JavaScript framework](days-without-new-javascript-framework.png)
 
 Some web developers were excited about these innovations, but others... not so
 much. Previously, CSS and JavaScript were already perceived by many as a mess.
@@ -75,7 +75,7 @@ JavaScript hacks were required to get things working consistently in all
 browsers. Now, another layer of complexity had been added – frontend frameworks,
 JS bundlers, and package managers, and they were young and still in flux.
 
-[![How did your hackathon go](how-did-your-hackathon-go.png)](how-did-your-hackathon-go.png)
+![How did your hackathon go](how-did-your-hackathon-go.png)
 
 And so, some developers started to specialize in this area and call themselves
 frontend developers. It seemed reasonable because the industry was moving
@@ -105,7 +105,7 @@ reasons outlined in the next section.
 
 ## What problems do full-stack developers solve
 
-[![Why go full-stack](why-go-full-stack.png)](why-go-full-stack.png)
+![Why go full-stack](why-go-full-stack.png)
 
 Not everyone has hopped on that backend-frontend separation train, though.
 Simultaneously with frontend developers, a competing role emerged – full-stack

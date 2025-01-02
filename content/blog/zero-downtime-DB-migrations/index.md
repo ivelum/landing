@@ -27,14 +27,14 @@ Let's take a look at a simplified deployment process for a typical web
 application. Most applications these days rely on load balancing and container
 orchestration:
 
-[![A typical web app](a-typical-web-app.png)](a-typical-web-app.png)
+![A typical web app](a-typical-web-app.png)
 
 What happens when we need to deploy a new version of an application? The
 deployment process replaces app instances one by one. It excludes them from the
 cluster first, replaces app instances with newer versions, and then puts them
 back in the cluster:
 
-[![Deployment process](a-typical-deployment-process.svg)](a-typical-deployment-process.svg)
+![Deployment process](a-typical-deployment-process.svg)
 
 As shown in the animation above, the application version 2 gradually replaces
 previous version 1 without any service interruption for end users.
@@ -50,7 +50,7 @@ correctly, the database must be upgraded before putting any instance of
 application v2 into production. Therefore, a deployment process that includes
 a database upgrade should look like this:
 
-[![Deployment process with the DB upgrade](deployment-process-with-DB-upgrade.svg)](deployment-process-with-DB-upgrade.svg)
+![Deployment process with the DB upgrade](deployment-process-with-DB-upgrade.svg)
 
 ## How to run the DB migration script
 
@@ -115,7 +115,7 @@ Let's say we're building a new feature — user avatars. After registration,
 every user will get a randomly generated avatar with an option to upload their
 own. To implement this, we need to add the `avatar` column to the `Users` table:
 
-[![Adding a table column](adding-a-table-column.png)](adding-a-table-column.png)
+![Adding a table column](adding-a-table-column.png)
 
 How can we upgrade the database from v1 to v2 in this case? Our database
 migration script should include the following operations:
@@ -184,7 +184,7 @@ it back. There will be no more user avatars, so we want to remove all
 application functionality related to it and also remove the `avatar` column
 from the DB:
 
-[![Removing a table column](removing-a-table-column.png)](removing-a-table-column.png)
+![Removing a table column](removing-a-table-column.png)
 
 As with the previous example, if we just naively push everything to production,
 including the DB migration script, it will cause downtime.
@@ -231,7 +231,7 @@ existing data to the new format by transforming file names into full URLs.
 Lastly, it is a good idea to rename the column from `avatar` to `avatar_url`
 to better reflect its new purpose:
 
-[![Replacing a table column](replacing-a-table-column.png)](replacing-a-table-column.png)
+![Replacing a table column](replacing-a-table-column.png)
 
 In this case, the data migration script includes:
 
@@ -315,7 +315,7 @@ already upgraded in the previous phases.
 Surprisingly, renaming a table is more straightforward than renaming a column.
 Imagine we'd like to rename the `Posts` table to more generic `Content`:
 
-[![Renaming a table](renaming-a-table.png)](renaming-a-table.png)
+![Renaming a table](renaming-a-table.png)
 
 If we don't take any precautions, such a rename would cause downtime during the
 deployment. The previous app version, which still runs in production, will try
@@ -361,7 +361,7 @@ migration cases, but they should help you understand the main idea. If you get
 the idea and know how your deployment script works, you can develop solutions
 for other cases yourself.
 
-[![Deployment process with the DB upgrade](deployment-process-with-DB-upgrade.svg)](deployment-process-with-DB-upgrade.svg)
+![Deployment process with the DB upgrade](deployment-process-with-DB-upgrade.svg)
 
 Quick recap:
 

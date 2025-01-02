@@ -33,7 +33,7 @@ We explain why and try our best to ensure a smooth transition.
 
 ## Why?
 
-[![Boost team performance](rocket.png)](rocket.png)
+![Boost team performance](rocket.png)
 
 Simple: **it boosts team performance - a lot.** Of course, it takes some
 adaptation effort for new team members, but the effect is so significant that
