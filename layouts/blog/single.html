@@ -17,6 +17,7 @@
         <div class="article--meta">
           <div>
             <img
+              alt="{{ .Params.author }}"
               class="article--userpic"
               src="{{ printf "/img/userpics/%s.png" (urlize .Params.author) }}"
             />
@@ -41,10 +42,10 @@
         <div class="article--follow">
           <div>Follow us:</div>
           <a href="https://www.linkedin.com/company/ivelum/" target="_blank">
-            <img src="{{ (resources.Get "img/ico-linkedin.svg").RelPermalink }}" />
+            <img alt="LinkedIn" src="{{ (resources.Get "img/ico-linkedin.svg").RelPermalink }}" />
           </a>
           <a href="{{ .CurrentSection.RelPermalink }}index.xml">
-            <img src="{{ (resources.Get "img/ico-rss.svg").RelPermalink }}" />
+            <img alt="RSS" src="{{ (resources.Get "img/ico-rss.svg").RelPermalink }}" />
           </a>
         </div>
       </div>
