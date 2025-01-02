@@ -1,6 +1,6 @@
-{{- $img := .Destination }}
-{{- $img2x := printf "%s@2x%s" (path.BaseName $img) (path.Ext $img) }}
-{{- if .Page.Resources.GetMatch $img2x }}
-  {{- $img = $img2x }}
+{{- $filename := .Destination }}
+{{- $filename2x := printf "%s@2x%s" (path.BaseName $filename) (path.Ext $filename) }}
+{{- if .Page.Resources.Get $filename2x }}
+  {{- $filename = $filename2x }}
 {{- end }}
-<img src="{{ .Page.Permalink }}{{ $img }}" alt="{{ .Title }}">
+<img src="{{ .Page.Permalink }}{{ $filename }}" alt="{{ .Title }}">

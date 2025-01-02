@@ -1,11 +1,30 @@
-{{- $img := .Destination }}
-{{- $img2x := printf "%s@2x%s" (path.BaseName $img) (path.Ext $img) }}
-{{- if .Page.Resources.GetMatch $img2x }}
-<a href="{{ $img2x }}">
-  <img src="{{ $img }}" srcset="{{ $img2x }} 2x" alt="{{ .Title }}">
+{{- $filename := .Destination }}
+{{- $ext := path.Ext $filename }}
+{{- $filename2x := printf "%s@2x%s" (path.BaseName $filename) $ext }}
+{{- $img := .Page.Resources.Get $filename }}
+{{- $img2x := .Page.Resources.Get $filename2x }}
+{{- $webp := false }}
+{{- if or (eq $img.MediaType.SubType "png") (eq $img.MediaType.SubType "jpg") }}
+  {{- $webp = $img.Process "webp" }}
+{{ end }}
+
+{{- if $img2x }}
+<a href="{{ $filename2x }}">
+  <picture>
+    {{- with $webp }}
+      {{- $webp2x := $img2x.Process "webp" }}
+      <source srcset="{{ .RelPermalink }} 1x, {{ $webp2x.RelPermalink }} 2x" type="image/webp">
+    {{ end }}
+    <img src="{{ $filename }}" srcset="{{ $filename2x }} 2x" alt="{{ .Title }}">
+  </picture>
 </a>
 {{- else }}
-<a href="{{ $img }}">
-  <img src="{{ $img }}" alt="{{ .Title }}">
+<a href="{{ $filename }}">
+  <picture>
+    {{- with $webp }}
+      <source srcset="{{ .RelPermalink }}" type="image/webp">
+    {{ end }}
+    <img src="{{ $filename }}" alt="{{ .Title }}">
+  </picture>
 </a>
 {{- end }}

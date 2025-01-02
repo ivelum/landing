@@ -12,12 +12,16 @@ window.addEventListener("load", function () {
     .getElementsByClassName("article--content")[0]
     .querySelectorAll('img')
     .forEach(function (img) {
-      if (img.parentNode.tagName === "A") {
-        img.parentNode.setAttribute("data-pswp-width", img.naturalWidth);
-        img.parentNode.setAttribute("data-pswp-height", img.naturalHeight);
+      let parentNode = img.parentNode;
+      if (parentNode.tagName === "PICTURE") {
+        parentNode = parentNode.parentNode;
+      }
+      if (parentNode.tagName === "A") {
+        parentNode.setAttribute("data-pswp-width", img.naturalWidth);
+        parentNode.setAttribute("data-pswp-height", img.naturalHeight);
 
         const lightbox = new PhotoSwipeLightbox({
-          gallery: img.parentNode,
+          gallery: parentNode,
           pswpModule: PhotoSwipe
         });
         lightbox.init();
