@@ -37,8 +37,10 @@
                 <div class="blog--item-meta">
                   <div class="blog--item-author">
                     <img
+                      alt="{{ .Params.author }}"
                       class="blog--item-userpic"
                       src="{{ printf "/img/userpics/%s.png" (urlize .Params.author) }}"
+                      srcset="{{ printf "/img/userpics/%s@2x.png" (urlize .Params.author) }}"
                     />
                     {{ .Params.author }}
                   </div>

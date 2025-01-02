@@ -20,6 +20,7 @@
               alt="{{ .Params.author }}"
               class="article--userpic"
               src="{{ printf "/img/userpics/%s.png" (urlize .Params.author) }}"
+              srcset="{{ printf "/img/userpics/%s@2x.png" (urlize .Params.author) }}"
             />
           </div>
 
