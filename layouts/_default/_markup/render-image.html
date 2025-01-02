@@ -1,1 +1,11 @@
-<a href="{{ .Destination }}"><img src="{{ .Destination }}" alt="{{ .Title }}"></a>
+{{- $img := .Destination }}
+{{- $img2x := printf "%s@2x%s" (path.BaseName $img) (path.Ext $img) }}
+{{- if .Page.Resources.GetMatch $img2x }}
+<a href="{{ $img2x }}">
+  <img src="{{ $img }}" srcset="{{ $img2x }} 2x" alt="{{ .Title }}">
+</a>
+{{- else }}
+<a href="{{ $img }}">
+  <img src="{{ $img }}" alt="{{ .Title }}">
+</a>
+{{- end }}
