@@ -15,15 +15,15 @@
 
         {{- range $posts }}
           <div class="blog--item">
-            {{- $thumbnail := .Resources.GetMatch "thumbnail.png" }}
-            {{- $thumbnail2x := $.Resources.GetMatch "thumbnail@2x.png" }}
+            {{- $thumbnail := .Resources.Get "thumbnail.png" }}
             {{- if $thumbnail }}
               <a href="{{ .RelPermalink }}">
-                <img
-                  src="{{ $thumbnail.RelPermalink }}"
-                  srcset="{{ $thumbnail.RelPermalink }} 1x{{- if $thumbnail2x }}, {{ $thumbnail2x.RelPermalink }} 2x{{ end }}"
-                  class="blog--item-thumbnail"
-                />
+                {{ partial "image.html" (dict
+                  "Img" $thumbnail
+                  "Class" "blog--item-thumbnail"
+                  "Title" .Title
+                  "Width" 450
+                ) }}
               </a>
             {{- end }}
             <div class="blog--item-content">
