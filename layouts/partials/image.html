@@ -1,7 +1,7 @@
 {{- $webp := false }}
 {{- $preview := false }}
 {{- $previewWebp := false }}
-{{- if or (eq .Img.MediaType.SubType "png") (eq .Img.MediaType.SubType "jpg") }}
+{{- if ne .Img.MediaType.SubType "svg" }}
   {{- $webp = .Img.Process "webp" }}
   {{- if gt .Img.Width .Width }}
     {{- $preview = .Img.Resize (printf "%dx" .Width) }}
