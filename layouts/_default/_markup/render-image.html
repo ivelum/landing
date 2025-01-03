@@ -1,30 +1,12 @@
-{{- $filename := .Destination }}
-{{- $ext := path.Ext $filename }}
-{{- $filename2x := printf "%s@2x%s" (path.BaseName $filename) $ext }}
-{{- $img := .Page.Resources.Get $filename }}
-{{- $img2x := .Page.Resources.Get $filename2x }}
-{{- $webp := false }}
-{{- if or (eq $img.MediaType.SubType "png") (eq $img.MediaType.SubType "jpg") }}
-  {{- $webp = $img.Process "webp" }}
-{{ end }}
-
-{{- if $img2x }}
-<a href="{{ $filename2x }}">
-  <picture>
-    {{- with $webp }}
-      {{- $webp2x := $img2x.Process "webp" }}
-      <source srcset="{{ .RelPermalink }} 1x, {{ $webp2x.RelPermalink }} 2x" type="image/webp">
-    {{ end }}
-    <img src="{{ $filename }}" srcset="{{ $filename2x }} 2x" alt="{{ .Title }}">
-  </picture>
+<a href="{{ .Destination }}">
+{{/*
+  The maximum article container width is set to 738px with 1.25rem padding
+  (see the ".narrow-container" class), which results in the effective maximum
+  image width of 698px.
+*/}}
+{{- partial "image.html" (dict
+  "Img" (.Page.Resources.Get .Destination)
+  "Title" .Title
+  "Width" 698
+  ) }}
 </a>
-{{- else }}
-<a href="{{ $filename }}">
-  <picture>
-    {{- with $webp }}
-      <source srcset="{{ .RelPermalink }}" type="image/webp">
-    {{ end }}
-    <img src="{{ $filename }}" alt="{{ .Title }}">
-  </picture>
-</a>
-{{- end }}

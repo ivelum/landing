@@ -1,0 +1,25 @@
+{{- $webp := false }}
+{{- $preview := false }}
+{{- $previewWebp := false }}
+{{- if or (eq .Img.MediaType.SubType "png") (eq .Img.MediaType.SubType "jpg") }}
+  {{- $webp = .Img.Process "webp" }}
+  {{- if gt .Img.Width .Width }}
+    {{- $preview = .Img.Resize "698x" }}
+    {{- if $webp }}
+      {{- $previewWebp = $preview.Process "webp" }}
+    {{ end }}
+  {{- end }}
+{{- end }}
+{{- if $webp }}
+  <picture>
+  {{- if $preview }}
+    <source srcset="{{ $previewWebp.RelPermalink }} 1x, {{ $webp.RelPermalink }} 2x" type="image/webp">
+    <img src="{{ $preview.RelPermalink }}" srcset="{{ .Img.RelPermalink }} 2x" alt="{{ .Title }}">
+  {{- else }}
+    <source srcset="{{ $webp.RelPermalink }}" type="image/webp">
+    <img src="{{ .Img.RelPermalink }}" alt="{{ .Title }}">
+  {{- end }}
+  </picture>
+{{- else }}
+  <img src="{{ .Img.RelPermalink }}" alt="{{ .Title }}">
+{{- end }}
