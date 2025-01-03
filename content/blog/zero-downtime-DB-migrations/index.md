@@ -1,6 +1,7 @@
 ---
 title: Migrating a production database without any downtime
 description: The basic principles of zero-downtime DB migrations and quick recipes for the most common scenarios.
+thumbnail: thumbnail.png
 author: Denis Stebunov
 date: 2024-10-16T14:32:00+0200
 ---

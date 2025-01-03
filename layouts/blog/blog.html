@@ -15,13 +15,14 @@
 
         {{- range $posts }}
           <div class="blog--item">
-            {{- $thumbnail := .Resources.Get "thumbnail.png" }}
-            {{- if $thumbnail }}
-              <a href="{{ .RelPermalink }}">
+            {{- $page := . }}
+            {{- with .Params.thumbnail }}
+              {{- $thumbnail := $page.Resources.Get . }}
+              <a href="{{ $page.RelPermalink }}">
                 {{ partial "image.html" (dict
                   "Img" $thumbnail
                   "Class" "blog--item-thumbnail"
-                  "Title" .Title
+                  "Title" $page.Title
                   "Width" 450
                 ) }}
               </a>

@@ -28,12 +28,9 @@
   <meta property="og:title" content="{{ .Title }}">
   <meta property="og:description" content="{{ .Description }}">
   <meta property="og:url" content="{{ .Permalink }}">
-{{- $thumbnail := .Resources.GetMatch "thumbnail.png" }}
-{{- $thumbnail2x := .Resources.GetMatch "thumbnail@2x.png" }}
-{{- if $thumbnail2x }}
-  {{- $thumbnail = $thumbnail2x }}}
-{{- end }}
-{{- if $thumbnail }}
+{{- $page := . }}
+{{- with .Params.thumbnail }}
+  {{- $thumbnail := $page.Resources.Get . }}
   <meta property="og:image" content="{{ $thumbnail.Permalink }}">
   <meta name="twitter:image" content="{{ $thumbnail.Permalink }}">
   <meta name="twitter:card" content="summary_large_image">
