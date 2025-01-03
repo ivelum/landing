@@ -38,8 +38,8 @@
       }
     }
   </script>
-  {{- with resources.Get "sass/main.scss" }}
-    {{- $opts := dict "transpiler" "libsass" "targetPath" "css/style.css" }}
+  {{- with resources.Get "sass/404.scss" }}
+    {{- $opts := dict "transpiler" "libsass" }}
     {{- with . | toCSS $opts }}
       {{- if hugo.IsDevelopment }}
         <link rel="stylesheet" href="{{ .RelPermalink }}">

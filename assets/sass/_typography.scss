@@ -25,8 +25,43 @@
   width: 100%;
 }
 
-@mixin a-no-underline {
-  background-size: 0 1px;
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+body {
+  @include stylized-scrollbar;
+  background-color: $white;
+  color: $font-color-default;
+  font-family: 'Montserrat', sans-serif;
+  font-size: $font-size-default;
+  font-weight: $font-weight-default;
+  line-height: $line-height-default;
+  margin: 0;
+  text-align: left;
+  scroll-behavior: smooth;
+  text-rendering: geometricPrecision;
+}
+
+img,
+svg {
+  vertical-align: middle;
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
 }
 
 a {

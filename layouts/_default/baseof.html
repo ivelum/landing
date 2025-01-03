@@ -28,6 +28,7 @@
   <meta property="og:title" content="{{ .Title }}">
   <meta property="og:description" content="{{ .Description }}">
   <meta property="og:url" content="{{ .Permalink }}">
+
 {{- $page := . }}
 {{- with .Params.thumbnail }}
   {{- $thumbnail := $page.Resources.Get . }}
@@ -56,22 +57,23 @@
       }
     }
   </script>
-{{- with resources.Get "sass/main.scss" }}
-  {{- $opts := dict "transpiler" "libsass" "targetPath" "css/style.css" }}
-  {{- with . | toCSS $opts }}
-    {{- if hugo.IsDevelopment }}
-  <link rel="stylesheet" href="{{ .RelPermalink }}">
-    {{- else }}
-      {{- with . | minify | fingerprint }}
-  <link
-    rel="stylesheet"
-    href="{{ .RelPermalink }}"
-    integrity="{{ .Data.Integrity }}"
-    crossorigin="anonymous"
-  >
-      {{- end }}
-    {{- end }}
+{{- with resources.Get "sass/critical.scss" }}
+  {{- $css := . | toCSS (dict "transpiler" "libsass") }}
+  {{- if not hugo.IsDevelopment }}
+    {{- $css = $css | minify }}
   {{- end }}
+  <style>
+    {{ $css.Content | safeCSS }}
+  </style>
+{{- end }}
+{{- with resources.Get "sass/non-critical.scss" }}
+  {{- $css := . | toCSS (dict "transpiler" "libsass") }}
+  {{- if not hugo.IsDevelopment }}
+    {{- $css = $css | minify }}
+  {{- end }}
+  <link rel="preload" href="{{ $css.RelPermalink }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ $css.RelPermalink }}"></noscript>
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" media="print">
 {{- end }}
 </head>
 <body>
