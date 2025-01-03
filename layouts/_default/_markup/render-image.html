@@ -1,11 +1,18 @@
-<a href="{{ .Destination }}">
+{{- $img := .Page.Resources.Get .Destination }}
+{{- $width := "" }}
+{{- $height := "" }}
+{{- if ne $img.MediaType.SubType "svg" }}
+  {{- $width = $img.Width }}
+  {{- $height = $img.Height }}
+{{- end }}
+<a href="{{ .Destination }}" data-pswp-width="{{ $width }}" data-pswp-height="{{ $height }}">
 {{/*
   The maximum article container width is set to 738px with 1.25rem padding
   (see the ".narrow-container" class), which results in the effective maximum
   image width of 698px.
 */}}
 {{- partial "image.html" (dict
-  "Img" (.Page.Resources.Get .Destination)
+  "Img" $img
   "Alt" .Text
   "Width" 698
   ) }}

@@ -17,9 +17,6 @@ window.addEventListener("load", function () {
         parentNode = parentNode.parentNode;
       }
       if (parentNode.tagName === "A") {
-        parentNode.setAttribute("data-pswp-width", img.naturalWidth);
-        parentNode.setAttribute("data-pswp-height", img.naturalHeight);
-
         const lightbox = new PhotoSwipeLightbox({
           gallery: parentNode,
           pswpModule: PhotoSwipe
