@@ -1,7 +1,7 @@
 <div class="footer footer--blog">
   <div class="container">
     <div class="footer--grid-simple">
-      <a class="footer--logo" href="/">{{ (resources.Get "img/logo.svg").Content | strings.TrimSpace | safeHTML }}</a>
+      <a class="footer--logo" href="/" aria-label="ivelum">{{ (resources.Get "img/logo.svg").Content | strings.TrimSpace | safeHTML }}</a>
       <div class="footer--menu">
         {{- range site.Menus.main }}
           <a
