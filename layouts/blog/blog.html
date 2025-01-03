@@ -22,7 +22,7 @@
                 {{ partial "image.html" (dict
                   "Img" $thumbnail
                   "Class" "blog--item-thumbnail"
-                  "Title" $page.Title
+                  "Alt" $page.Title
                   "Width" 450
                 ) }}
               </a>
@@ -41,7 +41,7 @@
                     {{ partial "image.html" (dict
                       "Img" $avatar
                       "Class" "blog--item-userpic"
-                      "Title" .Params.author
+                      "Alt" .Params.author
                       "Width" 24
                     ) }}
                     {{ .Params.author }}

@@ -19,12 +19,12 @@
   <picture>
   {{- if $preview }}
     <source srcset="{{ $previewWebp.RelPermalink }} 1x, {{ $webp.RelPermalink }} 2x" type="image/webp">
-    {{ $imgTag }} src="{{ $preview.RelPermalink }}" srcset="{{ .Img.RelPermalink }} 2x" alt="{{ .Title }}">
+    {{ $imgTag }} src="{{ $preview.RelPermalink }}" srcset="{{ .Img.RelPermalink }} 2x" alt="{{ .Alt }}">
   {{- else }}
     <source srcset="{{ $webp.RelPermalink }}" type="image/webp">
-    {{ $imgTag }} src="{{ .Img.RelPermalink }}" alt="{{ .Title }}">
+    {{ $imgTag }} src="{{ .Img.RelPermalink }}" alt="{{ .Alt }}">
   {{- end }}
   </picture>
 {{- else }}
-  {{ $imgTag }} src="{{ .Img.RelPermalink }}" alt="{{ .Title }}">
+  {{ $imgTag }} src="{{ .Img.RelPermalink }}" alt="{{ .Alt }}">
 {{- end }}
