@@ -36,12 +36,13 @@
               <div class="blog--item-footer">
                 <div class="blog--item-meta">
                   <div class="blog--item-author">
-                    <img
-                      alt="{{ .Params.author }}"
-                      class="blog--item-userpic"
-                      src="{{ printf "/img/userpics/%s.png" (urlize .Params.author) }}"
-                      srcset="{{ printf "/img/userpics/%s@2x.png" (urlize .Params.author) }}"
-                    />
+                    {{- $avatar := resources.Get (printf "img/avatars/%s.png" (urlize .Params.author)) }}
+                    {{ partial "image.html" (dict
+                      "Img" $avatar
+                      "Class" "blog--item-userpic"
+                      "Title" .Params.author
+                      "Width" 24
+                    ) }}
                     {{ .Params.author }}
                   </div>
                   <div class="blog--item-date">

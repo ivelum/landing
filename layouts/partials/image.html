@@ -10,16 +10,21 @@
     {{ end }}
   {{- end }}
 {{- end }}
+{{ $imgTag := "<img" }}
+{{- with .Class }}
+  {{- $imgTag = printf "<img class=\"%s\"" . }}
+{{- end }}
+{{- $imgTag = $imgTag | safeHTML }}
 {{- if $webp }}
   <picture>
   {{- if $preview }}
     <source srcset="{{ $previewWebp.RelPermalink }} 1x, {{ $webp.RelPermalink }} 2x" type="image/webp">
-    <img src="{{ $preview.RelPermalink }}" srcset="{{ .Img.RelPermalink }} 2x" alt="{{ .Title }}">
+    {{ $imgTag }} src="{{ $preview.RelPermalink }}" srcset="{{ .Img.RelPermalink }} 2x" alt="{{ .Title }}">
   {{- else }}
     <source srcset="{{ $webp.RelPermalink }}" type="image/webp">
-    <img src="{{ .Img.RelPermalink }}" alt="{{ .Title }}">
+    {{ $imgTag }} src="{{ .Img.RelPermalink }}" alt="{{ .Title }}">
   {{- end }}
   </picture>
 {{- else }}
-  <img src="{{ .Img.RelPermalink }}" alt="{{ .Title }}">
+  {{ $imgTag }} src="{{ .Img.RelPermalink }}" alt="{{ .Title }}">
 {{- end }}
