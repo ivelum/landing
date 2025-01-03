@@ -4,7 +4,7 @@
 {{- if or (eq .Img.MediaType.SubType "png") (eq .Img.MediaType.SubType "jpg") }}
   {{- $webp = .Img.Process "webp" }}
   {{- if gt .Img.Width .Width }}
-    {{- $preview = .Img.Resize "698x" }}
+    {{- $preview = .Img.Resize (printf "%dx" .Width) }}
     {{- if $webp }}
       {{- $previewWebp = $preview.Process "webp" }}
     {{ end }}
