@@ -1,6 +1,6 @@
 ---
-title: Contact - ivelum
-description: ivelum is a distributed team of engineers headquartered in Vilnius, Lithuania. We've been helping both start-ups and established businesses build their products since 2003
+title: Contact ivelum development team to build your project
+description: Tell us about your idea, and we’ll suggest how to build it fast and lean. Write a message to our development team or book a live chat with our expert to get our pricing on project development
 layout: contact
 menus:
   main:

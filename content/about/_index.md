@@ -1,7 +1,7 @@
 ---
 url: /
-title: About - ivelum
-description: ivelum is a distributed team of engineers headquartered in Vilnius, Lithuania. We've been helping both start-ups and established businesses build their products since 2003
+title: Custom web development, software solutions, and UX/UI - ivelum
+description: ivelum is an experienced team of developers and engineers headquartered in Vilnius, Lithuania. We love to build custom digital products for both start-ups and established businesses. 
 darkHeader: true
 menus:
   main:
