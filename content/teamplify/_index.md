@@ -1,6 +1,6 @@
 ---
-title: Teamplify - ivelum
-description: ivelum is a distributed team of engineers headquartered in Vilnius, Lithuania. We've been helping both start-ups and established businesses build their products since 2003
+title: Team management tool by ivelum team. From developers to developers
+description: iExplore our ultimate tool for productive development teams. Team Analytics, Daily Standups, and more - free for teams up to 5 users. 
 layout: teamplify
 menus:
   main:

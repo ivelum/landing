@@ -1,6 +1,6 @@
 ---
-title: Solutions - ivelum
-description: ivelum is a distributed team of engineers headquartered in Vilnius, Lithuania. We've been helping both start-ups and established businesses build their products since 2003
+title: Tailored solution for different industries - ivelum
+description: We build digital solutions for startups, media, edtech, healthcare, and other companies. We’ve earned the trust of our clients by creating safe and reliable products.
 layout: solutions
 darkHeader: true
 menus:

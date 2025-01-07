@@ -1,6 +1,6 @@
 ---
-title: Privacy policy - ivelum
-description: ivelum is a distributed team of engineers headquartered in Vilnius, Lithuania. We've been helping both start-ups and established businesses build their products since 2003
+title: Ivelum development team — Privacy policy
+description: Here, users can view the privacy policy of ivelum team, which develops digital products for startups and enterprising businesses.
 layout: privacy
 sitemap:
   disable: false
