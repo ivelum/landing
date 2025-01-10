@@ -1,10 +1,6 @@
-import json
 import logging
 import os
-from json import JSONDecodeError
 
-import boto3
-import pipedrive
 import sentry_sdk
 from sentry_sdk.integrations.aws_lambda import AwsLambdaIntegration
 from crisp_api import Crisp
@@ -32,13 +28,13 @@ def add_crisp_contact(event_body):
     token_key = os.environ['CRISP_TOKEN_KEY']
 
     if not (website_id and token_id and token_key):
-        warnings.warn('Crisp credentials are missing!')
+        logger.info('Crisp credentials are missing!')
         return
 
     crisp.authenticate(token_id, token_key)
 
     try:
-        contact_data = crisp.website.add_new_people_profile(
+        crisp.website.add_new_people_profile(
             website_id=website_id,
             data={
                 'email': event_body['email'],
