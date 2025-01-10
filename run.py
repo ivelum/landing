@@ -32,57 +32,67 @@ def deploy_lambda():
 
     run(f'zip -qr ../{code_archive_name} .', cwd=package_deps_path)
     run(
-        f'zip -qg {code_archive_name} pipedrive.py contact_form.py',
+        f'zip -qg {code_archive_name} pipedrive.py contact_form.py newsletter_sign_up.py',
         cwd=package_path,
     )
 
-    function_name = resource_details(
-        settings.PROJECT_NAME,
-        'LandingContactFormLambda',
-    )['PhysicalResourceId']
     code_archive_path = f'fileb://{package_path}/{code_archive_name}'
-    aws(
-        f'lambda update-function-code '
-        f'--function-name {function_name} '
-        f'--zip-file {code_archive_path} '
-        f'--publish',
-    )
 
-    def get_function_config():
-        return aws(
-            f'lambda get-function --function-name {function_name}',
-        )['Configuration']
+    functions = [
+        'LandingContactFormLambda',
+        'LandingNewsletterSignUpLambda',
+    ]
 
-    while True:
-        function_config = get_function_config()
-        status = function_config['LastUpdateStatus']
-        if status != 'InProgress':
-            break
-        time.sleep(1)
-
-    if status == 'Failed':
-        status_reason = function_config['LastUpdateStatusReason']
-        status_reason_code = function_config['LastUpdateStatusReasonCode']
-        raise RuntimeError(
-            f'Failed to update lambda function. '
-            f'Reason: {status_reason_code} | {status_reason}.',
+    for function in functions:
+        function_name = resource_details(
+            settings.PROJECT_NAME,
+            function,
+        )['PhysicalResourceId']
+        aws(
+            f'lambda update-function-code '
+            f'--function-name {function_name} '
+            f'--zip-file {code_archive_path} '
+            f'--publish',
         )
 
-    environment = {
-        'Variables': {
-            'CONTACT_FORM_FROM_EMAIL': settings.CONTACT_FORM_FROM_EMAIL,
-            'CONTACT_FORM_TO_EMAIL': settings.CONTACT_FORM_TO_EMAIL,
-            'PIPE_DRIVE_API_TOKEN': os.environ['PIPE_DRIVE_API_TOKEN'],
-            'PIPE_DRIVE_LEAD_CUSTOM_DATA':
-                os.environ['PIPE_DRIVE_LEAD_CUSTOM_DATA'],
-        },
-    }
-    aws(
-        f'lambda update-function-configuration '
-        f'--function-name {function_name} '
-        '--timeout 50 '
-        f'--environment {quote(json.dumps(environment))}',
-    )
+        def get_function_config():
+            return aws(
+                f'lambda get-function --function-name {function_name}',
+            )['Configuration']
+
+        while True:
+            function_config = get_function_config()
+            status = function_config['LastUpdateStatus']
+            if status != 'InProgress':
+                break
+            time.sleep(1)
+
+        if status == 'Failed':
+            status_reason = function_config['LastUpdateStatusReason']
+            status_reason_code = function_config['LastUpdateStatusReasonCode']
+            raise RuntimeError(
+                f'Failed to update lambda function. '
+                f'Reason: {status_reason_code} | {status_reason}.',
+            )
+
+        environment = {
+            'Variables': {
+                'CONTACT_FORM_FROM_EMAIL': settings.CONTACT_FORM_FROM_EMAIL,
+                'CONTACT_FORM_TO_EMAIL': settings.CONTACT_FORM_TO_EMAIL,
+                'PIPE_DRIVE_API_TOKEN': os.environ['PIPE_DRIVE_API_TOKEN'],
+                'PIPE_DRIVE_LEAD_CUSTOM_DATA':
+                    os.environ['PIPE_DRIVE_LEAD_CUSTOM_DATA'],
+                'CRISP_WEBSITE_ID': settings.CRISP_WEBSITE_ID,
+                'CRISP_TOKEN_ID': os.environ['CRISP_TOKEN_ID'],
+                'CRISP_TOKEN_KEY': os.environ['CRISP_TOKEN_KEY'],
+            },
+        }
+        aws(
+            f'lambda update-function-configuration '
+            f'--function-name {function_name} '
+            '--timeout 50 '
+            f'--environment {quote(json.dumps(environment))}',
+        )
 
 
 if __name__ == '__main__':

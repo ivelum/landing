@@ -83,6 +83,8 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           PIPE_DRIVE_API_TOKEN: ${{ secrets.PIPE_DRIVE_API_TOKEN }}
           PIPE_DRIVE_LEAD_CUSTOM_DATA: ${{ secrets.PIPE_DRIVE_LEAD_CUSTOM_DATA }}
+          CRISP_TOKEN_ID: ${{ secrets.CRISP_TOKEN_ID }}
+          CRISP_TOKEN_KEY: ${{ secrets.CRISP_TOKEN_KEY }}
         run: uv run run.py deploy-lambda
 
       # Send notification on build or deploy failure
