@@ -50,12 +50,12 @@ def add_crisp_contact(event_body):
     logger.info('add_crisp_contact(): success')
 
 
-def lambda_handler(event):
+def handle_newsletter_sign_up(event):
     assert event.get('email') is not None
 
-    logger.info('lambda_handler(): invoked. event={}'.format(event))
+    logger.info('handle_newsletter_sign_up(): add_crisp_contact invoked. event={}'.format(event))
     try:
         add_crisp_contact(event)
     except Exception as e:
         sentry_sdk.capture_exception(e)
-        logger.exception('lambda_handler(): add_crisp_contact failed')
+        logger.exception('handle_newsletter_sign_up(): add_crisp_contact failed')

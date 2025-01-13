@@ -106,19 +106,19 @@ def send_email(event_body):
     logger.info('send_email(): success')
 
 
-def lambda_handler(event, context):
+def handle_contact_form(event, context):
     assert event.get('subject') is not None
     assert event.get('text') is not None
     assert event.get('email') is not None
     assert event.get('name') is not None
     assert event.get('company') is not None
 
-    logger.info('lambda_handler(): invoked. event={}'.format(event))
+    logger.info('handle_contact_form(): invoked. event={}'.format(event))
     try:
         # try to create CRM lead
         create_crm_lead(event)
     except Exception as e:
         sentry_sdk.capture_exception(e)
-        logger.exception('lambda_handler(): create_lead failed')
+        logger.exception('handle_contact_form(): create_lead failed')
         # fallback to sending email if CRM lead creation fails
         send_email(event)
