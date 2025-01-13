@@ -114,6 +114,12 @@ Resources:
                   - lambda:UpdateFunctionConfiguration
                 Effect: Allow
                 Resource: !GetAtt LandingContactFormLambda.Arn
+              - Action:
+                  - lambda:GetFunction
+                  - lambda:UpdateFunctionCode
+                  - lambda:UpdateFunctionConfiguration
+                Effect: Allow
+                Resource: !GetAtt LandingNewsletterSignUpLambda.Arn
           PolicyName: manage-static-website
 
   LambdaExecutionRole:
@@ -433,7 +439,7 @@ Resources:
       Action: lambda:InvokeFunction
       FunctionName: !Ref LandingContactFormLambda
       Principal: apigateway.amazonaws.com
-      SourceArn: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${LandingAPIGateway}/*/*/'
+      SourceArn: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${LandingAPIGateway}/*/*/contact'
 
   # Create permission for API Gateway to invoke Lambda
   LandingNewsletterSignUpAPIPermission:
@@ -442,7 +448,7 @@ Resources:
       Action: lambda:InvokeFunction
       FunctionName: !Ref LandingNewsletterSignUpLambda
       Principal: apigateway.amazonaws.com
-      SourceArn: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${LandingAPIGateway}/*/*/'
+      SourceArn: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${LandingAPIGateway}/*/*/newsletter'
 
 Outputs:
   LandingContactFormInvokeURL:

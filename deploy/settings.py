@@ -12,5 +12,5 @@ CONTACT_FORM_TO_EMAIL = 'info@ivelum.com'
 #
 # Development Token is limited to 500/requests day.
 # If needed you can reset the limit here (see login credentials in Notion):
-# https://marketplace.crisp.chat/plugins/plugin/421c7588-7ed5-464a-a1f7-8917ae9bafe7/tokens/
-CRISP_WEBSITE_ID = '6de2ec98-888b-4ff4-b9be-dab91a460ee6'
+# https://marketplace.crisp.chat/plugins/plugin/279fff4f-f709-41d0-80ff-33c01843b905/tokens/
+CRISP_WEBSITE_ID = '2aa7bcb2-8094-4624-b64e-112c2ca3a174'
