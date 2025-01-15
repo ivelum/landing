@@ -119,7 +119,7 @@ Resources:
                   - lambda:UpdateFunctionCode
                   - lambda:UpdateFunctionConfiguration
                 Effect: Allow
-                Resource: !GetAtt LandingNewsletterSignUpLambda.Arn
+                Resource: !GetAtt LandingLambda.Arn
           PolicyName: manage-static-website
 
   LambdaExecutionRole:
@@ -158,18 +158,44 @@ Resources:
       Runtime: "python3.9"
       Timeout: 10
 
-  LandingNewsletterSignUpLambda:
+  LandingLambda:
     Type: "AWS::Lambda::Function"
     Properties:
-      Handler: "newsletter_sign_up.lambda_handler"
+      Handler: "handler.lambda_handler"
       Role: !GetAtt LambdaExecutionRole.Arn
       Code:
         # use CF feature - it compares yaml config with its previous version
         # without looking at the actual state of the lambda function
         # this way we can update code, deps and env vars during deploy
         ZipFile: import this
-      Runtime: "python3.9"
+      Runtime: "python3.10"
       Timeout: 10
+
+  LandingLambdaUrl:
+    Type: AWS::Lambda::Url
+    Properties:
+      AuthType: NONE
+      Cors:
+        AllowOrigins:
+          - https://ivelum.com
+        ExposeHeaders:
+          - '*'
+        AllowHeaders:
+          - '*'
+        AllowMethods:
+          - '*'
+        MaxAge: 0
+        AllowCredentials: false
+      TargetFunctionArn: !GetAtt LandingLambda.Arn
+
+  # Create permission for API Gateway to invoke Lambda
+  LandingPermission:
+    Type: 'AWS::Lambda::Permission'
+    Properties:
+      Action: lambda:invokeFunctionUrl
+      FunctionName: !Ref LandingLambda
+      FunctionUrlAuthType: 'NONE'
+      Principal: '*'
 
   # IAM Role for API Gateway + CloudWatch Logging
   ApiGatewayLoggingRole:
@@ -265,148 +291,10 @@ Resources:
             method.response.header.Access-Control-Allow-Methods: true
             method.response.header.Access-Control-Allow-Headers: true
 
-  LandingContactFormAPIResource:
-    Type: AWS::ApiGateway::Resource
-    Properties:
-      ParentId: !GetAtt LandingAPIGateway.RootResourceId
-      PathPart: 'contact'
-      RestApiId: !Ref LandingAPIGateway
-
-  LandingNewContactFormAPIMethod:
-    Type: 'AWS::ApiGateway::Method'
-    Properties:
-      AuthorizationType: NONE
-      HttpMethod: ANY
-      ResourceId: !Ref LandingContactFormAPIResource
-      RestApiId: !Ref LandingAPIGateway
-      Integration:
-        IntegrationHttpMethod: POST
-        Type: AWS
-        Uri: !Sub
-          - arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${LambdaArn}/invocations
-          - LambdaArn: !GetAtt LandingContactFormLambda.Arn
-        IntegrationResponses:
-          - StatusCode: 200
-            ResponseParameters:
-              method.response.header.Access-Control-Allow-Origin: !Sub "'${CorsAllowedOrigins}'"
-              method.response.header.Access-Control-Allow-Methods: "'*'"
-              method.response.header.Access-Control-Allow-Headers: "'*'"
-            ResponseTemplates:
-              application/json: '{"status":"ok"}'
-        RequestParameters:
-          integration.request.header.X-Amz-Invocation-Type: "'Event'"
-      MethodResponses:
-        - StatusCode: 200
-          ResponseParameters:
-            method.response.header.Access-Control-Allow-Origin: true
-            method.response.header.Access-Control-Allow-Methods: true
-            method.response.header.Access-Control-Allow-Headers: true
-      RequestParameters:
-        method.request.header.Content-Type: false
-      RequestModels:
-        application/json: Empty
-
-  LandingNewContactFormAPIOptionsMethod:
-    Type: 'AWS::ApiGateway::Method'
-    Properties:
-      AuthorizationType: NONE
-      HttpMethod: OPTIONS
-      ResourceId: !Ref LandingContactFormAPIResource
-      RestApiId: !Ref LandingAPIGateway
-      Integration:
-        IntegrationResponses:
-          - StatusCode: 200
-            ResponseParameters:
-              method.response.header.Access-Control-Allow-Origin: !Sub "'${CorsAllowedOrigins}'"
-              method.response.header.Access-Control-Allow-Methods: "'*'"
-              method.response.header.Access-Control-Allow-Headers: "'*'"
-            ResponseTemplates:
-              application/json: Empty
-        PassthroughBehavior: WHEN_NO_MATCH
-        RequestTemplates:
-          application/json: '{"statusCode": 200}'
-        Type: MOCK
-      MethodResponses:
-        - StatusCode: 200
-          ResponseParameters:
-            method.response.header.Access-Control-Allow-Origin: true
-            method.response.header.Access-Control-Allow-Methods: true
-            method.response.header.Access-Control-Allow-Headers: true
-
-  LandingNewsletterSignUpAPIResource:
-    Type: AWS::ApiGateway::Resource
-    Properties:
-      ParentId: !GetAtt LandingAPIGateway.RootResourceId
-      PathPart: 'newsletter'
-      RestApiId: !Ref LandingAPIGateway
-
-  LandingNewsletterSignUpAPIMethod:
-    Type: 'AWS::ApiGateway::Method'
-    Properties:
-      AuthorizationType: NONE
-      HttpMethod: ANY
-      ResourceId: !Ref LandingNewsletterSignUpAPIResource
-      RestApiId: !Ref LandingAPIGateway
-      Integration:
-        IntegrationHttpMethod: POST
-        Type: AWS
-        Uri: !Sub
-          - arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${LambdaArn}/invocations
-          - LambdaArn: !GetAtt LandingNewsletterSignUpLambda.Arn
-        IntegrationResponses:
-          - StatusCode: 200
-            ResponseParameters:
-              method.response.header.Access-Control-Allow-Origin: !Sub "'${CorsAllowedOrigins}'"
-              method.response.header.Access-Control-Allow-Methods: "'*'"
-              method.response.header.Access-Control-Allow-Headers: "'*'"
-            ResponseTemplates:
-              application/json: '{"status":"ok"}'
-        RequestParameters:
-          integration.request.header.X-Amz-Invocation-Type: "'Event'"
-      MethodResponses:
-        - StatusCode: 200
-          ResponseParameters:
-            method.response.header.Access-Control-Allow-Origin: true
-            method.response.header.Access-Control-Allow-Methods: true
-            method.response.header.Access-Control-Allow-Headers: true
-      RequestParameters:
-        method.request.header.Content-Type: false
-      RequestModels:
-        application/json: Empty
-
-  LandingNewsletterSignUpAPIOptionsMethod:
-    Type: 'AWS::ApiGateway::Method'
-    Properties:
-      AuthorizationType: NONE
-      HttpMethod: OPTIONS
-      ResourceId: !Ref LandingNewsletterSignUpAPIResource
-      RestApiId: !Ref LandingAPIGateway
-      Integration:
-        IntegrationResponses:
-          - StatusCode: 200
-            ResponseParameters:
-              method.response.header.Access-Control-Allow-Origin: !Sub "'${CorsAllowedOrigins}'"
-              method.response.header.Access-Control-Allow-Methods: "'*'"
-              method.response.header.Access-Control-Allow-Headers: "'*'"
-            ResponseTemplates:
-              application/json: Empty
-        PassthroughBehavior: WHEN_NO_MATCH
-        RequestTemplates:
-          application/json: '{"statusCode": 200}'
-        Type: MOCK
-      MethodResponses:
-        - StatusCode: 200
-          ResponseParameters:
-            method.response.header.Access-Control-Allow-Origin: true
-            method.response.header.Access-Control-Allow-Methods: true
-            method.response.header.Access-Control-Allow-Headers: true
-
   LandingAPIDeployment:
     Type: 'AWS::ApiGateway::Deployment'
     DependsOn:
       - LandingContactFormAPIMethod
-      - LandingNewContactFormAPIMethod
-      - LandingNewsletterSignUpAPIMethod
     Properties:
       RestApiId: !Ref LandingAPIGateway
 
@@ -432,28 +320,10 @@ Resources:
       Principal: apigateway.amazonaws.com
       SourceArn: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${LandingAPIGateway}/*/*/'
 
-  # Create permission for API Gateway to invoke Lambda
-  LandingContactFormAPIPermission:
-    Type: 'AWS::Lambda::Permission'
-    Properties:
-      Action: lambda:InvokeFunction
-      FunctionName: !Ref LandingContactFormLambda
-      Principal: apigateway.amazonaws.com
-      SourceArn: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${LandingAPIGateway}/*/*/contact'
-
-  # Create permission for API Gateway to invoke Lambda
-  LandingNewsletterSignUpAPIPermission:
-    Type: 'AWS::Lambda::Permission'
-    Properties:
-      Action: lambda:InvokeFunction
-      FunctionName: !Ref LandingNewsletterSignUpLambda
-      Principal: apigateway.amazonaws.com
-      SourceArn: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${LandingAPIGateway}/*/*/newsletter'
-
 Outputs:
   LandingContactFormInvokeURL:
-    Value: !Sub 'https://${LandingAPIGateway}.execute-api.${AWS::Region}.amazonaws.com/${apiGatewayStageName}/contact'
-    Description: URL for invoking the Contact Form API
-  LandingNewsletterSignUpInvokeURL:
-    Value: !Sub 'https://${LandingAPIGateway}.execute-api.${AWS::Region}.amazonaws.com/${apiGatewayStageName}/newsletter'
-    Description: URL for invoking the Contact Form API
+    Value: !Sub 'https://${LandingAPIGateway}.execute-api.${AWS::Region}.amazonaws.com/${apiGatewayStageName}'
+    Description: URL for invoking the API
+  LandingInvokeURL:
+    Value: !GetAtt LandingLambdaUrl.FunctionUrl
+    Description: URL for invoking the API function

@@ -3,6 +3,7 @@ import logging
 import sentry_sdk
 from sentry_sdk.integrations.aws_lambda import AwsLambdaIntegration
 from contact_form import handle_contact_form
+from newsletter_sign_up import handle_newsletter_sign_up
 
 
 logger = logging.getLogger()
@@ -21,8 +22,16 @@ sentry_sdk.init(
 def lambda_handler(event, context):
     logger.info('lambda_handler(): invoked. event={}'.format(event))
     try:
-        # try to create CRM lead
-        handle_contact_form(event, context)
+        rawPath = event['rawPath']
+        match rawPath:
+            case '/newsletter':
+                return handle_newsletter_sign_up(event, context)
+            case '/contact':
+                return handle_contact_form(event, context)
+            case _:
+                return {
+                    'statusCode': 404,
+                }
     except Exception as e:
         sentry_sdk.capture_exception(e)
-        logger.exception('lambda_handler(): create_lead failed')
+        logger.exception('lambda_handler(): routing failed')

@@ -107,18 +107,35 @@ def send_email(event_body):
 
 
 def handle_contact_form(event, context):
-    assert event.get('subject') is not None
-    assert event.get('text') is not None
-    assert event.get('email') is not None
-    assert event.get('name') is not None
-    assert event.get('company') is not None
+    if event['body']:
+        try:
+            body = json.loads(event['body'])
+        except JSONDecodeError:
+            logger.error(
+                'handle_contact_form(): invalid request body')
+            return {
+                'statusCode': 400,
+                'headers': {
+                    'Content-Type': 'application/json'
+                },
+                'body': json.dumps({
+                    'success': False,
+                    'message': 'invalid request body'
+                })
+            }
+
+    assert body.get('subject') is not None
+    assert body.get('text') is not None
+    assert body.get('email') is not None
+    assert body.get('name') is not None
+    assert body.get('company') is not None
 
     logger.info('handle_contact_form(): invoked. event={}'.format(event))
     try:
         # try to create CRM lead
-        create_crm_lead(event)
+        create_crm_lead(body)
     except Exception as e:
         sentry_sdk.capture_exception(e)
         logger.exception('handle_contact_form(): create_lead failed')
         # fallback to sending email if CRM lead creation fails
-        send_email(event)
+        send_email(body)
