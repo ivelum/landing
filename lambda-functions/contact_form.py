@@ -139,3 +139,13 @@ def handle_contact_form(event, context):
         logger.exception('handle_contact_form(): create_lead failed')
         # fallback to sending email if CRM lead creation fails
         send_email(body)
+
+    return {
+        'statusCode': 200,
+        'headers': {
+            'Content-Type': 'application/json'
+        },
+        'body': json.dumps({
+            'status': 'ok',
+        })
+    }
