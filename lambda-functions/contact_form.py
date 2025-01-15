@@ -107,6 +107,18 @@ def send_email(event_body):
 
 
 def handle_contact_form(event, context):
+    if event['requestContext']['http']['method'] != 'POST':
+        return {
+            'statusCode': 400,
+            'headers': {
+                'Content-Type': 'application/json'
+            },
+            'body': json.dumps({
+                'success': False,
+                'message': 'Unsupported http method'
+            })
+        }
+
     if event['body']:
         try:
             body = json.loads(event['body'])
