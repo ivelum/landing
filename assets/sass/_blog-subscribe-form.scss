@@ -45,5 +45,35 @@
     .form-group {
       flex-grow: 1;
     }
+
+    &-submit {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 3rem;
+      @include media-up(sm) {
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  &--form-submitting {
+    animation: submitting 1s linear infinite;
+    pointer-events: none;
+  }
+
+  &--success {
+    font-size: $font-size-bigger;
+    margin-top: 2rem;
+    @include media-up(xl) {
+      margin-top: 3rem;
+    }
+
+    &-ico > svg {
+      margin-right: 0.75rem;
+      margin-top: -0.25rem;
+    }
   }
 }

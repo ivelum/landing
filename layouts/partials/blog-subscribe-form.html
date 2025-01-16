@@ -3,26 +3,98 @@
   <div class="blog-subscribe--tagline">
     Get more stories like this in your inbox
   </div>
-  <div class="blog-subscribe--form">
-    <div class="form-group form-label-up">
-      <input
-        type="text"
-        name="email"
-        required
-        class="form-control form-control--violet"
-        id="email"
-        placeholder="Email"
-        aria-label="Email"
-      >
-      <label for="email">Email</label>
-    </div>
-    <button class="btn btn-small btn-with-arrow" type="submit">
-      Subscribe
-      {{
-        (resources.Get "img/ico-mail.svg").Content
+  <div x-data="NewsletterSignUpForm">
+    <form
+      x-show="!formSent"
+      {{- /* Not using x-if to preserve the form state between page reloads. */}}
+      x-on:submit.prevent="submitForm"
+      x-bind:class="submitting && 'blog-subscribe--form-submitting'"
+      x-ref="form"
+    >
+      <div class="blog-subscribe--form">
+        <div class="form-group form-label-up">
+          <input
+            type="email"
+            name="email"
+            required
+            class="form-control form-control--violet"
+            id="email"
+            placeholder="Email"
+            aria-label="Email"
+          >
+          <label for="email">Email</label>
+        </div>
+        <button class="btn btn-small btn-with-arrow" type="submit">
+          Subscribe
+          {{
+            (resources.Get "img/ico-mail.svg").Content
+            | strings.TrimSpace
+            | safeHTML
+          }}
+        </button>
+      </div>
+    </form>
+
+    <template x-if="formSent">
+      <div class="blog-subscribe--success">
+      <span class="blog-subscribe--success-ico">{{
+        (resources.Get "img/ico-success.svg").Content
         | strings.TrimSpace
         | safeHTML
-      }}
-    </button>
+      }}</span>Thank you! Your email has been subscribed.
+      </div>
+    </template>
   </div>
+
+  <script type="module">
+    import * as Sentry from '@sentry/browser';
+    import Alpine from "alpinejs";
+
+    const isProduction = {{hugo.IsProduction}};
+    const apiUrl = 'https://qtiynmmsybhyrl46wfp34sg6zy0xerer.lambda-url.eu-north-1.on.aws/newsletter';
+
+    document.addEventListener('alpine:init', () => {
+      Alpine.data('NewsletterSignUpForm', () => ({
+        submitting: false,
+        formSent: false,
+
+        async submitForm(event) {
+          const form = event.target;
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData);
+
+          this.submitting = true;
+
+          try {
+            if (isProduction) {
+              const response = await fetch(apiUrl, {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+              });
+              const result = await response.json();
+              this.formSent = result.status === 'ok';
+            } else {
+              await new Promise((resolve) => setTimeout(resolve, 2000));
+              console.log(data);
+              this.formSent = true;
+            }
+            if (this.formSent) {
+              form.reset();
+            }
+          } catch (e) {
+            Sentry.withScope((scope) => {
+              scope.setExtra('form_data', data);
+              Sentry.captureException(e);
+            });
+          } finally {
+            this.submitting = false;
+          }
+        },
+      }));
+    });
+  </script>
 </div>
