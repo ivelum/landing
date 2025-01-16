@@ -76,7 +76,7 @@
                 body: JSON.stringify(data),
               });
               const result = await response.json();
-              this.formSent = result.status === 'ok';
+              this.formSent = result.success === true;
             } else {
               await new Promise((resolve) => setTimeout(resolve, 2000));
               console.log(data);
