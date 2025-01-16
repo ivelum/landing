@@ -4,7 +4,7 @@ version = "0.1.0"
 requires-python = "== 3.10.*"
 dependencies = [
     "boto3==1.29.1",
+    "crisp-api==1.1.19",
     "requests==2.31.0",
     "sentry-sdk==1.35.0",
-    "crisp-api==1.1.19",
 ]
