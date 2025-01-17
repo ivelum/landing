@@ -1,5 +1,5 @@
 ---
-title: Team management tool by ivelum team. From developers to developers
+title: Team management tool by ivelum team. By developers, for developers
 description: Explore our ultimate tool for productive development teams. Team Analytics, Daily Standups, and more - free for teams up to 5 users. 
 layout: teamplify
 menus:
