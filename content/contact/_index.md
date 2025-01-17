@@ -1,6 +1,6 @@
 ---
 title: Contact ivelum development team to build your project
-description: Tell us about your idea, and we’ll suggest how to build it fast and lean. Write a message to our development team or book a live chat with our expert to get our pricing on project development
+description: Tell us about your idea, and we’ll suggest how to build it fast and lean. Write a message to our development team or book a call with our expert to get our pricing on project development
 layout: contact
 menus:
   main:

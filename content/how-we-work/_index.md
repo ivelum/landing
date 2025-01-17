@@ -1,6 +1,6 @@
 ---
 title: Full-stack, CI and transparency - How we work
-description: Our advantages, which help us to build digital products fast and lean — full stack development, continuous delivery and transparent communication. Explore how ivelum team works. 
+description: Our advantages, which help us to build digital products fast and lean — full stack development, continuous delivery and transparent communication. Explore how the ivelum team works. 
 layout: how-we-work
 darkHeader: true
 menus:
