@@ -8,10 +8,6 @@ Parameters:
     Type: String
     Default: "https://ivelum.com"
     Description: Comma-separated list of allowed origins for CORS
-  apiGatewayStageName:
-    Type: String
-    AllowedPattern: '[a-z0-9]+'
-    Default: handle
 
 Resources:
   WebsiteBucket:
@@ -113,12 +109,6 @@ Resources:
                   - lambda:UpdateFunctionCode
                   - lambda:UpdateFunctionConfiguration
                 Effect: Allow
-                Resource: !GetAtt LandingContactFormLambda.Arn
-              - Action:
-                  - lambda:GetFunction
-                  - lambda:UpdateFunctionCode
-                  - lambda:UpdateFunctionConfiguration
-                Effect: Allow
                 Resource: !GetAtt LandingLambda.Arn
           PolicyName: manage-static-website
 
@@ -145,19 +135,6 @@ Resources:
                   - "ses:SendRawEmail"
                 Resource: "*"
 
-  LandingContactFormLambda:
-    Type: "AWS::Lambda::Function"
-    Properties:
-      Handler: "contact_form.lambda_handler"
-      Role: !GetAtt LambdaExecutionRole.Arn
-      Code:
-        # use CF feature - it compares yaml config with its previous version
-        # without looking at the actual state of the lambda function
-        # this way we can update code, deps and env vars during deploy
-        ZipFile: import this
-      Runtime: "python3.9"
-      Timeout: 10
-
   LandingLambda:
     Type: "AWS::Lambda::Function"
     Properties:
@@ -176,8 +153,7 @@ Resources:
     Properties:
       AuthType: NONE
       Cors:
-        AllowOrigins:
-          - https://ivelum.com
+        AllowOrigins: !Split [',', !Ref CorsAllowedOrigins]
         ExposeHeaders:
           - '*'
         AllowHeaders:
@@ -197,133 +173,7 @@ Resources:
       FunctionUrlAuthType: 'NONE'
       Principal: '*'
 
-  # IAM Role for API Gateway + CloudWatch Logging
-  ApiGatewayLoggingRole:
-    Type: AWS::IAM::Role
-    Properties:
-      AssumeRolePolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-          Action: 'sts:AssumeRole'
-          Effect: Allow
-          Principal:
-            Service: apigateway.amazonaws.com
-      Path: /
-      ManagedPolicyArns:
-        - 'arn:aws:iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs'
-
-  ApiGwAccountConfig:
-    Type: AWS::ApiGateway::Account
-    Properties:
-      CloudWatchRoleArn: !GetAtt ApiGatewayLoggingRole.Arn
-
-  LandingAPIGateway:
-    Type: 'AWS::ApiGateway::RestApi'
-    DependsOn:
-      - LandingContactFormLambda
-      - ApiGatewayLoggingRole
-    Properties:
-      Name: LandingAPIGateway
-      FailOnWarnings: 'true'
-      Description: 'Landing API Gateway'
-      EndpointConfiguration:
-        Types:
-          - REGIONAL
-
-  LandingContactFormAPIMethod:
-    Type: 'AWS::ApiGateway::Method'
-    Properties:
-      AuthorizationType: NONE
-      HttpMethod: ANY
-      ResourceId: !GetAtt LandingAPIGateway.RootResourceId
-      RestApiId: !Ref LandingAPIGateway
-      Integration:
-        IntegrationHttpMethod: POST
-        Type: AWS
-        Uri: !Sub
-          - arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${LambdaArn}/invocations
-          - LambdaArn: !GetAtt LandingContactFormLambda.Arn
-        IntegrationResponses:
-          - StatusCode: 200
-            ResponseParameters:
-              method.response.header.Access-Control-Allow-Origin: !Sub "'${CorsAllowedOrigins}'"
-              method.response.header.Access-Control-Allow-Methods: "'*'"
-              method.response.header.Access-Control-Allow-Headers: "'*'"
-            ResponseTemplates:
-              application/json: '{"status":"ok"}'
-        RequestParameters:
-          integration.request.header.X-Amz-Invocation-Type: "'Event'"
-      MethodResponses:
-        - StatusCode: 200
-          ResponseParameters:
-            method.response.header.Access-Control-Allow-Origin: true
-            method.response.header.Access-Control-Allow-Methods: true
-            method.response.header.Access-Control-Allow-Headers: true
-      RequestParameters:
-        method.request.header.Content-Type: false
-      RequestModels:
-        application/json: Empty
-
-  LandingContactFormAPIOptionsMethod:
-    Type: 'AWS::ApiGateway::Method'
-    Properties:
-      AuthorizationType: NONE
-      HttpMethod: OPTIONS
-      ResourceId: !GetAtt LandingAPIGateway.RootResourceId
-      RestApiId: !Ref LandingAPIGateway
-      Integration:
-        IntegrationResponses:
-          - StatusCode: 200
-            ResponseParameters:
-              method.response.header.Access-Control-Allow-Origin: !Sub "'${CorsAllowedOrigins}'"
-              method.response.header.Access-Control-Allow-Methods: "'*'"
-              method.response.header.Access-Control-Allow-Headers: "'*'"
-            ResponseTemplates:
-              application/json: Empty
-        PassthroughBehavior: WHEN_NO_MATCH
-        RequestTemplates:
-          application/json: '{"statusCode": 200}'
-        Type: MOCK
-      MethodResponses:
-        - StatusCode: 200
-          ResponseParameters:
-            method.response.header.Access-Control-Allow-Origin: true
-            method.response.header.Access-Control-Allow-Methods: true
-            method.response.header.Access-Control-Allow-Headers: true
-
-  LandingAPIDeployment:
-    Type: 'AWS::ApiGateway::Deployment'
-    DependsOn:
-      - LandingContactFormAPIMethod
-    Properties:
-      RestApiId: !Ref LandingAPIGateway
-
-  # Enable logging of all HTTP requests
-  LandingAPIStage:
-    Type: AWS::ApiGateway::Stage
-    Properties:
-      DeploymentId: !Ref LandingAPIDeployment
-      MethodSettings:
-        - HttpMethod: '*'
-          LoggingLevel: INFO
-          ResourcePath: '/*'
-          DataTraceEnabled: true
-      RestApiId: !Ref LandingAPIGateway
-      StageName: !Ref apiGatewayStageName
-
-  # Create permission for API Gateway to invoke Lambda
-  LandingAPIPermission:
-    Type: 'AWS::Lambda::Permission'
-    Properties:
-      Action: lambda:InvokeFunction
-      FunctionName: !Ref LandingContactFormLambda
-      Principal: apigateway.amazonaws.com
-      SourceArn: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${LandingAPIGateway}/*/*/'
-
 Outputs:
-  LandingContactFormInvokeURL:
-    Value: !Sub 'https://${LandingAPIGateway}.execute-api.${AWS::Region}.amazonaws.com/${apiGatewayStageName}'
-    Description: URL for invoking the API
   LandingInvokeURL:
     Value: !GetAtt LandingLambdaUrl.FunctionUrl
     Description: URL for invoking the API function
