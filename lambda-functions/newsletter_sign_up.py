@@ -4,21 +4,11 @@ import os
 from json import JSONDecodeError
 
 import sentry_sdk
-from sentry_sdk.integrations.aws_lambda import AwsLambdaIntegration
 from crisp_api import Crisp, RouteError
 
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
-
-
-sentry_sdk.init(
-    dsn="https://5dd58ec394b556f352248ba56bc7876f@o202054.ingest.sentry.io"
-        + "/4506218347954176",
-    integrations=[AwsLambdaIntegration()],
-    traces_sample_rate=1.0,
-    profiles_sample_rate=1.0,
-)
 
 
 def add_crisp_contact(email):
