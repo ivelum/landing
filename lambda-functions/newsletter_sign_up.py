@@ -32,7 +32,13 @@ def add_crisp_contact(email):
                 website_id=website_id,
                 people_id=email,
             )
-            contact_just_created = True
+            crisp.website.update_people_profile(
+                website_id=website_id,
+                people_id=contact_data['people_id'],
+                data={
+                    'segments': ['newsletter'] + contact_data['segments'],
+                },
+            )
         except RouteError:
             contact_data = crisp.website.add_new_people_profile(
                 website_id=website_id,
@@ -42,8 +48,9 @@ def add_crisp_contact(email):
                     'segments': ['newsletter'],
                 },
             )
+            contact_just_created = True
 
-        if contact_just_created:
+        if not contact_just_created:
             subscription_status = crisp.website.get_people_subscription_status(
                 website_id=website_id,
                 people_id=contact_data['people_id'],
