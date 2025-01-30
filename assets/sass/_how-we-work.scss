@@ -49,8 +49,7 @@
 
     h2::after {
       animation: pulse 0.75s linear infinite normal forwards;
-      background: url('../img/heart.svg') no-repeat;
-      background-position: center center;
+      background: url('/img/heart.svg') no-repeat center center;
       content: '';
       display: block;
       height: 1.5rem;
