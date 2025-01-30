@@ -11,5 +11,5 @@ developers. We know first-hand that it's hard but doable, and our team proves
 that it is possible. For most projects, it's a game changer.
 
 Read more in our blog:
-- [Why go full-stack in 2023?](/blog/why-go-full-stack/)
+- [Why go full-stack?](/blog/why-go-full-stack/)
 {.how-we-work--item-links}
