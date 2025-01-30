@@ -38,7 +38,7 @@
       margin-top: 6rem;
     }
 
-    p:nth-child(1) {
+    h2 {
       @extend h2;
       color: $primary-violet !important;
       font-weight: $font-weight-semi-bold !important;
@@ -47,16 +47,20 @@
       }
     }
 
-    p:nth-child(2) {
-      line-height: 0; // It's a single heart icon. Remove its line height.
-      margin: 0;
-    }
-
-    img {
+    h2::after {
       animation: pulse 0.75s linear infinite normal forwards;
+      background: url('../img/heart.svg') no-repeat;
+      background-position: center center;
+      content: '';
+      display: block;
+      height: 1.5rem;
+      margin-top: 1rem;
+      @include media-up(xl) {
+        margin-top: 1.75rem;
+      }
     }
 
-    p:nth-child(3) {
+    p {
       @extend h3;
       font-weight: $font-weight-default !important;
       max-width: 400px;
