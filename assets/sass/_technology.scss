@@ -1,0 +1,29 @@
+@import 'mixins';
+@import 'vars';
+
+.technology {
+  &--head {
+    background: linear-gradient(180deg, #331fab 14%, #5e00a9 100%);
+    display: flex;
+    padding-bottom: 2.5rem;
+    padding-top: 6.25rem;
+    @include media-up(md) {
+      padding-bottom: 5rem;
+      padding-top: 8.75rem;
+    }
+    @include media-up(xl) {
+      padding-bottom: 7.5rem;
+      padding-top: 12.5rem;
+    }
+
+    &-wrapper {
+      margin: auto 0;
+      width: 100%;
+    }
+
+    &-title {
+      color: $white;
+      overflow: hidden;
+    }
+  }
+}
