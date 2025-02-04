@@ -1,5 +1,5 @@
 <div
-  class="header{{ if not .context.Page.Params.darkHeader }} is-light{{ end }}"
+  class="header{{ if .LightHeader }} is-light{{ end }}"
   data-scroll-lock-fill-gap
   x-data="Header"
 >
@@ -18,7 +18,7 @@
           <a
             class="
               {{- "header--menu-item" }}
-              {{- if eq $.context.RelPermalink .URL }} is-active{{ end -}}
+              {{- if eq $.RelPermalink .URL }} is-active{{ end -}}
             "
             href="{{ .URL }}"
             >{{ .Name }}</a

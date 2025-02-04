@@ -2,7 +2,6 @@
 title: Full-stack, Continuous Integration (CI), and transparency — ivelum’s values
 description: Our advantages are full stack development, Continuous Integration (CI) and transparent communication—which help us build digital products fast and lean. Explore how ivelum works.
 layout: how-we-work
-darkHeader: true
 menus:
   main:
     name: How we work

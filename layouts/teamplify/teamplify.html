@@ -1,3 +1,11 @@
+{{- define "header" }}
+  {{ partial "header.html" (dict
+    "RelPermalink" .RelPermalink
+    "LightHeader" true
+    "TalkToUsAbsolute" false
+    ) }}
+{{- end }}
+
 {{- define "main" }}
   <div class="page teamplify">
     <div class="container">

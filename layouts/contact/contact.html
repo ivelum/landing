@@ -1,4 +1,12 @@
-{{ define "main" }}
+{{- define "header" }}
+  {{ partial "header.html" (dict
+    "RelPermalink" .RelPermalink
+    "LightHeader" true
+    "TalkToUsAbsolute" false
+    ) }}
+{{- end }}
+
+{{- define "main" }}
   <div class="page contact">
     <div class="container">
       <h1 class="contact--title">Contact</h1>

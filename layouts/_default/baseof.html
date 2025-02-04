@@ -79,8 +79,12 @@
 <body>
 
 {{- block "header" . }}
-  {{ partial "header.html" (dict "context" . "TalkToUsAbsolute" false) }}
-{{ end }}
+  {{ partial "header.html" (dict
+    "RelPermalink" .RelPermalink
+    "LightHeader" false
+    "TalkToUsAbsolute" false
+    ) }}
+{{- end }}
 
 {{- block "main" . }}
 {{- end }}

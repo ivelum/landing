@@ -1,6 +1,10 @@
 {{- define "header" }}
-  {{ partial "header.html" (dict "context" . "TalkToUsAbsolute" true) }}
-{{ end }}
+  {{ partial "header.html" (dict
+    "RelPermalink" .RelPermalink
+    "LightHeader" true
+    "TalkToUsAbsolute" true
+    ) }}
+{{- end }}
 
 {{- define "main" }}
   {{- $posts := .Pages.ByDate.Reverse }}
