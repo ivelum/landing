@@ -26,4 +26,17 @@
       overflow: hidden;
     }
   }
+
+  &--content {
+    :nth-child(1 of p) {
+      font-size: 1.75rem;
+    }
+
+    :nth-child(1 of ul) {
+      li {
+        display: inline-block;
+        width: 33%;
+      }
+    }
+  }
 }
