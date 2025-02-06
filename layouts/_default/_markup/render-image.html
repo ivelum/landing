@@ -2,7 +2,10 @@
   The maximum article container width is set to 738px with 1.25rem padding
   (see the ".narrow-container" class), which results in the effective maximum
   image width of 698px.
+
+  For pages in the /blog/ section we also add a magnification link.
 */}}
+{{- $makeLink := hasPrefix .Page.Path "/blog/" }}
 {{- $previewWidth := 698 }}
 {{- $img := .Page.Resources.Get .Destination }}
 {{- $width := "" }}
@@ -21,10 +24,14 @@
     {{- $height = cast.ToInt (math.Mul $img.Height (math.Div (cast.ToFloat $previewWidth2x) $img.Width)) }}
   {{- end }}
 {{- end }}
+{{- if $makeLink }}
 <a href="{{ .Destination }}" data-pswp-width="{{ $width }}" data-pswp-height="{{ $height }}">
+{{- end }}
 {{- partial "image.html" (dict
   "Img" $img
   "Alt" .Text
   "Width" $previewWidth
   ) }}
+{{- if $makeLink }}
 </a>
+{{- end }}
