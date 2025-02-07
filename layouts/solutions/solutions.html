@@ -9,12 +9,6 @@
             <a
               class="solutions--anchors-item"
               href="{{ $.RelPermalink}}#{{ urlize .Title }}"
-              x-data
-              x-on:click.prevent="
-                document
-                  .getElementById('{{ urlize .Title }}')
-                  .scrollIntoView({ behavior: 'smooth' })
-              "
               >{{ .Title }}</a
             >
           </div>
