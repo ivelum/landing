@@ -58,8 +58,18 @@
       @include list-table(1px);
 
       li {
-        padding: 1.75rem 2rem;
+        display: flex;
+        align-items: center;
+        padding: 1.75rem .5rem 1.75rem 2rem;
         width: 33%;
+
+        img {
+          height: 2.5rem;
+
+          &:last-child {
+            margin-right: 1rem;
+          }
+        }
       }
     }
 
@@ -120,11 +130,16 @@
           // Technology name
           display: flex;
           gap: 1rem;
+          align-items: center;
           font-size: $font-size-bigger;
           font-weight: 600;
 
-          img:nth-child(n + 2) {
-            margin-left: 2rem;
+          img {
+            height: 3.25rem;
+
+            &:nth-child(n + 2) {
+              margin-left: 2rem;
+            }
           }
         }
 
