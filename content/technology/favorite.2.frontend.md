@@ -4,7 +4,7 @@ title: Frontend
 slug: frontend
 ---
 
-- ![React](logos/react.svg) React.js
+- ![React](logos/react.svg) React
 
   React is the most popular frontend framework. It’s fast, robust, and very
   practical. We can build almost anything with it, thanks to its huge ecosystem

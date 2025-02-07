@@ -5,9 +5,9 @@ shortTitle: Testing
 slug: testing
 ---
 
-- ![Pytest](logos/pytest.svg) Pytest ![Jest](logos/jest.svg) Jest
+- ![pytest](logos/pytest.svg) pytest ![Jest](logos/jest.svg) Jest
 
-  We use Pytest for writing automated tests in Python and Jest for
+  We use pytest for writing automated tests in Python and Jest for
   JavaScript / TypeScript. Both frameworks are powerful, convenient, and
   provide a robust foundation for building a test suite for the backend and
   frontend.
