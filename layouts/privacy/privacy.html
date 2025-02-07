@@ -1,5 +1,9 @@
 {{- define "header" }}
-  {{ partial "header.html" (dict "LightHeader" true) }}
+  {{ partial "header.html" (dict
+    "RelPermalink" .RelPermalink
+    "LightHeader" true
+    "TalkToUsAbsolute" false
+    ) }}
 {{- end }}
 
 {{- define "main" }}
