@@ -30,12 +30,27 @@
   &--content {
     :nth-child(1 of p) {
       font-size: 1.75rem;
+      line-height: 2.8rem;
+      margin-bottom: 2.5rem;
+      margin-top: 6.25rem;
+      width: 46rem;
     }
 
     :nth-child(1 of ul) {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+
+      $border-width: 1px;
+      padding: $border-width 0 0 $border-width; // Compensate for collapsed borders
+
       li {
-        display: inline-block;
+        display: block;
+        padding: 1.75rem 2rem;
         width: 33%;
+
+        border: $border-color-default $border-width solid;
+        margin: -#{$border-width} 0 0 -#{$border-width}; // Collapse the borders
       }
     }
   }
