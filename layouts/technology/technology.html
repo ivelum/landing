@@ -10,5 +10,14 @@
     <div class="technology--content">
       {{ .Content }}
     </div>
+    <ul>
+    {{- range sort (where .Pages "Params.category" "favorite") "File.Path" }}
+      <li><a href="#{{ .Params.slug }}">{{ .Title }}</a></li>
+    {{- end }}
+    </ul>
+    {{- range sort (where .Pages "Params.category" "favorite") "File.Path" }}
+      <h2 id="{{ .Params.slug }}">{{ .Title }}</h2>
+      {{ .Content }}
+    {{- end }}
   </div>
 {{- end }}

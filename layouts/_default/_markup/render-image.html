@@ -8,6 +8,12 @@
 {{- $makeLink := hasPrefix .Page.Path "/blog/" }}
 {{- $previewWidth := 698 }}
 {{- $img := .Page.Resources.Get .Destination }}
+{{- if not $img }}
+  {{/*
+    If you know a better way of getting images reliably - please fix this:
+  */}}
+  {{- $img = .Page.Parent.Resources.Get .Destination }}
+{{- end }}
 {{- $width := "" }}
 {{- $height := "" }}
 {{- if ne $img.MediaType.SubType "svg" }}

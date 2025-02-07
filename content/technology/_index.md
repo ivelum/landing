@@ -1,6 +1,6 @@
 ---
 title: Our technology stack for сustom web development — ivelum
-description: Explore technologies powering our web and software development services. We utilize a modern tech stack and a full-stack approach to deliver robust digital solutions. 
+description: Explore technologies powering our web and software development services. We utilize a modern tech stack and a full-stack approach to deliver robust digital solutions.
 layout: technology
 cascade:
   sitemap:
@@ -33,3 +33,13 @@ We work with a broad range of technologies, APIs, and service providers:
 - ![OpenAI](logos/openai.svg) OpenAI
 - ![Stripe](logos/stripe.svg) Stripe
 - ![Slack](logos/slack.svg) Slack
+
+## Our favorite tech stack
+
+![Our favorite tech stack](img/favorite-tech-stack.svg)
+
+While we work with many different technologies, it doesn't mean we don't have
+our favorites. Here's our go-to stack that we think works exceptionally well
+for a wide range of projects.
+
+
