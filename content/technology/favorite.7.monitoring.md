@@ -23,5 +23,4 @@ slug: monitoring
 - ![Uptime.com](logos/uptime.svg) Uptime.com
   ![Pingdom](logos/pingdom.svg) Pingdom
 
-  New Relic and Datadog are the two leading providers in application performance
-  monitoring (APM). Both are great, and we use both.
+  We use Uptime.com and Pingdom for service uptime monitoring.
