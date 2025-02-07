@@ -1,5 +1,9 @@
 {{- define "header" }}
-  {{ partial "header.html" (dict "context" . "TalkToUsAbsolute" true) }}
+  {{ partial "header.html" (dict
+    "context" .
+    "LightHeader" true
+    "TalkToUsAbsolute" true
+    ) }}
 {{ end }}
 
 {{- define "main" }}
