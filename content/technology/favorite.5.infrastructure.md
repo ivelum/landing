@@ -12,6 +12,6 @@ slug: infrastructure
 - ![CloudFormation](logos/cloudformation.svg) CloudFormation
   ![Terraform](logos/terraform.svg) Terraform
 
-  CloudFormation and Terraform are tools for defining infrastructure as a code
-  (IaaC). CloudFormation only works with AWS, and Terraform is multi-cloud.
-  Both of them are great, and we use both.
+  CloudFormation and Terraform are tools for defining infrastructure as code
+  (IaC). CloudFormation only works with AWS, and Terraform is multi-cloud. Both
+  of them are great, and we use both.
