@@ -1,6 +1,20 @@
 @import 'mixins';
 @import 'vars';
 
+@mixin list-table($border-width) {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+
+  padding: $border-width 0 0 $border-width; // Compensate for collapsed borders
+
+  li {
+    display: block;
+    border: $border-color-default $border-width solid;
+    margin: -#{$border-width} 0 0 -#{$border-width}; // Collapse the borders
+  }
+}
+
 .technology {
   &--head {
     background: linear-gradient(180deg, #331fab 14%, #5e00a9 100%);
@@ -28,29 +42,95 @@
   }
 
   &--content {
-    :nth-child(1 of p) {
+    @mixin lead {
       font-size: 1.75rem;
       line-height: 2.8rem;
+    }
+
+    :nth-child(1 of p) {
+      @include lead;
       margin-bottom: 2.5rem;
       margin-top: 6.25rem;
       width: 46rem;
     }
 
     :nth-child(1 of ul) {
-      display: flex;
-      flex-wrap: wrap;
-      margin: 0;
-
-      $border-width: 1px;
-      padding: $border-width 0 0 $border-width; // Compensate for collapsed borders
+      @include list-table(1px);
 
       li {
-        display: block;
         padding: 1.75rem 2rem;
         width: 33%;
+      }
+    }
 
-        border: $border-color-default $border-width solid;
-        margin: -#{$border-width} 0 0 -#{$border-width}; // Collapse the borders
+    h2 {
+      color: $primary-violet;
+      margin-bottom: 3.75rem;
+      margin-top: 6.25rem;
+    }
+
+    p:last-child {
+      @include lead;
+      margin-bottom: 3.75rem;
+      margin-top: 3.75rem;
+      width: 58rem;
+    }
+  }
+
+  &--domains {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: block;
+
+      a {
+        @include transition(border);
+        display: block;
+        border: 2px solid rgba($border-color-pill, 0.5);
+        border-radius: 2rem;
+        padding: 0.875rem 1.5rem;
+        line-height: 1rem;
+
+        &:hover {
+          border-color: $border-color-pill;
+        }
+      }
+    }
+  }
+
+  h3 {
+    margin-top: 3.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &--domain {
+    ul {
+      @include list-table(1px);
+
+      li {
+        padding: 2rem;
+        width: 50%;
+        flex-grow: 1;
+
+        p:first-child {
+          // Technology name
+          display: flex;
+          gap: 1rem;
+          font-size: $font-size-bigger;
+          font-weight: 600;
+
+          img:nth-child(n + 2) {
+            margin-left: 2rem;
+          }
+        }
+
+        p:nth-child(n + 2) {
+          max-width: 42.5rem;
+        }
       }
     }
   }

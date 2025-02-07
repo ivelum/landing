@@ -1,23 +1,27 @@
 {{- define "main" }}
-  <div class="technology--head">
-    <div class="technology--head-wrapper">
-      <div class="container">
-        <h1 class="technology--head-title">Technology</h1>
+  <div class="technology">
+    <div class="technology--head">
+      <div class="technology--head-wrapper">
+        <div class="container">
+          <h1 class="technology--head-title">Technology</h1>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="container">
-    <div class="technology--content">
-      {{ .Content }}
+    <div class="container">
+      <div class="technology--content">
+        {{ .Content }}
+      </div>
+      <ul class="technology--domains">
+      {{- range sort (where .Pages "Params.category" "favorite") "File.Path" }}
+        <li><a href="#{{ .Params.slug }}">{{ or .Params.ShortTitle .Title }}</a></li>
+      {{- end }}
+      </ul>
+      {{- range sort (where .Pages "Params.category" "favorite") "File.Path" }}
+        <h3 id="{{ .Params.slug }}">{{ .Title }}</h2>
+        <div class="technology--domain">
+          {{ .Content }}
+        </div>
+      {{- end }}
     </div>
-    <ul>
-    {{- range sort (where .Pages "Params.category" "favorite") "File.Path" }}
-      <li><a href="#{{ .Params.slug }}">{{ .Title }}</a></li>
-    {{- end }}
-    </ul>
-    {{- range sort (where .Pages "Params.category" "favorite") "File.Path" }}
-      <h2 id="{{ .Params.slug }}">{{ .Title }}</h2>
-      {{ .Content }}
-    {{- end }}
   </div>
 {{- end }}

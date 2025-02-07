@@ -41,5 +41,3 @@ We work with a broad range of technologies, APIs, and service providers:
 While we work with many different technologies, it doesn't mean we don't have
 our favorites. Here's our go-to stack that we think works exceptionally well
 for a wide range of projects.
-
-
