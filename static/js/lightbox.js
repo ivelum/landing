@@ -2,19 +2,19 @@ import PhotoSwipe from 'photoswipe';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
 
-window.addEventListener("load", function () {
+window.addEventListener('load', function () {
   document
-    .getElementsByClassName("article--content")[0]
+    .getElementsByClassName('article--content')[0]
     .querySelectorAll('img')
-    .forEach(function (img) {
+    .forEach((img) => {
       let parentNode = img.parentNode;
-      if (parentNode.tagName === "PICTURE") {
+      if (parentNode.tagName === 'PICTURE') {
         parentNode = parentNode.parentNode;
       }
-      if (parentNode.tagName === "A") {
+      if (parentNode.tagName === 'A') {
         const lightbox = new PhotoSwipeLightbox({
           gallery: parentNode,
-          pswpModule: PhotoSwipe
+          pswpModule: PhotoSwipe,
         });
         lightbox.init();
       }
