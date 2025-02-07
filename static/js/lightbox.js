@@ -1,13 +1,8 @@
-import PhotoSwipeLightbox from '/vendor/photoswipe-lightbox.esm.min.js';
-import PhotoSwipe from '/vendor/photoswipe.esm.min.js';
+import PhotoSwipe from 'photoswipe';
+import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import 'photoswipe/style.css';
 
 window.addEventListener("load", function () {
-  const link = document.createElement('link');
-  link.type = 'text/css';
-  link.rel = 'stylesheet';
-  document.head.appendChild(link);
-
-  link.href = '/vendor/photoswipe.css';
   document
     .getElementsByClassName("article--content")[0]
     .querySelectorAll('img')
