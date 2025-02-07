@@ -28,5 +28,16 @@
         {{- end }}
       </div>
     </div>
+    <div class="technology--how-we-work">
+      <div class="container">
+        {{- with .GetPage "how-we-work" }}
+          {{ .Content }}
+        {{- end }}
+      </div>
+    </div>
   </div>
+{{- end }}
+
+{{- define "footer" }}
+  {{ partial "footer.html" (dict "Hug" true) }}
 {{- end }}

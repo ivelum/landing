@@ -143,5 +143,32 @@
       margin-right: 2rem;
       margin-top: 1rem;
     }
+
+    a {
+      @extend .link-underline;
+    }
+  }
+
+  &--how-we-work {
+    margin-top: 6.25rem;
+    padding-top: 5.625rem;
+    padding-bottom: 5.625rem;
+    background-color: $primary-orange;
+    color: $white;
+
+    p {
+      font-size: 1.75rem;
+    }
+
+    a {
+      @extend .link-underline;
+      background-image: linear-gradient($white, $white) !important;
+      color: $white !important;
+
+      &:hover {
+        color: $link-primary-hover-color;
+        text-decoration: $link-primary-hover-decoration;
+      }
+    }
   }
 }
