@@ -22,6 +22,11 @@
           {{ .Content }}
         </div>
       {{- end }}
+      <div class="technology--hugo">
+        {{- with .GetPage "hugo" }}
+          {{ .Content }}
+        {{- end }}
+      </div>
     </div>
   </div>
 {{- end }}
