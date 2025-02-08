@@ -40,7 +40,7 @@
     &-item {
       @include transition(border);
       @include a-no-underline;
-      border: 2px solid rgba($border-color-pill, 0.5);
+      border: 2px solid rgba($border-color-chip, 0.5);
       border-radius: 2rem;
       color: $white;
       display: block;
@@ -55,7 +55,7 @@
       }
 
       &:hover {
-        border-color: $border-color-pill;
+        border-color: $border-color-chip;
         color: $white;
       }
     }

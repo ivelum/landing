@@ -101,13 +101,13 @@
       a {
         @include transition(border);
         display: block;
-        border: 2px solid rgba($border-color-pill, 0.5);
+        border: 2px solid rgba($border-color-chip, 0.5);
         border-radius: 2rem;
         padding: 0.875rem 1.5rem;
         line-height: 1rem;
 
         &:hover {
-          border-color: $border-color-pill;
+          border-color: $border-color-chip;
         }
       }
     }
