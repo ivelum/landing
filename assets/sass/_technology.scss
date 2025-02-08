@@ -123,31 +123,34 @@
       @include list-table(1px);
 
       li {
+        display: flex;
         padding: 2rem;
         width: 50%;
         flex-grow: 1;
+        flex-wrap: wrap;
+        align-content: start;
 
-        p:first-child {
+        p:not(:last-child) {
           // Technology name
           display: flex;
+          flex-grow: 1;
+          margin: 0;
           gap: 1rem;
           align-items: center;
           font-size: $font-size-bigger;
           font-weight: 600;
+          width: 50%;
 
           img {
             height: 3.25rem;
-
-            &:nth-child(n + 2) {
-              margin-left: 2rem;
-            }
           }
         }
 
-        p:nth-child(n + 2) {
+        p:last-child {
           font-size: $font-size-default;
           margin-top: 0.5rem;
           max-width: 42.5rem;
+          width: 100%;
         }
       }
     }

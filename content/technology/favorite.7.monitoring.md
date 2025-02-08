@@ -15,12 +15,14 @@ slug: monitoring
   AWS CloudWatch helps us keep an eye on our infrastructure in AWS.
 
 - ![New Relic](logos/newrelic.svg) New Relic
+
   ![Datadog](logos/datadog.svg) Datadog
 
   New Relic and Datadog are the two leading providers in application performance
   monitoring (APM). Both are great, and we use both.
 
 - ![Uptime.com](logos/uptime.svg) Uptime.com
+
   ![Pingdom](logos/pingdom.svg) Pingdom
 
   We use Uptime.com and Pingdom for service uptime monitoring.

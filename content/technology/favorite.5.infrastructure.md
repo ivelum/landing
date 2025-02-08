@@ -10,6 +10,7 @@ slug: infrastructure
   combination of functionality, stability, and customer support.
 
 - ![CloudFormation](logos/cloudformation.svg) CloudFormation
+
   ![Terraform](logos/terraform.svg) Terraform
 
   CloudFormation and Terraform are tools for defining infrastructure as code
