@@ -11,7 +11,7 @@
       <div class="technology--content">
         {{ .Content }}
       </div>
-      <ul class="technology--domains">
+      <ul class="technology--domain-list">
       {{- range sort (where .Pages "Params.category" "favorite") "File.Path" }}
         <li><a href="#{{ .Params.slug }}">{{ or .Params.ShortTitle .Title }}</a></li>
       {{- end }}
