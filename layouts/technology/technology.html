@@ -13,6 +13,12 @@
         {{ .Content }}
       </div>
 
+      <div class="technology--favorite">
+        {{- with .GetPage "favorite" }}
+          {{ .Content }}
+        {{- end }}
+      </div>
+
       <ul class="technology--domain-list">
       {{- range sort (where .Pages "Params.category" "favorite") "File.Path" }}
         <li><a href="#{{ .Params.slug }}">{{ or .Params.ShortTitle .Title }}</a></li>

@@ -41,19 +41,19 @@
     }
   }
 
-  &--content {
-    @mixin lead {
-      font-size: 1.25rem;
-      line-height: 1.6;
-      @include media-up(lg) {
-        font-size: 1.5rem;
-      }
-      @include media-up(xl) {
-        font-size: 1.75rem;
-      }
+  @mixin lead {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    @include media-up(lg) {
+      font-size: 1.5rem;
     }
+    @include media-up(xl) {
+      font-size: 1.75rem;
+    }
+  }
 
-    :nth-child(1 of p) {
+  &--content {
+    p:first-of-type {
       @include lead;
       max-width: 46rem;
 
@@ -69,7 +69,7 @@
       }
     }
 
-    :nth-child(1 of ul) {
+    ul:first-of-type {
       @include list-table(1px);
 
       li {
@@ -91,13 +91,15 @@
         img {
           height: 2.5rem;
 
-          &:last-child {
+          &:last-of-type {
             margin-right: 1rem;
           }
         }
       }
     }
+  }
 
+  &--favorite {
     h2 {
       color: $primary-violet;
 
@@ -113,7 +115,7 @@
       }
     }
 
-    p:last-child {
+    p:last-of-type {
       @include lead;
       max-width: 58rem;
 
@@ -123,8 +125,18 @@
       }
     }
 
-    p > img {
+    img {
       width: 100%;
+      &:nth-of-type(1) {
+        display: block;
+        margin: 0 auto;
+        max-width: 35rem;
+      }
+      &:nth-of-type(2) { display: none; }
+      @include media-up(lg) {
+        &:nth-of-type(1) { display: none; }
+        &:nth-of-type(2) { display: block; }
+      }
     }
   }
 
@@ -192,7 +204,7 @@
           margin: 0;
         }
 
-        p:not(:last-child) {
+        p:not(:last-of-type) {
           // Technology name
           display: flex;
           flex: 1 col(2, $gap);
@@ -207,7 +219,7 @@
           }
         }
 
-        p:last-child {
+        p:last-of-type {
           font-size: $font-size-default;
           max-width: 42.5rem;
         }
