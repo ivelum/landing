@@ -56,6 +56,12 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: hugo && hugo deploy
 
+      - run: hugo gen chromastyles --style=github > github.css
+      - uses: actions/upload-artifact@v4
+        with:
+          name: github.css
+          path: github.css
+
       # Send notification on build or deploy failure
       - name: Notify slack fail
         uses: ivelum/github-action-slack-notify-build@v1.7.2
