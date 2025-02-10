@@ -29,7 +29,6 @@ $header-menu-open-duration: 0.3s;
   }
 
   &--logo {
-    @include a-no-underline;
     position: relative;
     z-index: 200;
   }
@@ -154,7 +153,6 @@ $header-menu-open-duration: 0.3s;
 
   &--button {
     @include transition(background-color 0.5s);
-    @include a-no-underline;
     align-self: flex-start;
     appearance: none;
     background-color: $white;

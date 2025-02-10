@@ -87,7 +87,7 @@ a {
   text-decoration: none;
 
   &:hover {
-    @include a-no-underline;
+    background-size: 0 1px;
     color: $font-color-dark;
   }
 }

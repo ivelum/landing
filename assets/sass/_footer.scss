@@ -96,7 +96,6 @@
   }
 
   &--logo {
-    @include a-no-underline;
     .logo-g-text path {
       fill: $primary-violet;
     }
@@ -130,7 +129,6 @@
   }
 
   &--menu-item {
-    @include a-no-underline;
     font-size: $font-size-smaller;
     padding: 0.125rem 0;
     position: relative;

@@ -39,8 +39,6 @@
 
   &--link-prev,
   &--link-next {
-    @include a-no-underline;
-
     svg {
       @include transition(transform 0.25s);
       margin-top: -3px; // fix position
@@ -69,7 +67,6 @@
   }
 
   &--title {
-    @include a-no-underline;
     color: $font-color-dark;
     font-size: 1.25rem;
     line-height: 1.5;

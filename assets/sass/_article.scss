@@ -31,7 +31,6 @@
   }
 
   &--back-link {
-    @include a-no-underline;
     color: $font-color-default;
     display: inline-block;
     font-size: .875rem;
