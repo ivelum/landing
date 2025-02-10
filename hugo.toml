@@ -10,7 +10,7 @@ disable = true
 block = true
 
 [markup.highlight]
-style = 'github'
+style = 'friendly'
 
 [output]
 home = ['html']
