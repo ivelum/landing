@@ -51,7 +51,7 @@
       @include lead;
       margin-bottom: 2.5rem;
       margin-top: 6.25rem;
-      width: 46rem;
+      max-width: 46rem;
     }
 
     :nth-child(1 of ul) {
@@ -61,8 +61,15 @@
         display: flex;
         align-items: center;
         padding: 1.75rem 2rem;
-        width: 33%;
         font-size: $font-size-default;
+
+        width: col(1);
+        @include media-up(sm) {
+          width: col(2);
+        }
+        @include media-up(lg) {
+          width: col(3);
+        }
 
         img {
           height: 2.5rem;
@@ -84,7 +91,11 @@
       @include lead;
       margin-bottom: 3.75rem;
       margin-top: 3.75rem;
-      width: 58rem;
+      max-width: 58rem;
+    }
+
+    p > img {
+      width: 100%;
     }
   }
 
@@ -125,21 +136,30 @@
       li {
         display: flex;
         padding: 2rem;
-        width: 50%;
-        flex-grow: 1;
+        flex: 1 auto;
         flex-wrap: wrap;
         align-content: start;
+        $gap: 0.5rem;
+        gap: $gap;
+
+        width: col(1);
+        @include media-up(md) {
+          width: col(2);
+        }
+
+        p {
+          margin: 0;
+        }
 
         p:not(:last-child) {
           // Technology name
           display: flex;
-          flex-grow: 1;
-          margin: 0;
+          flex: 1 col(2, $gap);
           gap: 1rem;
           align-items: center;
           font-size: $font-size-bigger;
           font-weight: 600;
-          width: 50%;
+          white-space: nowrap;
 
           img {
             height: 3.25rem;
@@ -148,9 +168,7 @@
 
         p:last-child {
           font-size: $font-size-default;
-          margin-top: 0.5rem;
           max-width: 42.5rem;
-          width: 100%;
         }
       }
     }

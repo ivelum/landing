@@ -42,6 +42,10 @@
   }
 }
 
+@function col($count, $gap: 0px) {
+  @return calc((100% - #{$gap} * #{$count - 1}) / #{$count});
+}
+
 @mixin stylized-scrollbar {
   &::-webkit-scrollbar {
     appearance: none;
