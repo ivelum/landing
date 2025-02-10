@@ -23,5 +23,6 @@ slug: backend
 
 - ![Docker](logos/docker.svg) Docker
 
-  Docker is the industry’s standard containerization tool that powers all our
-  production and development environments.
+  Docker is the industry’s standard containerization tool. It powers all our
+  projects, managed with Kubernetes or ECS in production and Docker Compose
+  in development.
