@@ -234,7 +234,7 @@ And in the code, we use a feature flag called `STAGING` that is enabled
 depending on the domain from which we open the app:
 
 ```javascript
-const STAGING = domain.startswith(‘staging.’);
+const STAGING = domain.startswith('staging.');
 
 ...
 

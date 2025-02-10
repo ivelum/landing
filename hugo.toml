@@ -9,6 +9,9 @@ disable = true
 [markup.goldmark.parser.attribute]
 block = true
 
+[markup.highlight]
+style = 'github'
+
 [output]
 home = ['html']
 section = ['html']

@@ -2,7 +2,7 @@
 @import './mixins';
 
 .blog-subscribe {
-  background-color: #f6f7fc;
+  background-color: $background-darker;
   border-bottom: .5rem solid $primary-violet;
   padding: 1.5rem;
   margin-top: 2rem;
