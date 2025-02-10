@@ -88,7 +88,7 @@ $header-menu-open-duration: 0.3s;
     @include media-up(lg) {
       border: 0;
       flex-direction: row;
-      gap: 1.5rem;
+      gap: 1.75rem;
       margin-top: 0;
       opacity: 1 !important;
       padding: 0;
@@ -109,8 +109,11 @@ $header-menu-open-duration: 0.3s;
     padding: 0.125rem 0;
     position: relative;
     @include media-up(lg) {
-      font-size: 1rem;
+      font-size: $font-size-smaller;
       padding: 0;
+    }
+    @include media-up(xl) {
+      font-size: $font-size-default;
     }
 
     &::after {
