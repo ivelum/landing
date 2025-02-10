@@ -243,7 +243,7 @@
     }
 
     a {
-      @extend .link-underline;
+      @include link-underline;
     }
   }
 
@@ -274,7 +274,7 @@
     }
 
     a {
-      @extend .link-underline;
+      @include link-underline;
       background-image: linear-gradient($white, $white) !important;
       color: $white !important;
 

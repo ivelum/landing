@@ -76,7 +76,7 @@ a {
   }
 }
 
-.link-underline {
+@mixin link-underline {
   @include transition(color 0.6s cubic-bezier(0, 0.5, 0.5, 1), background-size 0.4s cubic-bezier(0, 0.5, 0.5, 1));
   background-image: linear-gradient($primary-orange, $primary-orange);
   background-position: 0 100%;

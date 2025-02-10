@@ -187,7 +187,7 @@
       }
 
       a {
-        @extend .link-underline;
+        @include link-underline;
       }
     }
   }
