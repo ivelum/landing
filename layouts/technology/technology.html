@@ -7,27 +7,32 @@
         </div>
       </div>
     </div>
+
     <div class="container">
       <div class="technology--content">
         {{ .Content }}
       </div>
+
       <ul class="technology--domain-list">
       {{- range sort (where .Pages "Params.category" "favorite") "File.Path" }}
         <li><a href="#{{ .Params.slug }}">{{ or .Params.ShortTitle .Title }}</a></li>
       {{- end }}
       </ul>
+
       {{- range sort (where .Pages "Params.category" "favorite") "File.Path" }}
         <h3 id="{{ .Params.slug }}">{{ .Title }}</h2>
         <div class="technology--domain">
           {{ .Content }}
         </div>
       {{- end }}
+
       <div class="technology--hugo">
         {{- with .GetPage "hugo" }}
           {{ .Content }}
         {{- end }}
       </div>
     </div>
+
     <div class="technology--how-we-work">
       <div class="container">
         {{- with .GetPage "how-we-work" }}
