@@ -12,6 +12,10 @@ window.addEventListener('load', function () {
         parentNode = parentNode.parentNode;
       }
       if (parentNode.tagName === 'A') {
+        const previewWidth = 698; // See render-image.html
+        const previewWidth2x = previewWidth * 2;
+        parentNode.dataset.pswpWidth ||= previewWidth2x;
+        parentNode.dataset.pswpHeight ||= Math.trunc(img.naturalHeight * (previewWidth2x / img.naturalWidth));
         const lightbox = new PhotoSwipeLightbox({
           gallery: parentNode,
           pswpModule: PhotoSwipe,
