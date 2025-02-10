@@ -72,7 +72,7 @@
 
     &-copyright {
       color: rgba($white, 0.4);
-      font-size: 0.875rem;
+      font-size: $font-size-smaller;
       margin-top: 2rem;
       @include media-up(lg) {
         margin-top: auto;
@@ -131,11 +131,11 @@
 
   &--menu-item {
     @include a-no-underline;
-    font-size: 0.875rem;
+    font-size: $font-size-smaller;
     padding: 0.125rem 0;
     position: relative;
     @include media-up(md) {
-      font-size: 0.875rem;
+      font-size: $font-size-smaller;
       padding: 0;
     }
     @include media-up(lg) {

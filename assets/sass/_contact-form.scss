@@ -64,7 +64,7 @@
   }
 
   &--fast-answer {
-    font-size: 0.875rem;
+    font-size: $font-size-smaller;
     opacity: 0.4;
     text-align: center;
 
@@ -148,7 +148,7 @@
 
   input:focus + label,
   input:not(:placeholder-shown) + label {
-    font-size: 0.875rem;
+    font-size: $font-size-smaller;
     opacity: 0.5;
     transform: translateY(-0.9em);
   }
