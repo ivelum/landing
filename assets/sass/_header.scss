@@ -173,7 +173,8 @@ $header-menu-open-duration: 0.3s;
       font-size: 1rem;
     }
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
       background-color: lighten($primary-violet, 55%);
     }
 
@@ -315,7 +316,8 @@ $header-menu-open-duration: 0.3s;
       color: $white;
     }
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
       @include media-up(lg) {
         background-color: lighten($primary-orange, 10%);
       }

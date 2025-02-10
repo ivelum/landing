@@ -439,12 +439,16 @@
     margin-right: 0.375rem;
   }
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     color: lighten($primary-orange, 10%);
   }
 
-  &:hover svg {
-    animation: birdAnimation 0.5s linear infinite normal forwards;
+  &:hover,
+  &:focus-visible {
+   svg {
+      animation: birdAnimation 0.5s linear infinite normal forwards;
+    }
   }
 }
 

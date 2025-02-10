@@ -73,13 +73,19 @@
       transform-origin: left center;
     }
 
-    &:hover .arrow-head {
-      transform: translateX(6px);
+    &:hover,
+    &:focus-visible {
+      .arrow-head {
+        transform: translateX(6px);
+      }
     }
 
-    &:hover .arrow-body {
-      opacity: 1;
-      transform: scaleX(2);
+    &:hover,
+    &:focus-visible {
+      .arrow-body {
+        opacity: 1;
+        transform: scaleX(2);
+      }
     }
   }
 }
