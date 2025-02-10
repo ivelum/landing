@@ -49,18 +49,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: '0.143.1'
+          hugo-version: '0.136.5'
           extended: true
       - env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: hugo && hugo deploy
-
-      - run: hugo gen chromastyles --style=github > github.css
-      - uses: actions/upload-artifact@v4
-        with:
-          name: github.css
-          path: github.css
 
       # Send notification on build or deploy failure
       - name: Notify slack fail
