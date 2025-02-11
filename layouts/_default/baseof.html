@@ -62,7 +62,7 @@
   </script>
 {{- with resources.Get "sass/critical.scss" }}
   {{- $css := . | toCSS (dict "transpiler" "libsass") }}
-  {{- if not hugo.IsDevelopment }}
+  {{- if hugo.IsProduction }}
     {{- $css = $css | minify }}
   {{- end }}
   <style>
@@ -71,7 +71,7 @@
 {{- end }}
 {{- with resources.Get "sass/non-critical.scss" }}
   {{- $css := . | toCSS (dict "transpiler" "libsass") }}
-  {{- if not hugo.IsDevelopment }}
+  {{- if hugo.IsProduction }}
     {{- $css = $css | minify }}
   {{- end }}
   <link rel="preload" href="{{ $css.RelPermalink }}" as="style" onload="this.onload=null;this.rel='stylesheet'">

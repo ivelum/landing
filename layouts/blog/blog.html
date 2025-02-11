@@ -8,7 +8,7 @@
 
 {{- define "main" }}
   {{- $posts := .Pages.ByDate.Reverse }}
-  {{- if not hugo.IsDevelopment }}
+  {{- if hugo.IsProduction }}
     {{- $posts = where $posts "Params.sitemap.disable" "ne" true }}
   {{- end }}
   <div class="page blog">

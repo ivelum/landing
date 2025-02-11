@@ -1,5 +1,5 @@
 {{- $pages := .RegularPages.ByDate.Reverse }}
-{{- if not hugo.IsDevelopment }}
+{{- if hugo.IsProduction }}
   {{- $pages = where $pages "Params.sitemap.disable" "ne" true }}
 {{- end }}
 

@@ -17,7 +17,7 @@
       </div>
     {{ end }}
     {{- $next := .NextInSection }}
-    {{- if and (not hugo.IsDevelopment) $next $next.Params.sitemap.disable }}
+    {{- if and hugo.IsProduction $next $next.Params.sitemap.disable }}
       {{- $next = false }}
     {{- end }}
     {{ with $next }}
