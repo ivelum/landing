@@ -15,8 +15,8 @@
 {{- $width := "" }}
 {{- $height := "" }}
 {{- if ne $img.MediaType.SubType "svg" }}
-  {{- $previewWidth2x := math.Mul $previewWidth 2 }}
-  {{- $previewWidth4x := math.Mul $previewWidth 4 }}
+  {{- $previewWidth2x := mul $previewWidth 2 }}
+  {{- $previewWidth4x := mul $previewWidth 4 }}
   {{- if gt $img.Width $previewWidth4x }}
     {{- $img = $img.Resize (printf "%dx" $previewWidth4x) }}
   {{- end }}

@@ -5,9 +5,7 @@
   {{- $webp = .Img.Process "webp" }}
   {{- if gt .Img.Width .Width }}
     {{- $preview = .Img.Resize (printf "%dx" .Width) }}
-    {{- if $webp }}
-      {{- $previewWebp = $preview.Process "webp" }}
-    {{ end }}
+    {{- $previewWebp = $preview.Process "webp" }}
   {{- end }}
 {{- end }}
 {{ $imgTag := "<img" }}
@@ -18,7 +16,7 @@
 {{- if $webp }}
   <picture>
   {{- if $preview }}
-    <source srcset="{{ $previewWebp.RelPermalink }} 1x, {{ $webp.RelPermalink }} 2x" type="image/webp">
+    <source srcset="{{ $previewWebp.RelPermalink }}, {{ $webp.RelPermalink }} 2x" type="image/webp">
     {{ $imgTag }} src="{{ $preview.RelPermalink }}" srcset="{{ .Img.RelPermalink }} 2x" alt="{{ .Alt }}">
   {{- else }}
     <source srcset="{{ $webp.RelPermalink }}" type="image/webp">
