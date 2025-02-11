@@ -36,7 +36,7 @@ our definition. Bear with me; you'll see why we use these two criteria soon.
 
 Since staging is a separate environment, it makes sense to have a separate code
 branch for it. So we'll have at least two long-living branches, probably called
-"main" for production and "staging" for staging. Ideally, they both should have
+"main" for production and "stage" for staging. Ideally, they both should have
 a CI pipeline configured for automated deployments to production and staging.
 Developers would start working on new features in separate branches and then
 merge them to staging for review:
@@ -313,7 +313,7 @@ launch, we could use a pattern called “dark launch.” Here’s how it works �
 configure a load balancer to send a copy of all traffic requests to the new
 service version:
 
--- IMAGE --
+![Dark launch](dark-launch.svg)
 
 Responses from the new service version are ignored; the old version still
 serves all user traffic. However, it allows us to test the new version's
