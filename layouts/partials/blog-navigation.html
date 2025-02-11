@@ -16,7 +16,11 @@
         </div>
       </div>
     {{ end }}
-    {{ with .NextInSection }}
+    {{- $next := .NextInSection }}
+    {{- if and (not hugo.IsDevelopment) $next $next.Params.sitemap.disable }}
+      {{- $next = false }}
+    {{- end }}
+    {{ with $next }}
       <div class="blog-navigation--item">
         <a href="{{ .RelPermalink }}" class="blog-navigation--link-next">
           Read next
