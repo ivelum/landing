@@ -4,8 +4,6 @@ description: Many engineering teams use staging to test new features before push
 thumbnail: thumbnail.png
 author: Denis Stebunov
 date: 2025-01-29T10:30:00+0200
-sitemap:
-  disable: true
 ---
 
 Many engineering teams test new features on staging before pushing them to
@@ -156,7 +154,7 @@ clever automation, and (maybe) a lot of computing resources, the main issue
 remains fundamentally unsolved. On staging, we're testing a slightly different
 version of the app in slightly different conditions compared to production.
 
--- IMAGE --
+![I don't always test my code, but when I do, I do it in production](i-dont-always-test-my-code.png)
 
 What if, instead of spending time and effort on improving our staging, we
 invest in safe testing in production? There will be other challenges, of
@@ -188,7 +186,7 @@ bug fixes in subsequent releases, and that's why production monitoring and
 crash-reporting is a
 [multi-billion dollar business](https://sentry.io/about/press-releases/sentry-raises-90-million-in-series-e-funding-to-expand-and-drive-adoption-of-developer-first-application-monitoring/).
 
--- IMAGE --
+![Who tests in production: Google, Netflix, OpenAI, and everyone else](who-tests-in-production.svg)
 
 So, let's face it - testing in production is unavoidable, but the big
 difference is how it's performed and controlled. Maybe you participated in an
