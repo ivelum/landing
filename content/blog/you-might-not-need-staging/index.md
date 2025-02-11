@@ -41,7 +41,7 @@ a CI pipeline configured for automated deployments to production and staging.
 Developers would start working on new features in separate branches and then
 merge them to staging for review:
 
--- IMAGE --
+![Feature branches merged to staging for review](feature-branches-merged-to-staging.svg)
 
 So what happens next? The review might take some time—maybe a few days or even
 weeks. Of course, developers won't waste time simply waiting; they'll work on
@@ -55,7 +55,7 @@ green light for deploying them to production.
 When a feature is approved for production deployment, developers merge its
 feature branch back into the main branch, and it gets deployed to production:
 
--- IMAGE --
+![Feature branch merged back to main](feature-branch-merged-to-main.svg)
 
 And here's the problem. We tested that feature on the staging environment
 **together with other features** that were still on staging but not in
@@ -75,7 +75,7 @@ pull request so that we can test it separately. The script automatically
 deploys all pull request updates to its dedicated environment and cleans up the
 environment after the pull request is closed.
 
--- IMAGE --
+![Dedicated feature environments](feature-envs.svg)
 
 This setup is more complicated and requires more resources since we now run
 multiple staging environments simultaneously. However, it brings certain
@@ -92,7 +92,7 @@ Chances are, something else may land in production in the meantime, and the
 longer the feature is reviewed, the bigger the gap becomes between its code
 and the main branch.
 
--- IMAGE --
+![A long-lived feature branch is merged to main](feature-envs-merge-to-main.svg)
 
 So, while this workflow offers some benefits over a single staging environment,
 it still has a major flaw—we aren't testing exactly the same code that goes into
@@ -227,9 +227,9 @@ works. Let’s see some practical examples.
 
 If our team is used to working with staging — what if we organize staging
 right in production? It can be as follows: we add a second domain that points
-to the production app, e.g., `staging.<the-main-app-domain>`:
+to the production app, e.g., `staging.app.example.com`:
 
--- IMAGE --
+![Staging in production](staging-in-production.svg)
 
 And in the code, we use a feature flag called `STAGING` that is enabled
 depending on the domain from which we open the app:
@@ -300,7 +300,7 @@ Even more cautious approach to releasing new features is called "canary
 deployment." In this case, we're not releasing the feature to all users at
 once; we do it gradually, starting with a small percentage of users:
 
--- IMAGE --
+![Canary deployment](canary-deployment.svg)
 
 For example, we may roll out the new feature to 1% percent of users, then to
 10%, and finally to everyone. After each step, we closely watch the production
