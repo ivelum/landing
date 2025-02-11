@@ -269,9 +269,9 @@ so that only our customer support team can control it.
 Sometimes, we may want to have more granular control over which new features
 to enable for users - not just "all new stuff at once" but being able to select
 individual features. You may have seen it in your browser; for example, here's
-Safari:
+Chrome:
 
--- IMAGE --
+![Chrome feature flags](chrome-flags.png)
 
 Every major browser has a long list of feature flags, allowing users to select
 the features they want to enable. When the developers think a new feature is
