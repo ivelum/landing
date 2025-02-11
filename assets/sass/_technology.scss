@@ -126,16 +126,13 @@
     }
 
     img {
+      display: block;
       width: 100%;
-      &:nth-of-type(1) {
-        display: block;
-        margin: 0 auto;
-        max-width: 35rem;
-      }
-      &:nth-of-type(2) { display: none; }
+      margin: 0 auto;
+      max-width: 35rem;
       @include media-up(lg) {
-        &:nth-of-type(1) { display: none; }
-        &:nth-of-type(2) { display: block; }
+        margin: unset;
+        max-width: unset;
       }
     }
   }
