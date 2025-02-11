@@ -123,7 +123,8 @@ query string:
 ```html
 <html>
   ...
-  <script src="https://cdn.teamplify.com/app.js?7127"></script>
+  <!-- Note "7503" in the line below - it's a CI build number: -->
+  <script src="https://app.example.com/bundle.js?7503"></script>
   ...
 </html>
 ```
