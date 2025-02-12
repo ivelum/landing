@@ -345,6 +345,29 @@
     }
   }
 
+  &--clutch {
+    margin: 2rem 0 1rem;
+
+    @include media-up(lg) {
+      align-items: center;
+      display: flex;
+      justify-content: flex-end;
+      margin: 3rem 0 0;
+    }
+  }
+
+  &--clutch-link {
+    display: inline-block;
+    margin-right: 1rem;
+    vertical-align: middle;
+  }
+
+  &--clutch-widget {
+    display: inline-block;
+    max-width: 200px;
+    vertical-align: middle;
+  }
+
   &--team-slider-wrapper {
     max-width: 100%;
     overflow: hidden;
