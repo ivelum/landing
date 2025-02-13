@@ -86,7 +86,7 @@ And if you're building an API or a command-line interface, your design would be
 the documentation and usage examples. It doesn't have to be polished at this
 stage but should include at least the most important use cases.
 
-## #3 - Data structures
+## #3: Data structures
 
 > "Bad programmers worry about the code. Good programmers worry about data
 > structures and their relationships." - *Linus Torvalds*.
