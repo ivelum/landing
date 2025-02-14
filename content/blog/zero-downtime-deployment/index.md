@@ -1,6 +1,7 @@
 ---
 title: Update with no fear — achieving zero-downtime deployment
 description: "The key principles of zero-downtime deployment applied to the main components of any web app: the backend, the frontend, and the database"
+thumbnail: thumbnail.png
 author: Denis Stebunov
 date: 2025-02-10T15:54:00+0200
 sitemap:
@@ -150,7 +151,7 @@ that users don't have to do anything and can continue to work normally. This
 idea can be implemented in various ways. Let's see a concrete example of how
 we did it in one of our projects, [Teamplify](https://teamplify.com):
 
---IMAGE--
+![App version update](app-version-update.svg)
 
 Both the frontend and backend use the build number from the CI server to be
 aware of their version. The backend includes its version in the HTTP response
