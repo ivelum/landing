@@ -57,4 +57,5 @@ In this episode, we'll talk about ...
 
 ## License
 
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+- Code: MIT
+- Text and visual content: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
