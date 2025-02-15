@@ -29,11 +29,9 @@
   <meta property="og:description" content="{{ .Description }}">
   <meta property="og:url" content="{{ .Permalink }}">
 
-{{- $page := . }}
-{{- with .Params.thumbnail }}
-  {{- $thumbnail := $page.Resources.Get . }}
-  <meta property="og:image" content="{{ $thumbnail.Permalink }}">
-  <meta name="twitter:image" content="{{ $thumbnail.Permalink }}">
+{{- with .Resources.Get .Params.thumbnail }}
+  <meta property="og:image" content="{{ .Permalink }}">
+  <meta name="twitter:image" content="{{ .Permalink }}">
   <meta name="twitter:card" content="summary_large_image">
 {{- else }}
   <meta name="twitter:card" content="summary">
