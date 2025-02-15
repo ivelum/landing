@@ -50,9 +50,9 @@
       content: '';
       display: block;
       height: 1.5rem;
-      margin-top: 1rem;
-      @include media-up(xl) {
-        margin-top: 1.75rem;
+      margin-top: $tagline-gap-xs;
+      @include media-up(lg) {
+        margin-top: $tagline-gap-lg;
       }
     }
 
