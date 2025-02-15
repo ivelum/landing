@@ -50,9 +50,10 @@
       content: '';
       display: block;
       height: 1.5rem;
-      margin-top: $tagline-gap-xs;
+      width: 1.5rem;
+      margin: $tagline-gap-xs auto 0;
       @include media-up(lg) {
-        margin-top: $tagline-gap-lg;
+        margin: $tagline-gap-lg auto 0;
       }
     }
 
