@@ -26,9 +26,11 @@
       </ul>
 
       {{- range sort (where .Pages "Params.category" "favorite") "File.Path" }}
-        <h3 id="{{ .Params.slug }}">
-          {{ .Title }}<a class="heading-link" href="#{{ .Params.slug }}"></a>
-        </h3>
+        {{ partial "heading.html" (dict
+          "Level" 3
+          "Text" .Title
+          "Anchor" .Params.slug
+          ) }}
         <div class="technology--domain">
           {{ .Content }}
         </div>

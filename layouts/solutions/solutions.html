@@ -27,10 +27,11 @@
     {{- range sort (where .Pages "Params.category" "solutions") "File.Path" }}
       <div class="solutions--item">
         <div class="solutions--item-body">
-          {{- $slug := urlize .Title }}
-          <h3 class="solutions--item-title" id="{{ $slug }}">
-            {{ .Title }}<a class="heading-link" href="#{{ $slug }}"></a>
-          </h3>
+          {{ partial "heading.html" (dict
+            "Level" 3
+            "Text" .Title
+            "Class" "solutions--item-title"
+            ) }}
           <div class="solutions--item-text">
             {{ .Content }}
           </div>

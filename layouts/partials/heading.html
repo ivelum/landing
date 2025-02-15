@@ -1,0 +1,7 @@
+{{- $anchor := or .Anchor (urlize .Text) }}
+<h{{ .Level }} id="{{ $anchor }}" {{- with .Class }} class="{{ . }}" {{- end }}>
+  {{- .Text -}}
+  {{- if not (strings.Contains .Class "no-link") -}}
+    <a class="heading-link" href="#{{ $anchor }}"></a>
+  {{- end -}}
+</h{{ .Level }}>

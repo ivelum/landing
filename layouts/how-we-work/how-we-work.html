@@ -23,10 +23,11 @@
           alt="{{ .Title }}"
         />
         <div class="how-we-work--item-body">
-          {{- $slug := urlize .Title }}
-          <h3 class="how-we-work--item-title" id="{{ $slug }}">
-            {{ .Title }}<a class="heading-link" href="#{{ $slug }}"></a>
-          </h3>
+          {{ partial "heading.html" (dict
+            "Level" 3
+            "Text" .Title
+            "Class" "how-we-work--item-title"
+            ) }}
           <div class="how-we-work--item-text">
             {{ .Content }}
           </div>

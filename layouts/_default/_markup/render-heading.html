@@ -1,6 +1,6 @@
-<h{{ .Level }} id="{{ .Anchor }}" {{- with .Attributes.class }} class="{{ . }}" {{- end }}>
-  {{- .Text -}}
-  {{- if not (strings.Contains .Attributes.class "no-link") -}}
-    <a class="heading-link" href="#{{ .Anchor }}"></a>
-  {{- end -}}
-</h{{ .Level }}>
+{{ partial "heading.html" (dict
+  "Level" .Level
+  "Text" .Text
+  "Anchor" .Anchor
+  "Class" .Attributes.class
+  ) }}
