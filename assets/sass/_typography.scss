@@ -194,7 +194,7 @@ p {
 .heading-link {
   @include link-underline;
   opacity: 0;
-  margin-left: 0.5rem;
+  margin-left: 0.25em;
 
   &:hover,
   &:focus-visible {
