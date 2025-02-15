@@ -184,6 +184,28 @@ p {
   }
 }
 
+@for $level from 2 to 6 {
+  h#{$level}:hover .heading-link,
+  h#{$level}:focus-visible .heading-link {
+    opacity: 1;
+  }
+}
+
+.heading-link {
+  @include link-underline;
+  opacity: 0;
+  margin-left: 0.5rem;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 1;
+  }
+
+  &::after {
+    content: "\2060#";
+  }
+}
+
 blockquote {
   color: $font-color-dark;
   margin: 0.5rem 0;
