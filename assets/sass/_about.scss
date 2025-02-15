@@ -418,6 +418,10 @@
       @include media-up(xl) {
         font-size: $font-size-bigger;
       }
+
+      a {
+        @include link-underline;
+      }
     }
 
     &-social {
