@@ -26,7 +26,9 @@
       </ul>
 
       {{- range sort (where .Pages "Params.category" "favorite") "File.Path" }}
-        <h3 id="{{ .Params.slug }}">{{ .Title }}</h2>
+        <h3 id="{{ .Params.slug }}">
+          {{ .Title }}<a class="heading-link" href="#{{ .Params.slug }}"></a>
+        </h3>
         <div class="technology--domain">
           {{ .Content }}
         </div>

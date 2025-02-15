@@ -1,3 +1,6 @@
 <h{{ .Level }} id="{{ .Anchor }}" {{- with .Attributes.class }} class="{{ . }}" {{- end }}>
-  {{- .Text -}}<a class="heading-link" href="#{{ .Anchor }}"></a>
+  {{- .Text -}}
+  {{- if not (strings.Contains .Attributes.class "no-link") -}}
+    <a class="heading-link" href="#{{ .Anchor }}"></a>
+  {{- end -}}
 </h{{ .Level }}>
