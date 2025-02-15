@@ -74,7 +74,9 @@
   </div>
 
   <div class="container">
-    <h2 class="about--title">About</h2>
+    <h2 class="about--title" id="about">
+      About<a class="heading-link" href="#about"></a>
+    </h2>
     <div class="about--about-wrapper">
     {{- range sort (where .Pages "Params.category" "about") "File.Path" }}
       <div class="about--about-item">
@@ -86,7 +88,9 @@
   </div>
 
   <div class="container">
-    <h2 class="about--title">What we do</h2>
+    <h2 class="about--title" id="what-we-do">
+      What we do<a class="heading-link" href="#what-we-do"></a>
+    </h2>
     <div class="about--what-we-do-wrapper">
     {{- range sort (where .Pages "Params.category" "what-we-do") "File.Path" }}
       <div class="about--what-we-do-item">
@@ -135,7 +139,9 @@
   </div>
 
   <div class="container">
-    <h2 class="about--title">What our clients say</h2>
+    <h2 class="about--title" id="what-our-clients-say">
+      What our clients say<a class="heading-link" href="#what-our-clients-say"></a>
+    </h2>
     <div class="about--testimonials-wrapper">
     {{- range sort (where .Pages "Params.category" "testimonials") "File.Path" }}
       <div class="about--testimonials-item">
@@ -188,7 +194,9 @@
   </div>
 
   <div class="container">
-    <h2 class="about--title">Team</h2>
+    <h2 class="about--title" id="team">
+      Team<a class="heading-link" href="#team"></a>
+    </h2>
   </div>
   <div class="about--team-slider-wrapper">
     <div class="about--team-slider swiper">

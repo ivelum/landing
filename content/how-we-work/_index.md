@@ -13,7 +13,7 @@ cascade:
     disable: true
 ---
 
-## Life is too short for bad software
+Life is too short for bad software
 
 We love building quality software, and we love to do it fast.
 

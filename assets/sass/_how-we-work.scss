@@ -35,16 +35,16 @@
       margin-top: 6rem;
     }
 
-    h2 {
+    p:first-of-type {
       @extend h2;
       color: $primary-violet !important;
       font-weight: $font-weight-semi-bold !important;
       @include media-up(xl) {
-        font-size: 3.75rem;
+        font-size: 3.75rem !important;
       }
     }
 
-    h2::after {
+    p:first-of-type::after {
       animation: pulse 0.75s linear infinite normal forwards;
       background: url('/img/heart.svg') no-repeat center center;
       content: '';
@@ -57,7 +57,7 @@
       }
     }
 
-    p {
+    p:not(:first-of-type) {
       @extend h3;
       font-weight: $font-weight-default !important;
       max-width: 400px;
