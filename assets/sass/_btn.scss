@@ -1,7 +1,3 @@
-@import './vars';
-@import './mixins';
-@import './typography';
-
 .btn {
   @include transition(background-color, color, border);
   align-items: center;

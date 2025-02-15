@@ -1,8 +1,9 @@
 @import './fonts';
-@import './footer';
 @import './mixins';
 @import './typography';
 @import './vars';
+
+@import './footer';
 
 .page-not-found {
   .wrapper {

@@ -1,7 +1,3 @@
-@import './mixins';
-@import './vars';
-@import './typography';
-
 @mixin list-table($border-width) {
   display: flex;
   flex-wrap: wrap;
