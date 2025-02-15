@@ -28,6 +28,9 @@
   <meta property="og:title" content="{{ .Title }}">
   <meta property="og:description" content="{{ .Description }}">
   <meta property="og:url" content="{{ .Permalink }}">
+{{- with .Params.author }}
+  <meta property="author" content="{{ . }}">
+{{- end }}
 
 {{- with .Resources.Get .Params.thumbnail }}
   <meta property="og:image" content="{{ .Permalink }}">
