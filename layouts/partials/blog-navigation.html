@@ -1,6 +1,12 @@
+{{- $pages := .CurrentSection.Pages }}
+{{- if not hugo.IsProduction }}
+  {{- $pages = where $pages "Params.sitemap.disable" "ne" true }}
+{{- end }}
+{{- $prev := index (where $pages.ByDate.Reverse "Date" "lt" .Date) 0 }}
+{{- $next := index (where $pages.ByDate "Date" "gt" .Date) 0 }}
 <div class="container">
   <div class="blog-navigation">
-    {{ with .PrevInSection }}
+    {{ with $prev }}
       <div class="blog-navigation--item">
         <a href="{{ .RelPermalink }}" class="blog-navigation--link-prev">
           {{(resources.Get "img/ico-arrow-left.svg").Content | strings.TrimSpace | safeHTML}}
@@ -16,10 +22,6 @@
         </div>
       </div>
     {{ end }}
-    {{- $next := .NextInSection }}
-    {{- if and hugo.IsProduction $next $next.Params.sitemap.disable }}
-      {{- $next = false }}
-    {{- end }}
     {{ with $next }}
       <div class="blog-navigation--item">
         <a href="{{ .RelPermalink }}" class="blog-navigation--link-next">
