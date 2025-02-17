@@ -19,7 +19,7 @@ challenges than solutions? Instead of diving straight into criticism,
 let’s take a step back to understand why we use estimates, where they
 shine, and where they might fall short.
 
-## Why Do We Rely on Estimates?
+## Why do we rely on estimates?
 
 Estimates exist for good reasons. They give us a way to make sense of
 uncertainty and help address some big questions in project planning:
@@ -42,7 +42,7 @@ look closer, it’s fair to ask whether they’re the best tool
 for every situation—or whether they sometimes give us a false
 sense of security.
 
-## Do Estimates Really Deliver What We Want?
+## Do estimates really deliver what we want?
 
 **When it comes to feasibility, the devil’s in the details.**
 One of the biggest challenges with estimates is that they’re often
@@ -71,13 +71,13 @@ A wildly off-base estimate might signal a misunderstanding, but close estimates
 don’t necessarily mean everyone’s on the same page. Discussing specifically
 how to tackle a task usually works better to ensure alignment.
 
-## How to Work more efficiently Without Over-Relying on Estimates
+## How to work more efficiently without over-relying on estimates
 
 So, what’s the alternative? The goal isn’t to avoid estimates entirely—it’s
 to complement them with strategies that work better for the realities of
 software development.
 
-### Flexible deadlines can be the key.
+### Flexible deadlines can be the key
 
 Instead of estimating how long a fixed scope of work will take, use the
 “fixed time/budget and flexible scope” approach. For example, if a startup
@@ -86,7 +86,7 @@ has six months of funding, the goal might be to deliver a Minimum Viable Product
 letting the team adapt as they go. This approach works with results instead of
 predictions and boosts creativity and focus.
 
-### Timeboxing helps teams stay on track.
+### Timeboxing helps teams stay on track
 
 With timeboxing, a fixed length of time is allocated to a task and the best possible
 result is achieved within that timeframe. For exploratory work, like researching
@@ -96,21 +96,21 @@ a library and move forward with our top choice.”
 
 ![Timeboxing for custom software development](timebox.png)
 
-### Continuous delivery keeps the momentum going.
+### Continuous delivery keeps the momentum going
 
 By delivering small, incremental updates frequently, teams can avoid the risks
 of large, infrequent releases. This approach ensures quick feedback and maintains
 progress, shifting the focus from trying to predict timelines to delivering
 value consistently.
 
-### Focus on results instead of deadlines.
+### Focus on results instead of deadlines
 
 Rather than asking, “How long will this take?” try asking, “What can we accomplish
 in the next sprint that has the most impact?” This subtle shift helps teams
 prioritize based on value rather than just checking tasks off a list. It’s about
 doing the right work, not just more work.
 
-### Direct discussions ensure alignment.
+### Direct discussions ensure alignment
 
 Sometimes, estimates are used as a way to find out if a developer understands
 the task. If their estimate matches the lead’s expectations, it’s often assumed
@@ -120,6 +120,7 @@ the root cause of the disagreement.
 
 A more effective alternative is to ask the developer to explain their plan.
 Instead of guessing alignment from numbers, have a direct conversation:
+
 - How do they plan to tackle the task?
 - What steps will they take?
 - Are there any potential challenges or uncertainties they foresee?
@@ -130,13 +131,13 @@ without ambiguity.
 
 >Related read: [our guide](https://ivelum.com/blog/why-public-chats-are-better-than-direct-messages/) on building open communications within the project team.
 
-## Finding Balance: When to Use Estimates Thoughtfully
+## Finding balance: when to use estimates thoughtfully
 
 Estimates aren’t bad—they just need to be used wisely. For instance, they’re
 often more helpful later in a project when there’s a clearer understanding of
 the work involved. Even then, it’s important to frame them as rough guides, not hard commitments.
 
-### Handling Early Estimates: A "Time-to-First-Look" Approach
+### Handling early estimates: a "time-to-first-look" approach
 
 One of the challenges with estimates arises early in a project when
 uncertainty is highest. In these cases, a "time-to-first-look" approach can
