@@ -1,6 +1,6 @@
 ---
 title: Rethinking estimates
-description: Business units often rely on estimates while planning software development or calculating the development cost. Read about a better way to achieve your development goals.
+description: Businesses often rely on estimates while planning software development or projecting its costs. Read about better ways to achieve your development goals.
 thumbnail: thumbnail.png
 author: Denis Stebunov
 date: 2025-02-17T14:37:00+0200
@@ -47,13 +47,13 @@ sense of security.
 **When it comes to feasibility, the devil’s in the details.**
 One of the biggest challenges with estimates is that they’re often
 made at the very start of a project—when uncertainty is at its peak.
-This is where the "Cone of Uncertainty" comes in. 
+This is where the "Cone of Uncertainty" comes in.
 
 ![Cone of Uncertainty in web development](uncertainty.png)
 
 At the beginning, estimates can vary wildly, sometimes by a factor of
 four in either direction. A two-week task could take two days—or two
-months. Even knowing this, clients often assume estimates are promises, 
+months. Even knowing this, clients often assume estimates are promises,
 which can lead to unrealistic expectations and frustration when things
 inevitably go off track.
 
