@@ -4,6 +4,8 @@ description: Businesses often rely on estimates while planning software developm
 thumbnail: thumbnail.png
 author: Denis Stebunov
 date: 2025-02-17T14:37:00+0200
+sitemap:
+  disable: true
 ---
 
 Time estimates have long been part of the DNA of software development.
