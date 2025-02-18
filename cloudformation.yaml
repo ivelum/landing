@@ -15,6 +15,16 @@ Resources:
     Properties:
       BucketName:
         Ref: BucketName
+      CorsConfiguration:
+        CorsRules:
+          - AllowedOrigins:
+            - '*'
+            AllowedMethods:
+             - GET
+            AllowedHeaders:
+            - Authorization
+            - Content-Length
+            MaxAge: 3600
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: 404.html
@@ -67,6 +77,7 @@ Resources:
             - GET
             - HEAD
             - OPTIONS
+          Compress: true
           # ID of the CachingOptimized managed policy, taken from the docs:
           # https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html#managed-cache-caching-optimized
           CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
