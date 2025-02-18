@@ -1,5 +1,5 @@
 {{- $pages := .CurrentSection.Pages }}
-{{- if not hugo.IsProduction }}
+{{- if hugo.IsProduction }}
   {{- $pages = where $pages "Params.sitemap.disable" "ne" true }}
 {{- end }}
 {{- $prev := index (where $pages.ByDate.Reverse "Date" "lt" .Date) 0 }}
