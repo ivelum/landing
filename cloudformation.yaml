@@ -67,15 +67,9 @@ Resources:
             - GET
             - HEAD
             - OPTIONS
-          Compress: true
-          ForwardedValues:
-            QueryString: false
-            Cookies:
-              Forward: none
-            Headers:
-              - Access-Control-Request-Headers
-              - Access-Control-Request-Method
-              - Origin
+          # ID of the CachingOptimized managed policy, taken from the docs:
+          # https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html#managed-cache-caching-optimized
+          CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
         ViewerCertificate:
           AcmCertificateArn:
             Ref: WebsiteCertificateARN
