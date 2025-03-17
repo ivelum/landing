@@ -236,11 +236,11 @@ Don't repeat this mistake; don't tie t-shirt sizes to date ranges.
 Sometimes, managers treat an estimate as a checkpoint when to communicate with
 the developer next time:
 
-```
-- Hey, how long it might take?
-- Maybe a couple of weeks?
-- Okay, I'll check back in a couple of weeks.
-```
+> "Hey, how long it might take?"
+>
+> "Maybe a couple of weeks?"
+>
+> "Okay, I'll check back in a couple of weeks."
 
 It may sound reasonable at first—we don't want to distract developers while
 they're working, so why not check back when they're supposed to finish? The
