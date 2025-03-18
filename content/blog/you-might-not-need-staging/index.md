@@ -6,6 +6,11 @@ author: Denis Stebunov
 date: 2025-01-29T10:30:00+0200
 ---
 
+
+{{< youtube _7fAZFaIwRc >}}
+
+---
+
 Many engineering teams test new features on staging before pushing them to
 production. There’s no doubt that testing is crucial, but is staging really the
 best place to test? Let’s dive in.

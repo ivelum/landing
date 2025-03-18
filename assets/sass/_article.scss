@@ -16,6 +16,12 @@
     margin-top: 1.28rem;
   }
 
+  hr {
+    border-top: solid 1px $font-color-default;
+    border-bottom: 0;
+    margin: 2rem 0;
+  }
+
   &--back {
     margin: 0 auto;
     max-width: $container-narrow-max-width;
