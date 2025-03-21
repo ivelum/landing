@@ -2,7 +2,7 @@
 title: Why you shouldn't start with a mobile app
 description: Why starting your project with a web-based MVP is often faster and more cost-effective? They simplify development, reduce costs, and enable quick iterations—without sacrificing quality.
 thumbnail: thumbnail.png
-author: Denis Stebunov
+author: Roman Biryukov
 date: 2025-03-19T14:37:00+0200
 ---
 
@@ -33,7 +33,7 @@ web development without the complexities of native app development.
 
 What are those complexities? Native mobile development (Swift/Kotlin) requires
 separate codebases for iOS and Android, leading to higher costs, increased
-coordination efforts, and more development time spent. 
+coordination efforts, and more development time spent.
 
 ![A website is the fastes way to launch a product](faster-web.png)
 
@@ -125,7 +125,7 @@ the browser.
 There is a misconception that native mobile apps undeniably have full, low-level access
 to all device capabilities and therefore, are better to build an MVP than a web app.
 However, the list above is a good example of how a growing number of browser APIs is
-rapidly closing the gap between web-based and mobile apps. 
+rapidly closing the gap between web-based and mobile apps.
 
 ## Business perspective
 
