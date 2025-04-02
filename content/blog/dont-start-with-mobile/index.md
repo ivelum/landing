@@ -27,7 +27,7 @@ check feature compatibility on different platforms.
 
 Once you’ve designed and developed a web app with a responsive interface, you’re
 good to go on any device. With nearly 68% of global web traffic coming from mobile
-devices [SimilarWeb](https://www.similarweb.com/platforms/), targeting a broad
+devices, according to [SimilarWeb](https://www.similarweb.com/platforms/), targeting a broad
 mobile audience is a realistic and effective goal that can be achieved through
 web development without the complexities of native app development.
 
@@ -99,12 +99,12 @@ including noise cancellation, the equalizer, in-ear detection, and firmware upda
 
 ![The Pixel Buds Pro Web Companion](buds.png)
 
-- **Local storage.** Tools like IndexedDB, File Handling API, and Cache API allow
-developers to store data locally. For example, the web version of VSCode
+- **Local storage.** Tools like localStorage and IndexedDB allow web apps to store data
+locally. For example, the web version of VSCode
 [saves](https://code.visualstudio.com/docs/editor/vscode-web#_saving-and-sharing-work)
 changes in the browser's local storage while working on a remote repository until the
-next commit is pushed. Another example is the Photopea image editor, which lets users
-open files from their file explorer.
+next commit is pushed. Another good example is Photopea, an online image editor—it
+can locally save custom fonts and brushes you used for future sessions.
 
 ![VSCode stores data locally](vscode.png)
 
@@ -116,16 +116,16 @@ purchasing.
 
 ![Target uses WebGL to render their planner](target.png)
 
-- **Camera and microphone.** Video conferencing platforms like Google Meet and Jitsi Meet
+- **Camera and microphone.** Video conferencing platforms like Google Meet and Zoom's web app
 demonstrate that real-time video and audio communication can be handled entirely through
 the browser.
 
 ![Google Meet asks for a permission](meet.png)
 
-There is a misconception that native mobile apps undeniably have full, low-level access
-to all device capabilities and therefore, are better to build an MVP than a web app.
-However, the list above is a good example of how a growing number of browser APIs is
-rapidly closing the gap between web-based and mobile apps.
+There might be a sentiment that if you need full, low-level access to device capabilities,
+native apps are the only choice, but we think it's no longer accurate. Are native apps a
+better option to build an MVP than a web app? No, and as we've just seen, modern browser
+APIs are rapidly closing the gap between web-based and native mobile development.
 
 ## Business perspective
 
