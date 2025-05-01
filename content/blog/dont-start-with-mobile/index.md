@@ -6,6 +6,10 @@ author: Roman Biryukov
 date: 2025-03-19T14:37:00+0200
 ---
 
+{{< youtube Nceg40iF_I0 >}}
+
+---
+
 Many new project founders believe launching a mobile app is the best way
 to launch a product. It might seem a good choice since mobile usage
 dominates the digital market. However, a mobile-first approach often
