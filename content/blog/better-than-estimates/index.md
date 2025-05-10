@@ -6,6 +6,10 @@ author: Denis Stebunov
 date: 2025-03-13T10:22:00+0200
 ---
 
+{{< youtube cgqMP9G6CEc >}}
+
+---
+
 Estimates are ubiquitous in software development. People routinely use them for
 planning, prioritization, and managing expectations. All these activities are
 crucial for project management, but are estimates really the best tool for the
