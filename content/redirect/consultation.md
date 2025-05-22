@@ -1,6 +1,7 @@
 ---
 title: Consultation - ivelum
 layout: redirect
+url: /consultation/
 link: https://calendly.com/ivelum/consultation
 sitemap: false
 ---
