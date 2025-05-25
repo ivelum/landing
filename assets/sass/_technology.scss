@@ -50,18 +50,24 @@
   }
 
   &--content {
+    padding-top: 3.25rem;
+
+    @include media-up(lg) {
+      padding-top: 4.25rem;
+    }
+    @include media-up(xl) {
+      padding-top: 6.25rem;
+    }
+
     p:first-of-type {
       @include lead;
       max-width: 46rem;
 
-      margin-top: 3.25rem;
       margin-bottom: 1.5rem;
       @include media-up(lg) {
-        margin-top: 4.25rem;
         margin-bottom: 1.75rem;
       }
       @include media-up(xl) {
-        margin-top: 6.25rem;
         margin-bottom: 2.5rem;
       }
     }

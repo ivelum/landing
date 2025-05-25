@@ -1,4 +1,4 @@
-## Our favorite tech stack
+## Tech stack example
 
 {{< art-directed-img
   src="img/favorite-tech-stack-mobile.svg"
@@ -6,6 +6,5 @@
   alt="Our favorite tech stack"
 >}}
 
-While we work with many different technologies, it doesn't mean we don't have
-our favorites. Here's our go-to stack that we think works exceptionally well
-for a wide range of projects.
+Here's an example of how many of our Python-based projects are organized,
+with an explanation of why we selected these technologies:
