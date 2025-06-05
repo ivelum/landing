@@ -126,6 +126,7 @@
     font-size: 1rem;
     margin: .75rem 0;
     padding: 0;
+    table-layout: fixed;
     width: 100%;
 
     @include media-up(lg) {
@@ -138,7 +139,6 @@
       font-weight: 400;
       padding: .75rem 1rem;
       text-align: left;
-      width: 50%;
 
       &:first-child {
         border-radius: $border-radius-default 0 0 $border-radius-default;
