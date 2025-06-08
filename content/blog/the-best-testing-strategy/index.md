@@ -57,8 +57,8 @@ the most important which is...
 
 ### ✅ Confidence
 
-| Unit 🟥 | Integration 🟨🟨  | E2E 🟩🟩🟩  |
-|---------|-------------------|--------------|
+| 🟥 Unit | 🟨🟨 Integration | 🟩🟩🟩 E2E |
+|---------|------------------|-------------|
 
 High-level tests, like integration or end-to-end, provide the best confidence.
 Maybe you've seen memes on the internet like this. If all the low-level tests
@@ -73,7 +73,7 @@ However, it's not the only criterion.
 
 ### 🏎️ Speed
 
-| Unit 🟩🟩🟩 | Integration 🟨🟨 | E2E 🟥 |
+| 🟩🟩🟩 Unit | 🟨🟨 Integration | 🟥 E2E |
 |-------------|------------------|---------|
 
 The more code under the test, the slower the test is—no surprises here. This
@@ -85,7 +85,7 @@ CPU and memory, and their setup is more complicated.
 
 ### ✨Ease of use
 
-| Unit 🟩🟩🟩 | Integration 🟨🟨 | E2E 🟥 |
+| 🟩🟩🟩 Unit | 🟨🟨 Integration | 🟥 E2E |
 |-------------|------------------|---------|
 
 Writing and debugging end-to-end tests could be more challenging. The biggest
@@ -105,8 +105,8 @@ common: writing them properly is just more complex.
 
 ### 📊 Coverage (one test)
 
-| Unit 🟥 | Integration 🟨🟨  | E2E 🟩🟩🟩  |
-|---------|-------------------|--------------|
+| 🟥 Unit | 🟨🟨 Integration | 🟩🟩🟩 E2E  |
+|---------|------------------|--------------|
 
 Unit tests operate on small pieces of code, such as one function or a class, so
 one test can cover only so much. Higher-level tests cover larger pieces of code
@@ -121,7 +121,7 @@ would certainly make a difference.
 
 ### 🔀 Testing input combinations
 
-| Unit 🟩🟩🟩 | Integration 🟨🟨 | E2E 🟥 |
+| 🟩🟩🟩 Unit | 🟨🟨 Integration | 🟥 E2E |
 |-------------|------------------|---------|
 
 In theory, we could use any test type to validate all desired input
@@ -146,7 +146,7 @@ our back, there will be no degradation in confidence.
 
 ### 🤝 TDD-friendly
 
-| Unit ✅ | Integration ✅ | E2E ❌ |
+| ✅ Unit | ✅ Integration | ❌ E2E |
 |---------|----------------|-------|
 
 While it is technically possible to use TDD with any test type, I'd argue that
@@ -161,7 +161,7 @@ enjoyable to use TDD with fast tests.
 
 ### ♻️ Refactoring-friendly
 
-| Unit ❌ | Integration ✅ | E2E ✅ |
+| ❌ Unit | ✅ Integration | ✅ E2E |
 |---------|----------------|-------|
 
 By definition, refactoring means restructuring the code without adding new
