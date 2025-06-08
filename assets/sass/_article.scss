@@ -95,7 +95,7 @@
     margin: 0 auto;
   }
 
-  &--content a {
+  &--content a:not(h1 > a, h2 > a, h3 > a) {
     @include link-underline;
   }
 
