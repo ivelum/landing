@@ -1,6 +1,6 @@
 ---
-title: Why you shouldn't start with a mobile app
-description: If you're about to build your MVP as a mobile app, please read this first and maybe consider building a web app instead
+title: Why Most Startups Shouldn’t Start With a Mobile App
+description: Planning to build your MVP as a mobile app? Here's why starting with a web app might save you time, money, and frustration.
 thumbnail: thumbnail.png
 author: Denis Stebunov
 date: 2025-03-19T14:37:00+0200
@@ -44,9 +44,7 @@ even some modern cars, which may also have a web browser.
 
 ## People do use websites on mobile, a lot
 
-If you're thinking - well, people don't actually browse websites from their
-mobile phones - I can reassure you that they do. In fact, more than two-thirds
-of global web traffic comes from mobile devices:
+Many people assume users don’t browse websites from their phones. But they do, and 68% of global web traffic now comes from mobile devices.
 
 ![Traffic share - 68% comes from mobile devices](02.png)
 
@@ -119,16 +117,13 @@ another feature called
 It's an optional feature, and developers need to write code to enable it, but
 it's pretty much doable if we need to make our app available offline.
 
-### Storing the data on the device
+### Local storage: yes, the web can do that too
 
-Also, web apps can store the data on the user's device, and it's not just
-progressive web apps but regular websites as well. There are four types of
-storage: IndexedDB, Cache Storage, LocalStorage, and SessionStorage. Even after
-we close the tab with a website, the data stored on our device persists, and
-when we open the website again, it'll have access to it. The browser may limit
-the amount of data stored, and it could be less than the total space available
-on the device, but it's still decent. In most cases, it would be
-[at least a few gigabytes](https://whatpwacando.today/storage).
+Modern web apps can store data directly on the user’s device—and not just progressive web apps. Regular websites can use four storage mechanisms: IndexedDB, Cache Storage, LocalStorage, and SessionStorage.
+
+This means users can return to your app later and still find their data intact, even if the tab was closed. Storage limits vary by browser, but most [allow several gigabytes](https://whatpwacando.today/storage) which is plenty for typical startup use cases like user preferences, drafts, or offline content.
+
+In short: persistent, local-first web experiences are absolutely doable.
 
 ### Sign-in options, biometric auth
 
@@ -237,18 +232,12 @@ app. This, in my opinion, represents the optimal path for most new
 projects—start as a web app to iterate quickly and prove your idea, and build
 mobile apps later when the idea proves to be successful.
 
-## Summary
+## Ready to Start Smarter?
 
-For most new projects, building a web app is a much faster way to prove the
-idea and iterate on it quickly. And after the idea proves to be successful,
-you may consider building mobile apps for additional user convenience.
+For most new products, a web app is the fastest way to validate your idea and iterate. 
+Mobile can come later—once there's traction.
 
-Of course, there are exceptions to this. If your app absolutely needs low-level
-access to a mobile device or the best performance possible, yes—start with a
-mobile app. Or, if you’re building in an area where almost all competitors have
-mobile apps, like taxis, messaging, or games, starting with a mobile app also
-makes sense.
+Some cases do justify starting with mobile: if you need deep device access, top-tier performance, or are entering a mobile-first space like messaging or gaming.
 
-And if you need help building a web or mobile app, we at ivelum are happy to
-help. [Book a free consultation](/consultation) to discuss your project idea
+Need help deciding? [Book a free consultation](/consultation) to discuss your project idea
 and get a plan specifically tailored to your needs.
