@@ -10,15 +10,11 @@ sitemap:
 {{< youtube oSqUybBlgHQ >}}
 
 ---
-
-If you're interested in automated testing, you might have seen some
-contradictory advice. For example, there's a well-known
-[Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html),
-suggesting that we should focus mostly on unit tests. And there's another
-approach called [Testing Trophy](https://kentcdodds.com/blog/write-tests),
-which suggests that we should mostly write integration tests.
+If you're interested in automated testing, you might have seen some contradictory advice. For example, there's a well-known [Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html), suggesting that we should focus mostly on unit tests. And there's another approach called [Testing Trophy](https://kentcdodds.com/blog/write-tests), which suggests that we should mostly write integration tests.
 
 ![Test Pyramid, Testing Trophy, or something else?](01a.png)
+
+Choosing the right testing strategy is hard. At Ivelum, we’ve built and maintained dozens of complex systems – and here’s how we think about test balance today.
 
 Some posts argue that
 [unit tests are overrated](https://tyrrrz.me/blog/unit-testing-is-overrated),
@@ -276,4 +272,6 @@ else. This will guide our efforts.
 Don't chase that magical test proportion - it doesn't make sense. Better look
 at how you could test this particular feature with good confidence, minimal
 effort, and reasonable speed, and don't hesitate to use whatever kinds of tests
-if they fit the job. Happy testing!
+if they fit the job. 
+
+At Ivelum, this is how we approach testing across the systems we build. If you're looking for a partner that combines confidence, speed, and pragmatism. [Let’s talk](https://ivelum.com/contact/#talk).
