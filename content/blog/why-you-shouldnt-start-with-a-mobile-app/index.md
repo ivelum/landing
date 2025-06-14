@@ -1,6 +1,6 @@
 ---
-title: Why Most Startups Shouldn’t Start With a Mobile App
-description: Planning to build your MVP as a mobile app? Here's why starting with a web app might save you time, money, and frustration.
+title: Why most startups shouldn’t start with a mobile app
+description: Planning to build your MVP as a mobile app? Here's why starting with a web app might save you time, money, and frustration
 thumbnail: thumbnail.png
 author: Denis Stebunov
 date: 2025-03-19T14:37:00+0200
@@ -33,7 +33,7 @@ platform has its UI guidelines, its ecosystem, and an app store with its
 review policies. Being a good citizen means respecting platform rules, which
 differ between platforms.
 
-![Three to one](01.png)
+![How many apps we need to build: three to one](three-to-one.png)
 
 And what about desktop users? If we want to reach them as well, we need to
 build… what? Apps for MacOS, Windows, and Linux? It sounds too complicated,
@@ -44,9 +44,10 @@ even some modern cars, which may also have a web browser.
 
 ## People do use websites on mobile, a lot
 
-Many people assume users don’t browse websites from their phones. But they do, and 68% of global web traffic now comes from mobile devices.
+Some people assume users don’t browse websites from their phones. But they do.
+In fact, most of the global web traffic comes from mobile devices:
 
-![Traffic share - 68% comes from mobile devices](02.png)
+![68% of web traffic comes from mobile devices](traffic-share-by-platform.png)
 
 *Source: [Similarweb](https://www.similarweb.com/platforms/)*
 
@@ -117,13 +118,17 @@ another feature called
 It's an optional feature, and developers need to write code to enable it, but
 it's pretty much doable if we need to make our app available offline.
 
-### Local storage: yes, the web can do that too
+### Local storage
 
-Modern web apps can store data directly on the user’s device—and not just progressive web apps. Regular websites can use four storage mechanisms: IndexedDB, Cache Storage, LocalStorage, and SessionStorage.
+Modern web apps can store data directly on the user's device, and it's not just
+progressive web apps. There are plenty of options for both regular websites
+and PWAs: IndexedDB, Cache Storage, LocalStorage, and SessionStorage.
 
-This means users can return to your app later and still find their data intact, even if the tab was closed. Storage limits vary by browser, but most [allow several gigabytes](https://whatpwacando.today/storage) which is plenty for typical startup use cases like user preferences, drafts, or offline content.
-
-In short: persistent, local-first web experiences are absolutely doable.
+This means users can return to your app later and still find their data intact,
+even if the tab was closed. Storage limits vary by browser, but it's
+[usually in gigabytes](https://whatpwacando.today/storage), which is plenty for
+typical use cases like user preferences, drafts, or offline content. So,
+persistent, local-first web experiences are absolutely doable.
 
 ### Sign-in options, biometric auth
 
@@ -232,12 +237,14 @@ app. This, in my opinion, represents the optimal path for most new
 projects—start as a web app to iterate quickly and prove your idea, and build
 mobile apps later when the idea proves to be successful.
 
-## Ready to Start Smarter?
+## Bottom line
 
-For most new products, a web app is the fastest way to validate your idea and iterate. 
-Mobile can come later—once there's traction.
+For most startups, a web app is the fastest way to validate the idea and
+iterate. Mobile can come later once there's traction.
 
-Some cases do justify starting with mobile: if you need deep device access, top-tier performance, or are entering a mobile-first space like messaging or gaming.
+Some cases do justify starting with mobile, though. If you need low-level
+device access, or the best performance possible, or are entering a mobile-first
+space like messaging or gaming—your startup could be one of those exceptions.
 
-Need help deciding? [Book a free consultation](/consultation) to discuss your project idea
-and get a plan specifically tailored to your needs.
+Need help deciding? [Book a free consultation](/consultation) to discuss your
+project idea and get a plan specifically tailored to your needs.
