@@ -1,10 +1,9 @@
 ---
 title: The best testing strategy
 description: How do we balance unit, integration, and end-to-end tests? Should we follow Test Pyramid, Testing Trophy, or something else?
+thumbnail: thumbnail.png
 author: Denis Stebunov
-date: 2025-06-08T16:25:00+0200
-sitemap:
-  disable: true
+date: 2025-06-15T09:15:00+0200
 ---
 
 {{< youtube oSqUybBlgHQ >}}
@@ -17,7 +16,7 @@ suggesting that we should focus mostly on unit tests. And there's another
 approach called [Testing Trophy](https://kentcdodds.com/blog/write-tests),
 which suggests that we should mostly write integration tests.
 
-![Test Pyramid, Testing Trophy, or something else?](01a.png)
+![Test Pyramid, Testing Trophy, or something else?](test-pyramid-or-testing-trophy-or-what.png)
 
 Some posts argue that
 [unit tests are overrated](https://tyrrrz.me/blog/unit-testing-is-overrated),
@@ -42,7 +41,7 @@ ideas discussed below apply to them as well.
 Each test interacts with some interface, and the interface being tested defines
 the test type:
 
-![Test types by interface being tested](04a.png)
+![Test types by interface being tested](test-type-by-interface-being-tested.png)
 
 - **Unit** tests verify the behavior of a small piece of code, such as a
   function or a class;
@@ -66,7 +65,7 @@ High-level tests, like integration or end-to-end, provide the best confidence.
 Maybe you've seen memes on the internet like this. If all the low-level tests
 pass, it doesn't guarantee that our app works as a whole.
 
-![Two unit tests, zero integration tests](06.gif)
+![Two unit tests, zero integration tests](two-unit-tests-zero-integration-tests.gif)
 
 Confidence is the most important reason why we even bother with testing. If we
 spend time and effort on testing, but the confidence level remains low - it
@@ -130,7 +129,7 @@ In theory, we could use any test type to validate all desired input
 combinations. In practice though, it could be painful to do with slow running
 tests.
 
-![Testing input combinations](07.png)
+![Testing input combinations](testing-a-signup-form.png)
 
 Let's say we have a sign-up form that accepts a user's name, email, and
 password, and we would like to test five input combinations for each field. It
@@ -181,7 +180,7 @@ end user's perspective.
 
 ## Side-by-side
 
-![Test types by interface being tested](05a.png)
+![Test types comparison](comparison-unit-integration-e2e.png)
 
 ## So what should we use?
 
@@ -190,7 +189,7 @@ more balanced (and I like them), but they're not a silver bullet and aren't the
 best for every situation. So the answer is good old "It depends." Yes, boring,
 but true.
 
-![Not Test Pyramid, and not Testing Trophy](08.png)
+![Not Test Pyramid, and not Testing Trophy](which-testing-strategy.png)
 
 I think methodologies like Test Pyramid or Testing Trophy do more harm than
 good. Their original explanations are rational and nuanced, but their most
@@ -205,7 +204,7 @@ testing suites - less robust, more complex, or slower than they could be.
 
 ## A better target
 
-![The balance of confidence, speed, and effort](09.png)
+![The balance of confidence, speed, and effort](confidence-vs-speed-vs-effort.png)
 
 Instead of focusing on specific test types, we'd better focus on values: What
 do we like to achieve with testing?
@@ -230,7 +229,7 @@ intuition about good and bad for each axis.
 
 ### ✅ Confidence as a measure of bugs filtering efficiency
 
-![A test suite filters bugs](10.png)
+![Test suite filters bugs](test-suite-filters-bugs.png)
 
 Our test suite works like a filter between our code and production, catching
 bugs. The efficiency of this filter is a measure of confidence. If our tests
@@ -244,7 +243,7 @@ How long does it take to run the full test suite when pushing a change to
 production? If it's measured in minutes, excellent! If it takes hours, that's
 too bad, and there's a grayscale in between.
 
-![Minutes—great, hours—terrible, and a grayscale in between](11.png)
+![Minutes—great, hours—terrible, and a grayscale in between](minutes-to-hours.png)
 
 A common trick to speed it up is to run tests in parallel. A multi-threaded
 test runner and a powerful server might be enough for a small project. For
@@ -266,7 +265,7 @@ can get rid of code reviews or that there's no need for production monitoring.
 All these measures are essential and complement each other to give us the level
 of confidence we need.
 
-![Automated and manual testing, code reviews, production monitoring](12.png)
+![Automated and manual testing, code reviews, production monitoring](production-stability-tools.png)
 
 When a production incident occurs, we should track its root cause and ask
 ourselves: How could it be prevented? Sometimes, the answer is "write a test,"
