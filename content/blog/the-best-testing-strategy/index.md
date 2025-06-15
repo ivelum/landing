@@ -16,7 +16,7 @@ suggesting that we should focus mostly on unit tests. And there's another
 approach called [Testing Trophy](https://kentcdodds.com/blog/write-tests),
 which suggests that we should mostly write integration tests.
 
-![Test Pyramid, Testing Trophy, or something else?](test-pyramid-or-testing-trophy-or-what.png)
+![Test Pyramid, Testing Trophy, or something else?](test-pyramid-or-testing-trophy-or-.png)
 
 Some posts argue that
 [unit tests are overrated](https://tyrrrz.me/blog/unit-testing-is-overrated),
@@ -41,7 +41,7 @@ ideas discussed below apply to them as well.
 Each test interacts with some interface, and the interface being tested defines
 the test type:
 
-![Test types by interface being tested](test-type-by-interface-being-tested.png)
+![Test types by interface being tested](test-type-by-interface.png)
 
 - **Unit** tests verify the behavior of a small piece of code, such as a
   function or a class;
@@ -129,7 +129,7 @@ In theory, we could use any test type to validate all desired input
 combinations. In practice though, it could be painful to do with slow running
 tests.
 
-![Testing input combinations](testing-a-signup-form.png)
+![Testing input combinations](test-values-for-a-signup-form.png)
 
 Let's say we have a sign-up form that accepts a user's name, email, and
 password, and we would like to test five input combinations for each field. It
@@ -180,7 +180,7 @@ end user's perspective.
 
 ## Side-by-side
 
-![Test types comparison](comparison-unit-integration-e2e.png)
+![Test types comparison](unit-integration-e2e-comparison.png)
 
 ## So what should we use?
 
@@ -189,7 +189,7 @@ more balanced (and I like them), but they're not a silver bullet and aren't the
 best for every situation. So the answer is good old "It depends." Yes, boring,
 but true.
 
-![Not Test Pyramid, and not Testing Trophy](which-testing-strategy.png)
+![Not Test Pyramid, and not Testing Trophy](choosing-testing-strategy.png)
 
 I think methodologies like Test Pyramid or Testing Trophy do more harm than
 good. Their original explanations are rational and nuanced, but their most
@@ -204,7 +204,7 @@ testing suites - less robust, more complex, or slower than they could be.
 
 ## A better target
 
-![The balance of confidence, speed, and effort](confidence-vs-speed-vs-effort.png)
+![The balance of confidence, speed, and effort](confidence-speed-effort.png)
 
 Instead of focusing on specific test types, we'd better focus on values: What
 do we like to achieve with testing?
@@ -229,7 +229,7 @@ intuition about good and bad for each axis.
 
 ### ✅ Confidence as a measure of bugs filtering efficiency
 
-![Test suite filters bugs](test-suite-filters-bugs.png)
+![Test suite filters bugs](test-suite-is-a-bug-filter.png)
 
 Our test suite works like a filter between our code and production, catching
 bugs. The efficiency of this filter is a measure of confidence. If our tests
@@ -243,7 +243,7 @@ How long does it take to run the full test suite when pushing a change to
 production? If it's measured in minutes, excellent! If it takes hours, that's
 too bad, and there's a grayscale in between.
 
-![Minutes—great, hours—terrible, and a grayscale in between](minutes-to-hours.png)
+![Minutes—great, hours—terrible, and a grayscale in between](minutes-hours.png)
 
 A common trick to speed it up is to run tests in parallel. A multi-threaded
 test runner and a powerful server might be enough for a small project. For
@@ -265,7 +265,7 @@ can get rid of code reviews or that there's no need for production monitoring.
 All these measures are essential and complement each other to give us the level
 of confidence we need.
 
-![Automated and manual testing, code reviews, production monitoring](production-stability-tools.png)
+![Automated and manual testing, code reviews, production monitoring](ensuring-production-stability.png)
 
 When a production incident occurs, we should track its root cause and ask
 ourselves: How could it be prevented? Sometimes, the answer is "write a test,"
