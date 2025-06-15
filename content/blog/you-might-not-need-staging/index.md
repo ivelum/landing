@@ -12,8 +12,8 @@ date: 2025-01-29T10:30:00+0200
 ---
 
 Many engineering teams test new features on staging before pushing them to
-production. There’s no doubt that testing is crucial, but is staging really the
-best place to test? Let’s dive in.
+production. There's no doubt that testing is crucial, but is staging really the
+best place to test? Let's dive in.
 
 ## What we call a "staging environment"
 
@@ -224,7 +224,7 @@ if (condition) {
 Despite its simplicity, it's a powerful and flexible tool that allows us to
 test things in production in numerous different ways. We can keep the original
 program behavior for most users and at the same time, test how new behavior
-works. Let’s see some practical examples.
+works. Let's see some practical examples.
 
 ## Example 1: Emulating staging
 
@@ -311,8 +311,8 @@ metrics. If we see some worrying anomalies, we roll back and investigate.
 
 ## Example 6: Dark launch
 
-If we’d like to do a load testing of the new version of a service before the
-launch, we could use a pattern called “dark launch.” Here’s how it works — we
+If we'd like to do a load testing of the new version of a service before the
+launch, we could use a pattern called “dark launch.” Here's how it works — we
 configure a load balancer to send a copy of all traffic requests to the new
 service version:
 

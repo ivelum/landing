@@ -18,11 +18,11 @@ slug: backend
 
 - ![Celery](logos/celery.svg) Celery
 
-  Celery is our go-to framework for running tasks in the background. It’s
+  Celery is our go-to framework for running tasks in the background. It's
   mature, robust, and integrates well with Django.
 
 - ![Docker](logos/docker.svg) Docker
 
-  Docker is the industry’s standard containerization tool. It powers all our
+  Docker is the industry's standard containerization tool. It powers all our
   projects, managed with Kubernetes or ECS in production and Docker Compose
   in development.

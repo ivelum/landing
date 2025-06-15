@@ -16,7 +16,7 @@ dominates the digital market. However, a mobile-first approach often
 carries unnecessary risks for the early-stage assessment of an idea,
 such as spending too much money on a concept that ends up not working.
 
-MVPs are all about testing hypotheses with a minimal investment. That’s
+MVPs are all about testing hypotheses with a minimal investment. That's
 why a web-based app is often a smarter, faster, and more cost-effective
 approach. Read on and discover why.
 
@@ -29,7 +29,7 @@ the development process more manageable—one codebase for all platforms; a sing
 development team; and a strong focus on feature quality instead of having to
 check feature compatibility on different platforms.
 
-Once you’ve designed and developed a web app with a responsive interface, you’re
+Once you've designed and developed a web app with a responsive interface, you're
 good to go on any device. With nearly 68% of global web traffic coming from mobile
 devices, according to [SimilarWeb](https://www.similarweb.com/platforms/), targeting a broad
 mobile audience is a realistic and effective goal that can be achieved through
@@ -181,7 +181,7 @@ services to full-fledged professional applications.
 ![Web development vs Mobile development](conclusion.png)
 
 When developing an MVP, the main goal is to validate hypotheses as fast as possible and
-then iterate quickly based on users’ feedback. Web applications excel in these areas,
+then iterate quickly based on users' feedback. Web applications excel in these areas,
 enabling rapid development, instant updates, and a seamless cross-platform experience.
 If the concept proves successful, transitioning to a native mobile app remains an
 option—but without the upfront risks and constraints of mobile-first development.

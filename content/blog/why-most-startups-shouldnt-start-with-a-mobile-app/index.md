@@ -1,5 +1,5 @@
 ---
-title: Why most startups shouldn’t start with a mobile app
+title: Why most startups shouldn't start with a mobile app
 description: Planning to build your MVP as a mobile app? Here's why starting with a web app might save you time, money, and frustration
 thumbnail: thumbnail.png
 author: Denis Stebunov
@@ -44,7 +44,7 @@ even some modern cars, which may also have a web browser.
 
 ## People do use websites on mobile, a lot
 
-Some people assume users don’t browse websites from their phones. But they do.
+Some people assume users don't browse websites from their phones. But they do.
 In fact, most of the global web traffic comes from mobile devices:
 
 ![68% of web traffic comes from mobile devices](traffic-share-by-platform.png)
@@ -223,7 +223,7 @@ application has taken local restaurants by storm. Many of them now have QR
 codes on the tables, and after scanning the code, you can browse the menu or
 pay the bill for your table. Similar apps exist in other countries as well.
 The Greet Menu app is a web application that opens immediately after scanning
-the QR code. It reduces friction for first-time visitors because there’s no
+the QR code. It reduces friction for first-time visitors because there's no
 need to install anything, which was probably the key to its success.
 
 ### ChatGPT: a web app, and then a mobile app
@@ -231,7 +231,7 @@ need to install anything, which was probably the key to its success.
 ![ChatGPT: a web app, user growth, and then a mobile app](05.png)
 
 As of the time of writing this post, the most popular mobile application in the
-Apple Store was ChatGPT. However, ChatGPT didn’t start as a mobile app. It
+Apple Store was ChatGPT. However, ChatGPT didn't start as a mobile app. It
 started as a web app that became hugely popular, and then they added a mobile
 app. This, in my opinion, represents the optimal path for most new
 projects—start as a web app to iterate quickly and prove your idea, and build

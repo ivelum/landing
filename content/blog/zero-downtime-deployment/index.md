@@ -6,7 +6,7 @@ author: Denis Stebunov
 date: 2025-02-18T12:54:00+0200
 ---
 
-During a website or web application update, there’s a risk of downtime —
+During a website or web application update, there's a risk of downtime —
 a potential trigger for a downward spiral of problems. Business stakeholders
 often worry that users will notice disruptions and leave, leading them to delay
 updates “for a more convenient time.” This slows development, replacing small,
@@ -16,11 +16,11 @@ The bigger the update, the more things can go wrong. It also demands more time
 for debugging and testing. Over time, this cycle fuels tension in communication
 between developers and business teams.
 
-The good news is that it’s pretty much avoidable. Zero-downtime deployment
+The good news is that it's pretty much avoidable. Zero-downtime deployment
 addresses these challenges head-on. It allows teams to return to a rhythm of
 small, frequent updates, keeping development agile and the business side happy.
 
-Today, we’ll dive into the core principles of zero-downtime deployment for web
+Today, we'll dive into the core principles of zero-downtime deployment for web
 applications. We use these methods at ivelum extensively, and while there could
 be some edge cases not covered here, we believe this post covers the basics
 for most projects.
@@ -34,7 +34,7 @@ which covers the essential needs of a small-to-medium project.
 
 Once monitoring is in place, what exactly can go wrong during a deployment?
 A problem could occur in any main component: the backend, the frontend, or the
-database. Let’s take a closer look.
+database. Let's take a closer look.
 
 ## Handling DB migrations without downtime
 
@@ -47,8 +47,8 @@ the backend or doing anything else:
 3. ...
 4. PROFIT!
 
-This sequence is important because new backend app instances won’t work
-correctly if the DB isn’t updated, so if we care about zero downtime, we must
+This sequence is important because new backend app instances won't work
+correctly if the DB isn't updated, so if we care about zero downtime, we must
 update the database first. How we launch the database migration script is also
 important. It might be tempting to run it as a part of the backend application
 startup like this:
@@ -87,7 +87,7 @@ them in one of our previous posts. Please check it out:
 
 When deploying backend code updates, an application server restart is typically
 required to load the new code into memory. During the restart, some requests
-may be lost, causing downtime. In most modern projects, it’s handled with
+may be lost, causing downtime. In most modern projects, it's handled with
 container orchestration. The main principle is simple: launch new application
 instances in parallel with the old ones and then switch traffic on the load
 balancer. Strategies may vary. It can be a
@@ -154,9 +154,9 @@ we did it in one of our projects, [Teamplify](https://teamplify.com):
 Both the frontend and backend use the build number from the CI server to be
 aware of their version. The backend includes its version in the HTTP response
 headers for every API request. The frontend compares the version from the
-backend with its own. If they don’t match, it triggers an update.
+backend with its own. If they don't match, it triggers an update.
 
-But the update is not just an immediate forced reload; we don’t want to
+But the update is not just an immediate forced reload; we don't want to
 frustrate our users or risk losing unsaved data they might have entered on the
 page. Instead, we use a deferred reload. It means we schedule the reload to
 trigger at the next convenient moment, which can be one of the following:

@@ -33,7 +33,7 @@ People most commonly refer to **unit**, **integration**, and **end-to-end**
 tests—and those will be the focus of this post. Of course, this isn't the only
 way to categorize tests. You might also have come across terms like smoke,
 functional, system, or contract tests, each of which serves its own purpose.
-To keep things simple, I won’t cover every type of test here, but the core
+To keep things simple, I won't cover every type of test here, but the core
 ideas discussed below apply to them as well.
 
 ## What is being tested?
@@ -101,7 +101,7 @@ these take a bit longer, it can cause unexpected timing issues or transient
 states that throw off the test. A well-written test accounts for this by
 checking intermediate states and waiting for elements to load, making it
 stable and reliable. But simpler tests often skip these steps. They usually
-work—but sometimes fail without clear reasons. That’s why flaky tests are
+work—but sometimes fail without clear reasons. That's why flaky tests are
 common: writing them properly is just more complex.
 
 ### 📊 Coverage (one test)
@@ -280,4 +280,4 @@ effort, and reasonable speed, and don't hesitate to use whatever kinds of tests
 if they fit the job.
 
 And if you're looking for a development partner that combines confidence,
-speed, and pragmatism—[Let’s talk](https://ivelum.com/contact/#talk)!
+speed, and pragmatism—[Let's talk](https://ivelum.com/contact/#talk)!
