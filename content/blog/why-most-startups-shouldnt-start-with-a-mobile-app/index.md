@@ -4,8 +4,6 @@ description: Planning to build your MVP as a mobile app? Here's why starting wit
 thumbnail: thumbnail.png
 author: Denis Stebunov
 date: 2025-03-19T14:37:00+0200
-sitemap:
-  disable: true
 ---
 
 {{< youtube Nceg40iF_I0 >}}
@@ -33,7 +31,7 @@ platform has its UI guidelines, its ecosystem, and an app store with its
 review policies. Being a good citizen means respecting platform rules, which
 differ between platforms.
 
-![How many apps we need to build: three to one](three-to-one.png)
+![How many apps we need to build: three to one](3-1.png)
 
 And what about desktop users? If we want to reach them as well, we need to
 build… what? Apps for MacOS, Windows, and Linux? It sounds too complicated,
@@ -63,7 +61,7 @@ a web application is evergreen. When we ship a new version, it almost instantly
 applies to all users. There's no review process and no need to ask users to do
 anything - they just get a new version all at once.
 
-![Mobile vs. web - iteration speed](06.png)
+![Mobile vs. web - iteration speed](mobile-vs-web-iteration-speed.png)
 
 Statista's report of the Google Play Store app updates shows that
 [most mobile apps are updated monthly](https://www.statista.com/statistics/1404434/google-play-store-app-updates-by-frequency/),
@@ -191,7 +189,7 @@ it by tilting your phone.
 
 ### Side-by-side
 
-![Mobile vs. web apps: technical capabilities](03.png)
+![Mobile vs. web apps: technical capabilities](mobile-vs-web-capabilities.png)
 
 So, to summarize, the gap between web and mobile capabilities certainly exists,
 but it may not be as large as you might think. We can add web apps to the home
@@ -216,7 +214,7 @@ app distribution might represent extra friction for its adoption.
 
 ### Restaurant menu: a web app
 
-![QR code on a table](04.jpg)
+![QR code on a table](cafe-table.jpg)
 
 In Lithuania, where I live, the [Greet Menu](https://www.greet.menu)
 application has taken local restaurants by storm. Many of them now have QR
@@ -228,7 +226,7 @@ need to install anything, which was probably the key to its success.
 
 ### ChatGPT: a web app, and then a mobile app
 
-![ChatGPT: a web app, user growth, and then a mobile app](05.png)
+![ChatGPT: a web app, user growth, and then a mobile app](chatgpt-a-web-app-and-then-a-mobile-app.png)
 
 As of the time of writing this post, the most popular mobile application in the
 Apple Store was ChatGPT. However, ChatGPT didn't start as a mobile app. It
