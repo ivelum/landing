@@ -1,0 +1,20 @@
+/*
+
+Source:
+https://www.jonoalderson.com/conjecture/its-time-for-modern-css-to-kill-the-spa/
+
+*/
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: fade 0.3s ease both;
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
