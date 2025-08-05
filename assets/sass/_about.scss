@@ -287,6 +287,7 @@
   }
 
   &--testimonials-item {
+    align-items: flex-start;
     border-top: 1px solid $border-color-default;
     display: flex;
     flex-direction: column;
@@ -354,8 +355,12 @@
 
   &--clutch-winner {
     display: block;
-    max-width: 140px;
-    height: auto;
+
+    img {
+      height: auto;
+      max-width: 140px;
+      width: 100%;
+    }
   }
 
   &--clutch-reviews {
