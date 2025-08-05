@@ -298,6 +298,14 @@
     @include media-up(xl) {
       padding-top: 3.5rem;
     }
+
+    &--clutch {
+      @include media-up(sm) {
+        align-items: center;
+        flex-direction: row;
+        gap: 2rem;
+      }
+    }
   }
 
   &--testimonials-author {
@@ -344,15 +352,16 @@
     }
   }
 
-  &--clutch {
-    margin: 2rem 0 1rem;
+  &--clutch-winner {
+    display: block;
+    max-width: 140px;
+    height: auto;
+  }
 
-    @include media-up(lg) {
-      align-items: center;
-      display: flex;
-      justify-content: flex-end;
-      margin: 3rem 0 0;
-    }
+  &--clutch-reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   &--clutch-link {
