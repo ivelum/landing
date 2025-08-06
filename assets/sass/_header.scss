@@ -180,7 +180,8 @@ $header-menu-open-duration: 0.3s;
       }
     }
 
-    &:hover {
+    &:hover,
+    &.is-active {
       color: rgba($white, 0.6);
       @include media-up(lg) {
         color: $font-color-dark;
