@@ -94,9 +94,6 @@ $header-menu-open-duration: 0.3s;
   }
 
   &--menu-item {
-    appearance: none;
-    background: none;
-    border: 0;
     color: $white;
     cursor: pointer;
     display: inline-block;
@@ -133,6 +130,60 @@ $header-menu-open-duration: 0.3s;
 
       &::after {
         transform: none;
+      }
+    }
+  }
+
+  &--submenu {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    @include media-up(lg) {
+      align-items: center;
+    }
+  }
+
+  &--submenu-items {
+    display: flex;
+    flex-direction: column;
+    @include media-up(lg) {
+      background-color: $white;
+      border-radius: 1rem;
+      opacity: 0;
+      padding: 1rem 2rem;
+      position: absolute;
+      top: 100%;
+    }
+  }
+
+  &--submenu-items.is-open {
+    opacity: 1;
+  }
+
+  &--submenu-item {
+    color: $white;
+    padding: 0.125rem 0;
+    @include media-up(lg) {
+      color: $primary-violet;
+      font-size: $font-size-smaller;
+      padding: 0;
+    }
+    @include media-up(xl) {
+      font-size: $font-size-default;
+    }
+
+    &::before {
+      content: '–';
+      margin: 0 0.5rem 0 1rem;
+      @include media-up(lg) {
+        content: unset;
+      }
+    }
+
+    &:hover {
+      color: rgba($white, 0.6);
+      @include media-up(lg) {
+        color: $font-color-dark;
       }
     }
   }

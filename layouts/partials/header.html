@@ -9,28 +9,49 @@
       class="header--logo"
       x-bind:class="isMenuOpen && 'is-open'"
       href="/"
-      >{{ (resources.Get "img/logo.svg").Content | strings.TrimSpace | safeHTML }}</a
     >
+      {{ (resources.Get "img/logo.svg").Content | strings.TrimSpace | safeHTML }}
+    </a>
     <div class="header--menu" x-bind:class="isMenuOpen && 'is-open'">
       <div class="header--menu-inner">
         <div class="header--menu-items">
           {{- range site.Menus.main }}
-          <a
-            class="
-              {{- "header--menu-item" }}
-              {{- if eq $.RelPermalink .URL }} is-active{{ end -}}
-            "
-            href="{{ .URL }}"
-            >{{ .Name }}</a
-          >
+            {{- if .HasChildren }}
+              <div class="header--submenu" x-data="Submenu('{{ .Identifier }}')">
+                <div class="header--menu-item" x-on:click="toggleSubMenu">
+                  {{- .Name -}}
+                </div>
+                <div
+                  class="header--submenu-items"
+                  x-bind:class="isSubMenuOpen && 'is-open'"
+                  x-on:click.outside="closeSubMenu"
+                >
+                  {{- range .Children }}
+                    <a
+                      class="header--submenu-item{{- if eq $.RelPermalink .URL }} is-active{{ end -}}"
+                      href="{{ .URL }}"
+                    >
+                      {{- .Name -}}
+                    </a>
+                  {{- end }}
+                </div>
+              </div>
+            {{- else }}
+              <a
+                class="header--menu-item{{- if eq $.RelPermalink .URL }} is-active{{ end -}}"
+                href="{{ .URL }}"
+              >
+                {{- .Name -}}
+              </a>
+            {{- end }}
           {{- end }}
         </div>
         <div class="header--button-wrapper">
-        {{- if .TalkToUsAbsolute }}
-          <a class="header--button" href="/contact/#talk">
-        {{- else }}
-          <a class="header--button" href="#talk" x-on:click.prevent="talkToUs">
-        {{- end }}
+          <a
+            class="header--button"
+            href="{{ if .TalkToUsAbsolute }}/contact/#talk{{ else }}#talk{{ end }}"
+            {{ if not .TalkToUsAbsolute }}x-on:click.prevent="talkToUs"{{ end }}
+          >
             {{ (resources.Get "img/ico-talk.svg").Content | strings.TrimSpace | safeHTML }}
             Talk to us
           </a>
@@ -58,6 +79,7 @@
   const mediaLg = '(min-width: 992px)';
 
   document.addEventListener('alpine:init', () => {
+
     Alpine.data('Header', () => ({
       isMenuOpen: false,
 
@@ -94,5 +116,19 @@
         talkToUs();
       },
     }));
+
+    Alpine.data('Submenu', (id) => ({
+      isSubMenuOpen: false,
+
+      closeSubMenu() {
+        this.isSubMenuOpen = false;
+      },
+
+      toggleSubMenu(e) {
+        e.stopPropagation();
+        this.isSubMenuOpen = !this.isSubMenuOpen;
+      },
+    }));
+
   });
 </script>
