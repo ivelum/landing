@@ -39,11 +39,10 @@ $header-menu-open-duration: 0.3s;
     z-index: 150;
     clip-path: circle(0px at calc(100% - 36px) 36px);
     transition: clip-path 0.2s ease-out;
-
     @include media-up(lg) {
       background: none;
       bottom: auto;
-      clip-path: none !important;
+      clip-path: initial;
       position: static;
     }
 
@@ -58,7 +57,6 @@ $header-menu-open-duration: 0.3s;
     flex-direction: column;
     opacity: 0;
     transition: 0.5s;
-
     @include media-up(lg) {
       opacity: 1 !important;
       transition: 0s;
@@ -132,12 +130,49 @@ $header-menu-open-duration: 0.3s;
         transform: none;
       }
     }
+
+    &.with-submenu {
+      cursor: default;
+      @include media-up(lg) {
+        cursor: pointer;
+        margin-right: 1.5rem;
+      }
+
+      &:after {
+        content: unset;
+        @include media-up(lg) {
+          content: '';
+        }
+      }
+
+      &::before {
+        @include transition(transform 200ms);
+        background-color: $white;
+        display: block;
+        height: 1rem;
+        left: calc(100% + 0.5rem);
+        mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M12.7803 6.21967C13.0732 6.51256 13.0732 6.98744 12.7803 7.28033L8.53033 11.5303C8.23744 11.8232 7.76256 11.8232 7.46967 11.5303L3.21967 7.28033C2.92678 6.98744 2.92678 6.51256 3.21967 6.21967C3.51256 5.92678 3.98744 5.92678 4.28033 6.21967L8 9.93934L11.7197 6.21967C12.0126 5.92678 12.4874 5.92678 12.7803 6.21967Z' fill='%23000'/%3E%3C/svg%3E%0A");
+        mask-repeat: no-repeat;
+        mask-size: 1rem;
+        position: absolute;
+        top: 0.375rem;
+        width: 1rem;
+        @include media-up(lg) {
+          content: '';
+        }
+      }
+
+      &.is-open::before {
+        transform: rotate(180deg);
+      }
+    }
   }
 
   &--submenu {
     align-items: flex-start;
     display: flex;
     flex-direction: column;
+    perspective: 1000px;
     @include media-up(lg) {
       align-items: center;
     }
@@ -149,22 +184,35 @@ $header-menu-open-duration: 0.3s;
     @include media-up(lg) {
       background-color: $white;
       border-radius: 1rem;
+      border: 1px solid transparent;
+      box-shadow: 0 1rem 2rem -0.75rem rgba($font-color-dark, 0.5);
+      min-width: 12rem;
       opacity: 0;
       padding: 1rem 2rem;
+      pointer-events: none;
       position: absolute;
-      top: 100%;
+      top: calc(100% + 0.5rem);
+      transform-origin: center -100px;
+      transform: rotateX(-15deg);
+      will-change: transform, opacity;
     }
+  }
+
+  &--submenu-items.is-animate {
+    @include transition(opacity 100ms, transform 100ms);
   }
 
   &--submenu-items.is-open {
     opacity: 1;
+    pointer-events: auto;
+    transform: none;
   }
 
   &--submenu-item {
     color: $white;
     padding: 0.125rem 0;
     @include media-up(lg) {
-      color: $primary-violet;
+      color: $font-color-dark;
       font-size: $font-size-smaller;
       padding: 0;
     }
@@ -184,7 +232,7 @@ $header-menu-open-duration: 0.3s;
     &.is-active {
       color: rgba($white, 0.6);
       @include media-up(lg) {
-        color: $font-color-dark;
+        color: $primary-violet;
       }
     }
   }
@@ -356,6 +404,17 @@ $header-menu-open-duration: 0.3s;
         background-color: $font-color-default;
       }
     }
+  }
+
+  .header--menu-item.with-submenu::before {
+    @include media-up(lg) {
+      background-color: $font-color-default;
+    }
+  }
+
+  .header--submenu-items {
+    border-color: rgba($border-color-default, 0.75);
+    box-shadow: 0 1rem 2rem -0.75rem rgba($font-color-dark, 0.15);
   }
 
   .header--button {

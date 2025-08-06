@@ -18,12 +18,16 @@
           {{- range site.Menus.main }}
             {{- if .HasChildren }}
               <div class="header--submenu" x-data="Submenu('{{ .Identifier }}')">
-                <div class="header--menu-item" x-on:click="toggleSubMenu">
+                <div
+                  class="header--menu-item with-submenu"
+                  x-on:click="toggleSubMenu"
+                  x-bind:class="isSubMenuOpen && 'is-open'"
+                >
                   {{- .Name -}}
                 </div>
                 <div
                   class="header--submenu-items"
-                  x-bind:class="isSubMenuOpen && 'is-open'"
+                  x-bind:class="{ 'is-open': isSubMenuOpen, 'is-animate': isAnimate }"
                   x-on:click.outside="closeSubMenu"
                 >
                   {{- range .Children }}
@@ -119,14 +123,27 @@
 
     Alpine.data('Submenu', (id) => ({
       isSubMenuOpen: false,
+      isAnimate: false,
+      animateTimeout: null,
 
-      closeSubMenu() {
-        this.isSubMenuOpen = false;
+      setAnimate(active) {
+        this.isAnimate = true;
+        this.animateTimeout && clearTimeout(this.animateTimeout);
+        if (!active) {
+          this.animateTimeout = setTimeout(() => this.isAnimate = false, 100);
+        }
       },
 
       toggleSubMenu(e) {
         e.stopPropagation();
         this.isSubMenuOpen = !this.isSubMenuOpen;
+        this.setAnimate(this.isSubMenuOpen);
+      },
+
+      closeSubMenu() {
+        if (!this.isSubMenuOpen) return;
+        this.isSubMenuOpen = false;
+        this.setAnimate(false);
       },
     }));
 
