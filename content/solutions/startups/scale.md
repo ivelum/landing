@@ -1,7 +1,4 @@
----
-category: solutions-startups
-title: Scale without spending a fortune on it
----
+### Scale without spending a fortune on it
 
 We'll help you build a software architecture that is robust
 and resilient and scales easily without costs spiralling out

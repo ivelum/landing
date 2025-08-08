@@ -1,7 +1,4 @@
----
-category: solutions-startups
-title: Fractional CTO service
----
+### Fractional CTO service
 
 Even if you haven't hired your full-time in-house CTO yet, the development
 team still needs to make technology and product decisions, and some of those
@@ -14,5 +11,3 @@ technology decisions.
 
 If you hire a development team from us (of any size, even just one developer),
 you get the fractional CTO service for free.
-
-{{< calendly-button >}}
