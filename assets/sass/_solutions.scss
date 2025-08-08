@@ -144,10 +144,24 @@
     }
   }
 
-  &--aws-logo img {
-    display: block;
-    height: auto;
-    max-width: 20rem;
+  &--logo-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    list-style: none;
+    margin: 1rem 0 0 0;
+    padding: 0;
+    @include media-up(xl) {
+      margin-top: 1.5rem;
+    }
+
+    li {
+
+      img {
+        max-width: 20rem;
+        max-height: 5rem;
+      }
+    }
   }
 }
 

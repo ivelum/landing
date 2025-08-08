@@ -8,5 +8,5 @@ and resilient and scales easily without costs spiralling out
 of control. When we joined existing projects, we often helped
 our clients achieve cloud savings of 30-50%.
 
-![AWS Well-Architected](img/logo-aws-wa.png)
-{.solutions-new--aws-logo}
+- ![AWS](img/logo-aws-wa.png)
+{.solutions-new--logo-list}
