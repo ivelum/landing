@@ -1,0 +1,53 @@
+{{- define "main" }}
+  <div class="solutions-new">
+    <div class="solutions-new--head">
+      <div class="container">
+        <div class="solutions-new--head-caption">
+          {{- .Params.caption -}}
+        </div>
+        <h1 class="solutions-new--head-title">
+          {{- .Params.h1 -}}
+        </h1>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+      <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      <div class="solutions-new--list">
+
+        <div class="solutions-new--item">
+          <div class="solutions-new--item-num">01 /</div>
+          <div class="solutions-new--item-body">
+            {{- (.GetPage "launch-faster").Content }}
+            <a
+              class="solutions-new--book-link"
+              href="https://calendly.com/ivelum/consultation"
+              onclick="Calendly.initPopupWidget({
+                url: 'https://calendly.com/ivelum/consultation?hide_gdpr_banner=1&hide_event_type_details=1'
+              });return false;"
+            >
+              Book a free consultation
+            </a>
+          </div>
+        </div>
+
+        <div class="solutions-new--item">
+          <div class="solutions-new--item-num">02 /</div>
+          <div class="solutions-new--item-body">
+            {{- (.GetPage "portable-learning-content").Content }}
+          </div>
+        </div>
+
+        <div class="solutions-new--item">
+          <div class="solutions-new--item-num">03 /</div>
+          <div class="solutions-new--item-body">
+            {{- (.GetPage "reach-platform").Content }}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+{{- end }}
