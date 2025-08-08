@@ -1,0 +1,63 @@
+{{- define "main" }}
+  <div class="solutions-new">
+    <div class="solutions-new--head">
+      <div class="container">
+        <div class="solutions-new--head-caption">
+          {{- .Params.caption -}}
+        </div>
+        <h1 class="solutions-new--head-title">
+          {{- .Params.h1 -}}
+        </h1>
+      </div>
+    </div>
+
+    <div class="container">
+
+      {{ with .Site.GetPage "solutions/startups/testimonial" }}
+        <div class="solutions-new--testimonial">
+          <div class="solutions-new--testimonial-author">
+            <img
+              class="solutions-new--testimonial-author-image"
+              src="{{ ($.Resources.Get .Params.avatar).RelPermalink }}"
+              alt="{{ .Title }}"
+            />
+            <div class="solutions-new--testimonial-author-body">
+              <a
+                class="solutions-new--testimonial-author-name"
+                href="{{ .Params.linkedin }}"
+                target="_blank"
+              >
+                {{- .Title -}}{{($.Resources.Get "img/ico-linkedin.svg").Content | strings.TrimSpace | safeHTML }}
+              </a>
+              <span class="solutions-new--testimonial-author-position">
+                {{- .Params.position -}}
+              </span>
+            </div>
+          </div>
+          <div class="solutions-new--testimonial-body">
+            {{ .Content }}
+          </div>
+        </div>
+      {{ end }}
+
+      <div class="solutions-new--list">
+        {{- range $index, $_ := sort (where .Pages "Params.category" "solutions-startups") "File.Path" }}
+          <div class="solutions-new--item">
+            <div class="solutions-new--item-num">
+              {{ printf "%02d /" (math.Add $index 1) }}
+            </div>
+            <div class="solutions-new--item-body">
+              {{ partial "heading.html" (dict
+                "Level" 3
+                "Text" .Title
+                "Class" "solutions-new--item-title"
+              ) }}
+              {{ .Content }}
+            </div>
+          </div>
+        {{- end }}
+      </div>
+
+    </div>
+  </div>
+{{- end }}
