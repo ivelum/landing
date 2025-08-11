@@ -27,7 +27,8 @@
                 href="{{ .Params.linkedin }}"
                 target="_blank"
               >
-                {{- .Title -}}{{($.Resources.Get "img/ico-linkedin.svg").Content | strings.TrimSpace | safeHTML }}
+                {{- .Title -}}
+                {{- (resources.Get "img/ico-linkedin.svg").Content | strings.TrimSpace | safeHTML -}}
               </a>
               <span class="solutions-new--testimonial-author-position">
                 {{- .Params.position -}}
