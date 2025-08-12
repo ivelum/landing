@@ -9,3 +9,7 @@ and developed our unique expertise in this area.
 If you're building an online learning platform, let's talk! There's a great
 chance we can offer more efficient solutions than other agencies that don't
 have such experience.
+
+- **100+** online learning websites
+- **2M+** students
+{.solutions-new--features-list}

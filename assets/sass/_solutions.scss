@@ -108,6 +108,11 @@
       padding-top: 5rem;
     }
 
+    &.no-line {
+      padding-top: unset;
+      border-top: unset;
+    }
+
     &-num {
       color: $font-color-gray;
       @include media-up(lg) {
@@ -159,6 +164,7 @@
   }
 
   &--logo-list {
+    align-items: center;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;

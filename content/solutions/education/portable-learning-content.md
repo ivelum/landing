@@ -8,3 +8,8 @@ opportunities for learning platforms.
 
 We at ivelum have a lot of experience working with these standards and building
 additional learning, engagement, and analytics features on top of them.
+
+- ![cmi5 xAPI](img/logo-xapi.png)
+- ![SCORM.com](img/logo-scorm.svg)
+- ![Articulate](img/logo-articulate.svg)
+{.solutions-new--logo-list}

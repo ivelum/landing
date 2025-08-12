@@ -7,7 +7,4 @@ as part of the [Google.org Cybersecurity Seminars](https://cyberseminars.withgoo
 
 Watch the interview with James Shires, co-director of Virtual Routes:
 
-{{< youtube
-  id=PkbT8wFArB4
-  title="What people get wrong about security? James Shires on politics and education"
->}}
+{{< youtube id=PkbT8wFArB4 title="What people get wrong about security? James Shires on politics and education" >}}
