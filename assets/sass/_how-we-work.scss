@@ -99,11 +99,7 @@
     }
 
     iframe {
-      aspect-ratio: 16/9;
-      border: none;
-      height: auto;
       max-width: $container-default-max-width * 0.8;
-      width: 100%;
     }
   }
 

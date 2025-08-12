@@ -1,0 +1,14 @@
+{{- $id := .Get "id" -}}
+{{- $title := .Get "title" | default "YouTube video" -}}
+{{- $class := .Get "class" | default "" -}}
+
+<div class="youtube-wrapper {{ $class }}">
+  <iframe
+    src="https://www.youtube.com/embed/{{ $id }}?rel=0"
+    title="{{ $title }}"
+    frameborder="0"
+    allowfullscreen
+    loading="lazy"
+    style="width: 100%; height: 100%;"
+  ></iframe>
+</div>
