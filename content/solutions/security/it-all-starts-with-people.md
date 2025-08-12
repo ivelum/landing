@@ -1,8 +1,8 @@
 ### It all starts with people
 
-Security has never been just a technical discipline — it's a social one, too.
-That's why we place a strong emphasis on training our developers and creating
-an environment that supports best security practices, including:
+Security has never been just a technical discipline — it's a social one, too. That's
+why we place a strong emphasis on training our developers and creating an environment
+that supports best security practices, including:
 
 - OWASP-based security training
 - Code reviews and pair programming
