@@ -145,6 +145,10 @@
         height: auto;
         max-width: 100%;
       }
+
+      ul {
+        margin-bottom: 0;
+      }
     }
 
     &-text {
@@ -243,6 +247,12 @@
       strong {
         color: $primary-orange;
         font-weight: $font-weight-default;
+      }
+
+      em {
+        color: $font-color-gray;
+        display: block;
+        font-size: $font-size-smaller;
       }
     }
   }
