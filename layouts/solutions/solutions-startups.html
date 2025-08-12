@@ -10,9 +10,7 @@
         </h1>
       </div>
     </div>
-
     <div class="container">
-
       {{ with .GetPage "testimonial" }}
         <div class="solutions-new--testimonial">
           <div class="solutions-new--testimonial-author">
@@ -40,56 +38,39 @@
           </div>
         </div>
       {{ end }}
-
-      <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-      <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
       <div class="solutions-new--list">
-
         <div class="solutions-new--item">
           <div class="solutions-new--item-num">01 /</div>
           <div class="solutions-new--item-body">
             {{- (.GetPage "fast-development").Content }}
           </div>
         </div>
-
         <div class="solutions-new--item">
           <div class="solutions-new--item-num">02 /</div>
           <div class="solutions-new--item-body">
             {{- (.GetPage "scale").Content }}
           </div>
         </div>
-
         <div class="solutions-new--item">
           <div class="solutions-new--item-num">03 /</div>
           <div class="solutions-new--item-body">
             {{- (.GetPage "deep-collaboration").Content }}
-            <a
-              class="solutions-new--book-link"
-              href="https://calendly.com/ivelum/consultation"
-              onclick="Calendly.initPopupWidget({
-                url: 'https://calendly.com/ivelum/consultation?hide_gdpr_banner=1&hide_event_type_details=1'
-              });return false;"
-            >
-              Book a Quick Project Review
-            </a>
+            <div class="solutions-new--cta">
+              <a class="btn btn-outline-violet btn-small" href="#talk">
+                Book a quick project review
+              </a>
+            </div>
           </div>
         </div>
-
         <div class="solutions-new--item">
           <div class="solutions-new--item-num">04 /</div>
           <div class="solutions-new--item-body">
             {{- (.GetPage "fractional-cto").Content }}
-            <div class="solutions-new--consultation">
-              <a
-                class="btn btn-outline-violet btn-small"
-                href="https://calendly.com/ivelum/consultation"
-                onclick="Calendly.initPopupWidget({
-                  url: 'https://calendly.com/ivelum/consultation?hide_gdpr_banner=1&hide_event_type_details=1'
-                });return false;"
-              >
-                Book a Quick Project Review
+            <div class="solutions-new--cta">
+              <a class="btn btn-outline-violet btn-small" href="#talk">
+                Book a free consultation
               </a>
-              <div class="solutions-new--consultation-hr"></div>
+              <div class="solutions-new--cta-hr"></div>
               <div class="solutions-new--testimonial-author">
                 {{ with resources.Get "img/avatars/denis-stebunov.png" }}
                   <img
@@ -108,16 +89,13 @@
             </div>
           </div>
         </div>
-
         <div class="solutions-new--item">
           <div class="solutions-new--item-num">05 /</div>
           <div class="solutions-new--item-body">
             {{- (.GetPage "investor-partnerships").Content }}
           </div>
         </div>
-
       </div>
-
     </div>
   </div>
 {{- end }}
