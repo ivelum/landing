@@ -5,7 +5,7 @@ layout: solutions
 menus:
   main:
     name: Solutions
-    # identifier: solutions
+    identifier: solutions
     weight: 30
 sitemap:
   disable: false
