@@ -25,140 +25,77 @@
 
   &--grid {
     display: grid;
-    gap: 3rem;
+    gap: 2rem;
+    margin-top: 2rem;
     @include media-up(lg) {
-      gap: 6rem;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 8fr 4fr;
     }
-    @include media-up(xl) {
-      gap: 10rem;
-    }
-  }
-
-  &--contacts {
-    display: flex;
-    flex-direction: column;
     @include media-up(xl) {
       margin-top: 3rem;
     }
+  }
 
-    &-block {
+  &--contact {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: map-get($grid-breakpoints, sm);
+    text-wrap: balance;
+    @include media-up(xl) {
+      gap: 3rem;
+    }
+
+    &-form {
+      align-items: flex-start;
       display: flex;
       flex-direction: column;
-      margin-top: 1.5rem;
-      @include media-up(xl) {
-        margin-top: 2.5rem;
+      gap: 1rem;
+      @include media-up(sm) {
+        align-items: center;
+        flex-direction: row;
+        gap: 2rem;
       }
+    }
+
+    &-form-mail {
+      align-items: center;
+      display: flex;
+      gap: 0.5rem;
+
+      span {
+        color: rgba($white, 0.5);
+      }
+    }
+
+    &-form-answer {
+      align-items: center;
+      display: flex;
+      font-size: $font-size-smaller;
+      gap: 0.5rem;
+      margin-top: auto;
+      opacity: 0.4;
+    }
+  }
+
+  &--offices {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    @include media-up(xl) {
+      gap: 3rem;
+    }
+
+    &-item {
+      color: $white;
     }
 
     &-title {
       opacity: 0.5;
     }
-
-    &-body {
-      color: $white;
-
-      a {
-        color: $white;
-
-        &:hover {
-          color: rgba($white, 0.6);
-        }
-      }
-    }
-
-    &-copyright {
-      color: rgba($white, 0.4);
-      font-size: $font-size-smaller;
-      margin-top: 2rem;
-      @include media-up(lg) {
-        margin-top: auto;
-        padding: 0.75rem 0;
-      }
-
-      a {
-        color: rgba($white, 0.5);
-        margin-left: 0.5rem;
-
-        &:hover {
-          color: $white;
-        }
-      }
-    }
   }
 
-  &--blog {
-    background: #eceefd;
-    color: $primary-violet;
-  }
-
-  &--logo {
-    .logo-g-text path {
-      fill: $primary-violet;
-    }
-    .logo-g-sign path {
-      fill: $primary-orange;
-    }
-  }
-
-  &--grid-simple {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    @include media-up(md) {
-      flex-direction: row;
-      justify-content: space-between;
-    }
-  }
-
-  &--menu {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    @include media-up(md) {
-      flex-direction: row;
-      gap: 1rem;
-    }
-    @include media-up(lg) {
-      gap: 2rem;
-    }
-  }
-
-  &--menu-item {
+  &--copyright {
+    color: rgba($white, 0.4);
     font-size: $font-size-smaller;
-    padding: 0.125rem 0;
-    position: relative;
-    @include media-up(md) {
-      font-size: $font-size-smaller;
-      padding: 0;
-    }
-    @include media-up(lg) {
-      font-size: 1rem;
-    }
-
-    &::after {
-      @include transition(transform 0.4s cubic-bezier(0, 0.5, 0.5, 1));
-      background-color: $font-color-dark;
-      bottom: 0.5rem;
-      content: '';
-      height: 1px;
-      left: 0;
-      position: absolute;
-      right: 0;
-      transform: scaleX(0);
-      transform-origin: left center;
-      @include media-up(md) {
-        bottom: 0.25rem;
-      }
-    }
-
-    &:hover,
-    &.is-active {
-      color: $font-color-dark;
-      &::after {
-        transform: none;
-      }
-    }
   }
 }

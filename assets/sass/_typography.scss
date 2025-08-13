@@ -74,6 +74,22 @@ a {
     color: $link-primary-hover-color;
     text-decoration: $link-primary-hover-decoration;
   }
+
+  &.link-white {
+    color: $white;
+
+    &:hover {
+      color: rgba($white, 0.6);
+    }
+  }
+
+  &.link-light {
+    color: rgba($white, 0.6);
+
+    &:hover {
+      color: $white;
+    }
+  }
 }
 
 @mixin link-underline {
