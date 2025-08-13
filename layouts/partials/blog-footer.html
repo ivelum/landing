@@ -4,12 +4,30 @@
       <a class="footer--logo" href="/" aria-label="ivelum">{{ (resources.Get "img/logo.svg").Content | strings.TrimSpace | safeHTML }}</a>
       <div class="footer--menu">
         {{- range site.Menus.main }}
-          <a
-            href="{{ .URL }}"
-            class="footer--menu-item {{- if eq $.RelPermalink .URL }} is-active{{ end -}}"
-          >
-            {{ .Name }}
-          </a>
+          {{- if .HasChildren }}
+            <div class="footer--submenu">
+              <div class="footer--submenu-title">
+                {{ .Name }}:
+              </div>
+              <div class="footer--submenu-items">
+                {{- range .Children }}
+                  <a
+                    class="footer--submenu-item{{- if eq $.RelPermalink .URL }} is-active{{ end -}}"
+                    href="{{ .URL }}"
+                  >
+                    {{- .Name -}}
+                  </a>
+                {{- end }}
+              </div>
+            </div>
+          {{- else }}
+            <a
+              href="{{ .URL }}"
+              class="footer--menu-item {{- if eq $.RelPermalink .URL }} is-active{{ end -}}"
+            >
+              {{ .Name }}
+            </a>
+          {{- end }}
         {{- end }}
       </div>
     </div>

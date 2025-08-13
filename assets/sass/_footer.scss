@@ -128,26 +128,22 @@
     align-items: flex-start;
     display: flex;
     flex-direction: column;
+    font-size: $font-size-smaller;
     @include media-up(md) {
       flex-direction: row;
       gap: 1rem;
     }
     @include media-up(lg) {
+      font-size: $font-size-default;
       gap: 2rem;
-
     }
   }
 
   &--menu-item {
-    font-size: $font-size-smaller;
     padding: 0.125rem 0;
     position: relative;
     @include media-up(md) {
-      font-size: $font-size-smaller;
       padding: 0;
-    }
-    @include media-up(lg) {
-      font-size: 1rem;
     }
 
     &::after {
@@ -169,8 +165,39 @@
     &:hover,
     &.is-active {
       color: $font-color-dark;
+
       &::after {
         transform: none;
+      }
+    }
+  }
+
+  &--submenu {
+    display: flex;
+    flex-direction: column;
+
+    &-title {
+      color: $font-color-dark;
+    }
+
+    &-items {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-item {
+      font-size: $font-size-smaller;
+      &:before {
+        content: '–';
+        margin: 0 0.5rem 0 0;
+        @include media-up(md) {
+          content: unset;
+        }
+      }
+
+      &:hover,
+      &.is-active {
+        color: $font-color-dark;
       }
     }
   }
