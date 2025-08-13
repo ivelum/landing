@@ -155,7 +155,7 @@
       width: 50%;
     }
 
-    & > p:last-child {
+    & > p:last-child:not(:only-of-type) {
       margin-top: auto;
       > a {
         @extend .btn;
