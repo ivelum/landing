@@ -11,4 +11,4 @@ learning, engagement, and analytics features on top of them.
 - ![cmi5 xAPI](img/logo-xapi.png)
 - ![SCORM.com](img/logo-scorm.svg)
 - ![Articulate](img/logo-articulate.svg)
-{.solutions-new--logo-list}
+{.solutions--logo-list}

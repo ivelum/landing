@@ -12,4 +12,4 @@ that supports best security practices, including:
 - Background checks for all new hires
 <!-- List separator -->
 - ![OWASP](img/logo-owasp.svg)
-{.solutions-new--logo-list}
+{.solutions--logo-list}

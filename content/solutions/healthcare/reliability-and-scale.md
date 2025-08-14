@@ -6,4 +6,4 @@ and AWS Well-Architectured framework to help you build reliable and scalable sys
 with great uptime and fault tolerance.
 
 - ![AWS](img/logo-aws-wa.png)
-{.solutions-new--logo-list}
+{.solutions--logo-list}

@@ -8,4 +8,4 @@ you to investors with whom we partner.
 
 - ![Founder Works](img/logo-founder-works.png)
 - ![North Equity](img/logo-north-equity.png)
-{.solutions-new--logo-list}
+{.solutions--logo-list}

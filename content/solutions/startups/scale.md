@@ -5,4 +5,4 @@ easily without costs spiralling out of control. When we joined existing projects
 often helped our clients achieve cloud savings of 30-50%.
 
 - ![AWS](img/logo-aws-wa.png)
-{.solutions-new--logo-list}
+{.solutions--logo-list}

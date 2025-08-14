@@ -1,58 +1,58 @@
 {{- define "main" }}
-  <div class="solutions-new">
-    <div class="solutions-new--head">
+  <div class="solutions">
+    <div class="solutions--head">
       <div class="container">
-        <div class="solutions-new--head-caption">
+        <div class="solutions--head-caption">
           {{- .Params.caption -}}
         </div>
-        <h1 class="solutions-new--head-title">
+        <h1 class="solutions--head-title">
           {{- .Params.h1 -}}
         </h1>
       </div>
     </div>
     <div class="container">
       {{ with .GetPage "testimonial" }}
-        <div class="solutions-new--testimonial">
-          <div class="solutions-new--testimonial-author">
+        <div class="solutions--testimonial">
+          <div class="solutions--testimonial-author">
             <img
-              class="solutions-new--testimonial-author-image"
+              class="solutions--testimonial-author-image"
               src="{{ ($.Resources.Get .Params.avatar).RelPermalink }}"
               alt="{{ .Title }}"
             />
-            <div class="solutions-new--testimonial-author-body">
+            <div class="solutions--testimonial-author-body">
               <a
-                class="solutions-new--testimonial-author-name"
+                class="solutions--testimonial-author-name"
                 href="{{ .Params.linkedin }}"
                 target="_blank"
               >
                 {{- .Title -}}
                 {{- (resources.Get "img/ico-linkedin.svg").Content | strings.TrimSpace | safeHTML -}}
               </a>
-              <span class="solutions-new--testimonial-author-position">
+              <span class="solutions--testimonial-author-position">
                 {{- .Params.position -}}
               </span>
             </div>
           </div>
-          <div class="solutions-new--testimonial-body">
+          <div class="solutions--testimonial-body">
             {{ .Content }}
           </div>
         </div>
       {{ end }}
-      <div class="solutions-new--list">
-        <div class="solutions-new--item">
-          <div class="solutions-new--item-num">01 /</div>
-          <div class="solutions-new--item-body">
+      <div class="solutions--list">
+        <div class="solutions--item">
+          <div class="solutions--item-num">01 /</div>
+          <div class="solutions--item-body">
             {{- (.GetPage "fast-content-delivery").Content }}
-            <div class="solutions-new--cta">
+            <div class="solutions--cta">
               <a class="btn btn-outline-violet btn-small" href="#talk">
                 Schedule a free website audit
               </a>
             </div>
           </div>
         </div>
-        <div class="solutions-new--item">
-          <div class="solutions-new--item-num">02 /</div>
-          <div class="solutions-new--item-body">
+        <div class="solutions--item">
+          <div class="solutions--item-num">02 /</div>
+          <div class="solutions--item-body">
             {{- (.GetPage "handle-traffic-peaks").Content }}
           </div>
         </div>

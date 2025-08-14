@@ -1,43 +1,43 @@
 {{- define "main" }}
-  <div class="solutions-new">
-    <div class="solutions-new--head">
+  <div class="solutions">
+    <div class="solutions--head">
       <div class="container">
-        <div class="solutions-new--head-caption">
+        <div class="solutions--head-caption">
           {{- .Params.caption -}}
         </div>
-        <h1 class="solutions-new--head-title">
+        <h1 class="solutions--head-title">
           {{- .Params.h1 -}}
         </h1>
       </div>
     </div>
     <div class="container">
-      <div class="solutions-new--list">
-        <div class="solutions-new--item">
-          <div class="solutions-new--item-num">01 /</div>
-          <div class="solutions-new--item-body">
+      <div class="solutions--list">
+        <div class="solutions--item">
+          <div class="solutions--item-num">01 /</div>
+          <div class="solutions--item-body">
             {{- (.GetPage "it-all-starts-with-people").Content }}
           </div>
         </div>
-        <div class="solutions-new--item">
-          <div class="solutions-new--item-num">02 /</div>
-          <div class="solutions-new--item-body">
+        <div class="solutions--item">
+          <div class="solutions--item-num">02 /</div>
+          <div class="solutions--item-body">
             {{- (.GetPage "secure-your-production").Content }}
-            <div class="solutions-new--cta">
+            <div class="solutions--cta">
               <a class="btn btn-outline-violet btn-small" href="#talk">
                 Book a free consultation
               </a>
             </div>
           </div>
         </div>
-        <div class="solutions-new--item">
-          <div class="solutions-new--item-num">03 /</div>
-          <div class="solutions-new--item-body">
+        <div class="solutions--item">
+          <div class="solutions--item-num">03 /</div>
+          <div class="solutions--item-body">
             {{- (.GetPage "achieve-compliance-faster").Content }}
           </div>
         </div>
-        <div class="solutions-new--item">
-          <div class="solutions-new--item-num">04 /</div>
-          <div class="solutions-new--item-body">
+        <div class="solutions--item">
+          <div class="solutions--item-num">04 /</div>
+          <div class="solutions--item-body">
             {{- (.GetPage "right-balance").Content }}
           </div>
         </div>

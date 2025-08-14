@@ -5,7 +5,7 @@ companies build secure, resilient production environments, covering everything f
 application architecture to infrastructure management and monitoring.
 
 - **60%** of small businesses close within six months after a cyberattack.*National Cyber Security Alliance*
-{.solutions-new--features-list}
+{.solutions--features-list}
 
 - ![AWS](img/logo-aws-wa.png)
-{.solutions-new--logo-list}
+{.solutions--logo-list}

@@ -10,4 +10,4 @@ we can offer more efficient solutions than other agencies that don't have such e
 
 - **100+** online learning websites
 - **2M+** students
-{.solutions-new--features-list}
+{.solutions--features-list}

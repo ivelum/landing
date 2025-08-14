@@ -10,4 +10,4 @@ later. We're here to help you do just that.
 - ![FedRAMP](img/logo-fedramp.png)
 - ![GDPR](img/logo-gdpr.svg)
 - ![CCPA](img/logo-ccpa.png)
-{.solutions-new--logo-list}
+{.solutions--logo-list}

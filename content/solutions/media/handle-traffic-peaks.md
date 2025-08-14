@@ -7,7 +7,7 @@ seamlessly while cutting cloud bills by 30–50%.
 - ![AWS](img/logo-aws.svg)
 - ![Fastly](img/logo-fastly.svg)
 - ![Flexpress](img/logo-flexpress.png)
-{.solutions-new--logo-list}
+{.solutions--logo-list}
 
 - **300M+** visitors served per month
-{.solutions-new--features-list}
+{.solutions--features-list}

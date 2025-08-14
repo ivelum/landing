@@ -10,4 +10,4 @@ often HL7/ FHIR, which is required for organizations working with Medicare or Me
 
 - ![HIPAA](img/logo-hipaa.svg)
 - ![HL7FHIR](img/logo-fhir.png)
-{.solutions-new--logo-list}
+{.solutions--logo-list}
