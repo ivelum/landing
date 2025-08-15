@@ -67,12 +67,11 @@
           <div class="solutions--cto">
             <div class="solutions--cto-num">04 /</div>
             {{ partial "heading.html" (dict "Level" 3 "Text" .Title) }}
-            <div class="solutions--cto-image">
-              <img
-                src="{{ ($.Resources.Get .Params.image).RelPermalink }}"
-                alt="{{- .Params.name -}}"
+            <img
+              class="solutions--cto-image"
+              src="{{ ($.Resources.Get .Params.image).RelPermalink }}"
+              alt="{{- .Params.name -}}"
             />
-            </div>
             <div class="solutions--cto-body">
               {{- .Content -}}
               <a

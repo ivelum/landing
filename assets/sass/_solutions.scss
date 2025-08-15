@@ -103,9 +103,9 @@
   &--item {
     display: flex;
     flex-direction: column;
+    row-gap: 1rem;
     @include media-up(lg) {
       flex-direction: row;
-      gap: 0 1rem;
     }
 
     &:not(:first-child) {
@@ -115,14 +115,14 @@
         padding-top: 4rem;
       }
       @include media-up(xl) {
-      padding-top: 5rem;
-    }
+        padding-top: 5rem;
+      }
     }
 
     &-num {
       color: $font-color-gray;
       @include media-up(lg) {
-        width: percentage(2 / 12);
+        flex: 0 0 percentage(2 / 12);
       }
     }
 
@@ -130,21 +130,12 @@
       align-items: flex-start;
       display: flex;
       flex-direction: column;
-      flex: 1;
-      margin-top: 1rem;
-      @include media-up(lg) {
-        margin-top: unset;
-      }
       @include media-up(xl) {
-        width: percentage(8 / 12);
-      }
-
-      & > * + * {
-        margin-block-start: 1rem;
+        flex-basis: percentage(8 / 12);
       }
 
       p:first-of-type {
-        margin-block-start: 1rem;
+        margin-top: 1rem;
       }
 
       img {
@@ -167,10 +158,17 @@
   }
 
   &--cto {
+    border-top: 1px solid $border-color-default;
     display: grid;
-    gap: 1rem;
+    padding-top: 3rem;
+    row-gap: 1rem;
     @include media-up(lg) {
-      grid-template-columns: 2fr 10fr;
+      grid-template-columns: percentage(2 / 12) 1fr;
+      padding-top: 4rem;
+    }
+    @include media-up(xl) {
+      grid-template-columns: percentage(2 / 12) percentage(8 / 12);
+      padding-top: 5rem;
     }
 
     &-num {
@@ -178,15 +176,9 @@
     }
 
     &-image {
-
-      img {
-        display: block;
-        height: auto;
-        max-width: 100%;
-        @include media-up(lg) {
-          max-width: 8.5rem;
-        }
-      }
+      display: block;
+      height: auto;
+      max-width: 8.5rem;
     }
   }
 
