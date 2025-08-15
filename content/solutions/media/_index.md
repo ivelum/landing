@@ -8,7 +8,7 @@ menus:
   main:
     name: Media
     parent: solutions
-    weight: 32
+    weight: 33
 sitemap:
   disable: false
 cascade:

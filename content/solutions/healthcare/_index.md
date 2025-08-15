@@ -8,7 +8,7 @@ menus:
   main:
     name: Healthcare
     parent: solutions
-    weight: 34
+    weight: 35
 sitemap:
   disable: false
 cascade:

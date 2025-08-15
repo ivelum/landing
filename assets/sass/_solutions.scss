@@ -25,6 +25,18 @@
     }
   }
 
+  &--intro {
+    margin-block-start: 3rem;
+    @include media-up(lg) {
+      margin-block-start: 4rem;
+    }
+    @include media-up(xl) {
+      margin-block-start: 6rem;
+      margin-inline: auto;
+      width: percentage(8 / 12);
+    }
+  }
+
   &--testimonial {
     align-items: flex-start;
     border: 1px solid $border-color-default;
@@ -97,6 +109,17 @@
     @include media-up(xl) {
       gap: 5rem;
       margin-top: 5rem;
+    }
+
+    &.with-border {
+      border-top: 1px solid $border-color-default;
+      padding-top: 3rem;
+      @include media-up(lg) {
+        padding-top: 4rem;
+      }
+      @include media-up(xl) {
+        padding-top: 5rem;
+      }
     }
   }
 

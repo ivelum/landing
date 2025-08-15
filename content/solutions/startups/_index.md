@@ -8,7 +8,7 @@ menus:
   main:
     name: Startups
     parent: solutions
-    weight: 31
+    weight: 32
 sitemap:
   disable: false
 cascade:

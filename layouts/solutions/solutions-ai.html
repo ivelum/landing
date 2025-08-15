@@ -1,0 +1,57 @@
+{{- define "main" }}
+  <div class="solutions">
+    <div class="solutions--head">
+      <div class="container">
+        <div class="solutions--head-caption">
+          {{- .Params.caption -}}
+        </div>
+        <h1 class="solutions--head-title">
+          {{- .Params.h1 -}}
+        </h1>
+      </div>
+    </div>
+    <div class="container">
+      <div class="solutions--intro">
+          {{- .Content -}}
+          <a
+            class="btn btn-outline-violet btn-small solutions--cta"
+            href="#talk"
+          >
+            Book a free consultation
+          </a>
+      </div>
+      <div class="solutions--list with-border">
+        <div class="solutions--item">
+          <div class="solutions--item-num">01 /</div>
+          <div class="solutions--item-body">
+            {{- (.GetPage "add-ai-features").Content }}
+          </div>
+        </div>
+        <div class="solutions--item">
+          <div class="solutions--item-num">02 /</div>
+          <div class="solutions--item-body">
+            {{- (.GetPage "integrate-ai").Content }}
+            <a
+              class="btn btn-outline-violet btn-small solutions--cta"
+              href="#talk"
+            >
+              Book a Quick Project Review
+            </a>
+          </div>
+        </div>
+        <div class="solutions--item">
+          <div class="solutions--item-num">03 /</div>
+          <div class="solutions--item-body">
+            {{- (.GetPage "build-faster").Content }}
+          </div>
+        </div>
+        <div class="solutions--item">
+          <div class="solutions--item-num">04 /</div>
+          <div class="solutions--item-body">
+            {{- (.GetPage "from-prototype").Content }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{- end }}

@@ -8,7 +8,7 @@ menus:
   main:
     name: Security
     parent: solutions
-    weight: 35
+    weight: 36
 sitemap:
   disable: false
 cascade:

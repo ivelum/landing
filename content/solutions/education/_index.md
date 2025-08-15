@@ -8,7 +8,7 @@ menus:
   main:
     name: Education
     parent: solutions
-    weight: 33
+    weight: 34
 sitemap:
   disable: false
 cascade:
