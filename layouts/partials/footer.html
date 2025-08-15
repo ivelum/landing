@@ -5,10 +5,17 @@
     </h2>
     <div class="footer--grid">
       <div class="footer--contact">
-        {{
-          (resources.Get "img/ico-asterisk.svg").Content
-          | strings.TrimSpace | safeHTML
-        }}
+        <div class="footer--contact-cto">
+          <img
+            src="{{ (resources.Get "img/avatars/denis-stebunov.png").RelPermalink }}"
+            alt="Denis Stebunov – CTO at ivelum"
+            class="footer--contact-cto-photo"
+          />
+          <div class="footer--contact-cto-name">
+            Denis Stebunov
+            <span>CTO at ivelum</span>
+          </div>
+        </div>
         <p>
           Tell us about your project! Together, we'll brainstorm
           the optimal approach and how we can help.
@@ -34,25 +41,14 @@
             }}
             Book a call
           </a>
-          <div class="footer--contact-form-mail">
+          <span class="footer--contact-or">or</span>
+          <a href="mailto:info@ivelum.com" class="footer--contact-mail">
             {{
               (resources.Get "img/ico-mail.svg").Content
               | strings.TrimSpace | safeHTML
             }}
-            <span>
-              <a href="mailto:info@ivelum.com" class="link-white">
-                Send email
-              </a>
-              instead
-            </span>
-          </div>
-        </div>
-        <div class="footer--contact-form-answer">
-          {{
-            (resources.Get "img/ico-clock.svg").Content
-            | strings.TrimSpace | safeHTML
-          }}
-          We'll respond within 24 hours
+            Send an email
+          </a>
         </div>
       </div>
       <div class="footer--offices">

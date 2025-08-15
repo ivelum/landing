@@ -36,6 +36,7 @@
   }
 
   &--contact {
+    align-items: flex-start;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -45,8 +46,33 @@
       gap: 3rem;
     }
 
+    &-cto {
+      align-items: center;
+      display: flex;
+      gap: 1.5rem;
+
+      &-photo {
+        border-radius: 50%;
+        display: block;
+        height: auto;
+        max-width: 4.375rem;
+      }
+
+      &-name {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.75;
+        @include media-up(xl) {
+          font-size: $font-size-bigger;
+        }
+
+        span {
+          color: rgba($white, 0.5);
+        }
+      }
+    }
+
     &-form {
-      align-items: flex-start;
       display: flex;
       flex-direction: column;
       gap: 1rem;
@@ -57,23 +83,19 @@
       }
     }
 
-    &-form-mail {
-      align-items: center;
-      display: flex;
-      gap: 0.5rem;
-
-      span {
-        color: rgba($white, 0.5);
-      }
+    &-or {
+      color: rgba($white, 0.5);
     }
 
-    &-form-answer {
+    &-mail {
       align-items: center;
-      display: flex;
-      font-size: $font-size-smaller;
-      gap: 0.5rem;
-      margin-top: auto;
-      opacity: 0.4;
+      color: $white;
+      display: inline-flex;
+      gap: 0.75rem;
+
+      &:hover {
+        color: rgba($white, 0.5);
+      }
     }
   }
 
@@ -82,7 +104,7 @@
     flex-direction: column;
     gap: 2rem;
     @include media-up(xl) {
-      gap: 3rem;
+      gap: 2.5rem;
     }
 
     &-item {
