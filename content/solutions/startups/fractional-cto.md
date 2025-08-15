@@ -1,4 +1,8 @@
-### Fractional CTO service
+---
+title: Fractional CTO service
+image: img/denis-stebunov-photo.jpg
+name: Denis Stebunov
+---
 
 Even if you haven't hired your full-time in-house CTO yet, the development team
 still needs to make technology and product decisions, and some of those decisions

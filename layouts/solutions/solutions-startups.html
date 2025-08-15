@@ -55,40 +55,35 @@
           <div class="solutions--item-num">03 /</div>
           <div class="solutions--item-body">
             {{- (.GetPage "deep-collaboration").Content }}
-            <div class="solutions--cta">
-              <a class="btn btn-outline-violet btn-small" href="#talk">
-                Book a quick project review
-              </a>
-            </div>
+            <a
+              class="btn btn-outline-violet btn-small solutions--cta"
+              href="#talk"
+            >
+              Book a quick project review
+            </a>
           </div>
         </div>
-        <div class="solutions--item">
-          <div class="solutions--item-num">04 /</div>
-          <div class="solutions--item-body">
-            {{- (.GetPage "fractional-cto").Content }}
-            <div class="solutions--cta">
-              <a class="btn btn-outline-violet btn-small" href="#talk">
+        {{ with .GetPage "fractional-cto" }}
+          <div class="solutions--cto">
+            <div class="solutions--cto-num">04 /</div>
+            {{ partial "heading.html" (dict "Level" 3 "Text" .Title) }}
+            <div class="solutions--cto-image">
+              <img
+                src="{{ ($.Resources.Get .Params.image).RelPermalink }}"
+                alt="{{- .Params.name -}}"
+            />
+            </div>
+            <div class="solutions--cto-body">
+              {{- .Content -}}
+              <a
+                class="btn btn-outline-violet btn-small solutions--cta"
+                href="#talk"
+              >
                 Book a free consultation
               </a>
-              <div class="solutions--cta-hr"></div>
-              <div class="solutions--testimonial-author">
-                {{ with resources.Get "img/avatars/denis-stebunov.png" }}
-                  <img
-                    class="solutions--testimonial-author-image"
-                    src="{{ .RelPermalink }}"
-                    alt="Denis Stebunov"
-                  />
-                {{ end }}
-                <div class="solutions--testimonial-author-body">
-                  Denis Stebunov
-                  <span class="solutions--testimonial-author-position">
-                    CTO at ivelum
-                  </span>
-                </div>
-              </div>
             </div>
           </div>
-        </div>
+        {{ end }}
         <div class="solutions--item">
           <div class="solutions--item-num">05 /</div>
           <div class="solutions--item-body">

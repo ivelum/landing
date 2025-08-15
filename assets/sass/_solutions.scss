@@ -105,6 +105,7 @@
     flex-direction: column;
     @include media-up(lg) {
       flex-direction: row;
+      gap: 0 1rem;
     }
 
     &:not(:first-child) {
@@ -129,6 +130,7 @@
       align-items: flex-start;
       display: flex;
       flex-direction: column;
+      flex: 1;
       margin-top: 1rem;
       @include media-up(lg) {
         margin-top: unset;
@@ -164,6 +166,30 @@
     }
   }
 
+  &--cto {
+    display: grid;
+    gap: 1rem;
+    @include media-up(lg) {
+      grid-template-columns: 2fr 10fr;
+    }
+
+    &-num {
+      color: $font-color-gray;
+    }
+
+    &-image {
+
+      img {
+        display: block;
+        height: auto;
+        max-width: 100%;
+        @include media-up(lg) {
+          max-width: 8.5rem;
+        }
+      }
+    }
+  }
+
   &--logo-list {
     align-items: center;
     display: flex;
@@ -188,27 +214,9 @@
   }
 
   &--cta {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
     margin-top: 1.5rem;
-    @include media-up(md) {
-      align-items: center;
-      flex-direction: row;
-      gap: 2rem;
-    }
     @include media-up(xl) {
       margin-top: 2rem;
-    }
-
-    &-hr {
-      background-color: $border-color-default;
-      display: none;
-      height: 1px;
-      width: 2rem;
-      @include media-up(md) {
-        display: block;
-      }
     }
   }
 
