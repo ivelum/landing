@@ -3,54 +3,50 @@
     <div class="about--hero-body">
       <div class="about--hero-tagline">Since 2003</div>
       <h1 class="about--hero-title">
-        <div class="about--hero-title-wrap">Experts</div>
-        <div class="about--hero-title-wrap">in&nbsp;software</div>
-        <div class="about--hero-title-wrap">development</div>
+        Let's build<br/>great things together
       </h1>
-      {{- /* TODO: Animations */}}
     </div>
-
-    {{- $logos := slice
-      (dict "name" "AWS" "w" 41 "h" 25)
-      (dict "name" "Django" "w" 68 "h" 24)
-      (dict "name" "Docker" "w" 116 "h" 26)
-      (dict "name" "GraphQL" "w" 111 "h" 32)
-      (dict "name" "JS" "w" 32 "h" 31)
-      (dict "name" "Python" "w" 121 "h" 32)
-      (dict "name" "React" "w" 100 "h" 34)
-      (dict "name" "Spark" "w" 49 "h" 25)
-    }}
-    <div class="about--tech-slider">
-      <div class="about--tech-slider-wrapper">
-        {{- range seq 2 }}
-        {{- /* Two lists are visible at all times to ensure continuity. */}}
-        <div class="about--tech-slider-list"{{ if eq . 2 }} aria-hidden="true"{{end}}>
-          {{- range seq 2 }}
-          {{- /* This loop defines how many logos are in a list and how tightly
-          they are packed. */}}
-          {{- range sort $logos "name" }}
-          <div class="about--tech-slider-item">
-            <img
-              src="{{
-                (
-                  .name | lower | printf "/img/logo-%s.svg" | $.Resources.Get
-                ).RelPermalink
-              }}"
-              alt="{{ .name }}"
-              width="{{ .w }}"
-              height="{{ .h }}"
-            />
-          </div>
-          {{- end }}
-          {{- end }}
+    <div class="about--hero-footer">
+      <a href="#talk" class="btn btn-big btn-with-arrow about--hero-cta">
+        Get in touch
+        {{(resources.Get "img/arrow-button.svg").Content | strings.TrimSpace | safeHTML}}
+      </a>
+      <div class="about--hero-loved">
+        <div class="about--hero-loved-avatars">
+          <img
+            src='{{ (.Resources.Get "img/avatars/alex-ford.png").RelPermalink }}'
+            alt="Alex Ford"
+          />
+          <img
+            src='{{ (.Resources.Get "img/avatars/zach-levine.jpeg").RelPermalink }}'
+            alt="Zach Levine"
+          />
+          <img
+            src='{{ (.Resources.Get "img/avatars/justin-demaris.png").RelPermalink }}'
+            alt="Justin Demaris"
+          />
         </div>
-        {{- end }}
+        <div class="about--hero-loved-text">
+          Loved by 50+<br/>Founders
+        </div>
+      </div>
+      <div class="about--hero-clutch">
+        <img
+          src='{{ ($.Resources.Get "img/logo-clutch.svg").RelPermalink }}'
+          alt="Clutch"
+        />
+        <div class="about--hero-clutch-text">
+          <img
+            src='{{ ($.Resources.Get "img/clutch-stars.svg").RelPermalink }}'
+            alt="Clutch Review Rating"
+          />
+          5.0 Review Rating
+        </div>
       </div>
     </div>
-
     <video
       class="about--hero-video"
-      poster="{{ (.Resources.Get "img/hero-video-cover.png").RelPermalink }}"
+      poster='{{ (.Resources.Get "img/hero-video-cover.png").RelPermalink }}'
       width="100%"
       autoPlay
       loop
@@ -59,15 +55,11 @@
       playsInline
       id="hero-video"
     >
-      <source type="video/webm" src="{{
-        (.Resources.Get "img/hero-video.webm").RelPermalink
-      }}" />
-      <source type="video/mp4" src="{{
-        (.Resources.Get "img/hero-video.mp4").RelPermalink
-      }}" />
+      <source type="video/webm" src='{{(.Resources.Get "img/hero-video.webm").RelPermalink}}' />
+      <source type="video/mp4" src='{{(.Resources.Get "img/hero-video.mp4").RelPermalink}}' />
       <img
         class="about--hero-video"
-        src="{{ (.Resources.Get "img/hero-video-cover.png").RelPermalink }}"
+        src='{{ (.Resources.Get "img/hero-video-cover.png").RelPermalink }}'
         alt="Experts in software development"
       />
     </video>
@@ -120,12 +112,9 @@
       href="#talk"
       x-data="LetsTalkButton"
       x-on:click.prevent="talkToUs"
-      >Let's talk{{
-        (resources.Get "img/arrow-button.svg").Content
-        | strings.TrimSpace
-        | safeHTML
-      }}</a
     >
+      Let's talk{{(resources.Get "img/arrow-button.svg").Content | strings.TrimSpace | safeHTML}}
+    </a>
     <script type="module">
       import Alpine from "alpinejs";
       import talkToUs from '/js/talk-to-us.js';
@@ -135,7 +124,7 @@
     </script>
     <img
       class="about--action-background"
-      src="{{ (.Resources.Get "img/got-a-project-in-mind.svg").RelPermalink }}"
+      src='{{ (.Resources.Get "img/got-a-project-in-mind.svg").RelPermalink }}'
       alt="Got a project in mind?"
       width="738"
       height="208"
@@ -162,12 +151,9 @@
               class="about--testimonials-author-name"
               href="{{ .Params.linkedin }}"
               target="_blank"
-              >{{ .Title }}{{
-                ($.Resources.Get "img/ico-linkedin.svg").Content
-                | strings.TrimSpace
-                | safeHTML
-              }}</a
             >
+              {{ .Title }}{{($.Resources.Get "img/ico-linkedin.svg").Content | strings.TrimSpace | safeHTML}}
+            </a>
             <span class="about--testimonials-author-position">
               {{ .Params.position }}
             </span>
@@ -185,7 +171,7 @@
           target="_blank"
         >
           <img
-            src="{{ (.Resources.Get "img/clutch-spring-champion-2024.svg").RelPermalink }}"
+            src='{{ (.Resources.Get "img/clutch-spring-champion-2024.svg").RelPermalink }}'
             alt="Clutch Champion Spring 2024"
           />
         </a>
