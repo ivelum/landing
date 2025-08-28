@@ -68,16 +68,25 @@
   <div class="container">
     {{ partial "heading.html" (dict
       "Level" 2
-      "Text" "About"
+      "Text" "Hire us if you need to..."
       "Class" "about--title"
-      ) }}
-    <div class="about--about-wrapper">
-    {{- range sort (where .Pages "Params.category" "about") "File.Path" }}
-      <div class="about--about-item">
-        <h3>{{ .Title }}</h3>
-        {{ .Content }}
+    ) }}
+    <div class="about--hire-us">
+      <div class="about--hire-us-list">
+        {{- (.GetPage "hire-us-list").Content }}
       </div>
-    {{- end }}
+      <div class="about--hire-us-book">
+        {{- (.GetPage "hire-us-book").Content }}
+        {{ partial "author-card.html" (dict
+          "Page" .
+          "Image" "img/avatars/denis-stebunov.png"
+          "Name" "Denis Stebunov"
+          "Position" "CTO at ivelum"
+        ) }}
+        <a href="#talk" class="btn btn-small btn-outline-violet">
+          Book a free consultation
+        </a>
+      </div>
     </div>
   </div>
 

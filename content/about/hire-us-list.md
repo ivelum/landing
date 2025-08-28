@@ -1,0 +1,6 @@
+---
+---
+- Launch an MVP fast
+- Scale without spending a fortune on it
+- Modernize a legacy system
+- Implement AI in the most effective way
