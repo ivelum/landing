@@ -117,16 +117,45 @@
     </div>
   </div>
 
-  <div class="container">
-    <div class="about--action">
-      <div class="about--action-text">
-        {{- (.GetPage "call-to-action").Content }}
-      </div>
-      <a class="btn btn-big btn-with-arrow" href="#talk">
-        Get in touch
-        {{(resources.Get "img/arrow-button.svg").Content | strings.TrimSpace | safeHTML}}
-      </a>
+  <div class="container about--action with-border">
+    <div class="about--action-text">
+      {{- (.GetPage "call-to-action").Content }}
     </div>
+    <a class="btn btn-big btn-with-arrow" href="#talk">
+      Get in touch
+      {{(resources.Get "img/arrow-button.svg").Content | strings.TrimSpace | safeHTML}}
+    </a>
+  </div>
+
+  <div class="container">
+    {{ partial "heading.html" (dict
+      "Level" 2
+      "Text" "Why ivelum"
+      "Class" "about--title"
+    ) }}
+    <div class="about--why-ivelum">
+    {{- range sort (where .Pages "Params.category" "why-ivelum") "File.Path" }}
+      <div class="about--why-ivelum-item">
+        <div class="about--why-ivelum-title">
+          <img
+            src="{{ ($.Resources.Get .Params.image).RelPermalink }}"
+            alt="{{ .Title }}"
+          />
+          {{ .Title }}
+        </div>
+        <div class="about--why-ivelum-text">
+          {{ .Content }}
+        </div>
+      </div>
+    {{- end }}
+    </div>
+  </div>
+
+  <div class="container about--action">
+    <a class="btn btn-big btn-with-arrow" href="#talk">
+      Get in touch
+      {{(resources.Get "img/arrow-button.svg").Content | strings.TrimSpace | safeHTML}}
+    </a>
   </div>
 
   <div class="container">
