@@ -1,0 +1,20 @@
+---
+---
+- ![Python](img/logos/python.svg) Python
+- ![Django](img/logos/django.svg) Django
+- ![PostgreSQL](img/logos/postgres.svg) PostgreSQL
+- ![ClickHouse](img/logos/clickhouse.svg) ClickHouse
+- ![Kubernetes](img/logos/kubernetes.svg) Kubernetes
+- ![Terraform](img/logos/terraform.svg) Terraform
+- ![JavaScript](img/logos/js.svg) ![JavaScript](img/logos/ts.svg) JavaScript / TypeScript
+- ![React](img/logos/react.svg) React.js
+- ![Node.js](img/logos/node.svg) Node.js
+- ![Next.js](img/logos/nextjs.svg) Next.js
+- ![React Native](img/logos/react-native.svg) React Native
+- ![MUI](img/logos/mui.svg) MUI
+- ![PHP](img/logos/php.svg) PHP
+- ![WordPress](img/logos/wordpress.svg) WordPress
+- ![MySQL](img/logos/mysql.svg) MySQL
+- ![Amazon Web Services](img/logos/aws.svg) Amazon Web Services
+- ![Google Cloud](img/logos/gcp.svg) Google Cloud
+- ![Microsoft Azure](img/logos/microsoft.svg) Microsoft Azure

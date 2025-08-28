@@ -163,7 +163,7 @@
       "Level" 2
       "Text" "What our clients say"
       "Class" "about--title"
-      ) }}
+    ) }}
     <div class="about--testimonials-wrapper">
     {{- range sort (where .Pages "Params.category" "testimonials") "File.Path" }}
       <div class="about--testimonials-item">
@@ -209,6 +209,17 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="container">
+    {{ partial "heading.html" (dict
+      "Level" 2
+      "Text" "Technologies"
+      "Class" "about--title"
+    ) }}
+    <div class="about--technologies">
+      {{- (.GetPage "technologies").Content }}
     </div>
   </div>
 {{- end }}
