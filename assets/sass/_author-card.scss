@@ -1,0 +1,35 @@
+.author-card {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  @include media-up(xl) {
+    gap: 1.5rem;
+  }
+
+  &--image {
+    border-radius: 50%;
+    display: flex;
+    height: auto;
+    width: 4.5rem;
+  }
+
+  &--body {
+    line-height: 1.6;
+  }
+
+  &--name {
+    color: $font-color-dark;
+    @include media-up(xl) {
+      font-size: $font-size-bigger;
+    }
+
+    > svg {
+      margin-bottom: 0.25rem;
+      margin-left: 0.375rem;
+    }
+  }
+
+  &--position {
+    color: $font-color-gray;
+  }
+}

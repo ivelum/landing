@@ -1,0 +1,21 @@
+<div class="author-card">
+  {{- $img := or (.Page.Resources.Get .Image) (resources.Get .Image) -}}
+  {{ with $img }}
+    <img class="author-card--image" src="{{ .RelPermalink }}" alt="{{ $.Name }}">
+  {{ end }}
+  <div class="author-card--body">
+    {{ if .Linkedin }}
+      <a class="author-card--name" href="{{ .Linkedin }}" target="_blank" rel="noopener">
+        {{ .Name }}
+        {{- (resources.Get "img/ico-linkedin.svg").Content | strings.TrimSpace | safeHTML -}}
+      </a>
+    {{ else }}
+      <div class="author-card--name">
+        {{ .Name }}
+      </div>
+    {{ end }}
+    {{ with .Position }}
+      <div class="author-card--position">{{ . }}</div>
+    {{ end }}
+  </div>
+</div>
