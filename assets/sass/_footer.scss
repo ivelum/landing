@@ -47,28 +47,12 @@
     }
 
     &-cto {
-      align-items: center;
-      display: flex;
-      gap: 1.5rem;
-
-      &-photo {
-        border-radius: 50%;
-        display: block;
-        height: auto;
-        max-width: 4.375rem;
+      .author-card--name {
+        color: $white;
       }
 
-      &-name {
-        display: flex;
-        flex-direction: column;
-        line-height: 1.75;
-        @include media-up(xl) {
-          font-size: $font-size-bigger;
-        }
-
-        span {
-          color: rgba($white, 0.5);
-        }
+      .author-card--position {
+        color: rgba($white, 0.5);
       }
     }
 

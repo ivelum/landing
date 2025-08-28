@@ -1,7 +1,9 @@
-<div class="author-card">
-  {{- $img := or (.Page.Resources.Get .Image) (resources.Get .Image) -}}
+<div class="author-card{{ with .Class }} {{ . }}{{ end }}">
+  {{- $img := or (and .Page (.Page.Resources.Get .Image)) (resources.Get .Image) -}}
   {{ with $img }}
     <img class="author-card--image" src="{{ .RelPermalink }}" alt="{{ $.Name }}">
+  {{ else }}
+    <img class="author-card--image" src="{{ .Image | relURL }}" alt="{{ $.Name }}">
   {{ end }}
   <div class="author-card--body">
     {{ if .Linkedin }}

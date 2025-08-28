@@ -5,17 +5,13 @@
     </h2>
     <div class="footer--grid">
       <div class="footer--contact">
-        <div class="footer--contact-cto">
-          <img
-            src="{{ (resources.Get "img/avatars/denis-stebunov.png").RelPermalink }}"
-            alt="Denis Stebunov – CTO at ivelum"
-            class="footer--contact-cto-photo"
-          />
-          <div class="footer--contact-cto-name">
-            Denis Stebunov
-            <span>CTO at ivelum</span>
-          </div>
-        </div>
+        {{ partial "author-card.html" (dict
+          "Page" .
+          "Image" "img/avatars/denis-stebunov.png"
+          "Name" "Denis Stebunov"
+          "Position" "CTO at ivelum"
+          "Class" "footer--contact-cto"
+        ) }}
         <p>
           Tell us about your project! Together, we'll brainstorm
           the optimal approach and how we can help.

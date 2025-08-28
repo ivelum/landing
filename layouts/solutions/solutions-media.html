@@ -13,26 +13,13 @@
     <div class="container">
       {{ with .GetPage "testimonial" }}
         <div class="solutions--testimonial">
-          <div class="solutions--testimonial-author">
-            <img
-              class="solutions--testimonial-author-image"
-              src="{{ ($.Resources.Get .Params.avatar).RelPermalink }}"
-              alt="{{ .Title }}"
-            />
-            <div class="solutions--testimonial-author-body">
-              <a
-                class="solutions--testimonial-author-name"
-                href="{{ .Params.linkedin }}"
-                target="_blank"
-              >
-                {{- .Title -}}
-                {{- (resources.Get "img/ico-linkedin.svg").Content | strings.TrimSpace | safeHTML -}}
-              </a>
-              <span class="solutions--testimonial-author-position">
-                {{- .Params.position -}}
-              </span>
-            </div>
-          </div>
+          {{ partial "author-card.html" (dict
+            "Page" .Parent
+            "Image" .Params.avatar
+            "Name" .Title
+            "Position" .Params.position
+            "Linkedin" .Params.linkedin
+          ) }}
           <div class="solutions--testimonial-body">
             {{ .Content }}
           </div>
