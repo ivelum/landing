@@ -93,51 +93,40 @@
   <div class="container">
     {{ partial "heading.html" (dict
       "Level" 2
-      "Text" "What we do"
+      "Text" "Who we help"
       "Class" "about--title"
-      ) }}
-    <div class="about--what-we-do-wrapper">
-    {{- range sort (where .Pages "Params.category" "what-we-do") "File.Path" }}
-      <div class="about--what-we-do-item">
+    ) }}
+    <div class="about--who-we-help">
+    {{- range sort (where .Pages "Params.category" "who-we-help") "File.Path" }}
+      <div class="about--who-we-help-item">
         <img
-          class="about--what-we-do-item-image"
+          class="about--who-we-help-image"
           src="{{ ($.Resources.Get .Params.image).RelPermalink }}"
           alt="{{ .Title }}"
-          width="260"
-          height="260"
         />
-        <h3 class="about--what-we-do-item-title">{{ .Title }}</h3>
-        <div class="about--what-we-do-item-text">
-          {{ .Content }}
+        <div class="about--who-we-help-body">
+          <a href="{{ .Params.link }}" class="about--who-we-help-title">
+            {{ .Title }}
+          </a>
+          <div class="about--who-we-help-text">
+            {{ .Content }}
+          </div>
         </div>
       </div>
     {{- end }}
     </div>
   </div>
 
-  <div class="about--action">
-    <a
-      class="btn btn-big btn-with-arrow about--action-button"
-      href="#talk"
-      x-data="LetsTalkButton"
-      x-on:click.prevent="talkToUs"
-    >
-      Let's talk{{(resources.Get "img/arrow-button.svg").Content | strings.TrimSpace | safeHTML}}
-    </a>
-    <script type="module">
-      import Alpine from "alpinejs";
-      import talkToUs from '/js/talk-to-us.js';
-      document.addEventListener('alpine:init', () => {
-        Alpine.data('LetsTalkButton', () => ({ talkToUs }));
-      });
-    </script>
-    <img
-      class="about--action-background"
-      src='{{ (.Resources.Get "img/got-a-project-in-mind.svg").RelPermalink }}'
-      alt="Got a project in mind?"
-      width="738"
-      height="208"
-    />
+  <div class="container">
+    <div class="about--action">
+      <div class="about--action-text">
+        {{- (.GetPage "call-to-action").Content }}
+      </div>
+      <a class="btn btn-big btn-with-arrow" href="#talk">
+        Get in touch
+        {{(resources.Get "img/arrow-button.svg").Content | strings.TrimSpace | safeHTML}}
+      </a>
+    </div>
   </div>
 
   <div class="container">
