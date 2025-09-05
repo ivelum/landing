@@ -186,8 +186,11 @@
       padding: 0;
 
       li {
+        align-items: flex-start;
         border-top: 1px solid $border-color-default;
         color: $font-color-dark;
+        display: flex;
+        gap: 1rem;
         padding-block: 1.5rem;
         @include media-up(lg) {
           font-size: $font-size-bigger;
@@ -195,7 +198,17 @@
         }
         @include media-up(xl) {
           font-size: 1.375rem;
+          gap: 1.5rem;
           padding-block: 2.5rem;
+        }
+
+        &::before {
+          background-color: $primary-violet;
+          content: '';
+          display: block;
+          height: 1px;
+          margin-top: 1em;
+          width: 1rem;
         }
 
         &:last-child {
