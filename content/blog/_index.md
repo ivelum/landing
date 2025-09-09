@@ -4,7 +4,7 @@ description: Practical tips and articles from industry experts on custom softwar
 layout: blog
 menus:
   main:
-    name: Blog
+    name: Blog & Videos
     parent: company
     weight: 20
 ---
