@@ -5,7 +5,8 @@ layout: contact
 menus:
   main:
     name: Contact
-    weight: 50
+    parent: company
+    weight: 30
 sitemap:
   disable: false
 cascade:

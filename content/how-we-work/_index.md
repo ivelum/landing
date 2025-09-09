@@ -5,7 +5,7 @@ layout: how-we-work
 menus:
   main:
     name: How we work
-    weight: 20
+    weight: 10
 sitemap:
   disable: false
 cascade:

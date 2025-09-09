@@ -5,7 +5,7 @@ layout: technology
 menus:
   main:
     name: Technology
-    weight: 35
+    weight: 40
 sitemap:
   disable: false
 cascade:

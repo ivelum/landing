@@ -1,18 +1,18 @@
 {{- define "main" }}
-  <div class="about--hero">
-    <div class="about--hero-body">
-      <div class="about--hero-tagline">Since 2003</div>
-      <h1 class="about--hero-title">
+  <div class="home--hero">
+    <div class="home--hero-body">
+      <div class="home--hero-tagline">Since 2003</div>
+      <h1 class="home--hero-title">
         Let's build<br/>great things together
       </h1>
     </div>
-    <div class="about--hero-footer">
-      <a href="#talk" class="btn btn-big btn-with-arrow about--hero-cta">
+    <div class="home--hero-footer">
+      <a href="#talk" class="btn btn-big btn-with-arrow home--hero-cta">
         Get in touch
         {{(resources.Get "img/arrow-button.svg").Content | strings.TrimSpace | safeHTML}}
       </a>
-      <div class="about--hero-loved">
-        <div class="about--hero-loved-avatars">
+      <div class="home--hero-loved">
+        <div class="home--hero-loved-avatars">
           <img
             src='{{ (.Resources.Get "img/avatars/alex-ford.png").RelPermalink }}'
             alt="Alex Ford"
@@ -26,16 +26,16 @@
             alt="Justin Demaris"
           />
         </div>
-        <div class="about--hero-loved-text">
+        <div class="home--hero-loved-text">
           Loved by 50+<br/>Founders
         </div>
       </div>
-      <div class="about--hero-clutch">
+      <div class="home--hero-clutch">
         <img
           src='{{ ($.Resources.Get "img/logo-clutch.svg").RelPermalink }}'
           alt="Clutch"
         />
-        <div class="about--hero-clutch-text">
+        <div class="home--hero-clutch-text">
           <img
             src='{{ ($.Resources.Get "img/clutch-stars.svg").RelPermalink }}'
             alt="Clutch Review Rating"
@@ -45,7 +45,7 @@
       </div>
     </div>
     <video
-      class="about--hero-video"
+      class="home--hero-video"
       poster='{{ (.Resources.Get "img/hero-video-cover.png").RelPermalink }}'
       width="100%"
       autoPlay
@@ -58,7 +58,7 @@
       <source type="video/webm" src='{{(.Resources.Get "img/hero-video.webm").RelPermalink}}' />
       <source type="video/mp4" src='{{(.Resources.Get "img/hero-video.mp4").RelPermalink}}' />
       <img
-        class="about--hero-video"
+        class="home--hero-video"
         src='{{ (.Resources.Get "img/hero-video-cover.png").RelPermalink }}'
         alt="Experts in software development"
       />
@@ -69,13 +69,13 @@
     {{ partial "heading.html" (dict
       "Level" 2
       "Text" "Hire us if you need to..."
-      "Class" "about--title"
+      "Class" "home--title"
     ) }}
-    <div class="about--hire-us">
-      <div class="about--hire-us-list">
+    <div class="home--hire-us">
+      <div class="home--hire-us-list">
         {{- (.GetPage "hire-us-list").Content }}
       </div>
-      <div class="about--hire-us-book">
+      <div class="home--hire-us-book">
         {{- (.GetPage "hire-us-book").Content }}
         {{ partial "author-card.html" (dict
           "Page" .
@@ -94,21 +94,21 @@
     {{ partial "heading.html" (dict
       "Level" 2
       "Text" "Who we help"
-      "Class" "about--title"
+      "Class" "home--title"
     ) }}
-    <div class="about--who-we-help">
+    <div class="home--who-we-help">
     {{- range sort (where .Pages "Params.category" "who-we-help") "File.Path" }}
-      <div class="about--who-we-help-item">
+      <div class="home--who-we-help-item">
         <img
-          class="about--who-we-help-image"
+          class="home--who-we-help-image"
           src="{{ ($.Resources.Get .Params.image).RelPermalink }}"
           alt="{{ .Title }}"
         />
-        <div class="about--who-we-help-body">
-          <a href="{{ .Params.link }}" class="about--who-we-help-title">
+        <div class="home--who-we-help-body">
+          <a href="{{ .Params.link }}" class="home--who-we-help-title">
             {{ .Title }}
           </a>
-          <div class="about--who-we-help-text">
+          <div class="home--who-we-help-text">
             {{ .Content }}
           </div>
         </div>
@@ -117,8 +117,8 @@
     </div>
   </div>
 
-  <div class="container about--action with-border">
-    <div class="about--action-text">
+  <div class="container home--action with-border">
+    <div class="home--action-text">
       {{- (.GetPage "call-to-action").Content }}
     </div>
     <a class="btn btn-big btn-with-arrow" href="#talk">
@@ -131,19 +131,19 @@
     {{ partial "heading.html" (dict
       "Level" 2
       "Text" "Why ivelum"
-      "Class" "about--title"
+      "Class" "home--title"
     ) }}
-    <div class="about--why-ivelum">
+    <div class="home--why-ivelum">
     {{- range sort (where .Pages "Params.category" "why-ivelum") "File.Path" }}
-      <div class="about--why-ivelum-item">
-        <div class="about--why-ivelum-title">
+      <div class="home--why-ivelum-item">
+        <div class="home--why-ivelum-title">
           <img
             src="{{ ($.Resources.Get .Params.image).RelPermalink }}"
             alt="{{ .Title }}"
           />
           {{ .Title }}
         </div>
-        <div class="about--why-ivelum-text">
+        <div class="home--why-ivelum-text">
           {{ .Content }}
         </div>
       </div>
@@ -151,7 +151,7 @@
     </div>
   </div>
 
-  <div class="container about--action">
+  <div class="container home--action">
     <a class="btn btn-big btn-with-arrow" href="#talk">
       Get in touch
       {{(resources.Get "img/arrow-button.svg").Content | strings.TrimSpace | safeHTML}}
@@ -161,7 +161,7 @@
   <div class="container">
     {{ partial "youtube-latest.html" (dict
       "Title" "Learn more about our approach"
-      "TitleClass" "about--title"
+      "TitleClass" "home--title"
     ) }}
   </div>
 
@@ -169,11 +169,11 @@
     {{ partial "heading.html" (dict
       "Level" 2
       "Text" "What our clients say"
-      "Class" "about--title"
+      "Class" "home--title"
     ) }}
-    <div class="about--testimonials-wrapper">
+    <div class="home--testimonials-wrapper">
     {{- range sort (where .Pages "Params.category" "testimonials") "File.Path" }}
-      <div class="about--testimonials-item">
+      <div class="home--testimonials-item">
         {{ partial "author-card.html" (dict
           "Page" .
           "Image" .Params.avatar
@@ -181,14 +181,14 @@
           "Position" .Params.position
           "Linkedin" .Params.linkedin
         ) }}
-        <div class="about--testimonials-body">
+        <div class="home--testimonials-body">
           {{ .Content }}
         </div>
       </div>
     {{- end }}
-      <div class="about--testimonials-item about--testimonials-item--clutch">
+      <div class="home--testimonials-item home--testimonials-item--clutch">
         <a
-          class="about--clutch-winner"
+          class="home--clutch-winner"
           href="https://clutch.co/profile/ivelum#portfolio-and-awards"
           target="_blank"
         >
@@ -197,10 +197,10 @@
             alt="Clutch Champion Spring 2024"
           />
         </a>
-        <div class="about--clutch-reviews">
+        <div class="home--clutch-reviews">
           <script type="text/javascript" src="https://widget.clutch.co/static/js/widget.js"></script>
           <div
-            class="clutch-widget about--clutch-widget"
+            class="clutch-widget home--clutch-widget"
             data-url="https://widget.clutch.co"
             data-widget-type="14"
             data-height="50"
@@ -209,7 +209,7 @@
             data-scale="100"
             data-clutchcompany-id="2181885">
           </div>
-          <div class="about--clutch-link">
+          <div class="home--clutch-link">
             <a href="https://clutch.co/profile/ivelum#reviews" target="_blank">
               Read more verified reviews on Clutch
             </a>
@@ -223,9 +223,9 @@
     {{ partial "heading.html" (dict
       "Level" 2
       "Text" "Technologies"
-      "Class" "about--title"
+      "Class" "home--title"
     ) }}
-    <div class="about--technologies">
+    <div class="home--technologies">
       {{- (.GetPage "technologies").Content }}
     </div>
   </div>

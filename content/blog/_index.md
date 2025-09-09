@@ -5,5 +5,6 @@ layout: blog
 menus:
   main:
     name: Blog
-    weight: 45
+    parent: company
+    weight: 20
 ---
