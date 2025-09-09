@@ -1,0 +1,45 @@
+{{ $page := site.GetPage "youtube-latest" }}
+{{ if $page }}
+  {{ $title := .Title | default "The latest videos" }}
+  {{ $heading := dict "Level" 2 "Text" $title }}
+  {{ with .TitleClass }}
+    {{ $heading = merge $heading (dict "Class" .) }}
+  {{ end }}
+  {{ partial "heading.html" $heading }}
+  <div class="youtube--latest">
+    <div class="youtube--latest-list">
+      {{ range first 3 $page.Params.videos }}
+        <a
+          href="#"
+          class="youtube--latest-item"
+          data-pswp-youtube-id="{{ .id }}"
+        >
+          <div class="youtube--latest-cover">
+            <img
+              src="https://img.youtube.com/vi/{{ .id }}/hqdefault.jpg"
+              alt="{{ .title }}"
+            >
+          </div>
+          <p class="youtube--latest-title">
+            {{- .title -}}
+          </p>
+        </a>
+      {{ end }}
+    </div>
+    {{ with $page.Resources.Get "img/ico-youtube.svg" }}
+      <div class="youtube--latest-channel-link">
+        <a
+          href="https://www.youtube.com/@ivelum"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {{ .Content | strings.TrimSpace | safeHTML }}
+          More on YouTube
+        </a>
+      </div>
+    {{ end }}
+  </div>
+  <script type="module">
+    import '/js/youtube.js';
+  </script>
+{{ end }}
