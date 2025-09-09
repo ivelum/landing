@@ -1,4 +1,14 @@
 .blog {
+  &--wrapper {
+    margin-top: 3rem;
+    @include media-up(lg) {
+      margin-top: 4rem;
+    }
+    @include media-up(xl) {
+      margin-top: 6rem;
+    }
+  }
+
   &--list {
     display: flex;
     flex-direction: column;

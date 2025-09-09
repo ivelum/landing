@@ -13,57 +13,60 @@
   {{- end }}
   <div class="page blog">
     <div class="container">
-      <h1>Blog</h1>
-
-      <div class="blog--list">
-
-        {{- range $posts }}
-          <div class="blog--item">
-            {{- $page := . }}
-            {{- with .Params.thumbnail }}
-              {{- $thumbnail := $page.Resources.Get . }}
-              <a href="{{ $page.RelPermalink }}">
-                {{ partial "image.html" (dict
-                  "Img" $thumbnail
-                  "Class" "blog--item-thumbnail"
-                  "Alt" $page.Title
-                  "Width" 450
-                ) }}
-              </a>
-            {{- end }}
-            <div class="blog--item-content">
-              <a href="{{ .RelPermalink }}" class=blog--item-title>
-                {{ .Title }}
-              </a>
-              <div class="blog--item-description">
-                {{ .Description }}
-              </div>
-              <div class="blog--item-footer">
-                <div class="blog--item-meta">
-                  <div class="blog--item-author">
-                    {{- $avatar := resources.Get (printf "img/avatars/%s.png" (urlize .Params.author)) }}
-                    {{ partial "image.html" (dict
-                      "Img" $avatar
-                      "Class" "blog--item-userpic"
-                      "Alt" .Params.author
-                      "Width" 24
-                    ) }}
-                    {{ .Params.author }}
-                  </div>
-                  <div class="blog--item-date">
-                    {{ time.Format ":date_long" .Params.date }}
-                  </div>
+      {{ partial "youtube-latest.html" (dict
+        "Title" "The latest videos"
+        "TitleClass" "about--title"
+      ) }}
+      <div class="blog--wrapper">
+        <h1>Blog</h1>
+        <div class="blog--list">
+          {{- range $posts }}
+            <div class="blog--item">
+              {{- $page := . }}
+              {{- with .Params.thumbnail }}
+                {{- $thumbnail := $page.Resources.Get . }}
+                <a href="{{ $page.RelPermalink }}">
+                  {{ partial "image.html" (dict
+                    "Img" $thumbnail
+                    "Class" "blog--item-thumbnail"
+                    "Alt" $page.Title
+                    "Width" 450
+                  ) }}
+                </a>
+              {{- end }}
+              <div class="blog--item-content">
+                <a href="{{ .RelPermalink }}" class=blog--item-title>
+                  {{ .Title }}
+                </a>
+                <div class="blog--item-description">
+                  {{ .Description }}
                 </div>
-                <div class="blog--item-link">
-                  <a href="{{ .RelPermalink }}">
-                    Read full article
-                  </a>
+                <div class="blog--item-footer">
+                  <div class="blog--item-meta">
+                    <div class="blog--item-author">
+                      {{- $avatar := resources.Get (printf "img/avatars/%s.png" (urlize .Params.author)) }}
+                      {{ partial "image.html" (dict
+                        "Img" $avatar
+                        "Class" "blog--item-userpic"
+                        "Alt" .Params.author
+                        "Width" 24
+                      ) }}
+                      {{ .Params.author }}
+                    </div>
+                    <div class="blog--item-date">
+                      {{ time.Format ":date_long" .Params.date }}
+                    </div>
+                  </div>
+                  <div class="blog--item-link">
+                    <a href="{{ .RelPermalink }}">
+                      Read full article
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        {{- end }}
-
+          {{- end }}
+        </div>
       </div>
     </div>
   </div>
