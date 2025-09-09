@@ -1,4 +1,6 @@
 ---
+sitemap:
+  disable: true
 videos:
   - id: cgqMP9G6CEc
     title: That's why you're slow — four practical alternatives to estimates
