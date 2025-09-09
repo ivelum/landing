@@ -18,6 +18,12 @@
       </a>
     {{ end }}
   </div>
+  <div class="youtube--latest-channel-link">
+    <a href="https://www.youtube.com/@ivelum" target="_blank" rel="noopener noreferrer">
+      {{- (resources.Get "img/ico-youtube.svg").Content | strings.TrimSpace | safeHTML -}}
+      More on YouTube
+    </a>
+  </div>
 </div>
 <script type="module">
   import '/js/youtube.js';

@@ -65,6 +65,27 @@
   &-item:hover &-title {
     color: $primary-orange;
   }
+
+  &-channel-link {
+    margin-top: 1rem;
+    @include media-up(lg) {
+      margin-top: 2rem;
+    }
+
+    a {
+      @include link-underline();
+      background-position: 2rem 100%;
+      @include media-up(xl) {
+        font-size: $font-size-bigger;
+      }
+
+      svg {
+        height: 1.5rem;
+        margin-right: 0.5rem;
+        width: 1.5rem;
+      }
+    }
+  }
 }
 
 .youtube--modal {
