@@ -1,0 +1,28 @@
+{{ $page := site.GetPage "/_shared/distributed-team" }}
+{{ if $page }}
+  <div class="distributed-team">
+    <div class="distributed-team--text">
+      {{ with $page.Resources.Get "img/globe.svg" }}
+        <img
+          src="{{ .RelPermalink }}"
+          alt="{{ $page.Title }}"
+          class="distributed-team--ico"
+        />
+      {{ end }}
+      {{- $page.Content -}}
+    </div>
+    <ul class="distributed-team--list">
+    {{ range $page.Resources.Match "img/flags/*.svg" }}
+      {{ $country := path.BaseName .Name }}
+      <li class="distributed-team--flag">
+        <img
+          src="{{ .RelPermalink }}"
+          width="20"
+          height="20"
+          alt="{{ $country }}"
+        /> {{ $country }}
+      </li>
+    {{- end }}
+    </ul>
+  </div>
+{{ end }}
