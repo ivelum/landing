@@ -159,6 +159,13 @@
   </div>
 
   <div class="container">
+    {{ partial "youtube-latest.html" (dict
+      "Title" "Learn more about our approach"
+      "TitleClass" "about--title"
+    ) }}
+  </div>
+
+  <div class="container">
     {{ partial "heading.html" (dict
       "Level" 2
       "Text" "What our clients say"

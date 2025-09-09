@@ -1,0 +1,24 @@
+{{ $title := .Title | default "The latest videos" }}
+{{ $heading := dict "Level" 2 "Text" $title }}
+{{ with .TitleClass }}
+  {{ $heading = merge $heading (dict "Class" .) }}
+{{ end }}
+{{ partial "heading.html" $heading }}
+{{ $data := site.GetPage "/_shared/youtube-latest" }}
+<div class="youtube--latest">
+  <div class="youtube--latest-list">
+    {{ range first 3 $data.Params.videos }}
+      <a href="#" class="youtube--latest-item" data-pswp-youtube-id="{{ .id }}">
+        <div class="youtube--latest-cover">
+          <img src="https://img.youtube.com/vi/{{ .id }}/hqdefault.jpg" alt="{{ .title }}">
+        </div>
+        <p class="youtube--latest-title">
+          {{ .title }}
+        </p>
+      </a>
+    {{ end }}
+  </div>
+</div>
+<script type="module">
+  import '/js/youtube.js';
+</script>
