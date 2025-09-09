@@ -1,0 +1,5 @@
+---
+---
+- Ship production code early and often.
+- Continuous delivery as a habit, not a milestone.
+- Transparency in work, empathy in collaboration.

@@ -1,0 +1,7 @@
+---
+---
+- **Founded in 2003** — two decades of experience building software.
+- **Headquartered in Vilnius, Lithuania** — with clients across the US, Europe, and Asia.
+- **Remote-first since 2014** — distributed across 13 countries, async-friendly by design.
+- **Full-stack delivery** — practicing continuous integration and rapid release cycles.
+- **50+ projects shipped** — trusted by VCs and innovation labs, often brought in to help portfolio companies scale.

@@ -1,0 +1,106 @@
+{{- define "header" }}
+  {{ partial "header.html" (dict
+    "RelPermalink" .RelPermalink
+    "LightHeader" true
+    "TalkToUsAbsolute" false
+    ) }}
+{{- end }}
+
+{{- define "main" }}
+  <div class="page about">
+
+    <div class="container">
+      <div class="about--caption">
+        {{- .Params.caption -}}
+      </div>
+      <h1 class="about--title">
+        {{- .Params.h1 -}}
+      </h1>
+      <div class="about--intro">
+        {{- .Content -}}
+      </div>
+    </div>
+
+    <div class="container">
+      {{ partial "heading.html" (dict
+        "Level" 2
+        "Text" "Facts About Ivelum"
+        "Class" "home--title"
+      ) }}
+      <div class="about--facts">
+        {{- (.GetPage "facts").Content }}
+      </div>
+    </div>
+
+    <div class="container">
+      {{ partial "heading.html" (dict
+        "Level" 2
+        "Text" "What Sets Us Apart"
+        "Class" "home--title"
+      ) }}
+      <div class="about--what-sets-us-apart">
+        {{- (.GetPage "what-sets-us-apart").Content }}
+      </div>
+    </div>
+
+    <div class="container">
+      {{ partial "heading.html" (dict
+        "Level" 2
+        "Text" "Our Values"
+        "Class" "home--title"
+      ) }}
+      <div class="about--our-values">
+        {{- (.GetPage "our-values").Content }}
+      </div>
+    </div>
+
+    <div class="container">
+      {{ partial "heading.html" (dict
+        "Level" 2
+        "Text" "Meet the team"
+        "Class" "home--title"
+      ) }}
+      <div class="about--team">
+        {{- (.GetPage "team").Content }}
+      </div>
+    </div>
+    <div class="about--team-slider-wrapper">
+      <div class="about--team-slider swiper">
+        <div class="swiper-wrapper">
+        {{- range .Resources.Match "img/team/*.jpg" }}
+          <div class="swiper-slide">
+            <img
+              src="{{ .RelPermalink }}"
+              width="{{ .Width }}"
+              height="{{ .Height }}"
+              alt="Team"
+            />
+          </div>
+        {{- end }}
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+    <script type="module">
+      import Swiper from 'swiper';
+      import Pagination from 'swiper/modules/pagination';
+      import 'swiper/css';
+      import 'swiper/css/pagination';
+
+      const swiper = new Swiper('.swiper', {
+        grabCursor: true,
+        modules: [Pagination],
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        spaceBetween: 20,
+        initialSlide: 1,
+        slidesPerView: 1.3,
+        slidesOffsetBefore: 20,
+        slidesOffsetAfter: 20,
+      });
+    </script>
+
+  </div>
+{{- end }}

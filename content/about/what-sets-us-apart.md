@@ -1,0 +1,6 @@
+---
+---
+- ![Continuous Delivery](img/ico-continuous-delivery.svg) Continuous Delivery at the core of our process.
+- ![Full-stack engineering](img/ico-full-stack.svg) Full-stack engineering team with hands-on leadership.
+- ![Proven Compliance](img/ico-proven-compliance.svg) Proven track record in regulated industries (HIPAA, SOC 2, GDPR).
+- ![Collaborative approach](img/ico-collaborative-approach.svg) Collaborative approach – real-time when required, async by default.

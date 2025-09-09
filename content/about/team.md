@@ -1,0 +1,5 @@
+---
+---
+- ![Denis Stebunov](img/denis-stebunov.jpg)***Denis Stebunov**CTO*
+- ![Polina Lapina](img/polina-lapina.jpg)***Polina Lapina**CEO*
+- ![Olga Lebedeva](img/olga-lebedeva.jpg)***Olga Lebedeva**HR*
