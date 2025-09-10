@@ -1,90 +1,99 @@
 .solutions {
+  margin-top: 6.25rem;
+  @include media-up(md) {
+    margin-top: 8.75rem;
+  }
+  @include media-up(xl) {
+    margin-top: 12.5rem;
+  }
+
   &--head {
-    background: linear-gradient(180deg, #331fab 14%, #5e00a9 100%);
     display: flex;
-    padding-bottom: 2.5rem;
-    padding-top: 6.25rem;
+    flex-direction: column;
+    gap: 1rem;
     @include media-up(md) {
-      padding-bottom: 5rem;
-      padding-top: 8.75rem;
+      align-items: center;
+      flex-direction: row;
     }
-    @include media-up(xl) {
-      padding-bottom: 7.5rem;
-      padding-top: 12.5rem;
+
+    &-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
     }
 
     &-title {
-      color: $white;
-      overflow: hidden;
+      color: $primary-violet;
       text-wrap: balance;
+      @include media-up(xl) {
+        font-size: 3.25rem;
+      }
     }
 
     &-caption {
-      color: $white;
+      color: $primary-orange;
       font-size: $font-size-bigger;
+      font-weight: $font-weight-semi-bold;
+      @include media-up(lg) {
+        font-size: 1.5rem;
+      }
+      @include media-up(xl) {
+        font-size: 1.75rem;
+      }
+    }
+
+    &-img img {
+      display: block;
+      height: auto;
+      max-width: 15.625rem;
+      @include media-up(md) {
+        margin: -1rem 0;
+      }
     }
   }
 
   &--intro {
-    margin-block-start: 3rem;
-    @include media-up(lg) {
-      margin-block-start: 4rem;
-    }
-    @include media-up(xl) {
-      margin-block-start: 6rem;
-      margin-inline: auto;
-      width: percentage(8 / 12);
-    }
-  }
-
-  &--testimonial {
     align-items: flex-start;
-    border: 1px solid $border-color-default;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin: 3rem auto 0 auto;
-    padding: 1.5rem;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
     @include media-up(lg) {
-      margin-top: 4rem;
-      padding: 2.5rem;
+      margin-top: 2.5rem;
     }
     @include media-up(xl) {
-      margin-top: 6rem;
-      padding: 3rem;
-      width: percentage(8 / 12);
+      gap: 2rem;
+      margin-top: 3.75rem;
     }
-  }
 
-  &--testimonial-body {
-    color: $font-color-dark;
-    font-style: italic;
-    text-wrap: balance;
+    &-body {
+      text-wrap: balance;
+      @include media-up(xl) {
+        font-size: $font-size-bigger;
+      }
+
+      &.is-testimonial {
+        font-style: italic;
+      }
+    }
   }
 
   &--list {
+    border-top: 1px solid $border-color-default;
     display: flex;
     flex-direction: column;
     gap: 3rem;
     margin-top: 3rem;
+    padding-top: 3rem;
     @include media-up(lg) {
       gap: 4rem;
       margin-top: 4rem;
+      padding-top: 4rem;
     }
     @include media-up(xl) {
       gap: 5rem;
       margin-top: 5rem;
-    }
-
-    &.with-border {
-      border-top: 1px solid $border-color-default;
-      padding-top: 3rem;
-      @include media-up(lg) {
-        padding-top: 4rem;
-      }
-      @include media-up(xl) {
-        padding-top: 5rem;
-      }
+      padding-top: 5rem;
     }
   }
 
@@ -146,27 +155,28 @@
   }
 
   &--cto {
-    border-top: 1px solid $border-color-default;
-    display: grid;
-    padding-top: 3rem;
-    row-gap: 1rem;
-    @include media-up(lg) {
-      grid-template-columns: percentage(2 / 12) 1fr;
-      padding-top: 4rem;
+    background-color: $background-darker;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    @include media-up(md) {
+      flex-direction: row;
+      gap: 1.5rem;
+      padding: 1.5rem;
     }
     @include media-up(xl) {
-      grid-template-columns: percentage(2 / 12) percentage(8 / 12);
-      padding-top: 5rem;
+      gap: 2rem;
+      padding: 2rem;
+      margin-top: 1rem;
     }
 
-    &-num {
-      color: $font-color-gray;
-    }
-
-    &-image {
+    &-image img {
+      border-radius: 50%;
       display: block;
       height: auto;
-      max-width: 8.5rem;
+      max-width: 6.25rem;
     }
   }
 

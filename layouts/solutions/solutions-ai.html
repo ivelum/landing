@@ -1,26 +1,33 @@
+{{- define "header" }}
+  {{ partial "header.html" (dict
+    "RelPermalink" .RelPermalink
+    "LightHeader" true
+    "TalkToUsAbsolute" false
+  ) }}
+{{- end }}
 {{- define "main" }}
   <div class="solutions">
-    <div class="solutions--head">
-      <div class="container">
-        <div class="solutions--head-caption">
-          {{- .Params.caption -}}
+
+    <div class="container solutions--head">
+      <div class="solutions--head-body">
+        <div class="solutions--head-caption">{{- .Params.caption -}}</div>
+        <h1 class="solutions--head-title">{{- .Params.h1 -}}</h1>
+      </div>
+      {{ with .Resources.Get "img/head-image.svg" }}
+        <div class="solutions--head-img">
+          <img src="{{ .RelPermalink }}" alt="{{- .Params.caption -}}" />
         </div>
-        <h1 class="solutions--head-title">
-          {{- .Params.h1 -}}
-        </h1>
+      {{ end }}
+    </div>
+
+    <div class="container solutions--intro">
+      <div class="solutions--intro-body">
+        {{- .Content -}}
       </div>
     </div>
+
     <div class="container">
-      <div class="solutions--intro">
-          {{- .Content -}}
-          <a
-            class="btn btn-outline-violet btn-small solutions--cta"
-            href="#talk"
-          >
-            Book a free consultation
-          </a>
-      </div>
-      <div class="solutions--list with-border">
+      <div class="solutions--list">
         <div class="solutions--item">
           <div class="solutions--item-num">01 /</div>
           <div class="solutions--item-body">

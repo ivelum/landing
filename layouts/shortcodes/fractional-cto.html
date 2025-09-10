@@ -1,0 +1,10 @@
+<div class="solutions--cto">
+  {{ with .Get "img" }}
+    <div class="solutions--cto-image">
+      <img src="{{ . }}" alt='{{- $.Get "alt" -}}'>
+    </div>
+  {{ end }}
+  <div>
+    {{ .Inner | markdownify }}
+  </div>
+</div>

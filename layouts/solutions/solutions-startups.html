@@ -1,30 +1,41 @@
+{{- define "header" }}
+  {{ partial "header.html" (dict
+    "RelPermalink" .RelPermalink
+    "LightHeader" true
+    "TalkToUsAbsolute" false
+  ) }}
+{{- end }}
 {{- define "main" }}
   <div class="solutions">
-    <div class="solutions--head">
-      <div class="container">
-        <div class="solutions--head-caption">
-          {{- .Params.caption -}}
-        </div>
-        <h1 class="solutions--head-title">
-          {{- .Params.h1 -}}
-        </h1>
+
+    <div class="container solutions--head">
+      <div class="solutions--head-body">
+        <div class="solutions--head-caption">{{- .Params.caption -}}</div>
+        <h1 class="solutions--head-title">{{- .Params.h1 -}}</h1>
       </div>
-    </div>
-    <div class="container">
-      {{ with .GetPage "testimonial" }}
-        <div class="solutions--testimonial">
-          {{ partial "author-card.html" (dict
-            "Page" .Parent
-            "Image" .Params.avatar
-            "Name" .Title
-            "Position" .Params.position
-            "Linkedin" .Params.linkedin
-          ) }}
-          <div class="solutions--testimonial-body">
-            {{ .Content }}
-          </div>
+      {{ with .Resources.Get "img/head-image.svg" }}
+        <div class="solutions--head-img">
+          <img src="{{ .RelPermalink }}" alt="{{- .Params.caption -}}" />
         </div>
       {{ end }}
+    </div>
+
+    {{ with .GetPage "testimonial" }}
+      <div class="container solutions--intro">
+        <div class="solutions--intro-body is-testimonial">
+          {{ .Content }}
+        </div>
+        {{ partial "author-card.html" (dict
+          "Page" .Parent
+          "Image" .Params.avatar
+          "Name" .Title
+          "Position" .Params.position
+          "LinkedIn" .Params.linkedin
+        ) }}
+      </div>
+    {{ end }}
+
+    <div class="container">
       <div class="solutions--list">
         <div class="solutions--item">
           <div class="solutions--item-num">01 /</div>
@@ -46,30 +57,18 @@
               class="btn btn-outline-violet btn-small solutions--cta"
               href="#talk"
             >
-              Book a quick project review
+              Book a Quick Project Review
             </a>
           </div>
         </div>
-        {{ with .GetPage "fractional-cto" }}
-          <div class="solutions--cto">
-            <div class="solutions--cto-num">04 /</div>
-            {{ partial "heading.html" (dict "Level" 3 "Text" .Title) }}
-            <img
-              class="solutions--cto-image"
-              src="{{ ($.Resources.Get .Params.image).RelPermalink }}"
-              alt="{{- .Params.name -}}"
-            />
-            <div class="solutions--cto-body">
-              {{- .Content -}}
-              <a
-                class="btn btn-outline-violet btn-small solutions--cta"
-                href="#talk"
-              >
-                Book a free consultation
-              </a>
-            </div>
+
+        <div class="solutions--item">
+          <div class="solutions--item-num">04 /</div>
+          <div class="solutions--item-body">
+            {{- (.GetPage "fractional-cto").Content }}
           </div>
-        {{ end }}
+        </div>
+
         <div class="solutions--item">
           <div class="solutions--item-num">05 /</div>
           <div class="solutions--item-body">
