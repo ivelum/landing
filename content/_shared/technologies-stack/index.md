@@ -1,0 +1,22 @@
+---
+sitemap:
+  disable: true
+---
+- ![Python](img/python.svg) Python
+- ![Django](img/django.svg) Django
+- ![PostgreSQL](img/postgres.svg) PostgreSQL
+- ![ClickHouse](img/clickhouse.svg) ClickHouse
+- ![Kubernetes](img/kubernetes.svg) Kubernetes
+- ![Terraform](img/terraform.svg) Terraform
+- ![JavaScript](img/js.svg) ![JavaScript](img/ts.svg) JavaScript / TypeScript
+- ![React](img/react.svg) React.js
+- ![Node.js](img/node.svg) Node.js
+- ![Next.js](img/nextjs.svg) Next.js
+- ![React Native](img/react-native.svg) React Native
+- ![MUI](img/mui.svg) MUI
+- ![PHP](img/php.svg) PHP
+- ![WordPress](img/wordpress.svg) WordPress
+- ![MySQL](img/mysql.svg) MySQL
+- ![Amazon Web Services](img/aws.svg) Amazon Web Services
+- ![Google Cloud](img/gcp.svg) Google Cloud
+- ![Microsoft Azure](img/microsoft.svg) Microsoft Azure

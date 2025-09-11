@@ -1,0 +1,37 @@
+.technologies-stack ul {
+  display: grid;
+  gap: 1px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  @include media-up(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include media-up(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  li {
+    align-items: center;
+    background-color: $white;
+    display: flex;
+    font-size: 1rem;
+    outline: 1px solid $border-color-default;
+    padding: 1.25rem 1rem;
+    @include media-up(sm) {
+      padding: 1.5rem 1.75rem;
+    }
+    @include media-up(lg) {
+      padding: 1.75rem 2rem;
+    }
+
+    img {
+      height: 2.5rem;
+      width: auto;
+
+      &:last-of-type {
+        margin-right: 1rem;
+      }
+    }
+  }
+}

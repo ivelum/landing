@@ -476,45 +476,6 @@
     @include media-up(xl) {
       margin-top: 3.5rem;
     }
-
-    ul {
-      background-color: $border-color-default;
-      border: 1px solid $border-color-default;
-      display: grid;
-      gap: 1px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      @include media-up(sm) {
-        grid-template-columns: 1fr 1fr;
-      }
-      @include media-up(lg) {
-        grid-template-columns: 1fr 1fr 1fr;
-      }
-
-      li {
-        align-items: center;
-        background-color: $white;
-        display: flex;
-        font-size: 1rem;
-        padding: 1.25rem 1rem;
-        @include media-up(sm) {
-          padding: 1.5rem 1.75rem;
-        }
-        @include media-up(lg) {
-          padding: 1.75rem 2rem;
-        }
-
-        img {
-          height: 2.5rem;
-          width: auto;
-
-          &:last-of-type {
-            margin-right: 1rem;
-          }
-        }
-      }
-    }
   }
 }
 

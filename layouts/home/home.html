@@ -226,7 +226,7 @@
       "Class" "home--title"
     ) }}
     <div class="home--technologies">
-      {{- (.GetPage "technologies").Content }}
+      {{ partial "shared/technologies-stack.html" . }}
     </div>
   </div>
 {{- end }}
