@@ -108,6 +108,7 @@
         img {
           display: block;
           margin-bottom: 1rem;
+          max-width: 48px;
           @include media-up(lg) {
             margin-bottom: 1.5rem;
           }
