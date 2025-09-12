@@ -1,0 +1,6 @@
+{{ $page := site.GetPage "/_shared/technology-stack" }}
+{{ if $page }}
+  <div class="technology-stack">
+    {{- $page.Content -}}
+  </div>
+{{ end }}
