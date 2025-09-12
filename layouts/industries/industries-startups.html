@@ -1,0 +1,81 @@
+{{- define "header" }}
+  {{ partial "header.html" (dict
+    "RelPermalink" .RelPermalink
+    "LightHeader" true
+    "TalkToUsAbsolute" false
+  ) }}
+{{- end }}
+{{- define "main" }}
+  <div class="industries">
+
+    <div class="container industries--head">
+      <div class="industries--head-body">
+        <div class="industries--head-caption">{{- .Params.caption -}}</div>
+        <h1 class="industries--head-title">{{- .Params.h1 -}}</h1>
+      </div>
+      {{ with .Resources.Get "img/head-image.svg" }}
+        <div class="industries--head-img">
+          <img src="{{ .RelPermalink }}" alt="{{- .Params.caption -}}" />
+        </div>
+      {{ end }}
+    </div>
+
+    {{ with .GetPage "testimonial" }}
+      <div class="container industries--intro">
+        <div class="industries--intro-body is-testimonial">
+          {{ .Content }}
+        </div>
+        {{ partial "author-card.html" (dict
+          "Page" .Parent
+          "Image" .Params.avatar
+          "Name" .Title
+          "Position" .Params.position
+          "LinkedIn" .Params.linkedin
+        ) }}
+      </div>
+    {{ end }}
+
+    <div class="container">
+      <div class="industries--list">
+        <div class="industries--item">
+          <div class="industries--item-num">01 /</div>
+          <div class="industries--item-body">
+            {{- (.GetPage "fast-development").Content }}
+          </div>
+        </div>
+        <div class="industries--item">
+          <div class="industries--item-num">02 /</div>
+          <div class="industries--item-body">
+            {{- (.GetPage "scale").Content }}
+          </div>
+        </div>
+        <div class="industries--item">
+          <div class="industries--item-num">03 /</div>
+          <div class="industries--item-body">
+            {{- (.GetPage "deep-collaboration").Content }}
+            <a
+              class="btn btn-outline-violet btn-small industries--cta"
+              href="#talk"
+            >
+              Book a Quick Project Review
+            </a>
+          </div>
+        </div>
+
+        <div class="industries--item">
+          <div class="industries--item-num">04 /</div>
+          <div class="industries--item-body">
+            {{- (.GetPage "fractional-cto").Content }}
+          </div>
+        </div>
+
+        <div class="industries--item">
+          <div class="industries--item-num">05 /</div>
+          <div class="industries--item-body">
+            {{- (.GetPage "investor-partnerships").Content }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{- end }}

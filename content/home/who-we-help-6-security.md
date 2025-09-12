@@ -2,7 +2,7 @@
 category: who-we-help
 title: Security
 image: img/security.svg
-link: /solutions/security/
+link: /industries/security/
 ---
 
 AI-assisted security solutions for engineering teams.
