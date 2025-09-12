@@ -1,58 +1,68 @@
+{{- define "header" }}
+  {{ partial "header.html" (dict
+    "RelPermalink" .RelPermalink
+    "LightHeader" true
+    "TalkToUsAbsolute" false
+  ) }}
+{{- end }}
 {{- define "main" }}
   <div class="technology">
-    <div class="technology--head">
-      <div class="technology--head-wrapper">
-        <div class="container">
-          <h1 class="technology--head-title">Technology</h1>
+
+    <div class="container">
+      <h1 class="technology--title">Technology stack</h1>
+      <div class="technology--intro">{{ .Content }}</div>
+      <a href="#talk" class="btn btn-small technology--intro-button">
+        Ask about technology
+      </a>
+    </div>
+
+    <div class="container technology--stack">
+      {{ partial "shared/technologies-stack.html" . }}
+    </div>
+
+    <div class="container">
+      {{ partial "heading.html" (dict
+        "Level" 2
+        "Text" "AWS Starter Template"
+        "Class" "home--title"
+      ) }}
+      <div class="technology--aws">
+        {{ $page := .GetPage "aws-starter-template" }}
+        {{ with $page }}
+          <div class="technology--aws-promo">
+            <img src="{{ .Params.image }}" alt="AWS Starter Template" />
+            <div class="technology--aws-promo-text">
+              {{ .Content }}
+            </div>
+          </div>
+        {{ end }}
+        <div class="technology--aws-list">
+          {{- range sort (where .Pages "Params.category" "aws-started-template") "File.Path" }}
+            <div class="technology--aws-list-item{{ if .Params.span }} span{{ end }}">
+              <div class="technology--aws-list-title">
+                {{ with .Params.image }}
+                  <img src="{{ $.Resources.Get . }}" alt="{{ $.Title }}" />
+                {{ end }}
+                {{ .Title }}
+              </div>
+              <div class="technology--aws-list-text">
+                {{ .Content }}
+              </div>
+            </div>
+          {{- end }}
         </div>
       </div>
     </div>
 
     <div class="container">
-      <div class="technology--content">
-        {{ .Content }}
-      </div>
-
-      <div class="technology--favorite">
-        {{- with .GetPage "favorite" }}
-          {{ .Content }}
-        {{- end }}
-      </div>
-
-      <ul class="technology--domain-list">
-      {{- range sort (where .Pages "Params.category" "favorite") "File.Path" }}
-        <li><a href="#{{ .Params.slug }}">{{ or .Params.ShortTitle .Title }}</a></li>
-      {{- end }}
-      </ul>
-
-      {{- range sort (where .Pages "Params.category" "favorite") "File.Path" }}
-        {{ partial "heading.html" (dict
-          "Level" 3
-          "Text" .Title
-          "Anchor" .Params.slug
-          ) }}
-        <div class="technology--domain">
-          {{ .Content }}
-        </div>
-      {{- end }}
-
-      <div class="technology--hugo">
-        {{- with .GetPage "hugo" }}
-          {{ .Content }}
-        {{- end }}
-      </div>
-    </div>
-
-    <div class="technology--how-we-work">
-      <div class="container">
-        {{- with .GetPage "how-we-work" }}
-          {{ .Content }}
-        {{- end }}
+      {{ partial "heading.html" (dict
+        "Level" 2
+        "Text" "Zero downtime deployment"
+        "Class" "home--title"
+      ) }}
+      <div class="technology--zero">
+        {{- (.GetPage "zero-downtime-deployment").Content }}
       </div>
     </div>
   </div>
-{{- end }}
-
-{{- define "footer" }}
-  {{ partial "footer.html" (dict "Hug" true) }}
 {{- end }}

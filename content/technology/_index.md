@@ -12,22 +12,6 @@ cascade:
   sitemap:
     disable: true
 ---
-
-- ![Python](logos/python.svg) Python
-- ![Django](logos/django.svg) Django
-- ![PostgreSQL](logos/postgres.svg) PostgreSQL
-- ![ClickHouse](logos/clickhouse.svg) ClickHouse
-- ![Kubernetes](logos/kubernetes.svg) Kubernetes
-- ![Terraform](logos/terraform.svg) Terraform
-- ![JavaScript](logos/js.svg) ![JavaScript](logos/ts.svg) JavaScript / TypeScript
-- ![React](logos/react.svg) React.js
-- ![Node.js](logos/node.svg) Node.js
-- ![Next.js](logos/nextjs.svg) Next.js
-- ![React Native](logos/react-native.svg) React Native
-- ![MUI](logos/mui.svg) MUI
-- ![PHP](logos/php.svg) PHP
-- ![WordPress](logos/wordpress.svg) WordPress
-- ![MySQL](logos/mysql.svg) MySQL
-- ![Amazon Web Services](logos/aws.svg) Amazon Web Services
-- ![Google Cloud](logos/gcp.svg) Google Cloud
-- ![Microsoft Azure](logos/microsoft.svg) Microsoft Azure
+We work with a wide range of technologies, and listing them all here would be impractical
+since the landscape is constantly evolving. If you don’t see a technology you’re interested
+in below, feel free to reach out and ask about it!

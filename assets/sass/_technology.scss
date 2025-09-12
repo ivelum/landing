@@ -1,286 +1,167 @@
-@mixin list-table($border-width) {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0;
-
-  padding: $border-width 0 0 $border-width; // Compensate for collapsed borders
-
-  li {
-    display: block;
-    border: $border-color-default $border-width solid;
-    margin: -#{$border-width} 0 0 -#{$border-width}; // Collapse the borders
-  }
-}
-
 .technology {
-  &--head {
-    background: linear-gradient(180deg, #331fab 14%, #5e00a9 100%);
-    display: flex;
-    padding-bottom: 2.5rem;
-    padding-top: 6.25rem;
-    @include media-up(md) {
-      padding-bottom: 5rem;
-      padding-top: 8.75rem;
-    }
-    @include media-up(xl) {
-      padding-bottom: 7.5rem;
-      padding-top: 12.5rem;
-    }
-
-    &-wrapper {
-      margin: auto 0;
-      width: 100%;
-    }
-
-    &-title {
-      color: $white;
-      overflow: hidden;
-    }
+  margin-top: 6.25rem;
+  @include media-up(md) {
+    margin-top: 8.75rem;
+  }
+  @include media-up(xl) {
+    margin-top: 12.5rem;
   }
 
-  @mixin lead {
-    font-size: 1.25rem;
-    line-height: 1.6;
+  &--title {
+    color: $primary-violet;
+  }
+
+  &--intro {
+    text-wrap: balance;
+    margin-top: 1.5rem;
     @include media-up(lg) {
-      font-size: 1.5rem;
-    }
-    @include media-up(xl) {
-      font-size: 1.75rem;
-    }
-  }
-
-  &--content {
-    padding-top: 3.25rem;
-
-    @include media-up(lg) {
-      padding-top: 4.25rem;
-    }
-    @include media-up(xl) {
-      padding-top: 6.25rem;
-    }
-
-    p:first-of-type {
-      @include lead;
-      max-width: 46rem;
-
-      margin-bottom: 1.5rem;
-      @include media-up(lg) {
-        margin-bottom: 1.75rem;
-      }
-      @include media-up(xl) {
-        margin-bottom: 2.5rem;
-      }
-    }
-
-    ul:first-of-type {
-      @include list-table(1px);
-
-      li {
-        display: flex;
-        align-items: center;
-        font-size: $font-size-default;
-
-        padding: 1.25rem 1rem;
-        width: col(1);
-        @include media-up(sm) {
-          padding: 1.5rem 1.75rem;
-          width: col(2);
-        }
-        @include media-up(lg) {
-          padding: 1.75rem 2rem;
-          width: col(3);
-        }
-
-        img {
-          height: 2.5rem;
-
-          &:last-of-type {
-            margin-right: 1rem;
-          }
-        }
-      }
-    }
-  }
-
-  &--favorite {
-    h2 {
-      color: $primary-violet;
-
-      margin-top: 3rem;
-      margin-bottom: 1.75rem;
-      @include media-up(lg) {
-        margin-top: 4rem;
-        margin-bottom: 2.75rem;
-      }
-      @include media-up(xl) {
-        margin-top: 6rem;
-        margin-bottom: 3.75rem;
-      }
-    }
-
-    p:last-of-type {
-      @include lead;
-      max-width: 58rem;
-
-      margin: 2.75rem 0;
-      @include media-up(lg) {
-        margin: 3.75rem 0;
-      }
-    }
-
-    img {
-      display: block;
-      width: 100%;
-      margin: 0 auto;
-      max-width: 35rem;
-      @include media-up(lg) {
-        margin: unset;
-        max-width: unset;
-      }
-    }
-  }
-
-  &--domain-list {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0;
-    padding: 0;
-
-    gap: 0.5rem;
-    @include media-up(lg) {
-      gap: 0.8rem;
-    }
-    @include media-up(xl) {
-      gap: 1rem;
-    }
-
-    li {
-      display: block;
-
-      a {
-        @include transition(border);
-        display: block;
-        border: 2px solid rgba($border-color-chip, 0.5);
-        border-radius: 2rem;
-        padding: $font-size-smaller 1.5rem;
-        line-height: 1rem;
-
-        &:hover {
-          border-color: $border-color-chip;
-        }
-      }
-    }
-  }
-
-  h3 {
-    margin-top: 2.75rem;
-    margin-bottom: 1rem;
-    @include media-up(lg) {
-      margin-top: 3.75rem;
-      margin-bottom: 1.5rem;
-    }
-  }
-
-  &--domain {
-    ul {
-      @include list-table(1px);
-
-      li {
-        display: flex;
-        flex: 1 auto;
-        flex-wrap: wrap;
-        align-content: start;
-        $gap: 0.5rem;
-        gap: $gap;
-
-        padding: 1.5rem;
-        width: col(1);
-        @include media-up(md) {
-          padding: 2rem;
-          width: col(2);
-        }
-
-        p {
-          margin: 0;
-        }
-
-        p:not(:last-of-type) {
-          // Technology name
-          display: flex;
-          flex: 1 col(2, $gap);
-          gap: 1rem;
-          align-items: center;
-          font-size: $font-size-bigger;
-          font-weight: 600;
-          white-space: nowrap;
-
-          img {
-            height: 3.25rem;
-          }
-        }
-
-        p:last-of-type {
-          font-size: $font-size-default;
-          max-width: 42.5rem;
-        }
-      }
-    }
-  }
-
-  &--hugo {
-    margin-top: 2.75rem;
-    @include media-up(lg) {
-      margin-top: 3.5rem;
+      margin-top: 2.5rem;
     }
     @include media-up(xl) {
       margin-top: 3.75rem;
     }
+  }
 
-
-    img {
-      float: left;
-      margin: 1rem 2rem 1rem 0;
-    }
-
-    a {
-      @include link-underline;
+  &--intro-button {
+    margin-top: 1.5rem;
+    @include media-up(lg) {
+      margin-top: 2rem;
     }
   }
 
-  &--how-we-work {
-    background-color: $primary-orange;
-    color: $white;
-
+  &--stack {
     margin-top: 3rem;
-    padding: 3rem 0;
     @include media-up(lg) {
       margin-top: 4rem;
-      padding: 4rem 0;
     }
     @include media-up(xl) {
       margin-top: 6rem;
-      padding: 6rem 0;
+    }
+  }
+
+  &--aws {
+    margin-top: 1.5rem;
+    @include media-up(lg) {
+      margin-top: 2.5rem;
+    }
+    @include media-up(xl) {
+      margin-top: 3.75rem;
     }
 
-    p {
-      // Font size is copied from h3.
-      font-size: 1.375rem;
-      @include media-up(lg) {
-        font-size: 1.625rem;
+    &-promo {
+      align-items: flex-start;
+      background-color: $background-darker;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+      @include media-up(md) {
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
       }
       @include media-up(xl) {
-        font-size: 1.75rem;
+        gap: 1.5rem;
+        padding: 1.5rem;
+      }
+
+      img {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+
+      &-text {
+        color: $primary-violet;
       }
     }
 
-    a {
-      @include link-underline;
-      background-image: linear-gradient($white, $white) !important;
-      color: $white !important;
+    &-list {
+      display: grid;
+      gap: 1px;
+      margin-top: 1rem;
+      @include media-up(md) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @include media-up(xl) {
+        margin-top: 2rem;
+      }
+    }
 
-      &:hover {
-        color: $link-primary-hover-color;
-        text-decoration: $link-primary-hover-decoration;
+    &-list-item {
+      background-color: $white;
+      outline: 1px solid $border-color-default;
+      padding: 1.5rem;
+      @include media-up(lg) {
+        padding: 2rem;
+      }
+      @include media-up(xl) {
+        padding: 2.5rem;
+      }
+
+      &.span {
+        @include media-up(md) {
+          grid-column: span 2;
+        }
+      }
+    }
+
+    &-list-title {
+      align-items: center;
+      color: $font-color-dark;
+      display: flex;
+      font-size: $font-size-bigger;
+      gap: 1rem;
+      @include media-up(lg) {
+        font-size: 1.375rem;
+        gap: 1.5rem;
+      }
+
+      img {
+        display: block;
+        height: auto;
+        max-width: 3rem;
+      }
+    }
+
+    &-list-text {
+      margin-top: 1rem;
+      @include media-up(xl) {
+        margin-top: 1.5rem;
+      }
+
+      ul {
+        list-style: circle;
+        margin: 0 0 0 1.25rem;
+        padding: 0;
+
+        li {
+          padding-left: 0.25rem;
+
+          &::marker {
+            color: $primary-violet;
+            font-weight: $font-weight-bold;
+          }
+        }
+      }
+    }
+
+  }
+
+  &--zero {
+    margin-top: 1.5rem;
+    @include media-up(lg) {
+      margin-top: 2.5rem;
+    }
+    @include media-up(xl) {
+      margin-top: 3.75rem;
+    }
+
+    .youtube-wrapper {
+      margin-top: 1rem;
+      max-width: $container-narrow-max-width;
+      @include media-up(xl) {
+        margin-top: 2rem;
       }
     }
   }
