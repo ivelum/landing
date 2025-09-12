@@ -2,73 +2,35 @@
   The maximum article container width is set to 738px with 1.25rem padding
   (see the ".narrow-container" class), which results in the effective maximum
   image width of 698px.
-  Safe render-image: tries: Page bundle -> Current section -> assets
+
+  For pages in the /blog/ section we also add a magnification link.
 */}}
-
-{{- $dest   := .Destination -}}
-{{- $page   := .Page -}}
-{{- $title  := .Title   | default "" -}}
-{{- $alt    := .Text    | default "" -}}
-{{- $class  := .Attributes.class | default "" -}}
-
-{{- $makeLink := and $page (hasPrefix $page.Path "/blog/") -}}
-{{- $previewWidth := 698 -}}
-
-{{- $res := or
-  (and $page ($page.Resources.Get $dest))
-  (and $page ($page.CurrentSection.Resources.Get $dest))
-  (resources.Get $dest)
--}}
-
-{{- $isExternal := or (hasPrefix $dest "http://") (hasPrefix $dest "https://") -}}
-
-{{- $imgForPicture := $res -}}
-{{- $imgForLink    := $res -}}
-
-{{- $isSVG := false -}}
-{{- if $res -}}
-  {{- with $res.MediaType -}}
-    {{- $isSVG = eq .SubType "svg" -}}
-  {{- end -}}
-{{- end -}}
-
-{{- $width := "" -}}
-{{- $height := "" -}}
-{{- if and $imgForLink (not $isSVG) -}}
-  {{- $previewWidth2x := mul $previewWidth 2 -}}
-  {{- $previewWidth4x := mul $previewWidth 4 -}}
-  {{- if gt $imgForLink.Width $previewWidth4x }}
-    {{- $imgForLink = $imgForLink.Resize (printf "%dx" $previewWidth4x) -}}
-  {{- end -}}
-  {{- $width  = math.Min $imgForLink.Width $previewWidth2x -}}
-  {{- $height = int (mul $imgForLink.Height (div (float $width) $imgForLink.Width)) -}}
-{{- end -}}
-
-{{- if $makeLink -}}
-  {{- if $imgForLink -}}
-    <a href="{{ $imgForLink.RelPermalink }}" {{ if and $width $height }}data-pswp-width="{{ $width }}" data-pswp-height="{{ $height }}"{{ end }}>
-  {{- else -}}
-    <a href="{{ if $isExternal }}{{ $dest }}{{ else }}{{ $dest }}{{ end }}">
-  {{- end -}}
-{{- end -}}
-
-{{- if $imgForPicture -}}
-  {{- partial "image.html" (dict
-    "Img" $imgForPicture
-    "Alt" $alt
-    "Title" $title
-    "Class" $class
-    "Width" $previewWidth
+{{- $makeLink := hasPrefix .Page.Path "/blog/" }}
+{{- $previewWidth := 698 }}
+{{- $img := or
+  (.Page.Resources.Get .Destination)
+  (.Page.CurrentSection.Resources.Get .Destination)
+  (resources.Get .Destination)
+}}
+{{- $width := "" }}
+{{- $height := "" }}
+{{- if ne $img.MediaType.SubType "svg" }}
+  {{- $previewWidth2x := mul $previewWidth 2 }}
+  {{- $previewWidth4x := mul $previewWidth 4 }}
+  {{- if gt $img.Width $previewWidth4x }}
+    {{- $img = $img.Resize (printf "%dx" $previewWidth4x) }}
+  {{- end }}
+  {{- $width = math.Min $img.Width $previewWidth2x }}
+  {{- $height = int (mul $img.Height (div (float $width) $img.Width)) }}
+{{- end }}
+{{- if $makeLink }}
+<a href="{{ .Destination }}" data-pswp-width="{{ $width }}" data-pswp-height="{{ $height }}">
+{{- end }}
+{{- partial "image.html" (dict
+  "Img" $img
+  "Alt" .Text
+  "Width" $previewWidth
   ) }}
-{{- else -}}
-  <img
-    src="{{ if $isExternal }}{{ $dest }}{{ else }}{{ $dest }}{{ end }}"
-    alt="{{ $alt }}"
-    title="{{ $title }}"
-    {{ with $class }}class="{{ . }}"{{ end }}
-  >
-{{- end -}}
-
-{{- if $makeLink -}}
+{{- if $makeLink }}
 </a>
-{{- end -}}
+{{- end }}
