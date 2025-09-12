@@ -43,21 +43,43 @@
             {{- (.GetPage "fast-development").Content }}
           </div>
         </div>
+
         <div class="industries--item">
           <div class="industries--item-num">02 /</div>
           <div class="industries--item-body">
-            {{- (.GetPage "scale").Content }}
+            {{- (.GetPage "investor-partnerships").Content }}
+            <ul class="industries--logo-list">
+              <li>
+                <a href="https://founderworks.com" target="_blank">
+                  {{ partial "image.html" (dict
+                    "Img" (.Resources.Get "img/logo-founder-works.png")
+                    "Alt" "Founder Works"
+                    "Width" 113
+                  ) }}
+                </a>
+              </li>
+              <li>
+                <a href="https://www.northequity.com" target="_blank">
+                  {{ partial "image.html" (dict
+                    "Img" (.Resources.Get "img/logo-north-equity.png")
+                    "Alt" "North Equity"
+                    "Width" 200
+                  ) }}
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
+
         <div class="industries--item">
           <div class="industries--item-num">03 /</div>
           <div class="industries--item-body">
-            {{- (.GetPage "deep-collaboration").Content }}
+            {{- (.GetPage "fractional-cto").Content }}
             <a
               class="btn btn-outline-violet btn-small industries--cta"
               href="#talk"
             >
-              Book a quick project review
+              Book a free consultation
             </a>
           </div>
         </div>
@@ -65,16 +87,26 @@
         <div class="industries--item">
           <div class="industries--item-num">04 /</div>
           <div class="industries--item-body">
-            {{- (.GetPage "fractional-cto").Content }}
+            {{- (.GetPage "deep-collaboration").Content }}
           </div>
         </div>
 
         <div class="industries--item">
           <div class="industries--item-num">05 /</div>
           <div class="industries--item-body">
-            {{- (.GetPage "investor-partnerships").Content }}
+            {{- (.GetPage "scale").Content }}
+            <ul class="industries--logo-list">
+              <li>
+                {{ partial "image.html" (dict
+                  "Img" (.Resources.Get "img/logo-aws-wa.png")
+                  "Alt" "AWS Well-Architected"
+                  "Width" 350
+                ) }}
+              </li>
+            </ul>
           </div>
         </div>
+
       </div>
     </div>
   </div>
