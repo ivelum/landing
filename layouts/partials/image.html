@@ -1,16 +1,17 @@
 {{- $webp := false }}
 {{- $preview := false }}
 {{- $previewWebp := false }}
+{{- $width := .Width }}
 {{- if ne .Img.MediaType.SubType "svg" }}
   {{- $webp = .Img.Process "webp" }}
-  {{- if gt .Img.Width .Width }}
-    {{- $preview = .Img.Resize (printf "%dx" .Width) }}
+  {{- if gt .Img.Width $width }}
+    {{- $preview = .Img.Resize (printf "%dx" $width) }}
     {{- $previewWebp = $preview.Process "webp" }}
   {{- end }}
 {{- end }}
-{{ $imgTag := "<img" }}
+{{ $imgTag := printf "<img width=\"%d\"" $width }}
 {{- with .Class }}
-  {{- $imgTag = printf "<img class=\"%s\"" . }}
+  {{- $imgTag = printf "<img width=\"%d\" class=\"%s\"" $width . }}
 {{- end }}
 {{- $imgTag = $imgTag | safeHTML }}
 {{- if $webp }}
