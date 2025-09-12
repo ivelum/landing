@@ -11,4 +11,3 @@ the team in sync and minimize distractions.
 Read more in our blog:
 - [Why work transparency matters? (Teamplify)](https://teamplify.com/blog/why-work-transparency-matters/)
 - [Why public chats are better than direct messages](/blog/why-public-chats-are-better-than-direct-messages/)
-{.how-we-work--item-links}

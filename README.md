@@ -55,6 +55,12 @@ sitemap:
 In this episode, we'll talk about ...
 ```
 
+## Please don't put HTML in Markdown
+
+I know you technically can, but it doesn't mean you should. Please avoid using
+HTML markup or explicitly mentioning class names anywhere in the `content`
+folder. Thank you.
+
 ## License
 
 - Code: MIT

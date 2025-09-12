@@ -12,4 +12,3 @@ that it is possible. For most projects, it's a game changer.
 
 Read more in our blog:
 - [Why go full-stack?](/blog/why-go-full-stack/)
-{.how-we-work--item-links}
