@@ -1,8 +1,8 @@
 ---
-title: 'Cybersecurity Services: Build Secure and Compliant Systems'
+title: 'Cybersecurity services: build secure and compliant systems'
 description: 'Protect your business with best-in-class security. We provide secure architecture, compliance expertise, and balanced security without slowing teams.'
 caption: 'Security'
-h1: 'Build Real Security, Not Just Pass Audits'
+h1: 'Build real security, not just pass audits'
 layout: industries-security
 menus:
   main:

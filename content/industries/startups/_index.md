@@ -1,8 +1,8 @@
 ---
-title: 'Startup Software Development: Fast, Secure, and Scalable'
+title: 'Startup software development: fast, secure, and scalable'
 description: 'We help startups build robust, scalable software fast. Achieve cost savings, secure systems, and investor-ready technology with our expert team.'
 caption: 'Startups'
-h1: 'Build What Matters. Fast & Secure.'
+h1: 'Build what matters. Fast & secure.'
 layout: industries-startups
 menus:
   main:

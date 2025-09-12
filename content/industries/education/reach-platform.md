@@ -1,4 +1,4 @@
-### Case study - Reach platform
+### Case study — reach platform
 
 In collaboration with Virtual Routes, we've built the [Reach platform](https://virtual-routes.org/reach/)
 to match students and local community organizations (LCOs) as part of

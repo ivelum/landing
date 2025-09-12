@@ -1,8 +1,8 @@
 ---
-title: 'AI Development Services for Strategic Business Growth'
+title: 'AI development services for strategic business growth'
 description: 'Implement AI features that deliver real value. From prototypes to production-grade systems, we build smarter, faster, and more reliable AI solutions.'
 caption: 'AI'
-h1: 'AI Solutions That Deliver Real Business Impact'
+h1: 'AI solutions that deliver real business impact'
 layout: industries-ai
 menus:
   main:

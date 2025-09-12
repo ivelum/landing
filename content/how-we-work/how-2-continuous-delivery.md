@@ -1,6 +1,6 @@
 ---
 category: how-we-work
-title: Continuous Delivery
+title: Continuous delivery
 image: img/continuous-delivery.svg
 ---
 
