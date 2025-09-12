@@ -6,6 +6,3 @@ application architecture to infrastructure management and monitoring.
 
 - **60%** of small businesses close within six months after a cyberattack.*National Cyber Security Alliance*
 {.industries--features-list}
-
-- ![AWS](img/logo-aws-wa.png)
-{.industries--logo-list}

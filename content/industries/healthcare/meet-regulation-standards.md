@@ -6,8 +6,4 @@ We help healthcare companies build HIPAA-compliant software faster.
 
 We also help integrate healthcare systems using both proprietary and open APIs.
 For many US-based healthcare providers, the preferred integration standard is
-often HL7/ FHIR, which is required for organizations working with Medicare or Medicaid.
-
-- ![HIPAA](img/logo-hipaa.svg)
-- ![HL7FHIR](img/logo-fhir.png)
-{.industries--logo-list}
+often HL7 FHIR, which is required for organizations working with Medicare or Medicaid.

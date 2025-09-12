@@ -24,12 +24,30 @@
           <div class="industries--item-num">01 /</div>
           <div class="industries--item-body">
             {{- (.GetPage "it-all-starts-with-people").Content }}
+            <ul class="industries--logo-list">
+              <li>
+                {{ partial "image.html" (dict
+                  "Img" (.Resources.Get "img/logo-owasp.svg")
+                  "Alt" "OWASP"
+                  "Width" 230
+                ) }}
+              </li>
+            </ul>
           </div>
         </div>
         <div class="industries--item">
           <div class="industries--item-num">02 /</div>
           <div class="industries--item-body">
             {{- (.GetPage "secure-your-production").Content }}
+            <ul class="industries--logo-list">
+              <li>
+                {{ partial "image.html" (dict
+                  "Img" (.Resources.Get "img/logo-aws-wa.png")
+                  "Alt" "AWS Well-Architected"
+                  "Width" 350
+                ) }}
+              </li>
+            </ul>
             <a
               class="btn btn-outline-violet btn-small industries--cta"
               href="#talk"
@@ -42,6 +60,43 @@
           <div class="industries--item-num">03 /</div>
           <div class="industries--item-body">
             {{- (.GetPage "achieve-compliance-faster").Content }}
+            <ul class="industries--logo-list">
+              <li>
+                {{ partial "image.html" (dict
+                  "Img" (.Resources.Get "img/logo-aicpa-soc.png")
+                  "Alt" "AICPA SOC"
+                  "Width" 95
+                ) }}
+              </li>
+              <li>
+                {{ partial "image.html" (dict
+                  "Img" (.Resources.Get "img/logo-hipaa.svg")
+                  "Alt" "HIPAA"
+                  "Width" 120
+                ) }}
+              </li>
+              <li>
+                {{ partial "image.html" (dict
+                  "Img" (.Resources.Get "img/logo-fedramp.svg")
+                  "Alt" "FedRAMP"
+                  "Width" 85
+                ) }}
+              </li>
+              <li>
+                {{ partial "image.html" (dict
+                  "Img" (.Resources.Get "img/logo-gdpr.svg")
+                  "Alt" "GDPR"
+                  "Width" 95
+                ) }}
+              </li>
+              <li>
+                {{ partial "image.html" (dict
+                  "Img" (.Resources.Get "img/logo-ccpa.png")
+                  "Alt" "CCPA"
+                  "Width" 95
+                ) }}
+              </li>
+            </ul>
           </div>
         </div>
         <div class="industries--item">

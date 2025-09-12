@@ -50,6 +50,36 @@
           <div class="industries--item-num">03 /</div>
           <div class="industries--item-body">
             {{- (.GetPage "build-faster").Content }}
+            <ul class="industries--logo-list">
+              <li>
+                {{ partial "image.html" (dict
+                  "Img" (.Resources.Get "img/logo-claude.svg")
+                  "Alt" "Claude Code"
+                  "Width" 180
+                ) }}
+              </li>
+              <li>
+                {{ partial "image.html" (dict
+                  "Img" (.Resources.Get "img/logo-cursor.svg")
+                  "Alt" "Cursor"
+                  "Width" 190
+                ) }}
+              </li>
+              <li>
+                {{ partial "image.html" (dict
+                  "Img" (.Resources.Get "img/logo-copilot.png")
+                  "Alt" "Copilot"
+                  "Width" 190
+                ) }}
+              </li>
+              <li>
+                {{ partial "image.html" (dict
+                  "Img" (.Resources.Get "img/logo-gemini.png")
+                  "Alt" "Gemini Code Assist"
+                  "Width" 350
+                ) }}
+              </li>
+            </ul>
           </div>
         </div>
         <div class="industries--item">

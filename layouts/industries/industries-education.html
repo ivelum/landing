@@ -26,30 +26,47 @@
           <div class="industries--item-num">01 /</div>
           <div class="industries--item-body">
             {{- (.GetPage "launch-faster").Content }}
-            <a
-              class="btn btn-outline-violet btn-small industries--cta"
-              href="#talk"
-            >
-              Book a free consultation
-            </a>
           </div>
         </div>
         <div class="industries--item">
           <div class="industries--item-num">02 /</div>
           <div class="industries--item-body">
             {{- (.GetPage "portable-learning-content").Content }}
-          </div>
-        </div>
-        <div class="industries--item">
-          <div class="industries--item-num">03 /</div>
-          <div class="industries--item-body">
-            {{- (.GetPage "reach-platform").Content }}
+            <ul class="industries--logo-list">
+              <li>
+                {{ partial "image.html" (dict
+                  "Img" (.Resources.Get "img/logo-cmi5.png")
+                  "Alt" "cmi5 / xAPI"
+                  "Width" 130
+                ) }}
+              </li>
+              <li>
+                {{ partial "image.html" (dict
+                  "Img" (.Resources.Get "img/logo-scorm.svg")
+                  "Alt" "SCORM"
+                  "Width" 250
+                ) }}
+              </li>
+              <li>
+                {{ partial "image.html" (dict
+                  "Img" (.Resources.Get "img/logo-articulate.svg")
+                  "Alt" "Articulate"
+                  "Width" 200
+                ) }}
+              </li>
+            </ul>
             <a
               class="btn btn-outline-violet btn-small industries--cta"
               href="#talk"
             >
               Book a free consultation
             </a>
+          </div>
+        </div>
+        <div class="industries--item">
+          <div class="industries--item-num">03 /</div>
+          <div class="industries--item-body">
+            {{- (.GetPage "reach-platform").Content }}
           </div>
         </div>
       </div>

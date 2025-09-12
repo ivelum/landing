@@ -10,6 +10,3 @@ that supports best security practices, including:
 - Mandatory use of password managers and 2FA across the team
 - Secure configuration of developer workstations and personal devices
 - Background checks for all new hires
-<!-- List separator -->
-- ![OWASP](img/logo-owasp.svg)
-{.industries--logo-list}

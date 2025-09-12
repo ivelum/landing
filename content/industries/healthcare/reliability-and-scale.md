@@ -4,6 +4,3 @@ Any IT system may eventually fail, but it may have especially dangerous, sometim
 life-threatening consequences in healthcare. We use the best engineering practices
 and AWS Well-Architectured framework to help you build reliable and scalable systems
 with great uptime and fault tolerance.
-
-- ![AWS](img/logo-aws-wa.png)
-{.industries--logo-list}
