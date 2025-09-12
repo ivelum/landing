@@ -5,4 +5,4 @@ image: img/security.svg
 link: /industries/security/
 ---
 
-AI-assisted security solutions for engineering teams.
+World-class infromation security for startups and enterprises.

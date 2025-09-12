@@ -5,4 +5,4 @@ image: img/ai.svg
 link: /industries/ai/
 ---
 
-We make AI work for companies — only where it drives measurable impact.
+AI solutions that deliver real, measurable impact.

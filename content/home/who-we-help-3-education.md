@@ -5,4 +5,4 @@ image: img/education.svg
 link: /industries/education/
 ---
 
-Online learning platforms serving more than two million users.
+Online learning platforms loved by students and educators.

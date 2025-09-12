@@ -5,4 +5,4 @@ image: img/media.svg
 link: /industries/media/
 ---
 
-High-traffic websites with a combined audience of 100+ million users.
+High-traffic websites serving millions of users daily.
