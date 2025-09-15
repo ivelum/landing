@@ -1,4 +1,4 @@
-{{- $id := .Get "id" -}}
+{{- $id := .Get "id" | default (.Get 0) -}}
 {{- $title := .Get "title" | default "YouTube video" -}}
 {{- $class := .Get "class" | default "" -}}
 
