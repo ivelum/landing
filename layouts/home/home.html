@@ -151,6 +151,30 @@
     </div>
   </div>
 
+  {{ $page := .GetPage "full-work-transparency" }}
+  {{ with $page }}
+    <div class="container">
+      <div class="home--teamplify">
+        <div class="home--teamplify-body">
+          <div class="home--teamplify-title">{{ .Title }}</div>
+          <div class="home--teamplify-text">{{ .Content }}</div>
+        </div>
+        <div class="home--teamplify-image">
+          <div class="home--teamplify-badge">Free</div>
+          <img src="{{ $.Resources.Get .Params.image }}" alt="{{ .Title }}" />
+          <a
+            href="{{ .Params.link }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="home--teamplify-link"
+          >
+            Learn more
+          </a>
+        </div>
+      </div>
+    </div>
+  {{ end }}
+
   <div class="container home--action">
     <a class="btn btn-big btn-with-arrow" href="#talk">
       Get in touch
