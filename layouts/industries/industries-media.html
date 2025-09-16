@@ -41,15 +41,6 @@
           <div class="industries--item-num">01 /</div>
           <div class="industries--item-body">
             {{- (.GetPage "fast-content-delivery").Content }}
-            <ul class="industries--logo-list">
-              <li>
-                {{ partial "image.html" (dict
-                  "Img" (.Resources.Get "img/pagespeed-insights.svg")
-                  "Alt" "Google PageSpeed Insights"
-                  "Width" 500
-                ) }}
-              </li>
-            </ul>
             <a
               class="btn btn-outline-violet btn-small industries--cta"
               href="#talk"
@@ -62,29 +53,6 @@
           <div class="industries--item-num">02 /</div>
           <div class="industries--item-body">
             {{- (.GetPage "handle-traffic-peaks").Content }}
-            <ul class="industries--logo-list">
-              <li>
-                {{ partial "image.html" (dict
-                  "Img" (.Resources.Get "img/logo-aws.svg")
-                  "Alt" "AWS"
-                  "Width" 100
-                ) }}
-              </li>
-              <li>
-                {{ partial "image.html" (dict
-                  "Img" (.Resources.Get "img/logo-fastly.svg")
-                  "Alt" "Fastly"
-                  "Width" 130
-                ) }}
-              </li>
-              <li>
-                {{ partial "image.html" (dict
-                  "Img" (.Resources.Get "img/logo-flexpress.png")
-                  "Alt" "Flexpress"
-                  "Width" 230
-                ) }}
-              </li>
-            </ul>
             <ul class="industries--features-list">
               <li>
                 <strong>300M+</strong> visitors served per month

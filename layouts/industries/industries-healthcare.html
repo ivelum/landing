@@ -26,22 +26,6 @@
           <div class="industries--item-num">01 /</div>
           <div class="industries--item-body">
             {{- (.GetPage "meet-regulation-standards").Content }}
-            <ul class="industries--logo-list">
-              <li>
-                {{ partial "image.html" (dict
-                  "Img" (.Resources.Get "img/logo-hipaa.svg")
-                  "Alt" "HIPAA"
-                  "Width" 150
-                ) }}
-              </li>
-              <li>
-                {{ partial "image.html" (dict
-                  "Img" (.Resources.Get "img/logo-fhir.png")
-                  "Alt" "HL7 FHIR"
-                  "Width" 200
-                ) }}
-              </li>
-            </ul>
             <a
               class="btn btn-outline-violet btn-small industries--cta"
               href="#talk"
@@ -54,15 +38,6 @@
           <div class="industries--item-num">02 /</div>
           <div class="industries--item-body">
             {{- (.GetPage "reliability-and-scale").Content }}
-            <ul class="industries--logo-list">
-              <li>
-                {{ partial "image.html" (dict
-                  "Img" (.Resources.Get "img/logo-aws-wa.png")
-                  "Alt" "AWS Well-Architected"
-                  "Width" 350
-                ) }}
-              </li>
-            </ul>
           </div>
         </div>
         <div class="industries--item">
