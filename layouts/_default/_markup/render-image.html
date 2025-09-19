@@ -5,32 +5,29 @@
 
   For pages in the /blog/ section we also add a magnification link.
 */}}
-{{- $makeLink := hasPrefix .Page.Path "/blog/" }}
-{{- $previewWidth := 698 }}
-{{- $img := or
+{{- $originalImg := or
   (.Page.Resources.Get .Destination)
   (.Page.CurrentSection.Resources.Get .Destination)
   (resources.Get .Destination)
 }}
-{{- $width := "" }}
-{{- $height := "" }}
-{{- if ne $img.MediaType.SubType "svg" }}
-  {{- $previewWidth2x := mul $previewWidth 2 }}
-  {{- $previewWidth4x := mul $previewWidth 4 }}
-  {{- if gt $img.Width $previewWidth4x }}
-    {{- $img = $img.Resize (printf "%dx" $previewWidth4x) }}
+{{- $previewWidth := 698 -}}
+
+{{- $showFullSizeLightbox := hasPrefix .Page.Path "/blog/" }}
+{{- if $showFullSizeLightbox }}
+  {{- $fullSizeWidth := "" }}
+  {{- $fullSizeHeight := "" }}
+  {{- if ne $originalImg.MediaType.SubType "svg" }}
+    {{- $previewWidth2x := mul $previewWidth 2 }}
+    {{- $fullSizeWidth = math.Min $originalImg.Width $previewWidth2x }}
+    {{- $fullSizeHeight = int (mul $originalImg.Height (div (float $fullSizeWidth) $originalImg.Width)) }}
   {{- end }}
-  {{- $width = math.Min $img.Width $previewWidth2x }}
-  {{- $height = int (mul $img.Height (div (float $width) $img.Width)) }}
+<a href="{{ .Destination }}" data-pswp-width="{{ $fullSizeWidth }}" data-pswp-height="{{ $fullSizeHeight }}">
 {{- end }}
-{{- if $makeLink }}
-<a href="{{ .Destination }}" data-pswp-width="{{ $width }}" data-pswp-height="{{ $height }}">
-{{- end }}
-{{- partial "image.html" (dict
-  "Img" $img
-  "Alt" .Text
-  "Width" $previewWidth
-  ) }}
-{{- if $makeLink }}
+  {{ partial "image.html" (dict
+    "Img" $originalImg
+    "Alt" .Text
+    "Width" $previewWidth
+    ) }}
+{{- if $showFullSizeLightbox }}
 </a>
 {{- end }}
