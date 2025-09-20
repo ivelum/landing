@@ -6,8 +6,7 @@
     <div class="footer--grid">
       <div class="footer--contact">
         {{ partial "author-card.html" (dict
-          "Page" .
-          "Image" "img/avatars/denis-stebunov.png"
+          "Avatar" (resources.Get "img/avatars/denis-stebunov.png")
           "Name" "Denis Stebunov"
           "Position" "CTO at ivelum"
           "Class" "footer--contact-cto"

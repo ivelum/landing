@@ -78,8 +78,7 @@
       <div class="home--hire-us-book">
         {{- (.GetPage "hire-us-book").Content }}
         {{ partial "author-card.html" (dict
-          "Page" .
-          "Image" "img/avatars/denis-stebunov.png"
+          "Avatar" (resources.Get "img/avatars/denis-stebunov.png")
           "Name" "Denis Stebunov"
           "Position" "CTO at ivelum"
         ) }}
@@ -199,8 +198,7 @@
     {{- range sort (where .Pages "Params.category" "testimonials") "File.Path" }}
       <div class="home--testimonials-item">
         {{ partial "author-card.html" (dict
-          "Page" .
-          "Image" .Params.avatar
+          "Avatar" (.CurrentSection.Resources.Get .Params.avatar)
           "Name" .Title
           "Position" .Params.position
           "Linkedin" .Params.linkedin

@@ -26,8 +26,7 @@
           {{ .Content }}
         </div>
         {{ partial "author-card.html" (dict
-          "Page" .Parent
-          "Image" .Params.avatar
+          "Avatar" (.Parent.Resources.Get .Params.avatar)
           "Name" .Title
           "Position" .Params.position
           "LinkedIn" .Params.linkedin
