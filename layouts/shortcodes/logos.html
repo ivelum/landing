@@ -1,0 +1,6 @@
+<ul class="industries--logo-list">
+{{- range (split .Inner "\n") -}}
+  {{- $item := trim . " \t\r-" -}}
+  {{ with $item }}<li>{{ . | safeHTML }}</li>{{ end }}
+{{- end -}}
+</ul>

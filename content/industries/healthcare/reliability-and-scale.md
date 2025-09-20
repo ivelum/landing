@@ -5,6 +5,6 @@ life-threatening consequences in healthcare. We use the best engineering practic
 and AWS Well-Architectured framework to help you build reliable and scalable systems
 with great uptime and fault tolerance.
 
-{{< industries-logo-list >}}
-AWS Well-Architected|img/logo-aws-wa.png|350
-{{< /industries-logo-list >}}
+{{< logos >}}
+- {{< image src="img/logo-aws-wa.png" width=350 alt="AWS Well-Architected" >}}
+{{</ logos >}}

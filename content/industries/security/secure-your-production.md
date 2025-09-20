@@ -4,6 +4,6 @@ A data breach can be devastating — don't let it put your business at risk. We 
 companies build secure, resilient production environments, covering everything from
 application architecture to infrastructure management and monitoring.
 
-{{< industries-logo-list >}}
-AWS Well-Architected|img/logo-aws-wa.png|350
-{{< /industries-logo-list >}}
+{{< logos >}}
+- {{< image src="img/logo-aws-wa.png" width=350 alt="AWS Well-Architected" >}}
+{{</ logos >}}

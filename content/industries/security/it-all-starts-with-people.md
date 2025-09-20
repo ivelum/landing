@@ -11,7 +11,6 @@ that supports best security practices, including:
 - Secure configuration of developer workstations and personal devices
 - Background checks for all new hires
 
-{{< industries-logo-list >}}
-OWASP|img/logo-owasp.svg|230
-{{< /industries-logo-list >}}
-
+{{< logos >}}
+- {{< image src="img/logo-owasp.svg" width=230 alt="OWASP" >}}
+{{</ logos >}}

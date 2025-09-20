@@ -8,8 +8,8 @@ creators and unlocking additional business opportunities for learning platforms.
 We at ivelum have a lot of experience working with these standards and building additional
 learning, engagement, and analytics features on top of them.
 
-{{< industries-logo-list >}}
-cmi5 / xAPI|img/logo-cmi5.png|130
-SCORM|img/logo-scorm.svg|250
-Articulate|img/logo-articulate.svg|200
-{{< /industries-logo-list >}}
+{{< logos >}}
+- {{< image src="img/logo-cmi5.png" width=130 alt="cmi5 / xAPI" >}}
+- {{< image src="img/logo-scorm.svg" width=250 alt="SCORM" >}}
+- {{< image src="img/logo-articulate.svg" width=200 alt="Articulate" >}}
+{{</ logos >}}

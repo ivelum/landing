@@ -4,9 +4,9 @@ Vibe-coding a prototype in days is one thing; shipping production-grade AI softw
 is another. Our developers have used AI coding tools from day one, refining best
 practices and delivering maintainable, scalable systems.
 
-{{< industries-logo-list >}}
-Claude Code|img/logo-claude.svg|180
-Cursor|img/logo-cursor.svg|190
-Copilot|img/logo-copilot.png|190
-Gemini Code Assist|img/logo-gemini.png|350
-{{< /industries-logo-list >}}
+{{< logos >}}
+- {{< image src="img/logo-claude.svg" width=180 alt="Claude Code" >}}
+- {{< image src="img/logo-cursor.svg" width=190 alt="Cursor" >}}
+- {{< image src="img/logo-copilot.png" width=190 alt="Copilot" >}}
+- {{< image src="img/logo-gemini.png" width=350 alt="Gemini Code Assist" >}}
+{{</ logos >}}

@@ -8,7 +8,7 @@ We also help integrate healthcare systems using both proprietary and open APIs.
 For many US-based healthcare providers, the preferred integration standard is
 often HL7 FHIR, which is required for organizations working with Medicare or Medicaid.
 
-{{< industries-logo-list >}}
-HIPAA|img/logo-hipaa.svg|150
-HL7 FHIR|img/logo-fhir.png|200
-{{< /industries-logo-list >}}
+{{< logos >}}
+- {{< image src="img/logo-hipaa.svg" width=150 alt="HIPAA" >}}
+- {{< image src="img/logo-fhir.png" width=200 alt="HL7 FHIR" >}}
+{{</ logos >}}

@@ -4,6 +4,6 @@ We'll help you build a software architecture that is robust and resilient and sc
 easily without costs spiralling out of control. When we joined existing projects, we
 often helped our clients achieve cloud savings of up to 50%.
 
-{{< industries-logo-list >}}
-AWS Well-Architected|img/logo-aws-wa.png|350
-{{< /industries-logo-list >}}
+{{< logos >}}
+- {{< image src="img/logo-aws-wa.png" width=350 alt="AWS Well-Architected" >}}
+{{</ logos >}}

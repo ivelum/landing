@@ -4,8 +4,8 @@ When viral moments hit, your infrastructure needs to handle them — but without
 surprise costs. We design resilient and cost-efficient architectures that scale
 seamlessly while cutting cloud bills by up to 50%.
 
-{{< industries-logo-list >}}
-AWS|img/logo-aws.svg|100
-Fastly|img/logo-fastly.svg|130
-Flexpress|img/logo-flexpress.png|230
-{{< /industries-logo-list >}}
+{{< logos >}}
+- {{< image src="img/logo-aws.svg" width=100 alt="AWS" >}}
+- {{< image src="img/logo-fastly.svg" width=130 alt="Fastly" >}}
+- {{< image src="img/logo-flexpress.png" width=230 alt="Flexpress" >}}
+{{</ logos >}}
