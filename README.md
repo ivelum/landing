@@ -59,7 +59,7 @@ In this episode, we'll talk about ...
 
 I know you technically can, but it doesn't mean you should. Please avoid using
 HTML markup or explicitly mentioning class names anywhere in the `content`
-folder. Thank you.
+folder. If you absolutely must, use shortcodes to add custom markup. Thank you.
 
 ## License
 
