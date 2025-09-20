@@ -48,13 +48,25 @@
         <div class="article--follow">
           <div>Follow us:</div>
           <a href="https://x.com/ivelum_dev" target="_blank">
-            <img alt="X" src="{{ (resources.Get "img/ico-x-colored.svg").RelPermalink }}" />
+            {{ partial "image.html" (dict
+                 "Img" (resources.Get "img/ico-x-colored.svg")
+                 "Alt" "X"
+                 "Width" 17
+               ) }}
           </a>
           <a href="https://www.linkedin.com/company/ivelum/" target="_blank">
-            <img alt="LinkedIn" src="{{ (resources.Get "img/ico-linkedin-colored.svg").RelPermalink }}" />
+            {{ partial "image.html" (dict
+                 "Img" (resources.Get "img/ico-linkedin-colored.svg")
+                 "Alt" "LinkedIn"
+                 "Width" 24
+               ) }}
           </a>
           <a href="{{ .CurrentSection.RelPermalink }}index.xml">
-            <img alt="RSS" src="{{ (resources.Get "img/ico-rss-colored.svg").RelPermalink }}" />
+            {{ partial "image.html" (dict
+                 "Img" (resources.Get "img/ico-rss-colored.svg")
+                 "Alt" "RSS"
+                 "Width" 20
+               ) }}
           </a>
         </div>
       </div>

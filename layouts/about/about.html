@@ -69,12 +69,11 @@
         <div class="swiper-wrapper">
         {{- range .Resources.Match "img/team/*.jpg" }}
           <div class="swiper-slide">
-            <img
-              src="{{ .RelPermalink }}"
-              width="{{ .Width }}"
-              height="{{ .Height }}"
-              alt="Team"
-            />
+            {{ partial "image.html" (dict
+                 "Img" .
+                 "Alt" "Team"
+                 "Width" 857
+               ) }}
           </div>
         {{- end }}
         </div>
