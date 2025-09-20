@@ -1,0 +1,11 @@
+{{- $src := .Params.src -}}
+{{- $alt := .Params.alt -}}
+{{- $width := .Params.width -}}
+
+{{- $img := or
+  (.Page.Resources.Get $src)
+  (.Page.CurrentSection.Resources.Get $src)
+  (resources.Get $src)
+-}}
+
+{{- partial "image.html" (dict "Img" $img "Alt" $alt "Width" $width) -}}
