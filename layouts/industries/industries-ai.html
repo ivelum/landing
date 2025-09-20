@@ -15,7 +15,11 @@
       </div>
       {{ with .Resources.Get "img/head-image.svg" }}
         <div class="industries--head-img">
-          <img src="{{ .RelPermalink }}" alt="{{- .Params.caption -}}" />
+          {{ partial "image.html" (dict
+            "Img" .
+            "Alt" .Params.caption
+            "Width" 250
+            ) }}
         </div>
       {{ end }}
     </div>
