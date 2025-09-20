@@ -29,8 +29,8 @@
 {{- else -}}
   {{/* Calculate height based on the aspect ratio of the SVG */}}
   {{- $svg := unmarshal $originalImg.Content -}}
-  {{- $originalWidth := float (index $svg "-width") -}}
-  {{- $originalHeight := float (index $svg "-height") -}}
+  {{- $originalWidth := float (trim (index $svg "-width") "px") -}}
+  {{- $originalHeight := float (trim (index $svg "-height") "px") -}}
   {{/* Prefer viewBox if it's specified */}}
   {{- $viewBox := index $svg "-viewBox" }}
   {{- if $viewBox -}}
