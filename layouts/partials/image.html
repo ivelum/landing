@@ -35,8 +35,8 @@
   {{- $viewBox := index $svg "-viewBox" }}
   {{- if $viewBox -}}
     {{- $coords := split $viewBox " " -}}
-    {{- $originalWidth = sub (int (index $coords 2)) (int (index $coords 0)) -}}
-    {{- $originalHeight = sub (int (index $coords 3)) (int (index $coords 1)) -}}
+    {{- $originalWidth = sub (float (index $coords 2)) (float (index $coords 0)) -}}
+    {{- $originalHeight = sub (float (index $coords 3)) (float (index $coords 1)) -}}
   {{- end -}}
   {{- $height = int (mul
         $originalHeight
