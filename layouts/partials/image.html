@@ -27,12 +27,11 @@
   {{- end }}
 {{- end -}}
 
-{{- if or $img1xWebp $img2x -}}
+{{- if $img1xWebp -}}
   <picture>
-  {{- if $img1xWebp -}}
     <source srcset="{{ $img1xWebp.RelPermalink }}{{ with $img2xWebp }}, {{ .RelPermalink }} 2x{{ end }}" type="image/webp">
-  {{- end -}}
-    <img width="{{ $width }}"{{ with $class }} class="{{ . }}"{{ end }} src="{{ $img1x.RelPermalink }}"{{ with $img2x }} srcset="{{ .RelPermalink }} 2x"{{ end }} alt="{{ $alt }}"></picture>
-{{- else -}}
-  <img width="{{ $width }}"{{ with $class }} class="{{ . }}"{{ end }} src="{{ $originalImg.RelPermalink }}" alt="{{ $alt }}">
+{{- end -}}
+    <img width="{{ $width }}"{{ with $class }} class="{{ . }}"{{ end }} src="{{ $img1x.RelPermalink }}"{{ with $img2x }} srcset="{{ .RelPermalink }} 2x"{{ end }} alt="{{ $alt }}">
+{{- if $img1xWebp -}}
+  </picture>
 {{- end -}}
