@@ -23,10 +23,11 @@
       <div class="contact--wrapper">
         <div class="contact--inner">
           <div class="contact--method-title">
-            <img
-              src="{{ (.Resources.Get "img/live-chat.svg").RelPermalink }}"
-              alt="Live chat"
-            />
+            {{ partial "image.html" (dict
+                 "Img" (.Resources.Get "img/live-chat.svg")
+                 "Alt" "Live chat"
+                 "Width" 40
+               ) }}
             Live chat
           </div>
           <div>
@@ -59,12 +60,11 @@
         </div>
         <div class="contact--inner">
           <div class="contact--method-title">
-            <img
-              src="{{
-                (.Resources.Get "img/free-consultation.svg").RelPermalink
-              }}"
-              alt="30-min free consultation"
-            />
+            {{ partial "image.html" (dict
+                 "Img" (.Resources.Get "img/free-consultation.svg")
+                 "Alt" "30-min free consultation"
+                 "Width" 40
+               ) }}
             30-min free consultation
           </div>
           <div>

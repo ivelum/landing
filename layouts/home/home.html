@@ -103,11 +103,12 @@
     <div class="home--who-we-help">
     {{- range sort (where .Pages "Params.category" "who-we-help") "File.Path" }}
       <div class="home--who-we-help-item">
-        <img
-          class="home--who-we-help-image"
-          src="{{ ($.Resources.Get .Params.image).RelPermalink }}"
-          alt="{{ .Title }}"
-        />
+        {{ partial "image.html" (dict
+             "Img" ($.Resources.Get .Params.image)
+             "Class" "home--who-we-help-image"
+             "Alt" .Title
+             "Width" 140
+           ) }}
         <div class="home--who-we-help-body">
           <a href="{{ .Params.link }}" class="home--who-we-help-title">
             {{ .Title }}
@@ -141,10 +142,11 @@
     {{- range sort (where .Pages "Params.category" "why-ivelum") "File.Path" }}
       <div class="home--why-ivelum-item">
         <div class="home--why-ivelum-title">
-          <img
-            src="{{ ($.Resources.Get .Params.image).RelPermalink }}"
-            alt="{{ .Title }}"
-          />
+          {{ partial "image.html" (dict
+               "Img" ($.Resources.Get .Params.image)
+               "Alt" .Title
+               "Width" 48
+             ) }}
           {{ .Title }}
         </div>
         <div class="home--why-ivelum-text">

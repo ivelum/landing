@@ -30,7 +30,11 @@
         {{ $page := .GetPage "aws-starter-template" }}
         {{ with $page }}
           <div class="technology--aws-promo">
-            <img src="{{ .Params.image }}" alt="AWS Starter Template" />
+            {{ partial "image.html" (dict
+                 "Img" ($.Resources.Get .Params.image)
+                 "Alt" "Free"
+                 "Width" 68
+               ) }}
             <div class="technology--aws-promo-text">
               {{ .Content }}
             </div>
@@ -41,7 +45,11 @@
             <div class="technology--aws-list-item{{ if .Params.span }} span{{ end }}">
               <div class="technology--aws-list-title">
                 {{ with .Params.image }}
-                  <img src="{{ $.Resources.Get . }}" alt="{{ $.Title }}" />
+                  {{ partial "image.html" (dict
+                       "Img" ($.Resources.Get .)
+                       "Alt" $.Title
+                       "Width" 48
+                     ) }}
                 {{ end }}
                 {{ .Title }}
               </div>
