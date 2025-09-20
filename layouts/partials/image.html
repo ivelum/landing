@@ -27,10 +27,17 @@
     {{- end -}}
   {{ end -}}
 {{- else -}}
-  {{/* Calculate height based on the aspect ratio of the SVG viewBox */}}
-  {{- $viewBox := split (index (unmarshal $originalImg.Content) "-viewBox") " " -}}
-  {{- $originalWidth := sub (int (index $viewBox 2)) (int (index $viewBox 0)) -}}
-  {{- $originalHeight := sub (int (index $viewBox 3)) (int (index $viewBox 1)) -}}
+  {{/* Calculate height based on the aspect ratio of the SVG */}}
+  {{- $svg := unmarshal $originalImg.Content -}}
+  {{- $originalWidth := int (index $svg "-width") -}}
+  {{- $originalHeight := int (index $svg "-height") -}}
+  {{/* Prefer viewBox if it's specified */}}
+  {{- $viewBox := index $svg "-viewBox" }}
+  {{- if $viewBox -}}
+    {{- $coords := split $viewBox " " -}}
+    {{- $originalWidth = sub (int (index $coords 2)) (int (index $coords 0)) -}}
+    {{- $originalHeight = sub (int (index $coords 3)) (int (index $coords 1)) -}}
+  {{- end -}}
   {{- $height = int (mul
         $originalHeight
         (div (float $width) $originalWidth)
