@@ -1,45 +1,44 @@
 {{/* Input parameters: */}}
-{{- $originalImg := .Img }}
-{{- $alt := .Alt }}
-{{- $class := .Class }}
+{{- $originalImg := .Img -}}
+{{- $alt := .Alt -}}
+{{- $class := .Class -}}
 {{- $width := .Width -}}
 
 {{- $mediaType := $originalImg.MediaType.SubType -}}
 
-{{- $height := false }}
-{{- $img1x := $originalImg }}
-{{- $img2x := false }}
-{{- if ne $mediaType "svg" }}
+{{- $height := false -}}
+{{- $img1x := $originalImg -}}
+{{- $img2x := false -}}
+{{- if ne $mediaType "svg" -}}
   {{/* Calculate height based on the original image aspect ratio */}}
   {{- $height = int (mul
         $originalImg.Height
         (div (float $width) $originalImg.Width)
       )
-  }}
+  -}}
   {{/* Resize if necessary */}}
-  {{- if gt $originalImg.Width $width }}
-    {{- $img1x = $originalImg.Resize (printf "%dx" $width) }}
-    {{- $width2x := mul $width 2 }}
-    {{- if gt $originalImg.Width $width2x }}
-      {{- $img2x = $originalImg.Resize (printf "%dx" $width2x) }}
-    {{- else }}
-      {{- $img2x = $originalImg }}
-    {{- end }}
-  {{ end }}
+  {{- if gt $originalImg.Width $width -}}
+    {{- $img1x = $originalImg.Resize (printf "%dx" $width) -}}
+    {{- $width2x := mul $width 2 -}}
+    {{- if gt $originalImg.Width $width2x -}}
+      {{- $img2x = $originalImg.Resize (printf "%dx" $width2x) -}}
+    {{- else -}}
+      {{- $img2x = $originalImg -}}
+    {{- end -}}
+  {{ end -}}
 {{- end -}}
 
-{{- $img1xWebp := false }}
-{{- $img2xWebp := false }}
-{{- if and (ne $mediaType "svg") (ne $mediaType "webp") }}
-  {{- $img1xWebp = $img1x.Process "webp" }}
-  {{- with $img2x }}
-    {{- $img2xWebp = .Process "webp" }}
-  {{- end }}
+{{- $img1xWebp := false -}}
+{{- $img2xWebp := false -}}
+{{- if and (ne $mediaType "svg") (ne $mediaType "webp") -}}
+  {{- $img1xWebp = $img1x.Process "webp" -}}
+  {{- with $img2x -}}
+    {{- $img2xWebp = .Process "webp" -}}
+  {{- end -}}
 {{- end -}}
 
 {{- if $img1xWebp -}}
-  <picture>
-    <source srcset="{{ $img1xWebp.RelPermalink }}{{ with $img2xWebp }}, {{ .RelPermalink }} 2x{{ end }}" type="image/webp">
+  <picture><source srcset="{{ $img1xWebp.RelPermalink }}{{ with $img2xWebp }}, {{ .RelPermalink }} 2x{{ end }}" type="image/webp">
 {{- end -}}
     <img width="{{ $width }}"{{ with $height }} height="{{ . }}"{{ end }}{{ with $class }} class="{{ . }}"{{ end }} src="{{ $img1x.RelPermalink }}"{{ with $img2x }} srcset="{{ .RelPermalink }} 2x"{{ end }} alt="{{ $alt }}">
 {{- if $img1xWebp -}}
