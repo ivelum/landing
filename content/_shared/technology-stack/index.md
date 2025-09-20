@@ -2,21 +2,21 @@
 sitemap:
   disable: true
 ---
-- ![Python](img/python.svg) Python
-- ![Django](img/django.svg) Django
-- ![PostgreSQL](img/postgres.svg) PostgreSQL
-- ![ClickHouse](img/clickhouse.svg) ClickHouse
-- ![Kubernetes](img/kubernetes.svg) Kubernetes
-- ![Terraform](img/terraform.svg) Terraform
-- ![JavaScript](img/js.svg) ![JavaScript](img/ts.svg) JavaScript / TypeScript
-- ![React](img/react.svg) React.js
-- ![Node.js](img/node.svg) Node.js
-- ![Next.js](img/nextjs.svg) Next.js
-- ![React Native](img/react-native.svg) React Native
-- ![MUI](img/mui.svg) MUI
-- ![PHP](img/php.svg) PHP
-- ![WordPress](img/wordpress.svg) WordPress
-- ![MySQL](img/mysql.svg) MySQL
-- ![Amazon Web Services](img/aws.svg) Amazon Web Services
-- ![Google Cloud](img/gcp.svg) Google Cloud
-- ![Microsoft Azure](img/microsoft.svg) Microsoft Azure
+- {{< image src="img/python.svg" width=40 alt="Python" >}} Python
+- {{< image src="img/django.svg" width=40 alt="Django" >}} Django
+- {{< image src="img/postgres.svg" width=39 alt="PostgreSQL" >}} PostgreSQL
+- {{< image src="img/clickhouse.svg" width=40 alt="ClickHouse" >}} ClickHouse
+- {{< image src="img/kubernetes.svg" width=41 alt="Kubernetes" >}} Kubernetes
+- {{< image src="img/terraform.svg" width=40 alt="Terraform" >}} Terraform
+- {{< image src="img/js.svg" width=40 alt="JavaScript" >}} {{< image src="img/ts.svg" width=40 alt="TypeScript" >}} JavaScript / TypeScript
+- {{< image src="img/react.svg" width=40 alt="React.js" >}} React.js
+- {{< image src="img/node.svg" width=40 alt="Node.js" >}} Node.js
+- {{< image src="img/nextjs.svg" width=39 alt="Next.js" >}} Next.js
+- {{< image src="img/react-native.svg" width=44 alt="React Native" >}} React Native
+- {{< image src="img/mui.svg" width=39 alt="MUI" >}} MUI
+- {{< image src="img/php.svg" width=40 alt="PHP" >}} PHP
+- {{< image src="img/wordpress.svg" width=39 alt="WordPress" >}} WordPress
+- {{< image src="img/mysql.svg" width=40 alt="MySQL" >}} MySQL
+- {{< image src="img/aws.svg" width=39 alt="Amazon Web Services" >}} Amazon Web Services
+- {{< image src="img/gcp.svg" width=40 alt="Google Cloud" >}} Google Cloud
+- {{< image src="img/microsoft.svg" width=39 alt="Microsoft Azure" >}} Microsoft Azure
