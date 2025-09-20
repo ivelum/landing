@@ -26,6 +26,16 @@
       {{- $img2x = $originalImg -}}
     {{- end -}}
   {{ end -}}
+{{- else -}}
+  {{/* Calculate height based on the aspect ratio of the SVG viewBox */}}
+  {{- $viewBox := split (index (unmarshal $originalImg.Content) "-viewBox") " " -}}
+  {{- $originalWidth := sub (int (index $viewBox 2)) (int (index $viewBox 0)) -}}
+  {{- $originalHeight := sub (int (index $viewBox 3)) (int (index $viewBox 1)) -}}
+  {{- $height = int (mul
+        $originalHeight
+        (div (float $width) $originalWidth)
+      )
+  -}}
 {{- end -}}
 
 {{- $img1xWebp := false -}}
