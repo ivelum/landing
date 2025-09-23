@@ -1,0 +1,907 @@
+<div id="inline-bot-root"></div>
+<style>
+  #inline-bot-root {
+    margin-top: 0.5rem;
+    pointer-events: none;
+    position: relative;
+    width: 100%;
+    z-index: 1000;
+    @media screen and (min-width: 1200px) {
+      margin-top: 1rem;
+    }
+  }
+  .inline-bot-widget {
+    background: white;
+    border-radius: 8px;
+    border: 2px solid #667eea;
+    display: flex;
+    flex-direction: column;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segue UI', 'Roboto', sans-serif;
+    height: 33.33vh;
+    max-height: 400px;
+    min-height: 250px;
+    overflow: hidden;
+    pointer-events: all;
+    position: relative;
+    width: 100%;
+  }
+  .inline-bot-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .inline-bot-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #f8fafc;
+  }
+  .inline-bot-message {
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .inline-bot-message.user {
+    align-self: flex-end;
+    align-items: flex-end;
+  }
+  .inline-bot-message.bot {
+    align-self: flex-start;
+    align-items: flex-start;
+  }
+  .inline-bot-message-content {
+    padding: 12px 16px;
+    border-radius: 16px;
+    word-wrap: break-word;
+    line-height: 1.5;
+    font-size: 14px;
+  }
+  .inline-bot-message.user .inline-bot-message-content {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+  }
+  .inline-bot-message.bot .inline-bot-message-content {
+    background: white;
+    border: 1px solid #e5e7eb;
+    color: #374151;
+  }
+  .inline-bot-message.bot.error .inline-bot-message-content {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+  }
+  .inline-bot-input-container {
+    padding: 16px;
+    background: white;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+  }
+  .inline-bot-input {
+    flex: 1;
+    border: 1px solid #d1d5db;
+    border-radius: 20px;
+    padding: 12px 16px;
+    font-size: 14px;
+    outline: none;
+    font-family: inherit;
+    resize: none;
+    min-height: 44px;
+    max-height: 120px;
+    transition: border-color 0.2s;
+  }
+  .inline-bot-input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  }
+  .inline-bot-send-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.2s;
+  }
+  .inline-bot-send-button:hover:not(:disabled) {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  }
+  .inline-bot-send-button:disabled {
+    background: #d1d5db;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+  .inline-bot-welcome-message {
+    text-align: center;
+    color: #6b7280;
+    font-style: italic;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    margin: auto;
+    max-width: 400px;
+  }
+  .inline-bot-typing-indicator {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    padding: 8px;
+  }
+  .inline-bot-typing-indicator span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #9ca3af;
+    animation: typing 1.4s infinite ease-in-out;
+  }
+  .inline-bot-typing-indicator span:nth-child(1) {
+    animation-delay: -0.32s;
+  }
+  .inline-bot-typing-indicator span:nth-child(2) {
+    animation-delay: -0.16s;
+  }
+  .references {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #e5e7eb;
+    font-size: 12px;
+    color: #6b7280;
+  }
+  .references strong {
+    color: #374151;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .references ol {
+    margin: 0;
+    padding-left: 16px;
+    color: #374151;
+  }
+  .references li {
+    margin-bottom: 2px;
+  }
+  .references a {
+    color: #667eea;
+    text-decoration: none;
+    word-break: break-all;
+    font-size: 12px;
+  }
+  .references a:hover {
+    text-decoration: underline;
+  }
+  @keyframes typing {
+    0%, 80%, 100% {
+      transform: scale(0.8);
+      opacity: 0.5;
+    }
+    40% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    var ORGANIZATION_ID = 'd0b90198-ed39-72a4-c676-551bc4a3251d';
+    var ORGANIZATION_NAME = 'Ivelum';
+    var API_URL = 'https://api.stg.flexpressai.com/api';
+
+    // Optional: Try to get values from URL parameters if available (for flexibility)
+    try {
+      var urlParams = new URLSearchParams(window.location.search);
+      var urlOrgId = urlParams.get('organizationId');
+      var urlOrgName = urlParams.get('organizationName');
+      var urlApiUrl = urlParams.get('apiUrl');
+
+      if (urlOrgId) ORGANIZATION_ID = urlOrgId;
+      if (urlOrgName) ORGANIZATION_NAME = urlOrgName;
+      if (urlApiUrl) API_URL = urlApiUrl;
+    } catch (e) {
+      // URL parameter parsing failed, use hardcoded values
+      console.log('Using hardcoded configuration values');
+    }
+
+    // Widget state
+    var messages = [];
+    var isLoading = false;
+    var root = null;
+    var shouldAutoScroll = true;
+    var userHasScrolled = false;
+    var currentScrollTop = 0;
+    var scrollListenerAdded = false;
+
+    // Initialize widget when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initInlineBotWidget);
+    } else {
+      initInlineBotWidget();
+    }
+
+    function initInlineBotWidget() {
+      root = document.getElementById('inline-bot-root');
+      if (!root) {
+        console.warn('Inline Bot Widget: Could not find #inline-bot-root element');
+        return;
+      }
+
+      createWidget();
+      render();
+    }
+
+    function createWidget() {
+      // Create the widget inside the root element
+      var widget = document.createElement('div');
+      widget.className = 'inline-bot-widget';
+      root.appendChild(widget);
+
+      // Update root reference to point to the actual widget
+      root = widget;
+
+      // Organization header
+      if (ORGANIZATION_NAME) {
+        var header = document.createElement('div');
+        header.className = 'inline-bot-header';
+        header.style.cssText = '\
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\
+                color: white;\
+                text-align: center;\
+                padding: 8px 16px;\
+                font-size: 14px;\
+                font-weight: 500;\
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);';
+        header.textContent = ORGANIZATION_NAME + " Bot";
+        root.appendChild(header);
+      }
+
+      // Adjust body padding to account for fixed widget
+      document.body.style.paddingTop = '33.33vh';
+    }
+
+    function render() {
+      if (!root) return;
+
+      // Save current scroll position if user has scrolled
+      var existingContainer = root.querySelector('.inline-bot-messages');
+      if (existingContainer && userHasScrolled) {
+        currentScrollTop = existingContainer.scrollTop;
+      }
+
+      // Only clear and rebuild if this is the first render
+      if (!root.querySelector('.inline-bot-messages')) {
+        // Preserve the header if it exists
+        var existingHeader = root.querySelector('.inline-bot-header');
+        root.innerHTML = '';
+
+        // Re-add the header if it existed
+        if (existingHeader) {
+          root.appendChild(existingHeader);
+        }
+      } else {
+        // For subsequent renders, just update the messages container
+        var existingMessagesContainer = root.querySelector('.inline-bot-messages');
+        if (existingMessagesContainer) {
+          updateMessagesOnly(existingMessagesContainer);
+          updateSendButtonState();
+          smartScroll();
+          return;
+        }
+      }
+
+      // Create widget structure if needed
+      if (!root.querySelector('.inline-bot-messages')) {
+        initializeWidget();
+      }
+
+      var messagesContainer = root.querySelector('.inline-bot-messages');
+      if (!messagesContainer) return;
+
+      // Restore scroll position if user had scrolled
+      if (userHasScrolled && currentScrollTop > 0) {
+        setTimeout(function () {
+          messagesContainer.scrollTop = currentScrollTop;
+        }, 10);
+      }
+
+      // Only update messages content, don't rebuild everything
+      messagesContainer.innerHTML = '';
+
+      if (messages.length === 0) {
+        var welcomeMsg = document.createElement('div');
+        welcomeMsg.className = 'inline-bot-welcome-message';
+        welcomeMsg.textContent = 'Hello! How can I help you today?';
+        messagesContainer.appendChild(welcomeMsg);
+      } else {
+        messages.forEach(function (msg, index) {
+          var msgEl = document.createElement('div');
+          msgEl.className = 'inline-bot-message ' + msg.type + (msg.isError ? ' error' : '');
+
+          var content = document.createElement('div');
+          content.className = 'inline-bot-message-content';
+
+          // Show typing indicator for last bot message when loading
+          if (msg.type === 'bot' && index === messages.length - 1 && isLoading && !msg.content) {
+            var typingIndicator = document.createElement('div');
+            typingIndicator.className = 'inline-bot-typing-indicator';
+            typingIndicator.innerHTML = '<span></span><span></span><span></span>';
+            content.appendChild(typingIndicator);
+          } else {
+            content.innerHTML = formatMessageContent(msg.content || '', msg.references);
+          }
+
+          msgEl.appendChild(content);
+
+          // Add references section for bot messages
+          if (msg.type === 'bot' && msg.references && msg.references.length > 0) {
+            var referencesSection = document.createElement('div');
+            referencesSection.className = 'references';
+            referencesSection.style.cssText = '\
+                        margin-top: 8px;\
+                        padding-top: 8px;\
+                        border-top: 1px solid #e5e7eb;\
+                        font-size: 12px;\
+                        color: #6b7280;';
+
+            var referencesTitle = document.createElement('strong');
+            referencesTitle.textContent = 'Related:';
+            referencesTitle.style.cssText = 'color: #374151; display: block; margin-bottom: 4px;';
+            referencesSection.appendChild(referencesTitle);
+
+            var referencesList = document.createElement('ol');
+            referencesList.style.cssText = '\
+                        margin: 0;\
+                        padding-left: 16px;\
+                        color: #374151;';
+
+            var maxVisible = 2;
+            var hasMore = msg.references.length > maxVisible;
+
+            // Show first 2 references
+            msg.references.slice(0, maxVisible).forEach(function (ref) {
+              var listItem = document.createElement('li');
+              listItem.style.cssText = 'margin-bottom: 2px;';
+
+              var anchor = document.createElement('a');
+              anchor.href = ref;
+              anchor.target = '_blank';
+              anchor.rel = 'noopener noreferrer';
+              anchor.textContent = ref;
+              anchor.style.cssText = '\
+                            color: #667eea;\
+                            text-decoration: none;\
+                            word-break: break-all;\
+                            font-size: 12px;';
+
+              anchor.addEventListener('mouseenter', function () {
+                this.style.textDecoration = 'underline';
+              });
+
+              anchor.addEventListener('mouseleave', function () {
+                this.style.textDecoration = 'none';
+              });
+
+              listItem.appendChild(anchor);
+              referencesList.appendChild(listItem);
+            });
+
+            // Add "More..." link if there are additional references
+            if (hasMore) {
+              var moreItem = document.createElement('li');
+              moreItem.style.cssText = 'margin-bottom: 2px;';
+
+              var moreLink = document.createElement('a');
+              moreLink.href = '#';
+              moreLink.textContent = 'More... (' + (msg.references.length - maxVisible) + ' additional)';
+              moreLink.style.cssText = '\
+                            color: #6b7280;\
+                            text-decoration: none;\
+                            font-style: italic;\
+                            font-size: 12px;';
+
+              moreLink.addEventListener('mouseenter', function () {
+                this.style.textDecoration = 'underline';
+              });
+
+              moreLink.addEventListener('mouseleave', function () {
+                this.style.textDecoration = 'none';
+              });
+
+              moreLink.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Remove the "More..." item
+                referencesList.removeChild(moreItem);
+
+                // Add remaining references
+                msg.references.slice(maxVisible).forEach(function (ref) {
+                  var listItem = document.createElement('li');
+                  listItem.style.cssText = 'margin-bottom: 2px;';
+
+                  var anchor = document.createElement('a');
+                  anchor.href = ref;
+                  anchor.target = '_blank';
+                  anchor.rel = 'noopener noreferrer';
+                  anchor.textContent = ref;
+                  anchor.style.cssText = '\
+                                    color: #667eea;\
+                                    text-decoration: none;\
+                                    word-break: break-all;\
+                                    font-size: 12px;';
+
+                  anchor.addEventListener('mouseenter', function () {
+                    this.style.textDecoration = 'underline';
+                  });
+
+                  anchor.addEventListener('mouseleave', function () {
+                    this.style.textDecoration = 'none';
+                  });
+
+                  listItem.appendChild(anchor);
+                  referencesList.appendChild(listItem);
+                });
+              });
+
+              moreItem.appendChild(moreLink);
+              referencesList.appendChild(moreItem);
+            }
+
+            referencesSection.appendChild(referencesList);
+            content.appendChild(referencesSection);
+          }
+
+          msgEl.appendChild(content);
+          messagesContainer.appendChild(msgEl);
+        });
+      }
+
+      // Update send button state
+      var sendBtn = root.querySelector('.inline-bot-send-button');
+      if (sendBtn) {
+        sendBtn.disabled = isLoading;
+      }
+
+      smartScroll();
+    }
+
+    function initializeWidget() {
+      // Preserve the header if it exists
+      var existingHeader = root.querySelector('.inline-bot-header');
+      root.innerHTML = '';
+
+      // Re-add the header if it existed
+      if (existingHeader) {
+        root.appendChild(existingHeader);
+      }
+
+      // Messages container
+      var messagesContainer = document.createElement('div');
+      messagesContainer.className = 'inline-bot-messages';
+
+      // Add scroll event listener only once with better user scroll detection
+      var lastScrollTop = messagesContainer.scrollTop;
+      var scrollTimeout = null;
+
+      messagesContainer.addEventListener('scroll', function () {
+        var container = this;
+        var currentScrollTop = container.scrollTop;
+        var threshold = 50; // pixels from bottom
+        var distanceFromBottom = container.scrollHeight - container.scrollTop - container.clientHeight;
+
+        // Clear previous timeout
+        if (scrollTimeout) {
+          clearTimeout(scrollTimeout);
+        }
+
+        // Only consider it user scrolling if they moved significantly and it's not at bottom
+        if (Math.abs(currentScrollTop - lastScrollTop) > 5 && distanceFromBottom > threshold) {
+          userHasScrolled = true;
+          shouldAutoScroll = false;
+
+          // Reset auto-scroll after user stops scrolling for 2 seconds
+          scrollTimeout = setTimeout(function () {
+            if (distanceFromBottom <= threshold) {
+              userHasScrolled = false;
+              shouldAutoScroll = true;
+            }
+          }, 2000);
+        } else if (distanceFromBottom <= threshold) {
+          // User scrolled back to bottom
+          userHasScrolled = false;
+          shouldAutoScroll = true;
+        }
+
+        lastScrollTop = currentScrollTop;
+      });
+
+      root.appendChild(messagesContainer);
+
+      // Input container
+      var inputContainer = document.createElement('div');
+      inputContainer.className = 'inline-bot-input-container';
+
+      var textarea = document.createElement('textarea');
+      textarea.className = 'inline-bot-input';
+      textarea.placeholder = 'Type your message...';
+      textarea.rows = 1;
+      textarea.style.height = '44px';
+      textarea.style.minHeight = '44px';
+      textarea.style.resize = 'none';
+      textarea.style.overflow = 'hidden';
+
+      // Line-count based textarea resize to prevent unwanted expansion
+      textarea.addEventListener('input', function () {
+        var minHeight = 44;
+        var maxHeight = 120;
+        var currentValue = this.value;
+
+        // Only resize if there are actual line breaks in the text
+        var lineCount = (currentValue.match(/\n/g) || []).length + 1;
+        var lineHeight = 20; // Approximate line height
+        var padding = 24; // Top + bottom padding
+        var neededHeight = Math.max(minHeight, Math.min((lineCount * lineHeight) + padding, maxHeight));
+
+        // Only change height if significantly different and truly needed
+        if (Math.abs(parseInt(this.style.height) - neededHeight) > 5 && lineCount > 1) {
+          this.style.height = neededHeight + 'px';
+        } else if (lineCount === 1) {
+          this.style.height = minHeight + 'px'; // Force back to minimum for single line
+        }
+      });
+
+      // Handle Enter key
+      textarea.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          sendMessage();
+        }
+      });
+
+      var sendBtn = document.createElement('button');
+      sendBtn.className = 'inline-bot-send-button';
+      sendBtn.innerHTML = '→';
+      sendBtn.disabled = isLoading;
+      sendBtn.addEventListener('click', sendMessage);
+
+      inputContainer.appendChild(textarea);
+      inputContainer.appendChild(sendBtn);
+      root.appendChild(inputContainer);
+    }
+
+    function sendMessage() {
+      var textarea = root.querySelector('.inline-bot-input');
+      var message = textarea.value.trim();
+      if (!message || isLoading) return;
+
+      // Add user message
+      messages.push({type: 'user', content: message});
+      textarea.value = '';
+      textarea.style.height = '44px'; // Reset to fixed height
+
+      // Add empty bot message for streaming
+      var lastBotMessage = {type: 'bot', content: ''};
+      messages.push(lastBotMessage);
+
+      isLoading = true;
+
+      // Enable auto-scroll for new message
+      shouldAutoScroll = true;
+      userHasScrolled = false;
+
+      render();
+
+      // Scroll to bottom when new question is asked
+      scrollToBottom();
+      // Send to API using POST request like other widgets
+      var headers = {
+        'Content-Type': 'application/json',
+        'Accept': 'text/event-stream'
+      };
+
+      fetch(API_URL + '/companion-service/v1/organizations/' + ORGANIZATION_ID + '/conversations/stream', {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify({query: message, scope: 'chat'})
+      }).then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        var reader = res.body.getReader();
+        var decoder = new TextDecoder();
+        var buffer = '';
+
+        function readChunk() {
+          return reader.read().then(function (result) {
+            var done = result.done;
+            var value = result.value;
+
+            if (done) {
+              isLoading = false;
+              render();
+              return;
+            }
+
+            var chunk = decoder.decode(value, {stream: true});
+            buffer += chunk;
+            var lines = buffer.split('\n');
+            buffer = lines.pop() || ''; // Keep incomplete line in buffer
+
+            for (var i = 0; i < lines.length; i++) {
+              var line = lines[i];
+              if (line.startsWith('data:')) {
+                try {
+                  var jsonStr = line.substring(5).trim();
+                  if (jsonStr && jsonStr !== '[DONE]') {
+                    var data = JSON.parse(jsonStr);
+
+                    // Check for errors using the same logic as Search and Companion Bot widgets
+                    if (data.isError || data.error) {
+                      lastBotMessage.content = data.error || data.message || 'An error occurred';
+                      lastBotMessage.isError = true;
+                    } else if (data.response) {
+                      lastBotMessage.content = data.response;
+                      lastBotMessage.references = data.references;
+                    }
+
+                    render();
+                  }
+                } catch (e) {
+                  console.error('Error parsing SSE data:', e);
+                }
+              }
+            }
+
+            return readChunk();
+          });
+        }
+
+        return readChunk();
+      }).catch(function (error) {
+        console.error('Fetch error:', error);
+        isLoading = false;
+        if (!lastBotMessage.content) {
+          lastBotMessage.content = 'Sorry, I encountered an error. Please try again.';
+          lastBotMessage.isError = true;
+        }
+        render();
+      });
+    }
+
+    function formatMessageContent(content, references) {
+      if (!content) return '';
+      var result = content.replace(/\n/g, '<br>');
+
+      // Convert Context[#] to clickable links
+      if (references && references.length > 0) {
+        // Prepare URLs
+        // Parse ["Title", "URL"] even if title contains quotes
+        result = result
+          // JSON-style: ["Title", "https://url"] — strict, non-greedy
+          .replace(
+            /\[\s*(['"])(.*?)\1\s*,\s*(?:(['"])?((?:https?:\/\/)[^\s'"\]\n]+)\3?)\s*\]/g,
+            function (_match, _q1, rawTitle, _q2, rawUrl) {
+              var title = rawTitle.replace(/\\(['"])/g, '$1'); // unescape quotes
+              var url = rawUrl;
+              return '<a href="' + url + '" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none;">' + title + '</a>';
+            }
+          )
+          // Markdown-style: [Title](https://url)
+          .replace(
+            /\[([^\]]+?)\]\((https?:\/\/[^\s)]+)\)/g,
+            function (_match, title, url) {
+              return '<a href="' + url + '" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none;">' + title + '</a>';
+            }
+          );
+      }
+
+      return result;
+    }
+
+    function smartScroll() {
+      if (shouldAutoScroll && !userHasScrolled) {
+        setTimeout(function () {
+          var messagesContainer = root.querySelector('.inline-bot-messages');
+          if (messagesContainer) {
+            // Slower, smoother scroll to bottom
+            messagesContainer.scrollTo({
+              top: messagesContainer.scrollHeight,
+              behavior: 'smooth'
+            });
+          }
+        }, 150);
+      }
+    }
+
+    function scrollToBottom() {
+      // Force scroll to bottom (for new messages)
+      setTimeout(function () {
+        var messagesContainer = root.querySelector('.inline-bot-messages');
+        if (messagesContainer) {
+          messagesContainer.scrollTo({
+            top: messagesContainer.scrollHeight,
+            behavior: 'smooth'
+          });
+        }
+      }, 200);
+    }
+
+    function updateMessagesOnly(messagesContainer) {
+      messagesContainer.innerHTML = '';
+
+      if (messages.length === 0) {
+        var welcomeMsg = document.createElement('div');
+        welcomeMsg.className = 'inline-bot-welcome-message';
+        welcomeMsg.textContent = 'Hello! How can I help you today?';
+        messagesContainer.appendChild(welcomeMsg);
+      } else {
+        messages.forEach(function (msg, index) {
+          var msgEl = document.createElement('div');
+          msgEl.className = 'inline-bot-message ' + msg.type + (msg.isError ? ' error' : '');
+
+          var content = document.createElement('div');
+          content.className = 'inline-bot-message-content';
+
+          // Show typing indicator for last bot message when loading
+          if (msg.type === 'bot' && index === messages.length - 1 && isLoading && !msg.content) {
+            var typingIndicator = document.createElement('div');
+            typingIndicator.className = 'inline-bot-typing-indicator';
+            typingIndicator.innerHTML = '<span></span><span></span><span></span>';
+            content.appendChild(typingIndicator);
+          } else {
+            content.innerHTML = formatMessageContent(msg.content || '', msg.references);
+          }
+
+          msgEl.appendChild(content);
+
+          // Add references section for bot messages
+          if (msg.type === 'bot' && msg.references && msg.references.length > 0) {
+            var referencesSection = document.createElement('div');
+            referencesSection.className = 'references';
+            referencesSection.style.cssText = '\
+                        margin-top: 8px;\
+                        padding-top: 8px;\
+                        border-top: 1px solid #e5e7eb;\
+                        font-size: 12px;\
+                        color: #6b7280;';
+
+            var referencesTitle = document.createElement('strong');
+            referencesTitle.textContent = 'Related:';
+            referencesTitle.style.cssText = 'color: #374151; display: block; margin-bottom: 4px;';
+            referencesSection.appendChild(referencesTitle);
+
+            var referencesList = document.createElement('ol');
+            referencesList.style.cssText = '\
+                        margin: 0;\
+                        padding-left: 16px;\
+                        color: #374151;';
+
+            var maxVisible = 2;
+            var hasMore = msg.references.length > maxVisible;
+
+            // Show first 2 references
+            msg.references.slice(0, maxVisible).forEach(function (ref) {
+              var listItem = document.createElement('li');
+              listItem.style.cssText = 'margin-bottom: 2px;';
+
+              var anchor = document.createElement('a');
+              anchor.href = ref;
+              anchor.target = '_blank';
+              anchor.rel = 'noopener noreferrer';
+              anchor.textContent = ref;
+              anchor.style.cssText = '\
+                            color: #667eea;\
+                            text-decoration: none;\
+                            word-break: break-all;\
+                            font-size: 12px;';
+
+              anchor.addEventListener('mouseenter', function () {
+                this.style.textDecoration = 'underline';
+              });
+
+              anchor.addEventListener('mouseleave', function () {
+                this.style.textDecoration = 'none';
+              });
+
+              listItem.appendChild(anchor);
+              referencesList.appendChild(listItem);
+            });
+
+            // Add "More..." link if there are additional references
+            if (hasMore) {
+              var moreItem = document.createElement('li');
+              moreItem.style.cssText = 'margin-bottom: 2px;';
+
+              var moreLink = document.createElement('a');
+              moreLink.href = '#';
+              moreLink.textContent = 'More... (' + (msg.references.length - maxVisible) + ' additional)';
+              moreLink.style.cssText = '\
+                            color: #6b7280;\
+                            text-decoration: none;\
+                            font-style: italic;\
+                            font-size: 12px;';
+
+              moreLink.addEventListener('mouseenter', function () {
+                this.style.textDecoration = 'underline';
+              });
+
+              moreLink.addEventListener('mouseleave', function () {
+                this.style.textDecoration = 'none';
+              });
+
+              moreLink.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Remove the "More..." item
+                referencesList.removeChild(moreItem);
+
+                // Add remaining references
+                msg.references.slice(maxVisible).forEach(function (ref) {
+                  var listItem = document.createElement('li');
+                  listItem.style.cssText = 'margin-bottom: 2px;';
+
+                  var anchor = document.createElement('a');
+                  anchor.href = ref;
+                  anchor.target = '_blank';
+                  anchor.rel = 'noopener noreferrer';
+                  anchor.textContent = ref;
+                  anchor.style.cssText = '\
+                                    color: #667eea;\
+                                    text-decoration: none;\
+                                    word-break: break-all;\
+                                    font-size: 12px;';
+
+                  anchor.addEventListener('mouseenter', function () {
+                    this.style.textDecoration = 'underline';
+                  });
+
+                  anchor.addEventListener('mouseleave', function () {
+                    this.style.textDecoration = 'none';
+                  });
+
+                  listItem.appendChild(anchor);
+                  referencesList.appendChild(listItem);
+                });
+              });
+
+              moreItem.appendChild(moreLink);
+              referencesList.appendChild(moreItem);
+            }
+
+            referencesSection.appendChild(referencesList);
+            content.appendChild(referencesSection);
+          }
+
+          msgEl.appendChild(content);
+          messagesContainer.appendChild(msgEl);
+        });
+      }
+    }
+
+    function updateSendButtonState() {
+      var sendBtn = root.querySelector('.inline-bot-send-button');
+      if (sendBtn) {
+        sendBtn.disabled = isLoading;
+        if (isLoading) {
+          sendBtn.style.background = '#d1d5db';
+          sendBtn.style.cursor = 'not-allowed';
+        } else {
+          sendBtn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+          sendBtn.style.cursor = 'pointer';
+        }
+      }
+    }
+  })();
+</script>
