@@ -42,7 +42,7 @@
   @return calc((100% - #{$gap} * #{$count - 1}) / #{$count});
 }
 
-@mixin stylized-scrollbar {
+@mixin stylized-scrollbar($thumb-color: $primary-orange, $track-color: #2c2c2c) {
   &::-webkit-scrollbar {
     appearance: none;
     height: 6px;
@@ -50,11 +50,11 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $primary-orange;
+    background-color: $thumb-color;
     border-radius: 3px;
   }
 
   &::-webkit-scrollbar-track-piece {
-    background-color: #2c2c2c;
+    background-color: $track-color;
   }
 }
