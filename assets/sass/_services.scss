@@ -216,7 +216,6 @@
 
       margin-top: 1rem;
       @include media-up(lg) {
-        align-items: flex-start;
         text-align: left;
       }
     }
@@ -292,7 +291,7 @@
         font-size: $font-size-smaller;
         margin-bottom: 1.5rem;
       }
-      
+
       p {
         margin: 0;
       }
