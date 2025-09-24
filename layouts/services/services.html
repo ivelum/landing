@@ -1,0 +1,122 @@
+{{- define "header" }}
+  {{ partial "header.html" (dict
+    "RelPermalink" .RelPermalink
+    "LightHeader" true
+    "TalkToUsAbsolute" false
+  ) }}
+{{- end }}
+{{- define "main" }}
+  <div class="services">
+
+    <div class="container">
+      <h1 class="services--title">Services</h1>
+    </div>
+
+    <div class="container">
+      <div class="services--features">
+        <div class="services--features-list">
+          {{- range sort (where .Pages "Params.category" "services-started-template") "File.Path" }}
+            <div class="services--features-list-item{{ if .Params.span }} span{{ end }}">
+              <div class="services--features-list-title">
+                {{ with .Params.image }}
+                  {{ partial "image.html" (dict
+                       "Img" ($.Resources.Get .)
+                       "Alt" $.Title
+                       "Width" 48
+                     ) }}
+                {{ end }}
+                {{ .Title }}
+              </div>
+              <div class="services--features-list-text">
+                {{ .Content }}
+              </div>
+            </div>
+          {{- end }}
+        </div>
+      </div>
+    </div>
+
+    <div class="container services--action">
+      <a class="btn btn-big" href="#talk">
+        Get a quote
+      </a>
+    </div>
+  </div>
+  <div class="container">
+    <h2 class="services--title">For all our clients</h2>
+    <div class="services--fractional-cto">
+      <div class="services--fractional-cto-card">
+        <div class="services--fractional-cto-content">
+          <div class="services--fractional-cto-left">
+            <h3 class="services--fractional-cto-title">Fractional CTO</h3>
+            <p class="services--fractional-cto-description">
+              Even if you haven't hired your full-time in-house CTO yet, the development team still needs to make technology and product decisions, and some of those decisions could be hard to change later. For such situations, we provide a fractional CTO.
+            </p>
+            <div class="services--fractional-cto-person">
+              <div class="services--fractional-cto-avatar">
+                {{ partial "image.html" (dict
+                     "Img" (resources.Get "img/avatars/denis-stebunov-xl.png")
+                     "Alt" "Denis Stebunov"
+                     "Width" 120
+                   ) }}
+              </div>
+              <div class="services--fractional-cto-bio">
+                <div class="services--fractional-cto-name">Denis Stebunov</div>
+                <div class="services--fractional-cto-position">CTO at ivelum</div>
+                <p class="services--fractional-cto-experience">With over 25 years of experience in IT, including hands-on programming, leadership, product management, startup exits, and M&A, Denis will help you navigate complex technology decisions.</p>
+              </div>
+            </div>
+          </div>
+          <div class="services--fractional-cto-right">
+            <div class="services--fractional-cto-right-box">
+              <div class="services--fractional-cto-badge">
+                {{ partial "image.html" (dict
+                     "Img" (.Resources.Get "img/services-free-label.svg")
+                     "Alt" "Free"
+                     "Width" 72
+                   ) }}
+              </div>
+              <div class="services--fractional-cto-note">
+                <p>The fractional CTO service is free for all our clients.</p>
+              </div>
+              <div class="services--fractional-cto-action">
+                <a href="#talk" class="btn btn-small btn-outline-violet">
+                  Get CTO advice
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="services--divider"></div>
+  </div>
+  <div class="container">
+    <div class="services--teamplify">
+      <div class="services--teamplify-left">
+        <h3 class="services--teamplify-title">Teamplify</h3>
+        <p class="services--teamplify-text">When you work with us, you always have full visibility into team progress. All our clients enjoy free access to Teamplify, where they can see daily reports, team analytics, and time off schedule.</p>
+        <p class="services--teamplify-link"><a href="https://teamplify.com/" class="teamplify-link" target="_blank" rel="noopener noreferrer">Learn more about Teamplify</a></p>
+      </div>
+      <div class="services--teamplify-right">
+        <div class="services--teamplify-illustration">
+          <div class="services--teamplify-badge">
+            {{ partial "image.html" (dict
+                 "Img" (.Resources.Get "img/services-free-label-orange.svg")
+                 "Alt" "Free"
+                 "Width" 72
+               ) }}
+          </div>
+          {{ partial "image.html" (dict
+               "Img" (.Resources.Get "img/services-teamplify-infographics.svg")
+               "Alt" "Teamplify illustration"
+               "Width" 240
+             ) }}
+        </div>
+      </div>
+    </div>
+  </div>
+{{- end }}
+
