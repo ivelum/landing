@@ -127,6 +127,11 @@
       align-items: flex-start;
       display: flex;
       flex-direction: column;
+      
+      @include media-up(lg) { 
+        flex: 1 1 auto; 
+      }
+
       @include media-up(xl) {
         flex-basis: percentage(8 / 12);
       }
