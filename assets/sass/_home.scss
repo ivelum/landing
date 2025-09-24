@@ -327,18 +327,16 @@
 
     &-text {
       margin-top: 1rem;
+      margin-bottom: 1rem;
     }
 
     &-image {
-      align-items: center;
-      background-color: $white;
       border-radius: 0.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+      display: inline-block; // match services illustration behavior for small screens
+      margin: 2rem auto 0 auto; // center under text
       padding: 1rem;
+      position: relative; // to position badge absolutely relative to image
       @include media-up(md) {
-        gap: 1.5rem;
         padding: 1.5rem 2rem;
       }
 
@@ -351,16 +349,20 @@
     }
 
     &-badge {
-      background-color: $white;
-      border-radius: 2rem;
-      border: 2px solid $primary-orange;
-      color: $primary-orange;
-      font-size: $font-size-smaller;
-      font-weight: $font-weight-semi-bold;
-      line-height: 1.5;
-      padding-inline: 0.75rem;
-      padding-top: 1px; // fix line-height
-      text-transform: uppercase;
+      position: absolute;
+      top: -3rem; // align with services small-screen offset
+      right: -0.5rem; // align with services small-screen offset
+      z-index: 1;
+
+      @include media-up(xs) {
+        top: -4rem;
+      }
+
+      img {
+        width: 68px; // align with services badge size
+        height: auto;
+        display: block;
+      }
     }
 
     &-link {

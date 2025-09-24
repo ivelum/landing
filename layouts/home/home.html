@@ -164,10 +164,6 @@
         <div class="home--teamplify-body">
           <div class="home--teamplify-title">{{ .Title }}</div>
           <div class="home--teamplify-text">{{ .Content }}</div>
-        </div>
-        <div class="home--teamplify-image">
-          <div class="home--teamplify-badge">Free</div>
-          <img src="{{ $.Resources.Get .Params.image }}" alt="{{ .Title }}" />
           <a
             href="{{ .Params.link }}"
             target="_blank"
@@ -176,6 +172,13 @@
           >
             Learn more
           </a>
+        </div>
+        <div class="home--teamplify-image">
+          <div class="home--teamplify-badge">
+            <img src='{{ ($.Resources.Get "img/free-badge.svg").RelPermalink }}' alt="Free" />
+          </div>
+          <img src="{{ $.Resources.Get .Params.image }}" alt="{{ .Title }}" />
+          
         </div>
       </div>
     </div>
