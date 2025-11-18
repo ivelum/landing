@@ -4,7 +4,6 @@ cover:
   alt: "HIPAA compliance illustration"
 image: "hipaa_cover.png"
 thumbnail: "hipaa_cover.png"
-draft: true
 title: "HIPAA Compliance for Tech Companies: What Founders and Product Teams Need to Know"
 description: "What HIPAA really requires, common pitfalls, and how to bake compliance into your engineering workflow without killing velocity."
 date: 2025-11-05T00:00:00Z
