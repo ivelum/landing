@@ -6,7 +6,7 @@
     "Width" 72
     ) }}
   <div class="author-card--body">
-    {{ if .Linkedin }}
+    {{ if .LinkedIn }}
       <a class="author-card--name" href="{{ .Linkedin }}" target="_blank" rel="noopener">
         {{ .Name }}
         {{- (resources.Get "img/ico-linkedin.svg").Content | strings.TrimSpace | safeHTML -}}
