@@ -24,6 +24,20 @@
       {{ end }}
     </div>
 
+    {{ with .GetPage "testimonial" }}
+      <div class="container industries--intro">
+        <div class="industries--intro-body is-testimonial">
+          {{ .Content }}
+        </div>
+        {{ partial "author-card.html" (dict
+          "Avatar" (.Parent.Resources.Get .Params.avatar)
+          "Name" .Title
+          "Position" .Params.position
+          "LinkedIn" .Params.linkedin
+        ) }}
+      </div>
+    {{ end }}
+
     <div class="container">
       <div class="industries--list">
         <div class="industries--item">
