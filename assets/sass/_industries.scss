@@ -108,12 +108,6 @@
     &:not(:first-child) {
       border-top: 1px solid $border-color-default;
       padding-top: 3rem;
-      @include media-up(lg) {
-        padding-top: 4rem;
-      }
-      @include media-up(xl) {
-        padding-top: 5rem;
-      }
     }
 
     &-num {
@@ -127,9 +121,9 @@
       align-items: flex-start;
       display: flex;
       flex-direction: column;
-      
-      @include media-up(lg) { 
-        flex: 1 1 auto; 
+
+      @include media-up(lg) {
+        flex: 1 1 auto;
       }
 
       @include media-up(xl) {
