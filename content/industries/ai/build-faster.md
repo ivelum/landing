@@ -7,6 +7,6 @@ practices and delivering maintainable, scalable systems.
 {{< logos >}}
 - {{< image src="img/logo-claude.svg" width=180 alt="Claude Code" >}}
 - {{< image src="img/logo-cursor.svg" width=190 alt="Cursor" >}}
-- {{< image src="img/logo-copilot.png" width=190 alt="Copilot" >}}
+- {{< image src="img/logo-copilot.svg" width=265 alt="Copilot" >}}
 - {{< image src="img/logo-gemini.png" width=350 alt="Gemini Code Assist" >}}
 {{</ logos >}}
