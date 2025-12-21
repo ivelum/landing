@@ -1,4 +1,4 @@
-.youtube-wrapper {
+.youtube-embed {
   aspect-ratio: 16/9;
   border: none;
   display: block;
@@ -6,39 +6,15 @@
   width: 100%;
 }
 
-.youtube--latest {
-  margin-top: 1.5rem;
+.youtube-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   @include media-up(lg) {
-    margin-top: 2.5rem;
-  }
-  @include media-up(xl) {
-    margin-top: 3.5rem;
+    gap: 1rem;
   }
 
-  &-list {
-    display: grid;
-    gap: 1.5rem;
-    @include media-up(md) {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    @include media-up(lg) {
-      gap: 2rem;
-    }
-    @include media-up(xl) {
-      gap: 2.5rem;
-    }
-  }
-
-  &-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    @include media-up(lg) {
-      gap: 1rem;
-    }
-  }
-
-  &-cover {
+  &--cover {
     @include transition(opacity);
     border-radius: 0.5rem;
     display: block;
@@ -63,20 +39,61 @@
     }
   }
 
-  &-title {
+  &--title {
     @include transition(color);
     color: $font-color-default;
   }
 
-  &-item:hover &-cover {
+  &:hover &--cover {
     opacity: 0.8;
   }
 
-  &-item:hover &-title {
+  &:hover &--title {
     color: $primary-orange;
   }
+}
 
-  &-channel-link {
+.youtube-modal {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+
+  &-iframe {
+    aspect-ratio: 16 / 9;
+    display: block;
+    max-width: calc(100% - 7rem);
+    max-height: calc(100% - 7rem);
+    border: none;
+    width: 100%;
+  }
+}
+
+.youtube-latest {
+  margin-top: 1.5rem;
+  @include media-up(lg) {
+    margin-top: 2.5rem;
+  }
+  @include media-up(xl) {
+    margin-top: 3.5rem;
+  }
+
+  &--list {
+    display: grid;
+    gap: 1.5rem;
+    @include media-up(md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include media-up(lg) {
+      gap: 2rem;
+    }
+    @include media-up(xl) {
+      gap: 2.5rem;
+    }
+  }
+
+  &--channel-link {
     margin-top: 1rem;
     @include media-up(lg) {
       margin-top: 2rem;
@@ -95,22 +112,5 @@
         width: 1.5rem;
       }
     }
-  }
-}
-
-.youtube--modal {
-  align-items: center;
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  width: 100%;
-
-  &-iframe {
-    aspect-ratio: 16 / 9;
-    display: block;
-    max-width: calc(100% - 7rem);
-    max-height: calc(100% - 7rem);
-    border: none;
-    width: 100%;
   }
 }

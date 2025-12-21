@@ -1,11 +1,7 @@
 {{- $id := .Get "id" | default (.Get 0) -}}
 {{- $title := .Get "title" | default "YouTube video player" -}}
-{{- $class := "youtube-wrapper" -}}
-{{- if .Get "class" -}}
-  {{- $class = printf "%s %s" $class (.Get "class") -}}
-{{- end -}}
 
-<div class="{{ $class }}">
+<div class="youtube-embed">
   <iframe
     src="https://www.youtube.com/embed/{{ $id }}?rel=0"
     title="{{ $title }}"

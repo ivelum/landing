@@ -10,13 +10,13 @@ window.addEventListener('load', function () {
         dataSource: [
           {
             html: `
-              <div class="youtube--modal">
+              <div class="youtube-modal">
                 <iframe
                   src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=0"
                   frameborder="0"
                   allow="autoplay; encrypted-media"
                   allowfullscreen
-                  class="youtube--modal-iframe"
+                  class="youtube-modal-iframe"
                 ></iframe>
               </div>
             `,

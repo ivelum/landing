@@ -1,0 +1,15 @@
+<a
+  href="https://www.youtube.com/watch?v={{ .Id }}"
+  class="youtube-preview"
+  data-pswp-youtube-id="{{ .Id }}"
+>
+  <div class="youtube-preview--cover">
+    <img
+      src="https://img.youtube.com/vi/{{ .Id }}/hqdefault.jpg"
+      alt="{{ .Title }}"
+    >
+  </div>
+  {{ with .Title }}
+    <p class="youtube-preview--title">{{- . -}}</p>
+  {{ end }}
+</a>
