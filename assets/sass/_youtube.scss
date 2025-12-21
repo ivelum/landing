@@ -40,9 +40,10 @@
 
   &-cover {
     @include transition(opacity);
+    border-radius: 0.5rem;
     display: block;
     overflow: hidden;
-    border-radius: 0.5rem;
+    position: relative;
 
     img {
       object-fit: cover;
@@ -50,6 +51,15 @@
       width: 100%;
       height: auto;
       display: block;
+    }
+
+    &::before {
+      content: '';
+      background: center no-repeat url('/img/ico-youtube-colored.svg');
+      background-size: 18%;
+      height: 100%;
+      position: absolute;
+      width: 100%;
     }
   }
 
