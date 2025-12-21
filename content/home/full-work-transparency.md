@@ -1,6 +1,5 @@
 ---
 title: Full work transparency
-image: img/logo-teamplify.svg
 link: https://teamplify.com
 ---
 When you work with us, you always have full visibility into team progress.

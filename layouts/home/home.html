@@ -173,13 +173,9 @@
             Learn more
           </a>
         </div>
-        <div class="home--teamplify-image">
-          <div class="home--teamplify-badge">
-            <img src='{{ ($.Resources.Get "img/free-badge.svg").RelPermalink }}' alt="Free" />
-          </div>
-          <img src="{{ $.Resources.Get .Params.image }}" alt="{{ .Title }}" />
-          
-        </div>
+        {{ partial "youtube-preview" (dict
+          "Id" "0Xq_-akvEHM"
+        ) }}
       </div>
     </div>
   {{ end }}

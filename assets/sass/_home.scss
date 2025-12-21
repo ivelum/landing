@@ -330,41 +330,6 @@
       margin-bottom: 1rem;
     }
 
-    &-image {
-      border-radius: 0.5rem;
-      display: inline-block; // match services illustration behavior for small screens
-      margin: 2rem auto 0 auto; // center under text
-      padding: 1rem;
-      position: relative; // to position badge absolutely relative to image
-      @include media-up(md) {
-        padding: 1.5rem 2rem;
-      }
-
-      img {
-        display: block;
-        height: auto;
-        max-width: 16.25rem;
-        width: 100%;
-      }
-    }
-
-    &-badge {
-      position: absolute;
-      top: -3rem; // align with services small-screen offset
-      right: -0.5rem; // align with services small-screen offset
-      z-index: 1;
-
-      @include media-up(xs) {
-        top: -4rem;
-      }
-
-      img {
-        width: 68px; // align with services badge size
-        height: auto;
-        display: block;
-      }
-    }
-
     &-link {
       @include link-underline();
     }
