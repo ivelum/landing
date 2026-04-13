@@ -6,6 +6,10 @@ author: Denis Stebunov
 date: 2025-02-18T12:54:00+0200
 ---
 
+{{< youtube TR3TADaqeLg >}}
+
+---
+
 During a website or web application update, there's a risk of downtime —
 a potential trigger for a downward spiral of problems. Business stakeholders
 often worry that users will notice disruptions and leave, leading them to delay
