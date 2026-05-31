@@ -98,14 +98,17 @@
 {{- end }}
 
   <script type="module">
-    import * as Sentry from '@sentry/browser';
     import Alpine from 'alpinejs';
+
+  {{- if hugo.IsProduction }}
+    import * as Sentry from '@sentry/browser';
 
     Sentry.init({
       dsn: 'https://5948ecb18a55aeee499e81c728ad9285@o202054.ingest.sentry.io'
         + '/4506218350641152',
       environment: '{{ hugo.Environment }}',
     });
+  {{- end }}
 
     Alpine.start();
   </script>
