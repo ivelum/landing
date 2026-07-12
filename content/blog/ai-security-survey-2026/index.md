@@ -7,8 +7,10 @@ sitemap:
   disable: true
 ---
 
-In June 2026, we surveyed engineering leaders at companies of all sizes to
-understand how they use AI and how it affects security within their teams.
+In June 2026, with the support of the amazing [CTO Craft](https://ctocraft.com)
+and [Rands Leadership Slack](https://randsinrepose.com/welcome-to-rands-leadership-slack/)
+communities, we surveyed engineering leaders from companies of all sizes to
+understand how they use AI and how it impacts security within their teams.
 
 **Contents**
 
