@@ -133,7 +133,7 @@ more strictly:
 
 Two findings stood out to us.
 
-First , everyone is using AI to write production code. That may not sound
+First, everyone is using AI to write production code. That may not sound
 remarkable at first, until you realize there were no exceptions. 100% of the
 respondents have at least some AI-written code running in production.
 
