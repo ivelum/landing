@@ -1,6 +1,7 @@
 ---
 title: "Survey: AI impact on security"
 description: We surveyed engineering leaders at companies of all sizes to understand how they use AI and how it affects security within their teams
+thumbnail: thumbnail.png
 author: Denis Stebunov
 date: 2026-07-11T11:30:00+0200
 sitemap:
