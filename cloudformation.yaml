@@ -48,6 +48,7 @@ Resources:
     DependsOn: WebsiteBucket
     Properties:
       DistributionConfig:
+        HttpVersion: http2and3
         Aliases:
           - ivelum.com
         CustomErrorResponses:
