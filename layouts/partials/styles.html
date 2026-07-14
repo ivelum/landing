@@ -1,0 +1,19 @@
+{{- $name := . }}
+{{- with resources.Get (printf "sass/critical/%s.scss" $name) }}
+  {{- $css := . | toCSS (dict "transpiler" "libsass") }}
+  {{- if hugo.IsProduction }}
+    {{- $css = $css | minify }}
+  {{- end }}
+  <style>
+    {{ $css.Content | safeCSS }}
+  </style>
+{{- end }}
+{{- with resources.Get (printf "sass/non-critical/%s.scss" $name) }}
+  {{- $css := . | toCSS (dict "transpiler" "libsass") }}
+  {{- if hugo.IsProduction }}
+    {{- $css = $css | minify }}
+  {{- end }}
+  <link rel="preload" href="{{ $css.RelPermalink }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ $css.RelPermalink }}"></noscript>
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" media="print">
+{{- end }}

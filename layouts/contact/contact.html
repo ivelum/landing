@@ -1,3 +1,7 @@
+{{- define "styles" }}
+  {{- partial "styles.html" "contact" }}
+{{- end }}
+
 {{- define "header" }}
   {{ partial "header.html" (dict
     "RelPermalink" .RelPermalink

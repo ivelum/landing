@@ -1,3 +1,5 @@
+@import './base';
+
 .services {
   margin-top: 6.25rem;
   @include media-up(md) {

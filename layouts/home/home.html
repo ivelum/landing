@@ -1,3 +1,7 @@
+{{- define "styles" }}
+  {{- partial "styles.html" "home" }}
+{{- end }}
+
 {{- define "main" }}
   <div class="home--hero">
     <div class="home--hero-body">
@@ -74,7 +78,7 @@
     {{ partial "heading.html" (dict
       "Level" 2
       "Text" "Hire us if you need to..."
-      "Class" "home--title"
+      "Class" "title"
     ) }}
     <div class="home--hire-us">
       <div class="home--hire-us-list">
@@ -98,7 +102,7 @@
     {{ partial "heading.html" (dict
       "Level" 2
       "Text" "Who we help"
-      "Class" "home--title"
+      "Class" "title"
     ) }}
     <div class="home--who-we-help">
     {{- range sort (where .Pages "Params.category" "who-we-help") "File.Path" }}
@@ -136,7 +140,7 @@
     {{ partial "heading.html" (dict
       "Level" 2
       "Text" "Why ivelum"
-      "Class" "home--title"
+      "Class" "title"
     ) }}
     <div class="home--why-ivelum">
     {{- range sort (where .Pages "Params.category" "why-ivelum") "File.Path" }}
@@ -190,7 +194,7 @@
   <div class="container">
     {{ partial "shared/youtube-latest.html" (dict
       "Title" "Learn more about our approach"
-      "TitleClass" "home--title"
+      "TitleClass" "title"
     ) }}
   </div>
 
@@ -198,7 +202,7 @@
     {{ partial "heading.html" (dict
       "Level" 2
       "Text" "What our clients say"
-      "Class" "home--title"
+      "Class" "title"
     ) }}
     <div class="home--testimonials-wrapper">
     {{- range sort (where .Pages "Params.category" "testimonials") "File.Path" }}
@@ -251,7 +255,7 @@
     {{ partial "heading.html" (dict
       "Level" 2
       "Text" "Technologies"
-      "Class" "home--title"
+      "Class" "title"
     ) }}
     <div class="home--technologies">
       {{ partial "shared/technology-stack.html" . }}

@@ -1,3 +1,7 @@
+{{- define "styles" }}
+  {{- partial "styles.html" "about" }}
+{{- end }}
+
 {{- define "header" }}
   {{ partial "header.html" (dict
     "RelPermalink" .RelPermalink
@@ -25,7 +29,7 @@
       {{ partial "heading.html" (dict
         "Level" 2
         "Text" "Facts about ivelum"
-        "Class" "home--title"
+        "Class" "title"
       ) }}
       <div class="about--facts">
         {{- (.GetPage "facts").Content }}
@@ -36,7 +40,7 @@
       {{ partial "heading.html" (dict
         "Level" 2
         "Text" "What sets us apart"
-        "Class" "home--title"
+        "Class" "title"
       ) }}
       <div class="about--what-sets-us-apart">
         {{- (.GetPage "what-sets-us-apart").Content }}
@@ -47,7 +51,7 @@
       {{ partial "heading.html" (dict
         "Level" 2
         "Text" "Our values"
-        "Class" "home--title"
+        "Class" "title"
       ) }}
       <div class="about--our-values">
         {{- (.GetPage "our-values").Content }}
@@ -58,7 +62,7 @@
       {{ partial "heading.html" (dict
         "Level" 2
         "Text" "Meet the team"
-        "Class" "home--title"
+        "Class" "title"
       ) }}
       <div class="about--team">
         {{- (.GetPage "team").Content }}

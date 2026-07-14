@@ -1,3 +1,5 @@
+@import './base';
+
 .industries {
   margin-top: 6.25rem;
   @include media-up(md) {

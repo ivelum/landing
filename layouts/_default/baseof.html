@@ -61,23 +61,8 @@
       }
     }
   </script>
-{{- with resources.Get "sass/critical.scss" }}
-  {{- $css := . | toCSS (dict "transpiler" "libsass") }}
-  {{- if hugo.IsProduction }}
-    {{- $css = $css | minify }}
-  {{- end }}
-  <style>
-    {{ $css.Content | safeCSS }}
-  </style>
-{{- end }}
-{{- with resources.Get "sass/non-critical.scss" }}
-  {{- $css := . | toCSS (dict "transpiler" "libsass") }}
-  {{- if hugo.IsProduction }}
-    {{- $css = $css | minify }}
-  {{- end }}
-  <link rel="preload" href="{{ $css.RelPermalink }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="{{ $css.RelPermalink }}"></noscript>
-  <link rel="stylesheet" href="{{ $css.RelPermalink }}" media="print">
+{{- block "styles" . }}
+  {{- partial "styles.html" "default" }}
 {{- end }}
 </head>
 <body>

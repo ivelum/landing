@@ -1,3 +1,5 @@
+@import './base';
+
 .home {
   &--hero {
     background-color: #3f13a8;
@@ -154,16 +156,6 @@
     }
   }
 
-  &--title {
-    color: $primary-violet;
-    margin-top: 3rem;
-    @include media-up(lg) {
-      margin-top: 4rem;
-    }
-    @include media-up(xl) {
-      margin-top: 6rem;
-    }
-  }
 
   &--hire-us {
     align-items: flex-start;
@@ -518,46 +510,5 @@
     @include media-up(xl) {
       margin-top: 3.5rem;
     }
-  }
-}
-
-.teamplify-link {
-  @include transition(color);
-  background-size: 0 1px;
-  color: $primary-orange;
-  font-weight: $font-weight-semi-bold;
-  white-space: nowrap;
-
-  svg {
-    margin-bottom: 0.125rem;
-    margin-right: 0.375rem;
-  }
-
-  &:hover,
-  &:focus-visible {
-    color: lighten($primary-orange, 10%);
-  }
-
-  &:hover,
-  &:focus-visible {
-   svg {
-      animation: birdAnimation 0.5s linear infinite normal forwards;
-    }
-  }
-}
-
-@keyframes birdAnimation {
-  0% {
-    animation-timing-function: cubic-bezier(0, 0, 0, 0.995);
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(0, -3px);
-  }
-
-  100% {
-    animation-timing-function: cubic-bezier(0, 0, 0, 0.995);
-    transform: translate(0, 0);
   }
 }

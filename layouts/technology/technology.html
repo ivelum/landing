@@ -1,3 +1,7 @@
+{{- define "styles" }}
+  {{- partial "styles.html" "technology" }}
+{{- end }}
+
 {{- define "header" }}
   {{ partial "header.html" (dict
     "RelPermalink" .RelPermalink
@@ -24,7 +28,7 @@
       {{ partial "heading.html" (dict
         "Level" 2
         "Text" "AWS starter template"
-        "Class" "home--title"
+        "Class" "title"
       ) }}
       <div class="technology--aws">
         {{ $page := .GetPage "aws-starter-template" }}
@@ -66,7 +70,7 @@
       {{ partial "heading.html" (dict
         "Level" 2
         "Text" "Zero-downtime deployment"
-        "Class" "home--title"
+        "Class" "title"
       ) }}
       <div class="technology--zero">
         {{- (.GetPage "zero-downtime-deployment").Content }}

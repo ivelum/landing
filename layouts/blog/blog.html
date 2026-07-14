@@ -1,3 +1,7 @@
+{{- define "styles" }}
+  {{- partial "styles.html" "blog" }}
+{{- end }}
+
 {{- define "header" }}
   {{ partial "header.html" (dict
     "RelPermalink" .RelPermalink
@@ -15,7 +19,7 @@
     <div class="container">
       {{ partial "shared/youtube-latest.html" (dict
         "Title" "The latest videos"
-        "TitleClass" "home--title"
+        "TitleClass" "title"
       ) }}
       <div class="blog--wrapper">
         <h1>Blog</h1>

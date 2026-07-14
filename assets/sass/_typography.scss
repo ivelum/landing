@@ -25,6 +25,17 @@
   width: 100%;
 }
 
+.title {
+  color: $primary-violet;
+  margin-top: 3rem;
+  @include media-up(lg) {
+    margin-top: 4rem;
+  }
+  @include media-up(xl) {
+    margin-top: 6rem;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -89,22 +100,6 @@ a {
     &:hover {
       color: $white;
     }
-  }
-}
-
-@mixin link-underline {
-  @include transition(color 0.6s cubic-bezier(0, 0.5, 0.5, 1), background-size 0.4s cubic-bezier(0, 0.5, 0.5, 1));
-  background-image: linear-gradient($primary-orange, $primary-orange);
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  background-size: 100% 1px;
-  color: $primary-violet;
-  overflow-wrap: break-word;
-  text-decoration: none;
-
-  &:hover {
-    background-size: 0 1px;
-    color: $font-color-dark;
   }
 }
 
