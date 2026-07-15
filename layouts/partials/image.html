@@ -10,11 +10,12 @@
 {{- $img1x := $originalImg -}}
 {{- $img2x := false -}}
 {{- if ne $mediaType "svg" -}}
-  {{/* Calculate height based on the original image aspect ratio */}}
-  {{- $height = int (mul
+  {{/* Calculate height based on the original image aspect ratio.
+       Round to match Hugo's Resize behavior */}}
+  {{- $height = int (math.Round (mul
         $originalImg.Height
         (div (float $width) $originalImg.Width)
-      )
+      ))
   -}}
   {{/* Resize if necessary */}}
   {{- if gt $originalImg.Width $width -}}
@@ -38,10 +39,10 @@
     {{- $originalWidth = sub (float (index $coords 2)) (float (index $coords 0)) -}}
     {{- $originalHeight = sub (float (index $coords 3)) (float (index $coords 1)) -}}
   {{- end -}}
-  {{- $height = int (mul
+  {{- $height = int (math.Round (mul
         $originalHeight
         (div (float $width) $originalWidth)
-      )
+      ))
   -}}
 {{- end -}}
 
