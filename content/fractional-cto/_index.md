@@ -1,6 +1,7 @@
 ---
-title: Fractional CTO
-description: Get a Fractional CTO for free - a unique offer for startups and enterprises
+title: Fractional CTO - Denis Stebunov
+description: Get a Fractional CTO for free - our unique offer for startups and enterprises
+thumbnail: img/denis-stebunov.jpeg
 ---
 
 # Fractional CTO
