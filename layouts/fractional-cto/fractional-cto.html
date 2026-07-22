@@ -1,0 +1,19 @@
+{{- define "styles" }}
+  {{- partial "styles.html" "fractional-cto" }}
+{{- end }}
+
+{{- define "header" }}
+  {{ partial "header.html" (dict
+    "RelPermalink" .RelPermalink
+    "LightHeader" true
+    "TalkToUsAbsolute" false
+  ) }}
+{{- end }}
+{{- define "main" }}
+  <div class="fractional-cto">
+
+    <div class="container">
+      {{ .Content }}
+    </div>
+  </div>
+{{- end }}

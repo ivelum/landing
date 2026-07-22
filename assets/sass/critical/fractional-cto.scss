@@ -1,0 +1,29 @@
+@import './base';
+@import '../youtube';
+
+.fractional-cto {
+  margin-top: 6.25rem;
+  @include media-up(md) {
+    margin-top: 8.75rem;
+  }
+  @include media-up(xl) {
+    margin-top: 12.5rem;
+  }
+
+  h1 {
+    color: $primary-violet;
+    margin-bottom: 1rem;
+    @include media-up(md) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  h2 {
+    color: $primary-violet;
+    margin: 2rem 0;
+  }
+
+  h3 {
+    margin: 1rem 0;
+  }
+}
