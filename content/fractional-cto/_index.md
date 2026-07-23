@@ -12,8 +12,8 @@ Hi, I’m Denis Stebunov. I have over 25 years of experience in software,
 including hands-on programming, leadership, product management, startup exits,
 and M&A.
 
-If you choose ivelum as your software development partner, I can be your
-Fractional CTO.
+If you choose ivelum as your software development partner, I can also serve as
+your Fractional CTO (a part-time CTO).
 
 I’m deeply technical. I’ve been a software developer throughout my career,
 and I still write code, these days with AI. But over the years, I’ve learned
@@ -33,19 +33,19 @@ You can find me on:
 
 ## What is Fractional CTO?
 
-Fractional CTO is part-time technology leader who does the same job as
+A fractional CTO is a part-time technology leader who does the same job as
 a full-time CTO: leading engineering teams, making strategic technology
 decisions, selecting vendors, optimizing infrastructure; just not full-time.
 
-## Get it for free!
+## Fractional CTO services for free
 
 When you hire a development team from us (or even just a single developer),
-you get the Fractional CTO service at no extra cost.
+you get the Fractional CTO services at no extra cost.
 
 Building custom software is our core business, and we genuinely want your
 project to succeed. The right technology decisions often have a greater impact
 than the sheer amount of work invested, so we want to help you make better
-decisions. That's why we include our Fractional CTO service for free.
+decisions. That's why we include our Fractional CTO services for free.
 
 ## If you need help with…
 
@@ -103,21 +103,33 @@ up to speed.
 
 ## FAQ
 
-### How much does your Fractional CTO service cost?
+### How much do your Fractional CTO services cost?
 
-It's free if you hire a development team from us (or even a single developer). Fractional CTOs typically cost $3,000–$25,000/month elsewhere – with ivelum, it's included.
+It's free if you hire a development team from us (or even a single developer).
+Fractional CTOs typically cost $3,000–$25,000/month elsewhere – with ivelum,
+it's included.
 
 ### How is this different from hiring a full-time CTO or a regular dev agency?
-A full-time CTO costs more and takes months to hire. A regular agency ships code but doesn't have anyone accountable for whether the technology decisions are right. We do both – you get senior engineers and someone who owns the decisions above their heads.
+A full-time CTO costs more and takes months to hire. A regular agency ships
+code but doesn't have anyone accountable for whether the technology decisions
+are right. We do both – you get senior engineers and someone who owns the
+decisions above their heads.
 
 ### How much time will you be able to devote to our project?
-You can count on at least a few hours per week, but there’s no hard limit. I work as much as needed, and in our practice, there has been no case so far that the project was limited by my availability.
+You can count on at least a few hours per week, but there’s no hard limit.
+I work as much as needed, and in our practice, there has been no case so far
+that the project was limited by my availability.
 
 ### Can you work with our in-house developers or other contractors?
-Yes! In fact, most of our teams are hybrid, meaning we collaborate with the in-house development team, so I’m very familiar with this environment.
+Yes! In fact, most of our teams are hybrid, meaning we collaborate with the
+in-house development team, so I’m very familiar with this environment.
 
 ### Will you join our team standups?
-Yes, as frequently as needed. In most cases, it’s helpful to do at least weekly check-ins with the team.
+Yes, as frequently as needed. In most cases, it’s helpful to do at least weekly
+check-ins with the team.
 
 ### What if we already have an in-house CTO?
-That's completely fine. Whether you use the Fractional CTO service is entirely up to you. I'm always happy to brainstorm ideas, discuss technical challenges, or help solve difficult problems. Think of me as an external advisor you can turn to whenever you need a second opinion.
+That's completely fine. Whether you use the Fractional CTO services is
+entirely up to you. I'm always happy to brainstorm ideas, discuss technical
+challenges, or help solve difficult problems. Think of me as an external
+advisor you can turn to whenever you need a second opinion.
