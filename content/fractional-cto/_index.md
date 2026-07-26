@@ -6,7 +6,7 @@ thumbnail: img/denis-stebunov.jpeg
 
 # Fractional CTO
 
- {{< youtube rML3LB1FqeU >}}
+ {{< youtube i1U7GjNT6bc >}}
 
 Hi, I’m Denis Stebunov. I have over 25 years of experience in software,
 including hands-on programming, leadership, product management, startup exits,
@@ -42,10 +42,11 @@ decisions, selecting vendors, optimizing infrastructure; just not full-time.
 When you hire a development team from us (or even just a single developer),
 you get the Fractional CTO services at no extra cost.
 
-Building custom software is our core business, and we genuinely want your
-project to succeed. The right technology decisions often have a greater impact
-than the sheer amount of work invested, so we want to help you make better
-decisions. That's why we include our Fractional CTO services for free.
+The reason is simple: we truly want your project to succeed, not just ship
+software. Many of our clients come to us through referrals because they've
+seen that we care about their business. That's why I want you to have the best
+service possible, and working with our engineers in the field helps me to do
+just that.
 
 ## If you need help with…
 
