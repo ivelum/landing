@@ -29,7 +29,7 @@ jobs:
           version: '0.5.x'
           enable-cache: true
 
-      - run: uv run isort .
+      - run: uv run isort --check-only --diff .
       - run: uv run flake8 .
 
       # Send notification on check failure
@@ -44,6 +44,7 @@ jobs:
           color: '#d7263d'
 
   deploy:
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
