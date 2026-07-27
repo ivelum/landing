@@ -55,4 +55,14 @@
       margin-top: 2rem;
     }
   }
+
+  &--learn-more {
+    @include link-arrow;
+    @include link-underline;
+    display: inline-block;
+    margin-top: 1.5rem;
+    @include media-up(xl) {
+      margin-top: 2rem;
+    }
+  }
 }

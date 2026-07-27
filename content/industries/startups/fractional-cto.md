@@ -1,4 +1,4 @@
-### Fractional CTO Service
+### Fractional CTO Services
 
 Even if you haven't hired your full-time in-house CTO yet, the development team
 still needs to make technology and product decisions, and some of those decisions
@@ -10,4 +10,4 @@ including hands-on programming, leadership, product management, startup exits,
 and M&A, Denis will help you navigate complex technology decisions.
 {{< /fractional-cto >}}
 
-The fractional CTO service is free for all our clients.
+The fractional CTO services are free for all our clients.

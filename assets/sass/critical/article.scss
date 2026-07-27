@@ -102,7 +102,7 @@
     }
   }
 
-  &--content a:not(h1 > a, h2 > a, h3 > a) {
+  &--content a:not(h1 > a, h2 > a, h3 > a, .btn) {
     @include link-underline;
   }
 

@@ -142,25 +142,7 @@
   }
 
   &--item-link {
+    @include link-arrow;
     @include link-underline;
-    line-height: 1.5;
-    position: relative;
-    margin-right: 1.5rem;
-
-    &:after {
-      @include transition(transform 0.3s);
-      content: "";
-      background-image: url("data:image/svg+xml,%3Csvg width='16' height='17' viewBox='0 0 16 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3.21967 13.7686C3.51256 14.0615 3.98744 14.0615 4.28033 13.7686L11.5407 6.5082V10.708C11.5407 11.1222 11.8765 11.458 12.2907 11.458C12.705 11.458 13.0407 11.1222 13.0407 10.708V4.69754C13.0407 4.28333 12.705 3.94754 12.2907 3.94754H6.28033C5.86612 3.94754 5.53033 4.28333 5.53033 4.69754C5.53033 5.11176 5.86612 5.44754 6.28033 5.44754H10.4801L3.21967 12.708C2.92678 13.0008 2.92678 13.4757 3.21967 13.7686Z' fill='%233C3A40'/%3E%3C/svg%3E");
-      display: block;
-      height: 1rem;
-      position: absolute;
-      right: -1.5rem;
-      top: .125rem;
-      width: 1rem;
-    }
-
-    &:hover:after {
-      transform: translate3d(4px, -4px, 0);
-    }
   }
 }

@@ -1,29 +1,172 @@
-@import './base';
-@import '../youtube';
+@import './article';
 
 .fractional-cto {
-  margin-top: 6.25rem;
-  @include media-up(md) {
-    margin-top: 8.75rem;
-  }
-  @include media-up(xl) {
-    margin-top: 12.5rem;
-  }
+  position: relative;
 
-  h1 {
-    color: $primary-violet;
+  &--back {
     margin-bottom: 1rem;
-    @include media-up(md) {
-      margin-bottom: 2rem;
+
+    .article--back-link {
+      margin-bottom: 0;
+      position: static;
     }
   }
 
-  h2 {
-    color: $primary-violet;
-    margin: 2rem 0;
+  &--content {
+    > h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      max-width: $container-narrow-max-width;
+      text-wrap: balance;
+    }
+
+    > p {
+      max-width: $container-narrow-max-width;
+      @include media-up(lg) {
+        max-width: percentage(10 / 12);
+      }
+    }
   }
 
-  h3 {
-    margin: 1rem 0;
+  &--section {
+    border-top: 1px solid $border-color-default;
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+    padding-top: 3rem;
+    row-gap: 1rem;
+    @include media-up(lg) {
+      flex-direction: row;
+      margin-top: 4rem;
+      padding-top: 4rem;
+    }
+    @include media-up(xl) {
+      margin-top: 5rem;
+      padding-top: 5rem;
+    }
+
+    &-number {
+      color: $font-color-gray;
+      @include media-up(lg) {
+        flex: 0 0 percentage(2 / 12);
+      }
+    }
+
+    &-body {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      @include media-up(lg) {
+        flex: 1 1 auto;
+      }
+      @include media-up(xl) {
+        flex-basis: percentage(8 / 12);
+      }
+
+      h2 {
+        font-size: 1.75rem;
+        line-height: 1.4;
+        margin: 0;
+      }
+
+      h3 {
+        font-size: 1.225rem;
+        margin-top: 1.28rem;
+      }
+
+      p:first-of-type {
+        margin-top: 1rem;
+      }
+
+      ol,
+      ul {
+        padding-inline-start: 2rem;
+
+        li {
+          padding-left: 0.5rem;
+
+          &::marker {
+            color: $font-color-gray;
+            font-size: 1rem;
+          }
+        }
+      }
+
+      img {
+        display: block;
+        height: auto;
+        max-width: 100%;
+      }
+    }
+  }
+
+  &--person {
+    display: grid;
+    gap: 1.5rem 1rem;
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    margin-bottom: 3rem;
+    max-width: $container-narrow-max-width;
+    @include media-up(sm) {
+      column-gap: 1.5rem;
+      grid-template-columns: 7.5rem minmax(0, 1fr);
+    }
+  }
+
+  &--avatar {
+    width: 5.5rem;
+    @include media-up(sm) {
+      width: 7.5rem;
+    }
+
+    img {
+      border-radius: 50%;
+      height: auto;
+      margin: 0;
+      width: 100%;
+    }
+  }
+
+  &--bio {
+    color: $font-color-gray;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+
+    > p {
+      font-size: $font-size-default;
+      line-height: 1.6;
+      margin-top: 0.75rem;
+    }
+  }
+
+  &--name {
+    color: $font-color-dark;
+    font-size: $font-size-bigger;
+    line-height: 1.5;
+  }
+
+  &--position {
+    line-height: 1.5;
+  }
+
+  &--action {
+    grid-column: 1 / -1;
+    @include media-up(sm) {
+      grid-column: 2;
+    }
+  }
+
+  &--person + p {
+    margin-top: 0;
+  }
+
+  .youtube-embed {
+    margin-top: 1.5rem;
+  }
+
+  .book {
+    margin-top: 1.5rem;
+    text-align: center;
   }
 }

@@ -171,7 +171,9 @@
     }
 
     &-link {
+      @include link-arrow;
       @include link-underline();
+      display: inline-block;
     }
   }
 
@@ -264,6 +266,14 @@
 
     &-text {
       color: $font-color-default;
+    }
+
+    &-link {
+      @include link-arrow;
+      @include link-underline;
+      align-self: flex-start;
+      display: inline-block;
+      margin-top: auto;
     }
   }
 

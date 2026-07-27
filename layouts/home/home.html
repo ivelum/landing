@@ -156,6 +156,11 @@
         <div class="home--why-ivelum-text">
           {{ .Content }}
         </div>
+        {{- with .Params.link }}
+          <a class="home--why-ivelum-link" href="{{ . }}">
+            Learn more
+          </a>
+        {{- end }}
       </div>
     {{- end }}
     </div>

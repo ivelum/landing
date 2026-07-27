@@ -176,6 +176,16 @@
         background: transparent;
       }
     }
+
+    &-link {
+      @include link-arrow;
+      @include link-underline;
+      display: inline-block;
+      margin-top: 2rem;
+      @include media-up(lg) {
+        margin-top: 3rem;
+      }
+    }
   }
 
   /* divider for sections within services page */
@@ -267,4 +277,3 @@
     }
   }
 }
-

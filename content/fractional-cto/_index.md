@@ -6,14 +6,14 @@ thumbnail: img/denis-stebunov.jpeg
 
 # Get a Fractional CTO
 
- {{< youtube i1U7GjNT6bc >}}
-
+{{< fractional-cto-person >}}
 Hi, I’m Denis Stebunov. I have over 25 years of experience in software,
 including hands-on programming, leadership, product management, startup exits,
 and M&A.
 
-If you choose ivelum as your software development partner, I can also serve as
-your Fractional CTO (a part-time CTO).
+If you choose ivelum as your software development partner, I can be your
+Fractional CTO.
+{{< /fractional-cto-person >}}
 
 I’m deeply technical. I’ve been a software developer throughout my career,
 and I still write code, these days with AI. But over the years, I’ve learned
@@ -24,30 +24,34 @@ and AI hasn’t changed that. That’s why, whenever I join a new project, my fi
 priority is to establish and maintain clear, productive communication within
 the team.
 
-You can find me on:
+You can find me on [LinkedIn](https://www.linkedin.com/in/denis-stebunov/) and
+[YouTube](https://www.youtube.com/@ivelum), where I occasionally share my
+thoughts on technology and engineering leadership.
 
-- [LinkedIn](https://www.linkedin.com/in/denis-stebunov/)
-- [YouTube](https://www.youtube.com/@ivelum)
-
-{{< book >}}
-
+{{< fractional-cto-section-start number="01" >}}
 ## What is Fractional CTO?
 
 A fractional CTO is a part-time technology leader who does the same job as
 a full-time CTO: leading engineering teams, making strategic technology
 decisions, selecting vendors, optimizing infrastructure; just not full-time.
 
+{{< youtube i1U7GjNT6bc >}}
+{{< fractional-cto-section-end >}}
+
+{{< fractional-cto-section-start number="02" >}}
 ## Fractional CTO services for free
 
 When you hire a development team from us (or even just a single developer),
 you get the Fractional CTO services at no extra cost.
 
-The reason is simple: we truly want your project to succeed, not just ship
-software. Many of our clients come to us through referrals because they've
-seen that we care about their business. That's why I want you to have the best
-service possible, and working with our engineers in the field helps me to do
-just that.
+I run the same kind of development team I'm advising you on — so I know exactly
+where corners get cut when nobody's watching, because I've watched it happen.
+That's not a conflict of interest, that's why this works: I catch the same
+shortcuts in your project that I'd catch in ours. That's why we include our
+Fractional CTO services for free.
+{{< fractional-cto-section-end >}}
 
+{{< fractional-cto-section-start number="03" >}}
 ## If you need help with…
 
 ### Building and scaling your startup
@@ -101,7 +105,9 @@ the right full-time CTO and ensure a smooth transition by helping them get
 up to speed.
 
 {{< book >}}
+{{< fractional-cto-section-end >}}
 
+{{< fractional-cto-section-start number="04" >}}
 ## FAQ
 
 ### How much do your Fractional CTO services cost?
@@ -134,3 +140,4 @@ That's completely fine. Whether you use the Fractional CTO services is
 entirely up to you. I'm always happy to brainstorm ideas, discuss technical
 challenges, or help solve difficult problems. Think of me as an external
 advisor you can turn to whenever you need a second opinion.
+{{< fractional-cto-section-end >}}
