@@ -7,7 +7,7 @@
     ) }}
   <div class="author-card--body">
     {{ if .LinkedIn }}
-      <a class="author-card--name" href="{{ .Linkedin }}" target="_blank" rel="noopener">
+      <a class="author-card--name" href="{{ .LinkedIn }}" target="_blank" rel="noopener">
         {{ .Name }}
         {{- (resources.Get "img/ico-linkedin.svg").Content | strings.TrimSpace | safeHTML -}}
       </a>

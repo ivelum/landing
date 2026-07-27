@@ -1,7 +1,7 @@
 ---
 title: Zach Levine
 avatar: img/zach-levine.jpeg
-LinkedIn: https://www.linkedin.com/in/zach-levine-8b43b018/
+linkedin: https://www.linkedin.com/in/zach-levine-8b43b018/
 position: Web Consultant & Fractional CTO
 ---
 

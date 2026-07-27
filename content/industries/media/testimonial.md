@@ -1,7 +1,7 @@
 ---
 title: Justin DeMaris
 avatar: img/justin-demaris.png
-LinkedIn: https://www.linkedin.com/in/justindemaris/
+linkedin: https://www.linkedin.com/in/justindemaris/
 position: CTO & Co-founder
 ---
 
