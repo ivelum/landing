@@ -4,7 +4,7 @@ description: Get a Fractional CTO for free when hiring a development team from u
 thumbnail: img/denis-stebunov.jpeg
 ---
 
-# Fractional CTO
+# Get a Fractional CTO
 
  {{< youtube i1U7GjNT6bc >}}
 
