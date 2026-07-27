@@ -1,8 +1,8 @@
 import logging
 
 import sentry_sdk
-from sentry_sdk.integrations.aws_lambda import AwsLambdaIntegration
 from newsletter_sign_up import handle_newsletter_sign_up
+from sentry_sdk.integrations.aws_lambda import AwsLambdaIntegration
 
 
 logger = logging.getLogger()
