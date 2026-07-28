@@ -19,13 +19,6 @@
       max-width: $container-narrow-max-width;
       text-wrap: balance;
     }
-
-    > p {
-      max-width: $container-narrow-max-width;
-      @include media-up(lg) {
-        max-width: percentage(10 / 12);
-      }
-    }
   }
 
   &--section {
@@ -98,6 +91,20 @@
         height: auto;
         max-width: 100%;
       }
+
+      > .fractional-cto--person {
+        margin-bottom: 0;
+        margin-top: 2rem;
+        max-width: none;
+        width: 100%;
+        @include media-up(lg) {
+          column-gap: 0;
+          grid-template-columns: percentage(2 / 12) minmax(0, 1fr);
+          margin-left: -20%;
+          margin-top: 3rem;
+          width: 120%;
+        }
+      }
     }
   }
 
@@ -117,6 +124,9 @@
     width: 5.5rem;
     @include media-up(sm) {
       width: 7.5rem;
+    }
+    @include media-up(lg) {
+      width: 9rem;
     }
 
     img {
@@ -155,10 +165,6 @@
     @include media-up(sm) {
       grid-column: 2;
     }
-  }
-
-  &--person + p {
-    margin-top: 0;
   }
 
   .youtube-embed {
