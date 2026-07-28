@@ -17,7 +17,7 @@ decisions, selecting vendors, optimizing infrastructure; just not full-time.
 
 {{< fractional-cto-section
   number="02"
-  title="Who is your Fractional CTO?"
+  title="Meet your Fractional CTO"
   variant="person"
 >}}
 Hi, I’m Denis Stebunov. I have over 25 years of experience in software,
