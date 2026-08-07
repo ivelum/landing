@@ -3,6 +3,7 @@
 .DS_Store
 public
 resources
+testtest11.py
 
 __pycache__/
 lambda-functions.zip
