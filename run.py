@@ -71,11 +71,6 @@ def deploy_lambda():
 
     environment = {
         'Variables': {
-            'CONTACT_FORM_FROM_EMAIL': settings.CONTACT_FORM_FROM_EMAIL,
-            'CONTACT_FORM_TO_EMAIL': settings.CONTACT_FORM_TO_EMAIL,
-            'PIPE_DRIVE_API_TOKEN': os.environ['PIPE_DRIVE_API_TOKEN'],
-            'PIPE_DRIVE_LEAD_CUSTOM_DATA':
-                os.environ['PIPE_DRIVE_LEAD_CUSTOM_DATA'],
             'CRISP_WEBSITE_ID': settings.CRISP_WEBSITE_ID,
             'CRISP_TOKEN_ID': os.environ['CRISP_TOKEN_ID'],
             'CRISP_TOKEN_KEY': os.environ['CRISP_TOKEN_KEY'],
