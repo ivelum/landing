@@ -12,7 +12,11 @@
 }}
 {{- $previewWidth := 698 -}}
 
-{{- $showFullSizeLightbox := hasPrefix .Page.Path "/blog/" }}
+{{/* Images whose file name starts with "_no-lightbox" opt out of magnification. */}}
+{{- $showFullSizeLightbox := and
+  (hasPrefix .Page.Path "/blog/")
+  (not (hasPrefix (path.Base .Destination) "_no-lightbox"))
+}}
 {{- if $showFullSizeLightbox }}
   {{- $fullSizeWidth := "" }}
   {{- $fullSizeHeight := "" }}

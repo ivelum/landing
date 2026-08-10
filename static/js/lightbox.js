@@ -7,6 +7,10 @@ window.addEventListener('load', function () {
     .getElementsByClassName('article--content')[0]
     .querySelectorAll('img')
     .forEach((img) => {
+      const filename = img.src.split('/').slice(-1)[0];
+      if (filename.startsWith('_no-lightbox')) {
+        return;
+      }
       let parentNode = img.parentNode;
       if (parentNode.tagName === 'PICTURE') {
         parentNode = parentNode.parentNode;
