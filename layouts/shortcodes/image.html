@@ -1,6 +1,10 @@
 {{- $src := .Params.src -}}
 {{- $alt := .Params.alt -}}
 {{- $width := .Params.width -}}
+{{/* Optional: an alternative image for mobile screens */}}
+{{- $mobileSrc := .Params.mobileSrc -}}
+{{- $mobileWidth := .Params.mobileWidth -}}
+{{- $mobileBreakpoint := .Params.mobileBreakpoint -}}
 
 {{- $img := or
   (.Page.Resources.Get $src)
@@ -8,4 +12,20 @@
   (resources.Get $src)
 -}}
 
-{{- partial "image.html" (dict "Img" $img "Alt" $alt "Width" $width) -}}
+{{- $mobileImg := false -}}
+{{- with $mobileSrc -}}
+  {{- $mobileImg = or
+    ($.Page.Resources.Get .)
+    ($.Page.CurrentSection.Resources.Get .)
+    (resources.Get .)
+  -}}
+{{- end -}}
+
+{{- partial "image.html" (dict
+  "Img" $img
+  "Alt" $alt
+  "Width" $width
+  "MobileImg" $mobileImg
+  "MobileWidth" $mobileWidth
+  "MobileBreakpoint" $mobileBreakpoint
+) -}}

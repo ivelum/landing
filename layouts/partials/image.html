@@ -3,62 +3,105 @@
 {{- $alt := .Alt -}}
 {{- $class := .Class -}}
 {{- $width := .Width -}}
+{{/* Optional: an alternative image for mobile screens */}}
+{{- $mobileImg := .MobileImg -}}
+{{- $mobileWidth := or .MobileWidth $width -}}
+{{- $mobileBreakpoint := or .MobileBreakpoint 576 -}}
 
-{{- $mediaType := $originalImg.MediaType.SubType -}}
+{{/* Prepare the variants (1x / 2x, WebP, dimensions) of every image we need.
+     The desktop image goes first, the optional mobile one - second */}}
+{{- $sources := slice (dict "Img" $originalImg "Width" $width) -}}
+{{- with $mobileImg -}}
+  {{- $sources = $sources | append (dict "Img" . "Width" $mobileWidth) -}}
+{{- end -}}
 
-{{- $height := false -}}
-{{- $img1x := $originalImg -}}
-{{- $img2x := false -}}
-{{- if ne $mediaType "svg" -}}
-  {{/* Calculate height based on the original image aspect ratio.
-       Round to match Hugo's Resize behavior */}}
-  {{- $height = int (math.Round (mul
-        $originalImg.Height
-        (div (float $width) $originalImg.Width)
-      ))
-  -}}
-  {{/* Resize if necessary */}}
-  {{- if gt $originalImg.Width $width -}}
-    {{- $img1x = $originalImg.Resize (printf "%dx" $width) -}}
-    {{- $width2x := mul $width 2 -}}
-    {{- if gt $originalImg.Width $width2x -}}
-      {{- $img2x = $originalImg.Resize (printf "%dx" $width2x) -}}
-    {{- else -}}
-      {{- $img2x = $originalImg -}}
+{{- $variants := slice -}}
+{{- range $sources -}}
+  {{- $img := .Img -}}
+  {{- $targetWidth := .Width -}}
+  {{- $mediaType := $img.MediaType.SubType -}}
+
+  {{- $height := false -}}
+  {{- $img1x := $img -}}
+  {{- $img2x := false -}}
+  {{- if ne $mediaType "svg" -}}
+    {{/* Calculate height based on the original image aspect ratio.
+         Round to match Hugo's Resize behavior */}}
+    {{- $height = int (math.Round (mul
+          $img.Height
+          (div (float $targetWidth) $img.Width)
+        ))
+    -}}
+    {{/* Resize if necessary */}}
+    {{- if gt $img.Width $targetWidth -}}
+      {{- $img1x = $img.Resize (printf "%dx" $targetWidth) -}}
+      {{- $width2x := mul $targetWidth 2 -}}
+      {{- if gt $img.Width $width2x -}}
+        {{- $img2x = $img.Resize (printf "%dx" $width2x) -}}
+      {{- else -}}
+        {{- $img2x = $img -}}
+      {{- end -}}
+    {{ end -}}
+  {{- else -}}
+    {{/* Calculate height based on the aspect ratio of the SVG */}}
+    {{- $svg := unmarshal $img.Content -}}
+    {{- $originalWidth := float (trim (index $svg "-width") "px") -}}
+    {{- $originalHeight := float (trim (index $svg "-height") "px") -}}
+    {{/* Prefer viewBox if it's specified */}}
+    {{- $viewBox := index $svg "-viewBox" }}
+    {{- if $viewBox -}}
+      {{- $coords := split $viewBox " " -}}
+      {{- $originalWidth = sub (float (index $coords 2)) (float (index $coords 0)) -}}
+      {{- $originalHeight = sub (float (index $coords 3)) (float (index $coords 1)) -}}
     {{- end -}}
-  {{ end -}}
-{{- else -}}
-  {{/* Calculate height based on the aspect ratio of the SVG */}}
-  {{- $svg := unmarshal $originalImg.Content -}}
-  {{- $originalWidth := float (trim (index $svg "-width") "px") -}}
-  {{- $originalHeight := float (trim (index $svg "-height") "px") -}}
-  {{/* Prefer viewBox if it's specified */}}
-  {{- $viewBox := index $svg "-viewBox" }}
-  {{- if $viewBox -}}
-    {{- $coords := split $viewBox " " -}}
-    {{- $originalWidth = sub (float (index $coords 2)) (float (index $coords 0)) -}}
-    {{- $originalHeight = sub (float (index $coords 3)) (float (index $coords 1)) -}}
+    {{- $height = int (math.Round (mul
+          $originalHeight
+          (div (float $targetWidth) $originalWidth)
+        ))
+    -}}
   {{- end -}}
-  {{- $height = int (math.Round (mul
-        $originalHeight
-        (div (float $width) $originalWidth)
-      ))
+
+  {{- $img1xWebp := false -}}
+  {{- $img2xWebp := false -}}
+  {{- if and (ne $mediaType "svg") (ne $mediaType "webp") -}}
+    {{- $img1xWebp = $img1x.Process "webp" -}}
+    {{- with $img2x -}}
+      {{- $img2xWebp = .Process "webp" -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- $variants = $variants | append (dict
+        "Img1x" $img1x
+        "Img2x" $img2x
+        "Img1xWebp" $img1xWebp
+        "Img2xWebp" $img2xWebp
+        "Width" $targetWidth
+        "Height" $height
+      )
   -}}
 {{- end -}}
 
-{{- $img1xWebp := false -}}
-{{- $img2xWebp := false -}}
-{{- if and (ne $mediaType "svg") (ne $mediaType "webp") -}}
-  {{- $img1xWebp = $img1x.Process "webp" -}}
-  {{- with $img2x -}}
-    {{- $img2xWebp = .Process "webp" -}}
-  {{- end -}}
+{{- $desktop := index $variants 0 -}}
+{{- $mobile := false -}}
+{{- if gt (len $variants) 1 -}}
+  {{- $mobile = index $variants 1 -}}
 {{- end -}}
 
-{{- if $img1xWebp -}}
-  <picture><source srcset="{{ $img1xWebp.RelPermalink }}{{ with $img2xWebp }}, {{ .RelPermalink }} 2x{{ end }}" type="image/webp">
+{{/* A <picture> is only needed when there is something to choose from */}}
+{{- $usePicture := or $mobile $desktop.Img1xWebp -}}
+
+{{- if $usePicture -}}
+  <picture>
 {{- end -}}
-    <img width="{{ $width }}"{{ with $height }} height="{{ . }}"{{ end }}{{ with $class }} class="{{ . }}"{{ end }} src="{{ $img1x.RelPermalink }}"{{ with $img2x }} srcset="{{ .RelPermalink }} 2x"{{ end }} alt="{{ $alt }}">
-{{- if $img1xWebp -}}
+{{- with $mobile -}}
+  {{- $media := printf "(max-width: %dpx)" (sub $mobileBreakpoint 1) -}}
+  {{- with .Img1xWebp }}<source media="{{ $media }}" srcset="{{ .RelPermalink }}{{ with $mobile.Img2xWebp }}, {{ .RelPermalink }} 2x{{ end }}" type="image/webp" width="{{ $mobile.Width }}"{{ with $mobile.Height }} height="{{ . }}"{{ end }}>{{ end -}}
+  <source media="{{ $media }}" srcset="{{ .Img1x.RelPermalink }}{{ with .Img2x }}, {{ .RelPermalink }} 2x{{ end }}" width="{{ .Width }}"{{ with .Height }} height="{{ . }}"{{ end }}>
+{{- end -}}
+{{- with $desktop.Img1xWebp -}}
+  <source srcset="{{ .RelPermalink }}{{ with $desktop.Img2xWebp }}, {{ .RelPermalink }} 2x{{ end }}" type="image/webp">
+{{- end -}}
+    <img width="{{ $desktop.Width }}"{{ with $desktop.Height }} height="{{ . }}"{{ end }}{{ with $class }} class="{{ . }}"{{ end }} src="{{ $desktop.Img1x.RelPermalink }}"{{ with $desktop.Img2x }} srcset="{{ .RelPermalink }} 2x"{{ end }} alt="{{ $alt }}">
+{{- if $usePicture -}}
   </picture>
 {{- end -}}
