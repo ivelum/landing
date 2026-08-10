@@ -152,7 +152,13 @@ when cash is tight. On the other hand, if you're not satisfied with their work,
 parting ways with someone you hired is far simpler.
 
 
-[![Free Fractional CTO services from ivelum](_no-lightbox-free-fractional-cto.png)](/fractional-cto/)
+[{{< image
+      src="_no-lightbox-free-fractional-cto.png"
+      width=698
+      alt="Free Fractional CTO services from ivelum"
+      mobileSrc="_no-lightbox-mobile-free-fractional-cto-services.png"
+      mobileWidth=350
+>}}](/fractional-cto/)
 
 
 ## Bottom line
