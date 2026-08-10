@@ -152,6 +152,9 @@ when cash is tight. On the other hand, if you're not satisfied with their work,
 parting ways with someone you hired is far simpler.
 
 
+[![Free Fractional CTO services from ivelum](_no-lightbox-free-fractional-cto-services.png)](/fractional-cto/)
+
+
 ## Bottom line
 
 Even in the age of AI, building a competitive technology startup still requires
