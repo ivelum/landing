@@ -153,11 +153,11 @@ parting ways with someone you hired is far simpler.
 
 
 [{{< image
-      src="_no-lightbox-free-fractional-cto.png"
+      src="_no-lightbox-fractional-cto.png"
       width=698
       alt="Free Fractional CTO services from ivelum"
-      mobileSrc="_no-lightbox-mobile-free-fractional-cto-services.png"
-      mobileWidth=350
+      mobileSrc="_no-lightbox-fractional-cto-mobile.png"
+      mobileWidth=360
 >}}](/fractional-cto/)
 
 
