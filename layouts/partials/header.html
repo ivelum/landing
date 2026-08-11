@@ -50,16 +50,16 @@
             {{- end }}
           {{- end }}
         </div>
-        <div class="header--button-wrapper">
-          <a
-            class="header--button"
-            href="{{ if .TalkToUsAbsolute }}/contact/#talk{{ else }}#talk{{ end }}"
-            {{ if not .TalkToUsAbsolute }}x-on:click.prevent="talkToUs"{{ end }}
-          >
-            {{ (resources.Get "img/ico-talk.svg").Content | strings.TrimSpace | safeHTML }}
-            Get in touch
-          </a>
-        </div>
+      </div>
+      <div class="header--button-wrapper">
+        <a
+          class="header--button"
+          href="{{ if .TalkToUsAbsolute }}/contact/#talk{{ else }}#talk{{ end }}"
+          {{ if not .TalkToUsAbsolute }}x-on:click.prevent="talkToUs"{{ end }}
+        >
+          {{ (resources.Get "img/ico-talk.svg").Content | strings.TrimSpace | safeHTML }}
+          Get in touch
+        </a>
       </div>
     </div>
     <button
@@ -81,6 +81,8 @@
   import talkToUs from '/js/talk-to-us.js';
 
   const mediaLg = '(min-width: 992px)';
+
+  scrollLock.addScrollableSelector('.header--menu-inner');
 
   document.addEventListener('alpine:init', () => {
 

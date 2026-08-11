@@ -33,6 +33,10 @@
 
   &-small {
     padding: 0.5rem 2.5rem 0.375rem;
+    @media (max-width: 370px) {
+      padding-inline: 1rem;
+      min-width: 100%;
+    }
   }
 
   &-outline-violet {
