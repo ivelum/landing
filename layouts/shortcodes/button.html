@@ -1,0 +1,4 @@
+<a href="{{ .Get "link" }}" class="btn btn-big btn-with-arrow">
+  {{- .Get "title" -}}
+  {{ (resources.Get "img/arrow-button.svg").Content | strings.TrimSpace | safeHTML }}
+</a>

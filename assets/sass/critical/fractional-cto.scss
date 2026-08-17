@@ -19,38 +19,30 @@
       max-width: $container-narrow-max-width;
       text-wrap: balance;
     }
-
-    .fractional-cto--100-percent-free {
-      display: block;
-      margin-bottom: 1rem;
-
-      @include media-up(lg) {
-        display: inline;
-        float: left;
-        margin-right: 2rem;
-      }
-    }
   }
 
   &--section {
-    border-top: 1px solid $border-color-default;
     clear: both;
     display: flex;
     flex-direction: column;
-    margin-top: 3rem;
-    padding-top: 3rem;
     row-gap: 1rem;
+
     @include media-up(lg) {
       flex-direction: row;
-      margin-top: 4rem;
-      padding-top: 4rem;
-    }
-    @include media-up(xl) {
-      margin-top: 5rem;
-      padding-top: 5rem;
     }
 
-    &-number {
+    & + & {
+      border-top: 1px solid $border-color-default;
+      margin-top: 3rem;
+      padding-top: 3rem;
+
+      @include media-up(lg) {
+        margin-top: 4rem;
+        padding-top: 4rem;
+      }
+    }
+
+    &-marker {
       color: $font-color-gray;
       @include media-up(lg) {
         flex: 0 0 percentage(2 / 12);
@@ -103,79 +95,6 @@
         height: auto;
         max-width: 100%;
       }
-
-      > .fractional-cto--person {
-        margin-bottom: 0;
-        margin-top: 2rem;
-        max-width: none;
-        width: 100%;
-        @include media-up(lg) {
-          column-gap: 0;
-          grid-template-columns: percentage(2 / 12) minmax(0, 1fr);
-          margin-left: -20%;
-          margin-top: 3rem;
-          width: 120%;
-        }
-      }
-    }
-  }
-
-  &--person {
-    display: grid;
-    gap: 1.5rem 1rem;
-    grid-template-columns: 5.5rem minmax(0, 1fr);
-    margin-bottom: 3rem;
-    max-width: $container-narrow-max-width;
-    @include media-up(sm) {
-      column-gap: 1.5rem;
-      grid-template-columns: 7.5rem minmax(0, 1fr);
-    }
-  }
-
-  &--avatar {
-    width: 5.5rem;
-    @include media-up(sm) {
-      width: 7.5rem;
-    }
-    @include media-up(lg) {
-      width: 9rem;
-    }
-
-    img {
-      border-radius: 50%;
-      height: auto;
-      margin: 0;
-      width: 100%;
-    }
-  }
-
-  &--bio {
-    color: $font-color-gray;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-
-    > p {
-      font-size: $font-size-default;
-      line-height: 1.6;
-      margin-top: 0.75rem;
-    }
-  }
-
-  &--name {
-    color: $font-color-dark;
-    font-size: $font-size-bigger;
-    line-height: 1.5;
-  }
-
-  &--position {
-    line-height: 1.5;
-  }
-
-  &--action {
-    grid-column: 1 / -1;
-    @include media-up(sm) {
-      grid-column: 2;
     }
   }
 
@@ -183,8 +102,7 @@
     margin-top: 1.5rem;
   }
 
-  .book {
+  .btn-with-arrow {
     margin-top: 1.5rem;
-    text-align: center;
   }
 }

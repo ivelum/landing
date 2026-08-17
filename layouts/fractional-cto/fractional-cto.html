@@ -23,6 +23,28 @@
     </div>
     <article class="container article--content fractional-cto--content">
       {{ .Content }}
+
+      {{- $section := . }}
+      {{- range sort (where .Pages "Params.category" "fractional-cto-template") "File.Path" }}
+      <section class="fractional-cto--section">
+        <div class="fractional-cto--section-marker">
+          {{ with .Params.marker }}{{- . }}{{ end }}
+          {{- $page := . }}
+          {{ with .Params.image }}
+            {{ with $section.Resources.Get . }}
+              {{ partial "image.html" (dict
+                   "Img" .
+                   "Alt" (default "" $page.Params.imageAlt)
+                   "Width" (default 150 $page.Params.imageWidth)
+                 ) }}
+            {{ end }}
+          {{ end }}
+        </div>
+        <div class="fractional-cto--section-body">
+          {{ .Content }}
+        </div>
+      </section>
+      {{- end }}
     </article>
   </div>
 
