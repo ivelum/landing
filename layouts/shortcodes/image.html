@@ -1,6 +1,7 @@
 {{- $src := .Params.src -}}
 {{- $alt := .Params.alt -}}
 {{- $width := .Params.width -}}
+{{- $class := .Params.class -}}
 {{/* Optional: an alternative image for mobile screens */}}
 {{- $mobileSrc := .Params.mobileSrc -}}
 {{- $mobileWidth := .Params.mobileWidth -}}
@@ -24,6 +25,7 @@
 {{- partial "image.html" (dict
   "Img" $img
   "Alt" $alt
+  "Class" $class
   "Width" $width
   "MobileImg" $mobileImg
   "MobileWidth" $mobileWidth
