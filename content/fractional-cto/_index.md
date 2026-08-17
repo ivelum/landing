@@ -3,7 +3,18 @@ title: Fractional CTO services — free for our clients
 description: Get a Fractional CTO for free when hiring a development team from us. Elsewhere, it costs thousands of dollars monthly. With us, it's included.
 ---
 
-# Get a Fractional CTO
+# Free Fractional CTO services
+
+{{< image
+  src="img/100-percent-free.png"
+  alt="100% free"
+  width=150
+  class="fractional-cto--100-percent-free"
+>}}
+
+A unique offering from ivelum: Free Fractional CTO services for every client.
+Whether you hire a full development team or a single developer from us, you’ll
+get access to a Fractional CTO at no additional cost.
 
 {{< fractional-cto-section
   number="01"

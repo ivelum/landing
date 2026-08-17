@@ -19,10 +19,22 @@
       max-width: $container-narrow-max-width;
       text-wrap: balance;
     }
+
+    .fractional-cto--100-percent-free {
+      display: block;
+      margin-bottom: 1rem;
+
+      @include media-up(lg) {
+        display: inline;
+        float: left;
+        margin-right: 2rem;
+      }
+    }
   }
 
   &--section {
     border-top: 1px solid $border-color-default;
+    clear: both;
     display: flex;
     flex-direction: column;
     margin-top: 3rem;
