@@ -48,10 +48,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: '0.136.5'
-          extended: true
+      - name: Install Hugo
+        env:
+          HUGO_VERSION: '0.165.0'
+          HUGO_SHA256: '4144125d650f6eb28afe6ff5b67edba611b9b06852d545d5b32aeaa434c0f863'
+        run: |
+          archive="$RUNNER_TEMP/hugo.tar.gz"
+          curl --fail --silent --show-error --location \
+            "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_withdeploy_${HUGO_VERSION}_linux-amd64.tar.gz" \
+            --output "$archive"
+          echo "${HUGO_SHA256}  ${archive}" | sha256sum --check
+          tar -xzf "$archive" -C "$RUNNER_TEMP" hugo
+          "$RUNNER_TEMP/hugo" version
+          "$RUNNER_TEMP/hugo" deploy --help > /dev/null
+          echo "$RUNNER_TEMP" >> "$GITHUB_PATH"
       - env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

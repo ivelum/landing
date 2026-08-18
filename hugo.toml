@@ -1,5 +1,5 @@
 baseURL = 'https://ivelum.com/'
-languageCode = 'en-us'
+locale = 'en-US'
 title = "ivelum"
 disableKinds = ['taxonomy', 'term']
 

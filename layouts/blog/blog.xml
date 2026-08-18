@@ -14,7 +14,7 @@
     <title>{{ .Site.Title }} — blog</title>
     <link>{{ .Permalink }}</link>
     <description>Experts in software development</description>
-    <language>{{ site.Language.LanguageCode }}</language>
+    <language>{{ site.Language.Locale }}</language>
     {{ with .Site.Copyright }}<copyright>{{ . }}</copyright>{{ end }}
     {{ if not .Date.IsZero }}<lastBuildDate>{{ .Date.Format "2006-01-02T15:04:05-0700" | safeHTML }}</lastBuildDate>{{ end }}
     {{- with .OutputFormats.Get "RSS" }}
