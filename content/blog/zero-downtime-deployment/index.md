@@ -6,7 +6,7 @@ author: Denis Stebunov
 date: 2025-02-18T12:54:00+0200
 ---
 
-{{< youtube TR3TADaqeLg >}}
+{{< youtube id="TR3TADaqeLg" title="Zero-downtime deployment of web applications // Working Software conference 2025" >}}
 
 ---
 

@@ -7,7 +7,7 @@ date: 2025-01-29T10:30:00+0200
 ---
 
 
-{{< youtube _7fAZFaIwRc >}}
+{{< youtube id="_7fAZFaIwRc" title="You might not need staging" >}}
 
 ---
 

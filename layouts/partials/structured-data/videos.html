@@ -1,0 +1,21 @@
+{{- $page := . -}}
+{{- $videos := slice -}}
+{{- $shortcodePattern := `{{<\s*youtube\s+(id\s*=\s*)?["']?([A-Za-z0-9_-]{11})[^>]*>}}` -}}
+{{- range findRESubmatch $shortcodePattern .RawContent -}}
+  {{- $id := index . 2 -}}
+  {{- $name := $page.Title -}}
+  {{- $titleMatches := findRESubmatch `title\s*=\s*["]([^"]+)["]` (index . 0) -}}
+  {{- with $titleMatches -}}
+    {{- $name = index (index . 0) 1 -}}
+  {{- end -}}
+  {{- $videos = $videos | append (dict
+    "@type" "VideoObject"
+    "name" $name
+    "description" $page.Description
+    "thumbnailUrl" (printf "https://i.ytimg.com/vi/%s/hqdefault.jpg" $id)
+    "uploadDate" ($page.Date.Format "2006-01-02T15:04:05Z07:00")
+    "embedUrl" (printf "https://www.youtube.com/embed/%s" $id)
+    "url" (printf "https://www.youtube.com/watch?v=%s" $id)
+  ) -}}
+{{- end -}}
+{{- return $videos -}}

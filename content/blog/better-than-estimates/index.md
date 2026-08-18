@@ -6,7 +6,7 @@ author: Denis Stebunov
 date: 2025-03-13T10:22:00+0200
 ---
 
-{{< youtube cgqMP9G6CEc >}}
+{{< youtube id="cgqMP9G6CEc" title="That's why you're slow—four practical alternatives to estimates" >}}
 
 ---
 

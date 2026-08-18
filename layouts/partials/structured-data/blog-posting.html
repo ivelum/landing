@@ -26,6 +26,10 @@
 {{- with .Resources.Get .Params.thumbnail -}}
   {{- $schema = merge $schema (dict "image" .Permalink) -}}
 {{- end -}}
+{{- $videos := partial "structured-data/videos.html" . -}}
+{{- with $videos -}}
+  {{- $schema = merge $schema (dict "video" .) -}}
+{{- end -}}
 <script type="application/ld+json">
   {{- $schema | jsonify | safeJS -}}
 </script>

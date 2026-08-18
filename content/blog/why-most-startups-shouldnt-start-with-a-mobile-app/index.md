@@ -6,7 +6,7 @@ author: Denis Stebunov
 date: 2025-03-19T14:37:00+0200
 ---
 
-{{< youtube Nceg40iF_I0 >}}
+{{< youtube id="Nceg40iF_I0" title="Why you shouldn't start with a mobile app" >}}
 
 ---
 

@@ -6,7 +6,7 @@ author: Denis Stebunov
 date: 2025-06-15T09:15:00+0200
 ---
 
-{{< youtube oSqUybBlgHQ >}}
+{{< youtube id="oSqUybBlgHQ" title="How to balance Unit, Integration, and E2E tests? (The Pyramid is NOT the answer)" >}}
 
 ---
 If you're interested in automated testing, you might have seen some
