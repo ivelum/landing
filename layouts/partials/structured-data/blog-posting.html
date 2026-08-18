@@ -1,0 +1,31 @@
+{{- $publisher := dict
+  "@type" "Organization"
+  "name" .Site.Title
+  "url" .Site.BaseURL
+  "logo" (dict
+    "@type" "ImageObject"
+    "url" (absURL "img/favicon/android-chrome-512x512.png")
+  )
+-}}
+{{- $schema := dict
+  "@context" "https://schema.org"
+  "@type" "BlogPosting"
+  "headline" .Title
+  "description" .Description
+  "url" .Permalink
+  "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)
+  "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00")
+  "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
+  "author" (dict "@type" "Person" "name" .Params.author)
+  "publisher" $publisher
+  "wordCount" .WordCount
+  "timeRequired" (printf "PT%dM" .ReadingTime)
+  "articleSection" "Blog"
+  "inLanguage" "en"
+-}}
+{{- with .Resources.Get .Params.thumbnail -}}
+  {{- $schema = merge $schema (dict "image" .Permalink) -}}
+{{- end -}}
+<script type="application/ld+json">
+  {{- $schema | jsonify | safeJS -}}
+</script>

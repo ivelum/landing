@@ -2,6 +2,10 @@
   {{- partial "styles.html" "article" }}
 {{- end }}
 
+{{- define "structured-data" }}
+  {{- partial "structured-data/blog-posting.html" . }}
+{{- end }}
+
 {{- define "header" }}
   {{ partial "header.html" (dict
     "RelPermalink" .RelPermalink

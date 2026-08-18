@@ -45,6 +45,7 @@
   <meta name="twitter:title" content="{{ .Title }}">
   <meta name="twitter:description" content="{{ .Description }}">
   <meta name="twitter:url" content="{{ .Permalink }}">
+{{- block "structured-data" . }}{{- end }}
   <script type="importmap">
     {
       "imports": {
