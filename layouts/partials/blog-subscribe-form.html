@@ -47,7 +47,6 @@
   </div>
 
   <script type="module">
-    import * as Sentry from '@sentry/browser';
     import Alpine from "alpinejs";
 
     const isProduction = {{hugo.IsProduction}};
@@ -85,11 +84,6 @@
             if (this.formSent) {
               form.reset();
             }
-          } catch (e) {
-            Sentry.withScope((scope) => {
-              scope.setExtra('form_data', data);
-              Sentry.captureException(e);
-            });
           } finally {
             this.submitting = false;
           }
