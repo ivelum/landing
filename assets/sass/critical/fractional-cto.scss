@@ -88,6 +88,8 @@
         padding: 0;
 
         li {
+          margin-bottom: 1rem;
+
           strong {
             display: block;
             font-size: 1.225rem;
@@ -95,9 +97,9 @@
 
           @include media-up(lg) {
             display: inline-block;
-            margin-right: 1rem;
+            margin-right: 2rem;
             vertical-align: top;
-            width: 46%;
+            width: 45%;
           }
         }
       }
@@ -106,6 +108,59 @@
         display: block;
         height: auto;
         max-width: 100%;
+      }
+
+      details {
+        margin-top: 1rem;
+        width: 100%;
+
+        summary {
+          align-items: center;
+          cursor: pointer;
+          display: flex;
+          font-size: 1.125rem;
+          line-height: 1.6;
+          list-style: none;
+          min-height: 3.5rem;
+          padding-left: 2rem;
+          position: relative;
+
+          @include media-up(lg) {
+            font-size: 1.225rem;
+          }
+
+          &::-webkit-details-marker {
+            display: none;
+          }
+
+          &::after {
+            border-bottom: 2px solid currentColor;
+            border-right: 2px solid currentColor;
+            content: '';
+            height: 0.5rem;
+            left: 0.25rem;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%) rotate(-45deg);
+            transition: transform 0.15s ease-in-out;
+            width: 0.5rem;
+          }
+
+          &:focus-visible {
+            outline: 2px solid currentColor;
+            outline-offset: 0.25rem;
+          }
+        }
+
+        &[open] summary::after {
+          transform: translateY(-70%) rotate(45deg);
+        }
+
+        p {
+          border-left: 2px solid $font-color-dark;
+          margin: 0 0.625rem 1rem;
+          padding: 0 1.5rem;
+        }
       }
     }
   }
