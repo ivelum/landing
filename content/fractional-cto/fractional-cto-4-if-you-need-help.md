@@ -6,36 +6,30 @@ marker: 04 /
 ## If you need help with...
 
 - **Building and scaling your startup**
-We work with startups at every stage, from raw ideas to millions of users and
-$100M+ exits. We understand the unique needs of startups and can support
-founders across the entire journey, from fundraising and building to scaling
-and successful exits.
+We support startups at every stage, from idea to millions of users and $100M+
+exits, helping founders fundraise, build, scale, and exit successfully.
 
 - **Shipping fast**
-Responsible use of AI, combined with Continuous Delivery and DevOps best
-practices, is a recipe for success. Most of the teams we work with deploy to
-production multiple times a day while maintaining excellent uptime.
+AI, Continuous Delivery, and DevOps best practices are a proven recipe for
+success. Most teams we work with deploy to production multiple times a day.
 
 - **Improving quality and uptime**
-We’ve seen many systems struggle to serve users reliably, and the root cause is
-rarely a single issue. There could be problems with software architecture,
-development process, infrastructure, or something else. We'll help you identify
-and fix these issues.
+We help identify and fix the issues that keep systems from serving users
+reliably, whether they stem from architecture, development processes,
+or infrastructure.
 
 - **Optimizing costs**
-Choosing vendors, analyzing and optimizing IT spending, deciding whether to
-build or buy, and planning your team’s roadmap all have a direct impact on your
-budget. We’ll help you make the right decisions in each of these areas.
+Choosing vendors, optimizing IT spend, deciding whether to build or buy, and
+planning your roadmap all affect your budget. We help you make the right calls.
 
 - **Security and compliance**
-Most of the projects we work with are subject to compliance standards, such as
-GDPR, CCPA, SOC 2, HIPAA, or FedRAMP. We'll help you establish a secure
-development process and infrastructure to meet your organization's requirements.
+We help you build secure development processes and infrastructure while
+preparing for compliance with standards and regulations like GDPR, CCPA, SOC 2,
+HIPAA, or FedRAMP.
 
 - **Hiring your full-time CTO**
-Our ultimate goal is to help your business succeed, even if that means you
-eventually no longer need a Fractional CTO. When that time comes, we’ll help
-you find the right full-time CTO and support a smooth transition by helping them
-get up to speed.
+Our ultimate goal is to help your business succeed, even if that means
+outgrowing the need for a Fractional CTO. When the time comes, we’ll help you
+find the right full-time CTO and ensure a smooth transition.
 
 {{< button title="Book a free consultation" link="#talk" >}}
