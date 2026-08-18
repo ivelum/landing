@@ -3,7 +3,7 @@ category: fractional-cto-template
 marker: 03 /
 ---
 
-## Why we provide a Fractional CTO for free?
+## Why do we provide a Fractional CTO for free?
 
 The reason is simple - we truly want your project to succeed, not just ship
 software. Many of our clients come to us through referrals because they've
