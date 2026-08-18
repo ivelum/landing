@@ -7,8 +7,7 @@
     "url" (absURL "img/favicon/android-chrome-512x512.png")
   )
 -}}
-{{- $schema := dict
-  "@context" "https://schema.org"
+{{- $blogPosting := dict
   "@type" "BlogPosting"
   "headline" .Title
   "description" .Description
@@ -24,12 +23,38 @@
   "inLanguage" "en"
 -}}
 {{- with .Resources.Get .Params.thumbnail -}}
-  {{- $schema = merge $schema (dict "image" .Permalink) -}}
+  {{- $blogPosting = merge $blogPosting (dict "image" .Permalink) -}}
 {{- end -}}
 {{- $videos := partial "structured-data/videos.html" . -}}
 {{- with $videos -}}
-  {{- $schema = merge $schema (dict "video" .) -}}
+  {{- $blogPosting = merge $blogPosting (dict "video" .) -}}
 {{- end -}}
+{{- $breadcrumbs := dict
+  "@type" "BreadcrumbList"
+  "itemListElement" (slice
+    (dict
+      "@type" "ListItem"
+      "position" 1
+      "name" "Home"
+      "item" .Site.BaseURL
+    )
+    (dict
+      "@type" "ListItem"
+      "position" 2
+      "name" "Blog"
+      "item" .CurrentSection.Permalink
+    )
+    (dict
+      "@type" "ListItem"
+      "position" 3
+      "name" .Title
+    )
+  )
+-}}
+{{- $schema := dict
+  "@context" "https://schema.org"
+  "@graph" (slice $blogPosting $breadcrumbs)
+-}}
 <script type="application/ld+json">
   {{- $schema | jsonify | safeJS -}}
 </script>
