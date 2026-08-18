@@ -5,54 +5,37 @@ marker: 04 /
 
 ## If you need help with...
 
-### Building and scaling your startup
+- **Building and scaling your startup**
+We work with startups at every stage, from raw ideas to millions of users and
+$100M+ exits. We understand the unique needs of startups and can support
+founders across the entire journey, from fundraising and building to scaling
+and successful exits.
 
-I understand startup needs deeply. I’m building startups myself, currently my
-4th one called [Teamplify](https://teamplify.com), and as a Fractional CTO,
-I help other startup founders all the time, from raw ideas to millions of users
-and $100M+ exits.
+- **Shipping fast**
+Responsible use of AI, combined with Continuous Delivery and DevOps best
+practices, is a recipe for success. Most of the teams we work with deploy to
+production multiple times a day while maintaining excellent uptime.
 
-### Shipping fast
+- **Improving quality and uptime**
+We’ve seen many systems struggle to serve users reliably, and the root cause is
+rarely a single issue. There could be problems with software architecture,
+development process, infrastructure, or something else. We'll help you identify
+and fix these issues.
 
-I’m a huge fan of Continuous Delivery and DevOps. Most of the teams I work
-with deploy to production multiple times a day while maintaining excellent
-uptime. I can help your team achieve the same.
+- **Optimizing costs**
+Choosing vendors, analyzing and optimizing IT spending, deciding whether to
+build or buy, and planning your team’s roadmap all have a direct impact on your
+budget. We’ll help you make the right decisions in each of these areas.
 
-### Improving quality and uptime
+- **Security and compliance**
+Most of the projects we work with are subject to compliance standards, such as
+GDPR, CCPA, SOC 2, HIPAA, or FedRAMP. We'll help you establish a secure
+development process and infrastructure to meet your organization's requirements.
 
-I’ve seen many systems struggle to serve users reliably, and it’s rarely just
-a single issue that needs fixing. There could be problems with software
-architecture, development process, infrastructure, production monitoring,
-or something else. I can help you identify and prioritize these issues
-and implement solutions.
-
-### Choosing vendors and optimizing costs
-
-Cutting tens of thousands of dollars from your AWS bill. Finding solutions
-that are both better and more cost-effective than what you have today.
-Eliminating work that doesn't need to be done in the first place. That's what
-a good CTO does, and as your Fractional CTO, I'll do the same.
-
-### Security and compliance
-
-Most of the projects in my practice handle sensitive data and are subject to
-various compliance standards, including GDPR/CCPA, SOC 2, HIPAA, FedRAMP,
-and others. I can help you organize a secure development process and
-infrastructure to meet your organization's requirements.
-
-### Working with a legacy system
-
-Legacy systems come with their own unique challenges and can be difficult to
-work with. While rewriting them from scratch may seem tempting, it's rarely
-the best approach. I can help you stabilize your existing system, improve its
-performance and reliability, and modernize it incrementally without disrupting
-your operations.
-
-### Hiring your full-time CTO
-
-My ultimate goal is to make your business successful, and that means my role
-may eventually no longer be needed. When the time comes, I’ll help you find
-the right full-time CTO and ensure a smooth transition by helping them get
-up to speed.
+- **Hiring your full-time CTO**
+Our ultimate goal is to help your business succeed, even if that means you
+eventually no longer need a Fractional CTO. When that time comes, we’ll help
+you find the right full-time CTO and support a smooth transition by helping them
+get up to speed.
 
 {{< button title="Book a free consultation" link="#talk" >}}
