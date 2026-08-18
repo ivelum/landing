@@ -5,7 +5,7 @@ marker: 02 /
 
 ## Meet your Fractional CTO
 
-{{< youtube i1U7GjNT6bc >}}
+{{< youtube id="i1U7GjNT6bc" title="What a Fractional CTO does — and why I'm doing it for free" >}}
 
 Hi, I’m **Denis Stebunov**. I'm deeply technical, but I also like to work with
 people. I have over 25 years of experience in software, including hands-on
