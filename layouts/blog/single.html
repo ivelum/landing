@@ -15,7 +15,7 @@
 {{ end }}
 
 {{- define "main" }}
-  <div class="page article">
+  <main class="page article">
     <div class="article--back">
       <a class="article--back-link" href="/blog/">
         {{ (resources.Get "img/ico-arrow-left.svg").Content | strings.TrimSpace | safeHTML }}
@@ -84,7 +84,7 @@
       {{ partial "blog-subscribe-form.html" . }}
     </article>
     {{ partial "blog-navigation.html" . }}
-  </div>
+  </main>
 {{- end }}
 
 {{- define "footer" }}

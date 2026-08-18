@@ -10,15 +10,11 @@
   ) }}
 {{- end }}
 {{- define "main" }}
-  <div class="page fractional-cto">
+  <main class="page fractional-cto">
     <div class="container fractional-cto--back">
-      <a
-        class="article--back-link"
-        data-back-link
-        href="/services/"
-      >
+      <a class="article--back-link" href="/services/">
         {{ (resources.Get "img/ico-arrow-left.svg").Content | strings.TrimSpace | safeHTML }}
-        Back
+        All services
       </a>
     </div>
     <article class="container article--content fractional-cto--content">
@@ -46,19 +42,5 @@
       </section>
       {{- end }}
     </article>
-  </div>
-
-  <script type="module">
-    const backLink = document.querySelector('[data-back-link]');
-    const referrer = document.referrer && new URL(document.referrer);
-
-    if (
-      backLink
-      && referrer
-      && referrer.origin === window.location.origin
-      && referrer.pathname !== window.location.pathname
-    ) {
-      backLink.href = referrer.href;
-    }
-  </script>
+  </main>
 {{- end }}

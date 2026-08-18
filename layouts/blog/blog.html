@@ -15,7 +15,7 @@
   {{- if hugo.IsProduction }}
     {{- $posts = where $posts "Params.sitemap.disable" "ne" true }}
   {{- end }}
-  <div class="page blog">
+  <main class="page blog">
     <div class="container">
       {{ partial "shared/youtube-latest.html" (dict
         "Title" "The latest videos"
@@ -73,7 +73,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
 {{- end }}
 
 {{- define "footer" }}
