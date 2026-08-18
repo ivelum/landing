@@ -10,6 +10,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  width: 100%;
   @include media-up(lg) {
     gap: 1rem;
   }

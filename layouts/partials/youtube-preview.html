@@ -4,12 +4,18 @@
   data-pswp-youtube-id="{{ .Id }}"
 >
   <div class="youtube-preview--cover">
-    <img
-      src="https://img.youtube.com/vi/{{ .Id }}/hqdefault.jpg"
-      alt="{{ .Title }}"
-    >
+    <picture>
+      <source
+        media="(min-width: 576px)"
+        srcset="https://img.youtube.com/vi/{{ .Id }}/maxresdefault.jpg"
+      >
+      <img
+        src="https://img.youtube.com/vi/{{ .Id }}/hqdefault.jpg"
+        alt="{{ .Title }}"
+      >
+    </picture>
   </div>
-  {{ with .Title }}
-    <p class="youtube-preview--title">{{- . -}}</p>
+  {{ if .ShowTitle }}
+    <p class="youtube-preview--title">{{- .Title -}}</p>
   {{ end }}
 </a>
