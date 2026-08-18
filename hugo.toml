@@ -16,6 +16,11 @@ style = 'friendly'
 home = ['html']
 section = ['html']
 
+[[deployment.matchers]]
+pattern = '^.+\.(css|js|mjs|svg|woff2?|ttf|png|jpe?g|gif|webp|avif|ico|pdf|webmanifest)$'
+cacheControl = 'public, max-age=86400'
+force = true
+
 [[deployment.targets]]
 name = "s3"
 URL = "s3://static.new.ivelum.com?region=eu-north-1"

@@ -11,7 +11,7 @@
 {{- with resources.Get (printf "sass/non-critical/%s.scss" $name) }}
   {{- $css := . | toCSS (dict "transpiler" "libsass") }}
   {{- if hugo.IsProduction }}
-    {{- $css = $css | minify }}
+    {{- $css = $css | minify | fingerprint }}
   {{- end }}
   <link rel="preload" href="{{ $css.RelPermalink }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="{{ $css.RelPermalink }}"></noscript>

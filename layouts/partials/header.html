@@ -75,10 +75,14 @@
 </div>
 
 <script type="module">
+  {{- $talkToUsJS := resources.Get "js/talk-to-us.js" -}}
+  {{- if hugo.IsProduction -}}
+    {{- $talkToUsJS = $talkToUsJS | fingerprint -}}
+  {{- end }}
   import Alpine from "alpinejs";
   import scrollLock from 'scroll-lock';
 
-  import talkToUs from '/js/talk-to-us.js';
+  import talkToUs from '{{ $talkToUsJS.RelPermalink }}';
 
   const mediaLg = '(min-width: 992px)';
 

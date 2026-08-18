@@ -30,6 +30,10 @@
     {{ end }}
   </div>
   <script type="module">
-    import '/js/youtube.js';
+    {{- $youtubeJS := resources.Get "js/youtube.js" -}}
+    {{- if hugo.IsProduction -}}
+      {{- $youtubeJS = $youtubeJS | fingerprint -}}
+    {{- end }}
+    import '{{ $youtubeJS.RelPermalink }}';
   </script>
 {{ end }}
