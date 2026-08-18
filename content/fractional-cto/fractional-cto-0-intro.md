@@ -2,6 +2,7 @@
 category: fractional-cto-template
 image: img/100-percent-free.png
 imageAlt: 100% Free
+columnOrder: reverse
 ---
 
 A unique offering from ivelum: Free Fractional CTO services for every client.

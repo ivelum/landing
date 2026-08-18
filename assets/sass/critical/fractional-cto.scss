@@ -31,6 +31,12 @@
       flex-direction: row;
     }
 
+    &-column-reverse {
+      @include media-up(lg) {
+        flex-direction: row-reverse;
+      }
+    }
+
     & + & {
       border-top: 1px solid $border-color-default;
       margin-top: 3rem;

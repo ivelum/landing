@@ -26,7 +26,7 @@
 
       {{- $section := . }}
       {{- range sort (where .Pages "Params.category" "fractional-cto-template") "File.Path" }}
-      <section class="fractional-cto--section">
+      <section class="fractional-cto--section{{- if eq "reverse" .Params.columnOrder }} fractional-cto--section-column-reverse{{ end }}">
         <div class="fractional-cto--section-marker">
           {{ with .Params.marker }}{{- . }}{{ end }}
           {{- $page := . }}
