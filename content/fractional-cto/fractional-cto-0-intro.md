@@ -1,7 +1,7 @@
 ---
 category: fractional-cto-template
-image: img/100-percent-free.png
-imageAlt: 100% Free
+image: img/free.svg
+imageAlt: Free
 columnOrder: reverse
 ---
 
