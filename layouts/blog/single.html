@@ -3,7 +3,8 @@
 {{- end }}
 
 {{- define "structured-data" }}
-  {{- partial "structured-data/blog-posting.html" . }}
+  {{ partial "structured-data/breadcrumbs.html" . }}
+  {{ partial "structured-data/blog-posting.html" . }}
 {{- end }}
 
 {{- define "header" }}

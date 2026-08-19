@@ -29,31 +29,9 @@
 {{- with $videos -}}
   {{- $blogPosting = merge $blogPosting (dict "video" .) -}}
 {{- end -}}
-{{- $breadcrumbs := dict
-  "@type" "BreadcrumbList"
-  "itemListElement" (slice
-    (dict
-      "@type" "ListItem"
-      "position" 1
-      "name" "Home"
-      "item" .Site.BaseURL
-    )
-    (dict
-      "@type" "ListItem"
-      "position" 2
-      "name" "Blog"
-      "item" .CurrentSection.Permalink
-    )
-    (dict
-      "@type" "ListItem"
-      "position" 3
-      "name" .Title
-    )
-  )
--}}
 {{- $schema := dict
   "@context" "https://schema.org"
-  "@graph" (slice $blogPosting $breadcrumbs)
+  "@graph" (slice $blogPosting)
 -}}
 <script type="application/ld+json">
   {{- $schema | jsonify | safeJS -}}

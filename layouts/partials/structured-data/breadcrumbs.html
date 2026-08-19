@@ -1,0 +1,33 @@
+{{- /* Build breadcrumbs from Hugo's content tree so they stay in sync with URLs. */ -}}
+{{- $pages := .Ancestors.Reverse | append . -}}
+{{- $items := slice -}}
+{{- $seenURLs := newScratch -}}
+{{- range $page := $pages -}}
+  {{- if not ($seenURLs.Get $page.Permalink) -}}
+  {{- $seenURLs.Set $page.Permalink true -}}
+  {{- $name := $page.Title -}}
+  {{- if $page.IsHome -}}
+    {{- $name = "Home" -}}
+  {{- else if $page.Params.breadcrumbTitle -}}
+    {{- $name = $page.Params.breadcrumbTitle -}}
+  {{- else if $page.Params.caption -}}
+    {{- $name = $page.Params.caption -}}
+  {{- else if eq $page.Kind "section" -}}
+    {{- $name = path.Base (strings.TrimSuffix "/" $page.RelPermalink) | humanize | title -}}
+  {{- end -}}
+  {{- $items = $items | append (dict
+    "@type" "ListItem"
+    "position" (add (len $items) 1)
+    "name" $name
+    "item" $page.Permalink
+  ) -}}
+  {{- end -}}
+{{- end -}}
+{{- $schema := dict
+  "@context" "https://schema.org"
+  "@type" "BreadcrumbList"
+  "itemListElement" $items
+-}}
+<script type="application/ld+json">
+  {{- $schema | jsonify | safeJS -}}
+</script>
