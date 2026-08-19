@@ -5,6 +5,9 @@
 
 {{- define "styles" }}
   {{- partial "styles.html" "home" }}
+  {{- with .Resources.Get "img/hero-video-cover.png" }}
+  <link rel="preload" as="image" href="{{ .RelPermalink }}" fetchpriority="high">
+  {{- end }}
 {{- end }}
 
 {{- define "main" }}
@@ -73,7 +76,6 @@
       <source type="video/mp4" src='{{(.Resources.Get "img/hero-video.mp4").RelPermalink}}' />
       <img
         class="home--hero-video"
-        fetchpriority="high"
         src='{{ (.Resources.Get "img/hero-video-cover.png").RelPermalink }}'
         alt="Experts in software development"
       />
