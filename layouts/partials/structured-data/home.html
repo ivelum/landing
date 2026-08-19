@@ -1,0 +1,60 @@
+{{- $organizationID := printf "%s#organization" .Site.BaseURL -}}
+{{- $websiteID := printf "%s#website" .Site.BaseURL -}}
+{{- $organization := dict
+  "@type" "Organization"
+  "@id" $organizationID
+  "name" .Site.Title
+  "url" .Site.BaseURL
+  "description" .Description
+  "logo" (dict
+    "@type" "ImageObject"
+    "@id" (printf "%s#logo" .Site.BaseURL)
+    "url" (absURL "img/favicon/android-chrome-512x512.png")
+    "contentUrl" (absURL "img/favicon/android-chrome-512x512.png")
+    "width" 512
+    "height" 512
+  )
+  "foundingDate" "2003"
+  "email" "info@ivelum.com"
+  "telephone" "+37067527718"
+  "contactPoint" (dict
+    "@type" "ContactPoint"
+    "contactType" "sales"
+    "email" "info@ivelum.com"
+    "telephone" "+37067527718"
+  )
+  "address" (slice
+    (dict
+      "@type" "PostalAddress"
+      "streetAddress" "21 Upės g."
+      "addressLocality" "Vilnius"
+      "postalCode" "LT-08128"
+      "addressCountry" "LT"
+    )
+    (dict
+      "@type" "PostalAddress"
+      "streetAddress" "45 Calle Beire"
+      "addressLocality" "Madrid"
+      "postalCode" "28039"
+      "addressCountry" "ES"
+    )
+  )
+  "sameAs" (slice
+    "https://www.linkedin.com/company/ivelum/"
+    "https://www.youtube.com/@ivelum"
+  )
+-}}
+{{- $website := dict
+  "@type" "WebSite"
+  "@id" $websiteID
+  "url" .Site.BaseURL
+  "name" .Site.Title
+  "publisher" (dict "@id" $organizationID)
+-}}
+{{- $schema := dict
+  "@context" "https://schema.org"
+  "@graph" (slice $website $organization)
+-}}
+<script type="application/ld+json">
+  {{- $schema | jsonify | safeJS -}}
+</script>
