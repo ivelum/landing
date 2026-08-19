@@ -17,7 +17,7 @@ home = ['html']
 section = ['html']
 
 [[deployment.matchers]]
-pattern = '^.+\.(css|js|mjs|svg|woff2?|ttf|png|jpe?g|gif|webp|avif|ico|pdf|webmanifest)$'
+pattern = '^.+\.(css|js|mjs|svg|woff2?|ttf|png|jpe?g|gif|webp|avif|ico|pdf|mp4|webm|webmanifest)$'
 cacheControl = 'public, max-age=2592000'
 force = true
 
