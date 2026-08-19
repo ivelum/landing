@@ -67,9 +67,16 @@
 </div>
 
 <script type="module">
-  import scrollLock from 'scroll-lock';
-
   const mediaLg = '(min-width: 992px)';
+  let scrollLockPromise;
+
+  const getScrollLock = () => {
+    scrollLockPromise ||= import('scroll-lock').then(({ default: scrollLock }) => {
+      scrollLock.addScrollableSelector('.header--menu-inner');
+      return scrollLock;
+    });
+    return scrollLockPromise;
+  };
 
   const talkToUs = () => {
     window.talk.scrollIntoView({ behavior: 'smooth' });
@@ -77,8 +84,6 @@
       { preventScroll: true },
     );
   };
-
-  scrollLock.addScrollableSelector('.header--menu-inner');
 
   document.querySelectorAll('.header').forEach((header) => {
     const logo = header.querySelector('.header--logo');
@@ -96,13 +101,16 @@
     const closeMenu = () => {
       isMenuOpen = false;
       renderMenu();
-      scrollLock.enablePageScroll();
+      scrollLockPromise?.then((scrollLock) => {
+        scrollLock.enablePageScroll();
+      });
     };
 
-    const openMenu = () => {
+    const openMenu = async () => {
       isMenuOpen = true;
       renderMenu();
-      scrollLock.disablePageScroll();
+      const scrollLock = await getScrollLock();
+      if (isMenuOpen) scrollLock.disablePageScroll();
     };
 
     burger.addEventListener('click', () => {
