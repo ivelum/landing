@@ -65,7 +65,7 @@ High-level tests, like integration or end-to-end, provide the best confidence.
 Maybe you've seen memes on the internet like this. If all the low-level tests
 pass, it doesn't guarantee that our app works as a whole.
 
-![Two unit tests, zero integration tests](two-unit-tests-zero-integration-tests.gif)
+![Two unit tests, zero integration tests](two-unit-tests-zero-integration-tests.webp)
 
 Confidence is the most important reason why we even bother with testing. If we
 spend time and effort on testing, but the confidence level remains low - it
