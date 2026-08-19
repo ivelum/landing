@@ -1,7 +1,7 @@
 {{- $id := .Get "id" | default (.Get 0) -}}
 {{- $title := .Get "title" -}}
 
-{{- partial "youtube-embed.html" (dict
+{{- partial "youtube-preview.html" (dict
   "Id" $id
   "Title" $title
-) }}
+) -}}

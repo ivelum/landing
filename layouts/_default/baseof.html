@@ -83,5 +83,52 @@
   {{ partial "footer.html" }}
 {{- end }}
 
+<script type="module">
+  import PhotoSwipe from 'photoswipe';
+  import 'photoswipe/style.css';
+
+  window.addEventListener('load', function () {
+    document.querySelectorAll('[data-youtube-id]').forEach((el) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const videoId = el.dataset.youtubeId;
+        const title = el.dataset.youtubeTitle;
+        const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=0`;
+
+        if (el.dataset.youtubePopup === 'false') {
+          const iframe = document.createElement('iframe');
+          iframe.src = embedUrl;
+          iframe.title = title;
+          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+          iframe.allowFullscreen = true;
+          iframe.className = 'youtube-preview--iframe';
+          el.replaceWith(iframe);
+          return;
+        }
+
+        const pswp = new PhotoSwipe({
+          dataSource: [
+            {
+              html: `
+                <div class="youtube-modal">
+                  <iframe
+                    src="${embedUrl}"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                    class="youtube-modal-iframe"
+                  ></iframe>
+                </div>
+              `,
+            },
+          ],
+          showHideAnimationType: 'fade',
+        });
+        pswp.init();
+      });
+    });
+  });
+</script>
+
 </body>
 </html>

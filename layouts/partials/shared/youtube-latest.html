@@ -13,6 +13,7 @@
           "Id" .id
           "Title" .title
           "ShowTitle" true
+          "Popup" true
           ) }}
       {{ end }}
     </div>
@@ -29,11 +30,4 @@
       </div>
     {{ end }}
   </div>
-  <script type="module">
-    {{- $youtubeJS := resources.Get "js/youtube.js" -}}
-    {{- if hugo.IsProduction -}}
-      {{- $youtubeJS = $youtubeJS | fingerprint -}}
-    {{- end }}
-    import '{{ $youtubeJS.RelPermalink }}';
-  </script>
 {{ end }}

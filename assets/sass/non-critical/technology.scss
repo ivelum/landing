@@ -121,12 +121,8 @@
       margin-top: 3.75rem;
     }
 
-    .youtube-embed {
+    .youtube-preview {
       margin-top: 1rem;
-      max-width: $container-narrow-max-width;
-      @include media-up(xl) {
-        margin-top: 2rem;
-      }
     }
   }
 }
