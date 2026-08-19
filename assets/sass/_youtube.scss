@@ -16,7 +16,7 @@
   }
 
   &--cover {
-    @include transition(opacity);
+    background: #000;
     border-radius: 0.5rem;
     display: block;
     overflow: hidden;
@@ -30,27 +30,59 @@
       display: block;
     }
 
-    &::before {
+    &::after {
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.72) 0,
+        rgba(0, 0, 0, 0) 34%,
+        rgba(0, 0, 0, 0) 72%,
+        rgba(0, 0, 0, 0.48) 100%
+      );
       content: '';
-      background: center no-repeat url('/img/ico-youtube-colored.svg');
-      background-size: 18%;
-      height: 100%;
+      inset: 0;
+      pointer-events: none;
       position: absolute;
-      width: 100%;
     }
+  }
+
+  &--play {
+    @include transition(transform, filter);
+    background: center / contain no-repeat url('/img/ico-youtube-colored.svg');
+    height: 48px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 69px;
+    z-index: 1;
   }
 
   &--title {
     @include transition(color);
     color: $font-color-default;
+    margin: 0;
   }
 
-  &:hover &--cover {
-    opacity: 0.8;
+  &:hover &--play,
+  &:focus-visible &--play {
+    filter: brightness(1.08);
+    transform: translate(-50%, -50%) scale(1.08);
   }
 
   &:hover &--title {
     color: $primary-orange;
+  }
+
+  &:focus-visible {
+    border-radius: 0.5rem;
+    outline: 3px solid $primary-orange;
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &--play {
+      transition: none;
+    }
   }
 }
 
