@@ -18,7 +18,7 @@ section = ['html']
 
 [[deployment.matchers]]
 pattern = '^.+\.(css|js|mjs|svg|woff2?|ttf|png|jpe?g|gif|webp|avif|ico|pdf|webmanifest)$'
-cacheControl = 'public, max-age=86400'
+cacheControl = 'public, max-age=2592000'
 force = true
 
 [[deployment.targets]]
