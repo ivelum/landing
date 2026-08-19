@@ -20,6 +20,7 @@
         <img
           src="https://img.youtube.com/vi/{{ .Id }}/hqdefault.jpg"
           alt="{{ .Title | default "YouTube video thumbnail" }}"
+          fetchpriority="high"
         >
       </picture>
       <span class="youtube-preview--play" aria-hidden="true"></span>
