@@ -292,18 +292,20 @@ $header-menu-open-duration: 0.3s;
   }
 
   &--burger {
+    align-items: center;
     appearance: none;
     background: transparent;
     border: 0;
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    height: 1.25rem;
+    height: 2.75rem;
     justify-content: center;
+    margin: -0.75rem;
     outline: none;
-    padding: 0;
+    padding: 0.75rem;
     position: relative;
-    width: 1.25rem;
+    width: 2.75rem;
     z-index: 200;
 
     @include media-up(lg) {
@@ -316,19 +318,19 @@ $header-menu-open-duration: 0.3s;
       border-radius: 5px;
       content: '';
       height: 2px;
-      left: 0;
+      left: 0.75rem;
       position: absolute;
       width: 1.25rem;
     }
 
     &::before {
       @include transition(all 0.25s);
-      top: 2px;
+      top: 0.875rem;
     }
 
     &::after {
       @include transition(all 0.25s);
-      bottom: 2px;
+      bottom: 0.875rem;
     }
 
     span {
@@ -350,12 +352,12 @@ $header-menu-open-duration: 0.3s;
     }
 
     &.is-open::before {
-      top: 9px;
+      top: calc(50% - 1px);
       transform: rotate(135deg);
     }
 
     &.is-open::after {
-      bottom: 9px;
+      bottom: calc(50% - 1px);
       transform: rotate(-135deg);
     }
   }
