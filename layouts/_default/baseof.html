@@ -84,12 +84,9 @@
 {{- end }}
 
 <script type="module">
-  import PhotoSwipe from 'photoswipe';
-  import 'photoswipe/style.css';
-
   window.addEventListener('load', function () {
     document.querySelectorAll('[data-youtube-id]').forEach((el) => {
-      el.addEventListener('click', (e) => {
+      el.addEventListener('click', async (e) => {
         e.preventDefault();
         const videoId = el.dataset.youtubeId;
         const title = el.dataset.youtubeTitle;
@@ -105,6 +102,11 @@
           el.replaceWith(iframe);
           return;
         }
+
+        const [{ default: PhotoSwipe }] = await Promise.all([
+          import('photoswipe'),
+          import('photoswipe/style.css'),
+        ]);
 
         const pswp = new PhotoSwipe({
           dataSource: [
