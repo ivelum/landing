@@ -14,7 +14,7 @@
       <div class="header--menu-inner">
         <div class="header--menu-items">
           {{- range site.Menus.main }}
-            {{- if .HasChildren }}
+            {{- if and .HasChildren (ne .Params.dropdown false) }}
               <div class="header--submenu">
                 <div
                   class="header--menu-item with-submenu"

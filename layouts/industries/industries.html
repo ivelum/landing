@@ -1,0 +1,46 @@
+{{- define "styles" }}
+  {{- partial "styles.html" "industries" }}
+{{- end }}
+
+{{- define "header" }}
+  {{ partial "header.html" (dict
+    "RelPermalink" .RelPermalink
+    "LightHeader" true
+    "TalkToUsAbsolute" false
+  ) }}
+{{- end }}
+
+{{- define "main" }}
+  <main class="industries industries--index">
+    <div class="container">
+      <h1 class="industries--index-title">Industries</h1>
+    </div>
+
+    <div class="container">
+      <div class="industries--index-features">
+        <div class="industries--index-list">
+        {{- range sort .Pages "Params.order" }}
+          <a class="industries--index-item" href="{{ .RelPermalink }}">
+            <div class="industries--index-item-title">
+            {{- with .Resources.Get "img/head-image.svg" }}
+              {{ partial "image.html" (dict
+                "Img" .
+                "Alt" ""
+                "Width" 64
+              ) }}
+            {{- end }}
+              <span>{{ .Params.caption }}</span>
+              <span class="industries--index-item-arrow" aria-hidden="true"></span>
+            </div>
+            <div class="industries--index-item-text">{{ .Description }}</div>
+          </a>
+        {{- end }}
+        </div>
+      </div>
+    </div>
+
+    <div class="container industries--index-action">
+      <a class="btn btn-big" href="#talk">Get in touch</a>
+    </div>
+  </main>
+{{- end }}
