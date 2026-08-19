@@ -1,34 +1,28 @@
 <div
   class="header{{ if .LightHeader }} is-light{{ end }}"
   data-scroll-lock-fill-gap
-  x-data="Header"
 >
   <nav class="header--wrapper">
     <a
       aria-label="ivelum"
       class="header--logo"
-      x-bind:class="isMenuOpen && 'is-open'"
       href="/"
     >
       {{ (resources.Get "img/logo.svg").Content | strings.TrimSpace | safeHTML }}
     </a>
-    <div class="header--menu" x-bind:class="isMenuOpen && 'is-open'">
+    <div class="header--menu">
       <div class="header--menu-inner">
         <div class="header--menu-items">
           {{- range site.Menus.main }}
             {{- if .HasChildren }}
-              <div class="header--submenu" x-data="Submenu('{{ .Identifier }}')">
+              <div class="header--submenu">
                 <div
                   class="header--menu-item with-submenu"
-                  x-on:click="toggleSubMenu"
-                  x-bind:class="isSubMenuOpen && 'is-open'"
                 >
                   {{- .Name -}}
                 </div>
                 <div
                   class="header--submenu-items"
-                  x-bind:class="{ 'is-open': isSubMenuOpen, 'is-animate': isAnimate }"
-                  x-on:click.outside="closeSubMenu"
                 >
                   {{- range .Children }}
                     <a
@@ -55,7 +49,7 @@
         <a
           class="header--button"
           href="{{ if .TalkToUsAbsolute }}/contact/#talk{{ else }}#talk{{ end }}"
-          {{ if not .TalkToUsAbsolute }}x-on:click.prevent="talkToUs"{{ end }}
+          {{ if not .TalkToUsAbsolute }}data-talk-to-us{{ end }}
         >
           {{ (resources.Get "img/ico-talk.svg").Content | strings.TrimSpace | safeHTML }}
           Get in touch
@@ -65,8 +59,6 @@
     <button
       type="button"
       class="header--burger"
-      x-bind:class="isMenuOpen && 'is-open'"
-      x-on:click="toggleMenu"
       aria-label="Menu"
     >
       <span></span>
@@ -75,83 +67,96 @@
 </div>
 
 <script type="module">
-  {{- $talkToUsJS := resources.Get "js/talk-to-us.js" -}}
-  {{- if hugo.IsProduction -}}
-    {{- $talkToUsJS = $talkToUsJS | fingerprint -}}
-  {{- end }}
-  import Alpine from "alpinejs";
   import scrollLock from 'scroll-lock';
-
-  import talkToUs from '{{ $talkToUsJS.RelPermalink }}';
 
   const mediaLg = '(min-width: 992px)';
 
+  const talkToUs = () => {
+    window.talk.scrollIntoView({ behavior: 'smooth' });
+    document.querySelector('.form-control--textarea')?.focus(
+      { preventScroll: true },
+    );
+  };
+
   scrollLock.addScrollableSelector('.header--menu-inner');
 
-  document.addEventListener('alpine:init', () => {
+  document.querySelectorAll('.header').forEach((header) => {
+    const logo = header.querySelector('.header--logo');
+    const menu = header.querySelector('.header--menu');
+    const burger = header.querySelector('.header--burger');
+    const checkMediaLg = window.matchMedia(mediaLg);
+    let isMenuOpen = false;
 
-    Alpine.data('Header', () => ({
-      isMenuOpen: false,
+    const renderMenu = () => {
+      logo.classList.toggle('is-open', isMenuOpen);
+      menu.classList.toggle('is-open', isMenuOpen);
+      burger.classList.toggle('is-open', isMenuOpen);
+    };
 
-      init() {
-        this.handleWidthChange = this.handleWidthChange.bind(this);
-        this.checkMediaLg = window.matchMedia(mediaLg);
-        this.checkMediaLg.addEventListener('change', this.handleWidthChange);
-      },
+    const closeMenu = () => {
+      isMenuOpen = false;
+      renderMenu();
+      scrollLock.enablePageScroll();
+    };
 
-      destroy() {
-        this.checkMediaLg.removeEventListener('change', this.handleWidthChange);
-      },
+    const openMenu = () => {
+      isMenuOpen = true;
+      renderMenu();
+      scrollLock.disablePageScroll();
+    };
 
-      handleWidthChange(e) {
-        if (e.matches) this.closeMenu();
-      },
+    burger.addEventListener('click', () => {
+      isMenuOpen ? closeMenu() : openMenu();
+    });
 
-      closeMenu() {
-        this.isMenuOpen = false;
-        scrollLock.enablePageScroll();
-      },
+    checkMediaLg.addEventListener('change', (event) => {
+      if (event.matches) closeMenu();
+    });
 
-      openMenu() {
-        this.isMenuOpen = true;
-        scrollLock.disablePageScroll();
-      },
+    header.querySelector('[data-talk-to-us]')?.addEventListener('click', (event) => {
+      event.preventDefault();
+      closeMenu();
+      talkToUs();
+    });
 
-      toggleMenu() {
-        (this.isMenuOpen) ? this.closeMenu() : this.openMenu();
-      },
+    header.querySelectorAll('.header--submenu').forEach((submenu) => {
+      const toggle = submenu.querySelector('.header--menu-item');
+      const items = submenu.querySelector('.header--submenu-items');
+      let isSubMenuOpen = false;
+      let animateTimeout;
 
-      talkToUs() {
-        this.closeMenu();
-        talkToUs();
-      },
-    }));
-
-    Alpine.data('Submenu', (id) => ({
-      isSubMenuOpen: false,
-      isAnimate: false,
-      animateTimeout: null,
-
-      setAnimate(active) {
-        this.isAnimate = true;
-        this.animateTimeout && clearTimeout(this.animateTimeout);
+      const setAnimate = (active) => {
+        items.classList.add('is-animate');
+        clearTimeout(animateTimeout);
         if (!active) {
-          this.animateTimeout = setTimeout(() => this.isAnimate = false, 100);
+          animateTimeout = setTimeout(() => {
+            items.classList.remove('is-animate');
+          }, 100);
         }
-      },
+      };
 
-      toggleSubMenu(e) {
-        e.stopPropagation();
-        this.isSubMenuOpen = !this.isSubMenuOpen;
-        this.setAnimate(this.isSubMenuOpen);
-      },
+      const renderSubMenu = () => {
+        toggle.classList.toggle('is-open', isSubMenuOpen);
+        items.classList.toggle('is-open', isSubMenuOpen);
+      };
 
-      closeSubMenu() {
-        if (!this.isSubMenuOpen) return;
-        this.isSubMenuOpen = false;
-        this.setAnimate(false);
-      },
-    }));
+      const closeSubMenu = () => {
+        if (!isSubMenuOpen) return;
+        isSubMenuOpen = false;
+        setAnimate(false);
+        renderSubMenu();
+      };
 
+      toggle.addEventListener('click', (event) => {
+        event.stopPropagation();
+        isSubMenuOpen = !isSubMenuOpen;
+        setAnimate(isSubMenuOpen);
+        renderSubMenu();
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!items.contains(event.target)) closeSubMenu();
+      });
+    });
   });
 </script>

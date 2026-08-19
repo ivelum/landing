@@ -36,30 +36,29 @@
           </div>
           <div>
             We're online from 10 AM to 8 PM, EET<br />
-            <span x-data="ChatStatus">
-              <span x-text="localTime()"></span><br />
+            <span data-chat-status>
+              <span data-chat-local-time></span><br />
               <span
                 class="contact--chatbox-status"
-                x-bind:class="isOnline() ? 'is-online' : 'is-offline'"
-                x-text="currentStatus()"
+                data-chat-current-status
               ></span>
             </span>
           </div>
           <button
             class="contact--chatbox-button btn btn-outline-violet btn-small"
             type="button"
-            x-data="ChatButton"
-            x-on:click="openChat"
-            x-bind:disabled="loading"
+            data-chat-button
           >
-            <span x-bind:style="{ opacity: Number(!loading) }">Chat now</span>
-            <template x-if="loading">
-              <span class="contact--chatbox-loading">{{
-                ($.Resources.Get "img/loading.svg").Content
-                | strings.TrimSpace
-                | safeHTML
-              }}</span>
-            </template>
+            <span data-chat-button-label>Chat now</span>
+            <span
+              class="contact--chatbox-loading"
+              data-chat-loading
+              style="display: none"
+            >{{
+              ($.Resources.Get "img/loading.svg").Content
+              | strings.TrimSpace
+              | safeHTML
+            }}</span>
           </button>
         </div>
         <div class="contact--inner">
@@ -93,31 +92,8 @@
   </main>
 
   <script type="module">
-    import Alpine from 'alpinejs';
-
     const timeoutAfter = 15000;
     const timeoutError = new Error('Crisp timed out');
-
-    document.addEventListener('alpine:init', () => {
-      Alpine.data('ChatButton', () => ({
-        loading: false,
-
-        async openChat() {
-          this.loading = true;
-          const chatInitialized = initChat();
-          window.$crisp.push(['do', 'chat:show']);
-          window.$crisp.push(['do', 'chat:open']);
-          try {
-            await chatInitialized;
-          } catch (e) {
-            if (e === timeoutError) return;
-            throw e;
-          } finally {
-            this.loading = false;
-          }
-        },
-      }));
-    });
 
     function initChat() {
       return new Promise((resolve, reject) => {
@@ -147,8 +123,33 @@
       });
     }
 
-    document.addEventListener('alpine:init', () => {
-      Alpine.data('ChatStatus', () => {
+    document.querySelectorAll('[data-chat-button]').forEach((button) => {
+      const label = button.querySelector('[data-chat-button-label]');
+      const loadingIndicator = button.querySelector('[data-chat-loading]');
+
+      const setLoading = (loading) => {
+        button.disabled = loading;
+        label.style.opacity = Number(!loading);
+        loadingIndicator.style.display = loading ? '' : 'none';
+      };
+
+      button.addEventListener('click', async () => {
+        setLoading(true);
+        const chatInitialized = initChat();
+        window.$crisp.push(['do', 'chat:show']);
+        window.$crisp.push(['do', 'chat:open']);
+        try {
+          await chatInitialized;
+        } catch (error) {
+          if (error === timeoutError) return;
+          throw error;
+        } finally {
+          setLoading(false);
+        }
+      });
+    });
+
+    document.querySelectorAll('[data-chat-status]').forEach((status) => {
         const startWorkHour = 10; // Start of working hours in Vilnius
         const endWorkHour = 20; // End of working hours in Vilnius
 
@@ -195,8 +196,16 @@
           return `Currently ${isOnline() ? 'online' : 'offline'}`;
         }
 
-        return { localTime, isOnline, currentStatus };
-      });
+        status.querySelector('[data-chat-local-time]').textContent = localTime();
+
+        const currentStatusElement = status.querySelector(
+          '[data-chat-current-status]',
+        );
+        const online = isOnline();
+        currentStatusElement.classList.add(
+          online ? 'is-online' : 'is-offline',
+        );
+        currentStatusElement.textContent = currentStatus();
     });
   </script>
 {{- end }}
