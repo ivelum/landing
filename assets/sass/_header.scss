@@ -430,7 +430,7 @@ $header-menu-open-duration: 0.3s;
 
   .header--button {
     @include media-up(lg) {
-      background-color: $primary-orange;
+      background-color: $dark-orange;
       color: $white;
     }
 

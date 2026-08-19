@@ -2,13 +2,13 @@
   @include transition(background-color, color, border);
   align-items: center;
   appearance: none;
-  background-color: $primary-orange;
+  background-color: $dark-orange;
   border: 2px solid transparent;
   border-radius: 2rem;
   color: $white;
   cursor: pointer;
   display: inline-flex;
-  font-size: $font-size-default;
+  font-size: $font-size-bigger;
   font-weight: $font-weight-default;
   gap: 1rem;
   justify-content: center;
@@ -23,7 +23,7 @@
 
   &:hover,
   &:focus-visible {
-    background-color: lighten($primary-orange, 10%);
+    background-color: lighten($dark-orange, 10%);
     color: $white;
   }
 
