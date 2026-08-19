@@ -158,7 +158,7 @@ parting ways with someone you hired is far simpler.
       alt="Free Fractional CTO services from ivelum"
       mobileSrc="_no-lightbox-fractional-cto-mobile.png"
       mobileWidth=360
->}}](/fractional-cto/)
+>}}](/services/fractional-cto/)
 
 
 ## Bottom line
