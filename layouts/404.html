@@ -22,18 +22,6 @@
     href="/img/favicon/favicon-16x16.png"
   />
   <link rel="manifest" href="/img/favicon/site.webmanifest" />
-  <script type="importmap">
-    {
-      "imports": {
-        "autosize": "/vendor/autosize@6.0.1.js",
-        "scroll-lock": "/vendor/scroll-lock@2.1.5.js",
-        "swiper": "/vendor/swiper@11.1.15.js",
-        "swiper/css": "/vendor/swiper@11.1.15-css.js",
-        "swiper/css/pagination": "/vendor/swiper@11.1.15-css-pagination.js",
-        "swiper/modules/pagination": "/vendor/swiper@11.1.15-modules-pagination.js"
-      }
-    }
-  </script>
   {{- with resources.Get "sass/404.scss" }}
     {{- $opts := dict "transpiler" "libsass" }}
     {{- with . | toCSS $opts }}
