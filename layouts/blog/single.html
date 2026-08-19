@@ -88,12 +88,6 @@
 {{- end }}
 
 {{- define "footer" }}
-  <script type="module">
-    {{- $lightboxJS := resources.Get "js/lightbox.js" -}}
-    {{- if hugo.IsProduction -}}
-      {{- $lightboxJS = $lightboxJS | fingerprint -}}
-    {{- end }}
-    import '{{ $lightboxJS.RelPermalink }}';
-  </script>
+  {{ partial "lightbox.html" . }}
   {{ partial "blog-footer.html" . }}
 {{- end }}
