@@ -3,6 +3,7 @@
 {{- $alt := .Alt -}}
 {{- $class := .Class -}}
 {{- $width := .Width -}}
+{{- $lazyLoading := .LazyLoading | default false -}}
 {{/* Optional: an alternative image for mobile screens */}}
 {{- $mobileImg := .MobileImg -}}
 {{- $mobileWidth := or .MobileWidth $width -}}
@@ -101,7 +102,7 @@
 {{- with $desktop.Img1xWebp -}}
   <source srcset="{{ .RelPermalink }}{{ with $desktop.Img2xWebp }}, {{ .RelPermalink }} 2x{{ end }}" type="image/webp">
 {{- end -}}
-    <img width="{{ $desktop.Width }}"{{ with $desktop.Height }} height="{{ . }}"{{ end }}{{ with $class }} class="{{ . }}"{{ end }} src="{{ $desktop.Img1x.RelPermalink }}"{{ with $desktop.Img2x }} srcset="{{ .RelPermalink }} 2x"{{ end }} alt="{{ $alt }}">
+    <img width="{{ $desktop.Width }}"{{ with $desktop.Height }} height="{{ . }}"{{ end }}{{ with $class }} class="{{ . }}"{{ end }} src="{{ $desktop.Img1x.RelPermalink }}"{{ with $desktop.Img2x }} srcset="{{ .RelPermalink }} 2x"{{ end }} alt="{{ $alt }}"{{ if $lazyLoading }} loading="lazy" decoding="async"{{ end }}>
 {{- if $usePicture -}}
   </picture>
 {{- end -}}
