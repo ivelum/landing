@@ -38,6 +38,7 @@
   &--item-thumbnail {
     @include transition(opacity 0.35s);
     flex-shrink: 0;
+    height: auto;
     max-height: 300px;
     object-fit: cover;
     object-position: center;
