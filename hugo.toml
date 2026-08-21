@@ -16,6 +16,9 @@ style = 'friendly'
 home = ['html']
 section = ['html']
 
+[deployment]
+maxDeletes = -1
+
 [[deployment.matchers]]
 pattern = '^.+\.(css|js|mjs|svg|woff2?|ttf|png|jpe?g|gif|webp|avif|ico|pdf|mp4|webm|webmanifest)$'
 cacheControl = 'public, max-age=2592000'
