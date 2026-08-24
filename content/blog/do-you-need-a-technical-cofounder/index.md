@@ -1,15 +1,14 @@
 ---
-title: Finding a technical cofounder
-description: Do you even need a technical cofounder in the age of AI? Why would you give equity to someone technical when you can vibe-code the product yourself?
+title: Do you need a technical cofounder?
+description: Why would you give equity to someone technical when you can build your idea yourself with AI?
 thumbnail: thumbnail.png
 author: Denis Stebunov
-date: 2026-08-08T09:42:00+0300
+date: 2026-08-24T23:48:00+0300
 ---
 
-> Full disclosure: this post contains an ad for our services. It's at the very
-> bottom and clearly marked. Everything else is my honest opinion, with no
-> commercial intent.
+{{< youtube id="SRVRSrvu9vo" title="Do you need a technical cofounder in the AI era?" >}}
 
+---
 Every so often, someone in a startup chat asks how to find a technical
 cofounder. Some argue you don't need one at all and should just vibe-code the
 prototype yourself. Others share tips for interviewing technical cofounders.
