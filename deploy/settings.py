@@ -2,7 +2,7 @@ AWS_REGION = 'us-east-2'
 
 AWS_ACCOUNT_ID = '063992876227'
 
-PROJECT_NAME = 'landing'
+PROJECT_NAME = 'ivelum-landing'
 
 # WARNING: Crisp Development Token is connected to the PRODUCTION environment,
 # since Crisp has no concept of test environment, so be careful.
