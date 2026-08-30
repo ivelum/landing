@@ -62,7 +62,13 @@ Resources:
             ResponsePagePath: /404.html
         Origins:
           - DomainName:
-              Ref: WebsiteBucket
+              Fn::Select:
+                - 2
+                - Fn::Split:
+                    - '/'
+                    - Fn::GetAtt:
+                        - WebsiteBucket
+                        - WebsiteURL
             Id:
               Ref: WebsiteBucket
             CustomOriginConfig:
