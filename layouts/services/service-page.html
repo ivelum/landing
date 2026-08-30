@@ -1,5 +1,5 @@
 {{- define "styles" }}
-  {{- partial "styles.html" "fractional-cto" }}
+  {{- partial "styles.html" "service-page" }}
 {{- end }}
 
 {{- define "header" }}
@@ -10,20 +10,20 @@
   ) }}
 {{- end }}
 {{- define "main" }}
-  <main class="page fractional-cto">
-    <div class="container fractional-cto--back">
-      <a class="article--back-link" href="/services/">
+  <main class="page service-page">
+    <div class="container service-page--back">
+      <a class="article--back-link" href="/services">
         {{ (resources.Get "img/ico-arrow-left.svg").Content | strings.TrimSpace | safeHTML }}
         All services
       </a>
     </div>
-    <article class="container article--content fractional-cto--content">
+    <article class="container article--content service-page--content">
       {{ .Content }}
 
       {{- $section := . }}
-      {{- range sort (where .Pages "Params.category" "fractional-cto-template") "File.Path" }}
-      <section class="fractional-cto--section{{- if eq "reverse" .Params.columnOrder }} fractional-cto--section-column-reverse{{ end }}">
-        <div class="fractional-cto--section-marker">
+      {{- range sort (where .Pages "Params.category" "page-block") "File.Path" }}
+      <section class="service-page--section{{- if eq "reverse" .Params.columnOrder }} service-page--section-column-reverse{{ end }}">
+        <div class="service-page--section-marker">
           {{ with .Params.marker }}{{- . }}{{ end }}
           {{- $page := . }}
           {{ with .Params.image }}
@@ -36,7 +36,7 @@
             {{ end }}
           {{ end }}
         </div>
-        <div class="fractional-cto--section-body">
+        <div class="service-page--section-body">
           {{ .Content }}
         </div>
       </section>

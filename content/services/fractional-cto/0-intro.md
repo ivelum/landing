@@ -1,5 +1,5 @@
 ---
-category: fractional-cto-template
+category: page-block
 image: img/free.svg
 imageAlt: Free
 columnOrder: reverse
