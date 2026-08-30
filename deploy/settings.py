@@ -1,4 +1,4 @@
-AWS_REGION = 'eu-north-1'
+AWS_REGION = 'us-east-2'
 
 AWS_ACCOUNT_ID = '063992876227'
 
