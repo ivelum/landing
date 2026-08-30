@@ -26,5 +26,5 @@ force = true
 
 [[deployment.targets]]
 name = "s3"
-URL = "s3://static.new.ivelum.com?region=eu-north-1"
-cloudFrontDistributionID = "E1BS3XJ8OWJCVR"
+URL = "s3://ivelum.com?region=us-east-2"
+cloudFrontDistributionID = "E3P16DJ83QCWWK"
