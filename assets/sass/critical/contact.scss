@@ -1,6 +1,10 @@
 @import './base';
 
 .contact {
+  h3 {
+    color: $font-color-dark;
+  }
+
   p {
     margin: 0;
   }
@@ -37,8 +41,7 @@
       }
     }
 
-    &-title {
-      color: $font-color-dark;
+    &-item h3 {
       margin-bottom: 0.5rem;
       @include media-up(lg) {
         margin-bottom: 1rem;

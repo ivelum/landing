@@ -9,8 +9,12 @@
     margin-top: 12.5rem;
   }
 
-  &--title {
+  h2 {
     color: $primary-violet;
+  }
+
+  h3 {
+    color: $font-color-dark;
   }
 
   &--features {

@@ -86,8 +86,7 @@
       }
     }
 
-    &-title {
-      color: $font-color-dark;
+    h3 {
       font-size: $font-size-bigger;
       margin: 0 0 1rem 0;
       @include media-up(lg) {
@@ -227,8 +226,7 @@
       }
     }
 
-    &-title {
-      color: $font-color-dark;
+    h3 {
       font-size: $font-size-bigger;
       margin: 0 0 1rem 0;
       @include media-up(lg) {

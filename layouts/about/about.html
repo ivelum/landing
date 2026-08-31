@@ -17,7 +17,7 @@
       <div class="about--caption">
         {{- .Params.caption -}}
       </div>
-      <h1 class="about--title">
+      <h1>
         {{- .Params.h1 -}}
       </h1>
       <div class="about--intro">
@@ -29,7 +29,6 @@
       {{ partial "heading.html" (dict
         "Level" 2
         "Text" "Facts about ivelum"
-        "Class" "title"
       ) }}
       <div class="about--facts">
         {{- (.GetPage "facts").Content }}
@@ -40,7 +39,6 @@
       {{ partial "heading.html" (dict
         "Level" 2
         "Text" "What sets us apart"
-        "Class" "title"
       ) }}
       <div class="about--what-sets-us-apart">
         {{- (.GetPage "what-sets-us-apart").Content }}
@@ -51,7 +49,6 @@
       {{ partial "heading.html" (dict
         "Level" 2
         "Text" "Our values"
-        "Class" "title"
       ) }}
       <div class="about--our-values">
         {{- (.GetPage "our-values").Content }}
@@ -62,7 +59,6 @@
       {{ partial "heading.html" (dict
         "Level" 2
         "Text" "Meet the team"
-        "Class" "title"
       ) }}
       <div class="about--team">
         {{- (.GetPage "team").Content }}

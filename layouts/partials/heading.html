@@ -1,11 +1,7 @@
 {{- $anchor := or .Anchor (urlize .Text) }}
-<h{{ .Level }} id="{{ $anchor }}" {{- with .Class }} class="{{ . }}" {{- end }}>
-  {{- if strings.Contains .Class "no-link" -}}
+<h{{ .Level }} id="{{ $anchor }}">
+  <a href="#{{ $anchor }}">
     {{- .Text -}}
-  {{- else }}
-    <a href="#{{ $anchor }}">
-      {{- .Text -}}
-      <span class="heading-link"></span>
-    </a>
-  {{- end -}}
+    <span class="heading-link"></span>
+  </a>
 </h{{ .Level }}>

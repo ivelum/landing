@@ -1,6 +1,17 @@
 @import './base';
 
 .about {
+  h2 {
+    color: $primary-violet;
+    margin-top: 3rem;
+    @include media-up(lg) {
+      margin-top: 4rem;
+    }
+    @include media-up(xl) {
+      margin-top: 6rem;
+    }
+  }
+
   &--caption {
     color: $primary-orange;
     font-size: 1.375rem;
@@ -11,10 +22,6 @@
     @include media-up(xl) {
       font-size: 1.75rem;
     }
-  }
-
-  &--title {
-    display: block;
   }
 
   &--intro {

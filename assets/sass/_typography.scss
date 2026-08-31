@@ -25,17 +25,6 @@
   width: 100%;
 }
 
-.title {
-  color: $primary-violet;
-  margin-top: 3rem;
-  @include media-up(lg) {
-    margin-top: 4rem;
-  }
-  @include media-up(xl) {
-    margin-top: 6rem;
-  }
-}
-
 * {
   box-sizing: border-box;
 }
@@ -109,7 +98,6 @@ h3,
 h4,
 h5,
 h6 {
-  color: inherit;
   font-weight: $font-weight-bold;
   margin: 0;
 
@@ -120,6 +108,7 @@ h6 {
 }
 
 h1 {
+  color: $primary-violet;
   font-size: clamp(2.4rem, 10vw, 2.625rem);
   line-height: 1.3;
   @include media-up(lg) {
@@ -134,7 +123,6 @@ h1 {
 
 .page {
   h1 {
-    color: $primary-violet;
     overflow: hidden;
 
     margin-bottom: 2rem;
@@ -145,6 +133,11 @@ h1 {
       margin-bottom: 3.75rem;
     }
   }
+}
+
+h2,
+h3 {
+  color: $font-color-default;
 }
 
 h2 {
@@ -247,4 +240,3 @@ li {
     font-size: $font-size-bigger;
   }
 }
-

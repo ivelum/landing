@@ -10,8 +10,15 @@
     margin-top: 12.5rem;
   }
 
-  &--title {
+  h2 {
     color: $primary-violet;
+    margin-top: 3rem;
+    @include media-up(lg) {
+      margin-top: 4rem;
+    }
+    @include media-up(xl) {
+      margin-top: 6rem;
+    }
   }
 
   &--intro {

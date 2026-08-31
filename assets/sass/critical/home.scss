@@ -1,6 +1,17 @@
 @import './base';
 
 .home {
+  h2 {
+    color: $primary-violet;
+    margin-top: 3rem;
+    @include media-up(lg) {
+      margin-top: 4rem;
+    }
+    @include media-up(xl) {
+      margin-top: 6rem;
+    }
+  }
+
   &--hero {
     background-color: #3f13a8;
     display: flex;
@@ -43,7 +54,7 @@
       }
     }
 
-    &-title {
+    h1 {
       color: $white;
       margin-top: 1rem;
       @include media-up(xl) {

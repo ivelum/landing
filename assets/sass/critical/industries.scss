@@ -25,8 +25,7 @@
       gap: 0.25rem;
     }
 
-    &-title {
-      color: $primary-violet;
+    h1 {
       text-wrap: balance;
       @include media-up(xl) {
         font-size: 3.25rem;
@@ -184,10 +183,6 @@
   }
 
   &--index {
-    &-title {
-      color: $primary-violet;
-    }
-
     &-features {
       margin-top: 1.5rem;
       @include media-up(lg) {

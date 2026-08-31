@@ -11,10 +11,11 @@
 {{- end }}
 
 {{- define "main" }}
+  <div class="home">
   <main class="home--hero">
     <div class="home--hero-body">
       <div class="home--hero-tagline">Since 2003</div>
-      <h1 class="home--hero-title">
+      <h1>
         Let's build<br/>great things together
       </h1>
     </div>
@@ -86,7 +87,6 @@
     {{ partial "heading.html" (dict
       "Level" 2
       "Text" "Hire us if you need to..."
-      "Class" "title"
     ) }}
     <div class="home--hire-us">
       <div class="home--hire-us-list">
@@ -110,7 +110,6 @@
     {{ partial "heading.html" (dict
       "Level" 2
       "Text" "Who we help"
-      "Class" "title"
     ) }}
     <div class="home--who-we-help">
     {{- range sort (where .Pages "Params.category" "who-we-help") "File.Path" }}
@@ -148,7 +147,6 @@
     {{ partial "heading.html" (dict
       "Level" 2
       "Text" "Why ivelum"
-      "Class" "title"
     ) }}
     <div class="home--why-ivelum">
     {{- range sort (where .Pages "Params.category" "why-ivelum") "File.Path" }}
@@ -208,7 +206,6 @@
   <div class="container">
     {{ partial "shared/youtube-latest.html" (dict
       "Title" "Learn more about our approach"
-      "TitleClass" "title"
     ) }}
   </div>
 
@@ -271,10 +268,10 @@
     {{ partial "heading.html" (dict
       "Level" 2
       "Text" "Technologies"
-      "Class" "title"
     ) }}
     <div class="home--technologies">
       {{ partial "shared/technology-stack.html" . }}
     </div>
+  </div>
   </div>
 {{- end }}

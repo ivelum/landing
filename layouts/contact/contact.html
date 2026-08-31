@@ -13,12 +13,12 @@
 {{- define "main" }}
   <main class="page contact">
     <div class="container">
-      <h1 class="contact--title">Contact</h1>
+      <h1>Contact</h1>
 
       <div class="contact--address-wrapper">
         {{- range sort (where .Pages "Params.category" "address") "File.Path" }}
         <div class="contact--address-item">
-          <h3 class="contact--address-title">{{ .Title }}</h3>
+          <h3>{{ .Title }}</h3>
           {{ .Content }}
         </div>
         {{- end }}

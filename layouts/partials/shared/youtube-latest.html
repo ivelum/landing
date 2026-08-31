@@ -1,11 +1,7 @@
 {{ $page := site.GetPage "youtube-latest" }}
 {{ if $page }}
   {{ $title := .Title | default "The latest videos" }}
-  {{ $heading := dict "Level" 2 "Text" $title }}
-  {{ with .TitleClass }}
-    {{ $heading = merge $heading (dict "Class" .) }}
-  {{ end }}
-  {{ partial "heading.html" $heading }}
+  {{ partial "heading.html" (dict "Level" 2 "Text" $title) }}
   <div class="youtube-latest">
     <div class="youtube-latest--list">
       {{ range first 3 $page.Params.videos }}

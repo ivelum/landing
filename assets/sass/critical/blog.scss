@@ -2,6 +2,17 @@
 @import '../youtube';
 
 .blog {
+  h2 {
+    color: $primary-violet;
+    margin-top: 3rem;
+    @include media-up(lg) {
+      margin-top: 4rem;
+    }
+    @include media-up(xl) {
+      margin-top: 6rem;
+    }
+  }
+
   &--wrapper {
     margin-top: 3rem;
     @include media-up(lg) {
