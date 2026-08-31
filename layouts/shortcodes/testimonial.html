@@ -1,0 +1,13 @@
+{{- $name := .Get "name" -}}
+{{- $avatar := .Page.CurrentSection.Resources.Get (.Get "avatar") -}}
+<div class="testimonials--item">
+  {{ partial "author-card.html" (dict
+    "Avatar" $avatar
+    "Name" $name
+    "Position" (.Get "position")
+    "LinkedIn" (.Get "linkedin")
+  ) }}
+  <div class="testimonials--body">
+    {{ .Inner | markdownify }}
+  </div>
+</div>

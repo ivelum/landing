@@ -102,7 +102,7 @@
     }
   }
 
-  &--content a:not(h1 > a, h2 > a, h3 > a, .btn) {
+  &--content a:not(h1 > a, h2 > a, h3 > a, .btn, .author-card--name, .testimonials--clutch-winner) {
     @include link-underline;
   }
 

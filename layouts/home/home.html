@@ -210,58 +210,7 @@
   </div>
 
   <div class="container">
-    {{ partial "heading.html" (dict
-      "Level" 2
-      "Text" "What our clients say"
-      "Class" "title"
-    ) }}
-    <div class="home--testimonials-wrapper">
-    {{- range sort (where .Pages "Params.category" "testimonials") "File.Path" }}
-      <div class="home--testimonials-item">
-        {{ partial "author-card.html" (dict
-          "Avatar" (.CurrentSection.Resources.Get .Params.avatar)
-          "Name" .Title
-          "Position" .Params.position
-          "LinkedIn" .Params.linkedin
-        ) }}
-        <div class="home--testimonials-body">
-          {{ .Content }}
-        </div>
-      </div>
-    {{- end }}
-      <div class="home--testimonials-item home--testimonials-item--clutch">
-        <a
-          class="home--clutch-winner"
-          href="https://clutch.co/profile/ivelum#portfolio-and-awards"
-          target="_blank"
-        >
-          <img
-            alt="Clutch Champion Spring 2024"
-            height="120"
-            src='{{ (.Resources.Get "img/clutch-spring-champion-2024.svg").RelPermalink }}'
-            width="140"
-          />
-        </a>
-        <div class="home--clutch-reviews">
-          <script type="text/javascript" src="https://widget.clutch.co/static/js/widget.js"></script>
-          <div
-            class="clutch-widget home--clutch-widget"
-            data-url="https://widget.clutch.co"
-            data-widget-type="14"
-            data-height="50"
-            data-nofollow="true"
-            data-expandifr="true"
-            data-scale="100"
-            data-clutchcompany-id="2181885">
-          </div>
-          <div class="home--clutch-link">
-            <a href="https://clutch.co/profile/ivelum#reviews" target="_blank">
-              Read more verified reviews on Clutch
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+    {{- (site.GetPage "/services/web-and-mobile-development/5-reviews").Content }}
   </div>
 
   <div class="container">
