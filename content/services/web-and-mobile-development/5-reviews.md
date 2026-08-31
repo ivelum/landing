@@ -5,8 +5,6 @@ marker: 05 /
 
 ## What our clients say
 
-{{< testimonials >}}
-
 {{< testimonial
   name="Alex Ford"
   avatar="img/avatars/alex-ford.png"
@@ -93,5 +91,3 @@ They respond quickly and are willing to solve problems with you.
 {{< /testimonial >}}
 
 {{< testimonial-clutch >}}
-
-{{< /testimonials >}}
