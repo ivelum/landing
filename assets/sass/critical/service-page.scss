@@ -163,6 +163,18 @@
         }
       }
     }
+
+    &-logos {
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+          margin-right: 1.5rem;
+          width: auto;
+        }
+      }
+    }
   }
 
   .youtube-preview {

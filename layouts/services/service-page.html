@@ -36,7 +36,7 @@
             {{ end }}
           {{ end }}
         </div>
-        <div class="service-page--section-body">
+        <div class="service-page--section-body{{- if eq "logos" .Params.listStyle }} service-page--section-logos{{ end }}">
           {{ .Content }}
         </div>
       </section>
