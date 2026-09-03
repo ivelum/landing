@@ -26,3 +26,5 @@ AI features and products focused on measurable impact.
 
 - **[Security](/industries/security/)**
 Secure systems for startups and established businesses.
+
+{{< button title="Book a free consultation" link="#talk" >}}

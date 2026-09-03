@@ -5,28 +5,24 @@ marker: 08 /
 
 ## FAQ
 
-{{< details summary="Can the same team build both our web and mobile applications?" >}}
-  Yes. Our developers are full-stack and can work across web applications,
-  mobile apps, backend systems, and infrastructure. This keeps product
-  knowledge and technical decisions within one closely connected team.
+{{< details summary="How much does a typical project cost?" >}}
+  It depends on the project scope, team size, and timeline, but most engagements start at
+  around $10,000 for a project spanning a few weeks. Book a free consultation,
+  and get a quote for yours.
 {{< /details >}}
 
-{{< details summary="Which technologies do you work with?" >}}
-  For web applications, we primarily work with Python and Django, Node.js, and
-  PHP. For mobile applications, we use cross-platform technologies such as
-  React Native. We also work with AWS, Google Cloud Platform, and Microsoft
-  Azure.
+{{< details summary="How can one team work on both web and mobile apps?" >}}
+  For projects that need both a web and a mobile app, we usually recommend
+  frameworks from the React ecosystem — React.js for the web and React Native
+  for mobile. Since the two share the same core principles, developers can
+  switch between platforms with ease and even reuse parts of the codebase.
+  The result is faster, more efficient product development than building
+  separate native mobile apps.
 {{< /details >}}
 
-{{< details summary="Can you take over or extend an existing codebase?" >}}
-  Yes. We can join an existing project, understand its architecture, improve
-  its quality and delivery process, and build new features alongside your
-  in-house team.
-{{< /details >}}
-
-{{< details summary="Can you share examples of previous projects?" >}}
-  Much of our client work is covered by confidentiality agreements, so we
-  can't publish detailed case studies. During an introductory call, we can
-  discuss relevant experience and similar technical challenges at a high
-  level.
+{{< details summary="Can you take over a legacy codebase?" >}}
+  Yes! Not every developer enjoys working on legacy systems, but we do. These
+  projects come with unique challenges, from outdated technology to lost
+  institutional knowledge, but we have a proven track record of navigating
+  them successfully.
 {{< /details >}}
