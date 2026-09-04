@@ -27,4 +27,4 @@ and CI/CD pipelines.
 - {{< image src="img/kubernetes.svg" width=61 alt="Kubernetes" >}}
 - {{< image src="img/terraform.svg" width=60 alt="Terraform" >}}
 
-{{< button title="More about technology" link="/technology/" >}}
+{{< button title="Technology stack" link="/technology/" >}}
