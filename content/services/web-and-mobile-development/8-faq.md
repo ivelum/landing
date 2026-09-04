@@ -20,6 +20,15 @@ marker: 08 /
   separate native mobile apps.
 {{< /details >}}
 
+{{< details summary="Are you qualified to work with SOC2 or HIPAA-compliant systems?" >}}
+  Yes. Many of our clients’ projects involve sensitive data and must comply
+  with standards and regulations such as GDPR, CCPA, SOC 2, HIPAA, and FedRAMP.
+  We work with clients in highly regulated industries, including
+  [healthcare](/industries/healthcare/), [cybersecurity](/industries/security/),
+  and public safety.
+{{< /details >}}
+
+
 {{< details summary="Can you take over a legacy codebase?" >}}
   Yes! Not every developer enjoys working on legacy systems, but we do. These
   projects come with unique challenges, from outdated technology to lost
