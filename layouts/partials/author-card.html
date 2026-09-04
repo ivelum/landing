@@ -9,7 +9,7 @@
     {{ if .LinkedIn }}
       <a class="author-card--name" href="{{ .LinkedIn }}" target="_blank" rel="noopener">
         {{ .Name }}
-        {{- (resources.Get "img/ico-linkedin.svg").Content | strings.TrimSpace | safeHTML -}}
+        {{- (resources.Get "img/ico-linkedin-colored.svg").Content | strings.TrimSpace | safeHTML -}}
       </a>
     {{ else }}
       <div class="author-card--name">
