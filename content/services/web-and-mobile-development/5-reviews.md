@@ -63,6 +63,15 @@ Their engineers do genuinely strong work, but what really sets them apart is tha
 {{< /testimonial >}}
 
 {{< testimonial
+  name="Shea Newton"
+  avatar="img/avatars/shea-newton.png"
+  linkedin="https://www.linkedin.com/in/sheanewton/"
+  position="Director of Engineering"
+>}}
+ivelum's communication and throughput are stellar, and we genuinely like the folks we're working with.
+{{< /testimonial >}}
+
+{{< testimonial
   name="Tom Eldar"
   avatar="img/avatars/tom-eldar.jpeg"
   linkedin="https://www.linkedin.com/in/tomeldar/"
