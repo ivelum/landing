@@ -1,6 +1,7 @@
 ---
 category: page-block
 marker: 06 /
+listStyle: two-columns
 ---
 
 ## Experience across industries

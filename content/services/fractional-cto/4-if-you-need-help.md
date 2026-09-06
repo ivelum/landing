@@ -1,6 +1,7 @@
 ---
 category: page-block
 marker: 04 /
+listStyle: two-columns
 ---
 
 ## If you need help with...
