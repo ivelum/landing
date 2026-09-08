@@ -1,6 +1,6 @@
 ---
 category: page-block
-marker: 08 /
+marker: 09 /
 ---
 
 ## FAQ
@@ -28,10 +28,20 @@ marker: 08 /
   and public safety.
 {{< /details >}}
 
-
 {{< details summary="Can you take over a legacy codebase?" >}}
   Yes! Not every developer enjoys working on legacy systems, but we do. These
   projects come with unique challenges, from outdated technology to lost
   institutional knowledge, but we have a proven track record of navigating
   them successfully.
+{{< /details >}}
+
+{{< details summary="Can you join our existing engineering team?" >}}
+  Yes. We often collaborate with our clients’ in-house developers, working
+  together as one team.
+{{< /details >}}
+
+{{< details summary="How soon can you start?" >}}
+  We can usually schedule a free initial consultation within one business day
+  and start working on a smaller project within a few days. Larger projects
+  generally take a few weeks to ramp up.
 {{< /details >}}

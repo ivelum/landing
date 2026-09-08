@@ -18,3 +18,4 @@ engineer, a QA specialist, and a dedicated DevOps person. Building a mobile
 app? Add one or two more for iOS and Android. And with that many people
 involved, you'll certainly need a project manager to coordinate them all.
 
+![Full-stack superhero](img/full-stack-superhero.png)
