@@ -91,6 +91,15 @@ ambiguous requirements.
 {{< /testimonial >}}
 
 {{< testimonial
+  name="Waseem Fadel"
+  avatar="img/avatars/waseem-fadel.jpeg"
+  linkedin="https://www.linkedin.com/in/waseem-fadel-33435817/"
+  position="VP of Engineering"
+>}}
+ivelum's team is committed, knowledgeable, and available to support us.
+{{< /testimonial >}}
+
+{{< testimonial
   name="Corey Agopian"
   avatar="img/avatars/corey-agopian.jpeg"
   linkedin="https://www.linkedin.com/in/coreyagopian/"
