@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000"><title>Seven equal segments in the Okabe–Ito palette</title><rect width="1000" height="1000" fill="white"/>
+<path d="M500 500 L132.53920324002604 206.9597931263952 A470 470 0 0 1 500.00000000000006 30.0 Z" fill="#E69F00" stroke="white" stroke-width="2"/>
+<path d="M500 500 L500.00000000000006 30.0 A470 470 0 0 1 867.4607967599741 206.95979312639525 Z" fill="#56B4E9" stroke="white" stroke-width="2"/>
+<path d="M500 500 L867.4607967599741 206.95979312639525 A470 470 0 0 1 958.2161187254571 604.5848389594678 Z" fill="#009E73" stroke="white" stroke-width="2"/>
+<path d="M500 500 L958.2161187254571 604.5848389594678 A470 470 0 0 1 703.9253573852524 923.455367914137 Z" fill="#F0E442" stroke="white" stroke-width="2"/>
+<path d="M500 500 L703.9253573852524 923.455367914137 A470 470 0 0 1 296.07464261474775 923.455367914137 Z" fill="#0072B2" stroke="white" stroke-width="2"/>
+<path d="M500 500 L296.07464261474775 923.455367914137 A470 470 0 0 1 41.78388127454292 604.5848389594678 Z" fill="#D55E00" stroke="white" stroke-width="2"/>
+<path d="M500 500 L41.78388127454292 604.5848389594678 A470 470 0 0 1 132.53920324002593 206.9597931263953 Z" fill="#CC79A7" stroke="white" stroke-width="2"/>
+<text x="369.8348782647326" y="229.70933962927427" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="40" fill="#111111">Security</text>
+<text x="630.1651217352675" y="229.70933962927427" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="40" fill="#111111">Compliance</text>
+<text x="792.4783736545471" y="433.2437198131057" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="40" fill="#111111">Costs</text>
+<text x="734.549444740409" y="687.04694055762" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="40" fill="#111111">Reliability</text>
+<text x="500.0" y="800.0" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="40" fill="white">DevOps</text>
+<text x="265.45055525959106" y="687.04694055762" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="40" fill="#111111">UX</text>
+<text x="207.52162634545283" y="433.24371981310594" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif" font-size="40" fill="#111111">SEO</text>
+</svg>
