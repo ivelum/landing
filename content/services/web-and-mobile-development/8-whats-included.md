@@ -12,8 +12,9 @@ When you hire us to build your web or mobile app, you get:
 - An **AI budget and all the professional tools** needed to do the job.
 - [Fractional CTO services](/services/fractional-cto/) at no additional cost
   for the duration of the contract.
-- Cloud Costs Optimizatin at no additional cost.
-- A complimentary annual Project Audit.
+- [Cloud Costs Optimization](/services/cloud-costs-optimization) at no
+  additional cost.
+- A complimentary annual [Software Project Audit](/services/software-project-audit/).
 - A complimentary [Teamplify Business subscription](https://teamplify.com)
   including team analytics, daily standups, time off management,
   and more.

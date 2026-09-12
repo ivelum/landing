@@ -9,123 +9,39 @@
     "TalkToUsAbsolute" false
   ) }}
 {{- end }}
-{{- define "main" }}
-  <main class="services">
 
+{{- define "main" }}
+  <main class="services services--index">
     <div class="container">
       <h1>Services</h1>
     </div>
 
     <div class="container">
-      <div class="services--features">
-        <div class="services--features-list">
-          {{- range sort (where .Pages "Params.category" "services-started-template") "File.Path" }}
-            <div class="services--features-list-item{{ if .Params.span }} span{{ end }}">
-              <div class="services--features-list-title">
-                {{ with .Params.image }}
-                  {{ partial "image.html" (dict
-                       "Img" ($.Resources.Get .)
-                       "Alt" $.Title
-                       "Width" 48
-                     ) }}
-                {{ end }}
-                {{ .Title }}
+      <div class="services--index-features">
+        <div class="services--index-list">
+          {{- $services := slice
+            (dict "title" "Web and Mobile Development" "path" "/services/web-and-mobile-development/")
+            (dict "title" "Fractional CTO services" "path" "/services/fractional-cto/")
+            (dict "title" "Cloud Costs Optimization" "path" "/services/cloud-costs-optimization/")
+            (dict "title" "Software Project Audit" "path" "/services/software-project-audit/")
+          }}
+          {{- range $services }}
+            <a class="services--index-item" href="{{ .path }}">
+              <div class="services--index-item-title">
+                <span>{{ .title }}</span>
+                <span class="services--index-item-arrow" aria-hidden="true"></span>
               </div>
-              <div class="services--features-list-text">
-                {{ .Content }}
-              </div>
-            </div>
+              {{- with site.GetPage .path }}
+                <div class="services--index-item-text">{{ .Description }}</div>
+              {{- end }}
+            </a>
           {{- end }}
         </div>
       </div>
     </div>
 
-    <div class="container services--action">
-      <a class="btn btn-big" href="#talk">
-        Get a quote
-      </a>
+    <div class="container services--index-action">
+      <a class="btn btn-big" href="https://calendly.com/ivelum/consultation">Book a free consultation</a>
     </div>
-  <div class="container">
-    <h2>For all our clients</h2>
-    <div class="services--fractional-cto">
-      <div class="services--fractional-cto-card">
-        <div class="services--fractional-cto-content">
-          <div class="services--fractional-cto-left">
-            <h3>Fractional CTO</h3>
-            <p class="services--fractional-cto-description">
-              Even if you haven't hired your full-time in-house CTO yet, the development team still needs to make technology and product decisions, and some of those decisions could be hard to change later. For such situations, we provide a fractional CTO.
-            </p>
-            <div class="services--fractional-cto-person">
-              <div class="services--fractional-cto-avatar">
-                {{ partial "image.html" (dict
-                     "Img" (.Resources.Get "img/denis-stebunov.png")
-                     "Alt" "Denis Stebunov"
-                     "Width" 120
-                   ) }}
-              </div>
-              <div class="services--fractional-cto-bio">
-                <div class="services--fractional-cto-name">Denis Stebunov</div>
-                <div class="services--fractional-cto-position">CTO at ivelum</div>
-                <p class="services--fractional-cto-experience">With over 25 years of experience in IT, including hands-on programming, leadership, product management, startup exits, and M&A, Denis will help you navigate complex technology decisions.</p>
-              </div>
-            </div>
-            <a
-              class="services--fractional-cto-link"
-              href="/services/fractional-cto/"
-            >
-              Learn more about our Fractional CTO services
-            </a>
-          </div>
-          <div class="services--fractional-cto-right">
-            <div class="services--fractional-cto-right-box">
-              <div class="services--fractional-cto-badge">
-                {{ partial "image.html" (dict
-                     "Img" (.Resources.Get "img/services-free-label.svg")
-                     "Alt" "Free"
-                     "Width" 72
-                   ) }}
-              </div>
-              <div class="services--fractional-cto-note">
-                <p>Fractional CTO services are free for all our clients</p>
-              </div>
-              <div class="services--fractional-cto-action">
-                <a href="/services/fractional-cto/" class="btn btn-small btn-outline-violet">
-                  Learn more
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="services--divider"></div>
-  </div>
-  <div class="container">
-    <div class="services--teamplify">
-      <div class="services--teamplify-left">
-        <h3>Teamplify</h3>
-        <p class="services--teamplify-text">When you work with us, you always have full visibility into team progress. All our clients enjoy free access to Teamplify, where they can see daily reports, team analytics, and time off schedule.</p>
-        <p class="services--teamplify-link"><a href="https://teamplify.com/" class="teamplify-link" target="_blank" rel="noopener noreferrer">Learn more about Teamplify</a></p>
-      </div>
-      <div class="services--teamplify-right">
-        <div class="services--teamplify-illustration">
-          <div class="services--teamplify-badge">
-            {{ partial "image.html" (dict
-                 "Img" (.Resources.Get "img/services-free-label-orange.svg")
-                 "Alt" "Free"
-                 "Width" 72
-               ) }}
-          </div>
-          {{ partial "image.html" (dict
-               "Img" (.Resources.Get "img/services-teamplify-infographics.svg")
-               "Alt" "Teamplify illustration"
-               "Width" 240
-             ) }}
-        </div>
-      </div>
-    </div>
-  </div>
   </main>
 {{- end }}

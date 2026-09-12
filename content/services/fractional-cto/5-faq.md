@@ -6,9 +6,10 @@ marker: 05 /
 ## FAQ
 
 {{< details summary="How much do your Fractional CTO services cost?" >}}
-  It's free if you hire a development team from us (or even a single developer).
-  Fractional CTOs typically cost $3,000–$25,000/month elsewhere – with ivelum,
-  it's included.
+  It's free if you
+  [hire a development team](/services/web-and-mobile-development/) from us
+  (or even a single developer). Fractional CTOs typically cost
+  $3,000–$25,000/month elsewhere – with ivelum, it's included.
 {{< /details >}}
 
 {{< details summary="How is this different from hiring a full-time CTO or a regular dev agency?" >}}
