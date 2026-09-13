@@ -9,4 +9,4 @@ cascade:
     disable: true
 ---
 
-# Cloud costs optimization
+# Cloud Costs Optimization
