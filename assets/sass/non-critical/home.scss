@@ -267,14 +267,27 @@
 
     &-text {
       color: $font-color-default;
-    }
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      gap: 1rem;
 
-    &-link {
-      @include link-arrow;
-      @include link-underline;
-      align-self: flex-start;
-      display: inline-block;
-      margin-top: auto;
+      p {
+        margin: 0;
+      }
+
+      p:has(> a:only-child) {
+        align-self: flex-start;
+        display: flex;
+        font-size: inherit;
+        margin-top: auto;
+      }
+
+      a {
+        @include link-arrow;
+        @include link-underline;
+        display: inline-block;
+      }
     }
   }
 

@@ -4,4 +4,4 @@ title: No compromise on quality
 image: img/quality.svg
 ---
 
-Code reviews and testing ensure clean, scalable software.
+Code reviews, automated and manual testing ensure clean, scalable software.
