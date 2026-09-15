@@ -13,7 +13,32 @@ cascade:
   sitemap:
     disable: true
 caption: About
-h1: Engineering-led software development since 2003
 ---
-Senior engineers. Real-world experience.\
-Remote-first, async-friendly, and focused on shipping real products.
+
+# Our story
+
+Ivelum was founded in 2003 by software engineers. We specialize in full-stack
+[web and mobile development](/services/web-and-mobile-development/), helping
+startups and enterprises turn ideas into working products and improve the
+software their businesses rely on. We've been fully remote since 2014, and
+today our team spans 12 countries across Europe, Asia, and North America, with
+our main office in [Vilnius, Lithuania](/contact/).
+
+We believe quality and speed can go hand in hand. With Continuous Integration,
+responsible use of AI, and proven DevOps practices, we ship frequently while
+keeping software reliable as it grows. Good engineering makes the next change
+easier. Learn more about our approach:
+
+- [Our Blog](/blog/)
+- [YouTube channel](https://youtube.com/@ivelum/videos)
+
+## Startup-friendly
+
+We've worked with startups for most of our history, from early-stage ventures
+to companies with $100M+ exits. We know how important it is to test ideas
+quickly, set priorities carefully, and make every development dollar count.
+
+One of the reasons why we understand startups so well is that we're building
+one ourselves: [Teamplify](https://teamplify), a complete team management suite
+for engineering teams.
+
