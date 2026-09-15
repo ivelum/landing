@@ -147,12 +147,6 @@
       }
     }
 
-    &-text {
-      margin-top: 1rem;
-      @include media-up(xl) {
-        margin-top: 1.5rem;
-      }
-    }
   }
 
   &--features-list {
