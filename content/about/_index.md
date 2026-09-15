@@ -1,6 +1,6 @@
 ---
-title: About Ivelum | Engineering-Led Software Development Since 2003
-description: Ivelum builds reliable software since 2003. Headquartered in Lithuania, our remote team has delivered 50+ projects worldwide, specializing in full-stack development and continuous delivery.
+title: Custom software development for startups and enterprises — ivelum
+description: Web and mobile app development, cloud cost optimization, software project audits, and fractional CTO services from a senior engineering team.
 layout: about
 menus:
   main:

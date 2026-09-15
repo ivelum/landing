@@ -1,7 +1,7 @@
 ---
 url: /
-title: Custom web development, software solutions, and UX/UI — ivelum
-description: ivelum is a custom software development company headquartered in Vilnius, Lithuania. We love building digital products for start-ups and established businesses.
+title: Custom software development for startups and enterprises — ivelum
+description: Web and mobile app development, cloud cost optimization, software project audits, and fractional CTO services from a senior engineering team.
 cascade:
   sitemap:
     disable: true
