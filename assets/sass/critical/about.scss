@@ -1,6 +1,13 @@
 @import './base';
 
 .about {
+  h1 {
+    margin-bottom: 1rem;
+    @include media-up(lg) {
+      margin-bottom: 2rem;
+    }
+  }
+
   h2 {
     color: $primary-violet;
     margin-top: 3rem;
