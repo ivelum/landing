@@ -29,7 +29,7 @@ responsible use of AI, and proven DevOps practices, we ship frequently while
 keeping software reliable as it grows. Good engineering makes the next change
 easier. Learn more about our approach:
 
-- [Our Blog](/blog11/)
+- [Our Blog](/blog/)
 - [YouTube channel >](https://youtube.com/@ivelum/videos)
 
 ## Startup-friendly
