@@ -134,6 +134,7 @@
       };
 
       button.addEventListener('click', async () => {
+        window.posthog?.capture('live_chat_opened');
         setLoading(true);
         const chatInitialized = initChat();
         window.$crisp.push(['do', 'chat:show']);
