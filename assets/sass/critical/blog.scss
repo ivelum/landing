@@ -152,9 +152,4 @@
   &--item-date {
     color: $font-color-gray;
   }
-
-  &--item-link {
-    @include link-arrow;
-    @include link-underline;
-  }
 }

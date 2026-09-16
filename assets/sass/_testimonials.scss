@@ -105,6 +105,10 @@
     margin-right: 1rem;
     margin-top: 1rem;
     vertical-align: middle;
+
+    a {
+      @include link-arrow();
+    }
   }
 
   &--clutch-widget {

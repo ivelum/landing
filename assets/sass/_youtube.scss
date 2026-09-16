@@ -137,6 +137,7 @@
     }
 
     a {
+      @include link-arrow();
       @include link-underline();
       background-position: 2rem 100%;
       @include media-up(xl) {
