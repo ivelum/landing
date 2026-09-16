@@ -11,7 +11,7 @@ opportunities because they require a deep understanding of the system and take
 significantly more time and effort.
 
 Because
-[we build software for our clients](/services/web-and-mobile-development),
+[we build software for our clients](/services/web-and-mobile-development/),
 we can assess how an application is designed and identify changes that could
 substantially reduce infrastructure costs without compromising performance or
 uptime.

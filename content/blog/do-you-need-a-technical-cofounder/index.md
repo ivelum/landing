@@ -34,7 +34,7 @@ faster and easier than describing the concept in words.
 
 We recently surveyed tech leaders about how they use AI and what worries them
 most. You can
-[read the full report here](/blog/ai-security-survey-2026), but the one-line
+[read the full report here](/blog/ai-security-survey-2026/), but the one-line
 summary is that everyone is concerned about quality and security. Looking
 specifically at the startup scene, I'd add a third concern of my own: a lack
 of taste.
