@@ -62,10 +62,32 @@ jobs:
           "$RUNNER_TEMP/hugo" version
           "$RUNNER_TEMP/hugo" deploy --help > /dev/null
           echo "$RUNNER_TEMP" >> "$GITHUB_PATH"
-      - env:
+      - uses: astral-sh/setup-uv@v4
+        with:
+          version: '0.5.x'
+          enable-cache: true
+
+      - name: Check for broken links
+        env:
+          ROOT_URL: http://127.0.0.1:1313
+        run: |
+          uv sync --locked
+          hugo server --environment production --watch=false --disableLiveReload --renderToMemory \
+            --bind 127.0.0.1 --port 1313 --baseURL "$ROOT_URL" > "$RUNNER_TEMP/link-check-server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          curl --fail --silent --show-error --retry 10 --retry-connrefused --retry-delay 1 --max-time 5 \
+            "$ROOT_URL/sitemap.xml" > /dev/null
+          uv run pytest tests/test_links.py
+
+      - name: Build site
+        run: hugo
+
+      - name: Deploy site
+        env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: hugo && hugo deploy --logLevel info | tee deploy.log
+        run: hugo deploy --logLevel info | tee deploy.log
 
       # Send notification on build or deploy failure
       - name: Notify slack fail

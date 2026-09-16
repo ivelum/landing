@@ -6,7 +6,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-ROOT_URL = os.environ.get('LOCAL_URL', 'http://localhost:1313')
+ROOT_URL = os.environ.get('ROOT_URL', 'http://localhost:1313')
 session = requests.Session()
 
 
