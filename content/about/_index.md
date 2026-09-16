@@ -38,8 +38,8 @@ Startups have been at the heart of our work for most of our history, from
 early-stage ventures to companies with $100M+ exits. We know how important
 it is to test ideas quickly, prioritize carefully, and make every development
 dollar count. Part of the reason we understand startups so well is that we're
-building one ourselves: [Teamplify](https://teamplify), a complete team management suite
-for engineering teams.
+building one ourselves: [Teamplify](https://teamplify.com), a complete team
+management suite for engineering teams.
 
 When you choose us for
 [web or mobile development](/services/web-and-mobile-development/) two
