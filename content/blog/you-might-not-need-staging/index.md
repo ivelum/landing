@@ -189,7 +189,7 @@ with time. It's practically impossible to ship a piece of software that would
 be completely bug-free, even after thorough testing. That's why we see numerous
 bug fixes in subsequent releases, and that's why production monitoring and
 crash-reporting is a
-[multi-billion dollar business](https://sentry.io/about/press-releases/sentry-raises-90-million-in-series-e-funding-to-expand-and-drive-adoption-of-developer-first-application-monitoring/).
+[multi-billion dollar business >](https://sentry.io/about/press-releases/sentry-raises-90-million-in-series-e-funding-to-expand-and-drive-adoption-of-developer-first-application-monitoring/).
 
 ![Who tests in production: Google, Netflix, OpenAI, and everyone else](who-tests-in-production.svg)
 
@@ -197,9 +197,9 @@ So, let's face it - testing in production is unavoidable, but the big
 difference is how it's performed and controlled. Maybe you participated in an
 Early Access Program offered by many companies, e.g., OpenAI or JetBrains,
 to get first feedback from early adopters. Or, maybe you've heard of
-[canary deployments](https://cloud.google.com/deploy/docs/deployment-strategies/canary),
+[canary deployments >](https://cloud.google.com/deploy/docs/deployment-strategies/canary),
 used by Google and many other companies, or about
-[Netflix's Chaos Monkey](https://netflix.github.io/chaosmonkey/), which
+[Netflix's Chaos Monkey >](https://netflix.github.io/chaosmonkey/), which
 deliberately breaks things in production to ensure that the system is resilient
 and can tolerate that.
 

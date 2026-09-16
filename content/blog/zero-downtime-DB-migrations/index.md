@@ -398,11 +398,11 @@ painfully slow. What could we do?
 - **Tip #1: Use a modern DB engine.** Databases are constantly evolving. For
   example, one of the most requested features in the MySQL community was the
   ability to do fast DDL operations that won't require a full table rewrite.
-  [MySQL v8.0 introduced noticeable improvements](https://dev.mysql.com/blog-archive/mysql-8-0-innodb-now-supports-instant-add-column/),
+  [MySQL v8.0 introduced noticeable improvements >](https://dev.mysql.com/blog-archive/mysql-8-0-innodb-now-supports-instant-add-column/),
   including instant adding of new columns if certain conditions are met.
   Another example — in Postgres versions 10 or earlier, adding new columns with
   a default value caused a full table rewrite,
-  [which was fixed in Postgres v11](https://www.2ndquadrant.com/en/blog/add-new-table-column-default-value-postgresql-11/).
+  [which was fixed in Postgres v11 >](https://www.2ndquadrant.com/en/blog/add-new-table-column-default-value-postgresql-11/).
   It doesn't mean that the DDL performance is already a solved problem of
   course, but upgrading to a newer DB server version could potentially make
   your life easier.
@@ -412,7 +412,7 @@ painfully slow. What could we do?
   process. Here're some useful links:
   - [MySQL — Online DDL Operations](MySQL — Online DDL Operations)
   - Postgres — check the
-    [django-pg-zero-downtime-migrations](https://github.com/tbicr/django-pg-zero-downtime-migrations#how-it-works)
+    [django-pg-zero-downtime-migrations >](https://github.com/tbicr/django-pg-zero-downtime-migrations#how-it-works)
     package that provides a detailed explanation of how locks are working in
     Postgres and which operations can be considered safe.
 - **Tip #3: Make upgrades when the service has the least amount of traffic.**

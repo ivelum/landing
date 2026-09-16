@@ -1,0 +1,10 @@
+{{- $text := .Text -}}
+{{- $arrow := strings.HasSuffix (string $text) "&gt;" -}}
+{{- if $arrow -}}
+  {{- $text = replaceRE `\s*&gt;$` "" $text | safeHTML -}}
+{{- end -}}
+<a href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $arrow }} target="_blank" class="link-arrow"{{ end }}>
+  {{- with $text }}{{ . }}{{ end -}}
+  {{- if $arrow }}&#8288;{{ end -}}
+</a>
+{{- /* chomp trailing newline */ -}}

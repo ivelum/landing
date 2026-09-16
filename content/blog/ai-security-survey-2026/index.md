@@ -6,8 +6,8 @@ author: Denis Stebunov
 date: 2026-07-21T14:40:00+0300
 ---
 
-In June 2026, with the support of the amazing [CTO Craft](https://ctocraft.com)
-and [Rands Leadership Slack](https://randsinrepose.com/welcome-to-rands-leadership-slack/)
+In June 2026, with the support of the amazing [CTO Craft >](https://ctocraft.com)
+and [Rands Leadership Slack >](https://randsinrepose.com/welcome-to-rands-leadership-slack/)
 communities, we surveyed engineering leaders from companies of all sizes to
 understand how they use AI and how it impacts security within their teams.
 

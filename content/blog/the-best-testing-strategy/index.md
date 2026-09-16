@@ -11,17 +11,17 @@ date: 2025-06-15T09:15:00+0200
 ---
 If you're interested in automated testing, you might have seen some
 contradictory advice. For example, there's a well-known
-[Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html),
+[Test Pyramid >](https://martinfowler.com/articles/practical-test-pyramid.html),
 suggesting that we should focus mostly on unit tests. And there's another
-approach called [Testing Trophy](https://kentcdodds.com/blog/write-tests),
+approach called [Testing Trophy >](https://kentcdodds.com/blog/write-tests),
 which suggests that we should mostly write integration tests.
 
 ![Test Pyramid, Testing Trophy, or something else?](test-pyramid-or-testing-trophy-or-.png)
 
 Some posts argue that
-[unit tests are overrated](https://tyrrrz.me/blog/unit-testing-is-overrated),
+[unit tests are overrated >](https://tyrrrz.me/blog/unit-testing-is-overrated),
 and others - that
-[they're fine](https://blog.ploeh.dk/2020/08/17/unit-testing-is-fine/).
+[they're fine >](https://blog.ploeh.dk/2020/08/17/unit-testing-is-fine/).
 Which advice should we follow? Choosing the right testing strategy isn't that
 simple, and the choice will have long-lasting consequences. At Ivelum, we've
 built and maintained dozens of complex systems, and this post summarizes what
@@ -248,7 +248,7 @@ too bad, and there's a grayscale in between.
 A common trick to speed it up is to run tests in parallel. A multi-threaded
 test runner and a powerful server might be enough for a small project. For
 large projects, it may require a significant investment. For example, Stripe,
-in its [annual letter](https://stripe.com/annual-updates/2022), mentions its
+in its [annual letter >](https://stripe.com/annual-updates/2022), mentions its
 test infrastructure as its largest distributed system:
 
 > The biggest distributed system at Stripe is our testing system. Stripe now

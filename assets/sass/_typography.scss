@@ -96,6 +96,11 @@ a:where(:not([class], h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, :has(img, picture, svg
   @include link-underline;
 }
 
+a.link-arrow {
+  @include link-arrow();
+  @include link-underline();
+}
+
 h1,
 h2,
 h3,

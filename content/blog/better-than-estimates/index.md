@@ -35,7 +35,7 @@ they slow the team down. Here's how it happens.
 Managers are most interested in estimates before starting work on a task or a
 project, which is quite understandable. Unfortunately, this is also the time
 when estimates are the most unreliable. This effect is known as the
-[Cone of uncertainty](https://en.wikipedia.org/wiki/Cone_of_uncertainty) - the
+[Cone of uncertainty >](https://en.wikipedia.org/wiki/Cone_of_uncertainty) - the
 more we work on the project, the better we understand how long it might take:
 
 ![Cone of uncertainty](cone-of-uncertainty.png)
@@ -66,7 +66,7 @@ They realize that it makes sense to add a safety margin, and estimates go up.
 
 If developers overestimate, they must complete most of their work earlier than
 expected, right? Nope! This is where
-[Parkinson's Law](https://en.wikipedia.org/wiki/Parkinson%27s_law) comes into
+[Parkinson's Law >](https://en.wikipedia.org/wiki/Parkinson%27s_law) comes into
 play:
 
 > Work expands so as to fill the time available for its completion.
@@ -82,7 +82,7 @@ overestimate.
 
 Estimates also introduce dangerous misconceptions that further slow down a
 process that heavily relies on estimates. As Frederik Brooks famously noted in
-[The Mythical Man-Month](https://en.wikipedia.org/wiki/The_Mythical_Man-Month)
+[The Mythical Man-Month >](https://en.wikipedia.org/wiki/The_Mythical_Man-Month)
 book,
 
 > Men and months aren't interchangeable
@@ -232,7 +232,7 @@ shortcomings.
 Story points in SCRUM tried to mix the same idea with better predictability and
 utterly failed. Everyone quickly learned to convert these magic numbers to days,
 which is unsurprising, as they're used for planning on fixed periods (sprints).
-Even [the story point's inventor regretted inventing them](https://ronjeffries.com/articles/019-01ff/story-points/Index.html).
+Even [the story point's inventor regretted inventing them >](https://ronjeffries.com/articles/019-01ff/story-points/Index.html).
 Don't repeat this mistake; don't tie t-shirt sizes to date ranges.
 
 ## Regular check-ins

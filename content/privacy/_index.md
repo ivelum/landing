@@ -174,14 +174,14 @@ to enter into data protection agreements with us that restrict their processing
 of Users&apos; Personal Information (as defined in this policy).
 
 All our subprocessors in the United States comply with the [EU-US and Swiss-US
-Privacy Shield Frameworks](https://www.privacyshield.gov/).
+Privacy Shield Frameworks >](https://www.privacyshield.gov/).
 
 The full list of our subprocessors, their location, and description of
 processing:
 
-- [Amazon Web Services (AWS)](https://aws.amazon.com/), Europe, Stockholm – data
+- [Amazon Web Services (AWS) >](https://aws.amazon.com/), Europe, Stockholm – data
   hosting;
-- [Crisp, Europe](https://crisp.chat/) – customer support
+- [Crisp, Europe >](https://crisp.chat/) – customer support
 
 ### Resolving complaints
 

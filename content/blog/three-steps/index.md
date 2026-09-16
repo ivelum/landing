@@ -74,13 +74,13 @@ you a lot of development work time, and the result will be much better.
 
 You can still produce something useful even if you're not a professional
 designer. For example, you can use a rapid wireframing tool like
-[Balsamiq](https://balsamiq.com) (my favorite) or
-[Excalidraw](https://excalidraw.com). With such tools, you can sketch an idea
+[Balsamiq >](https://balsamiq.com) (my favorite) or
+[Excalidraw >](https://excalidraw.com). With such tools, you can sketch an idea
 quickly without spending time on minor visual details. Or, use a whiteboard or
 good old pencil and paper. Any sketch is better than nothing.
 
 ![Low-fidelity Balsamiq wireframes](balsamiq.png)
-*Low-fidelity [Balsamiq](https://balsamiq.com) wireframes*
+*Low-fidelity [Balsamiq >](https://balsamiq.com) wireframes*
 
 And if you're building an API or a command-line interface, your design would be
 the documentation and usage examples. It doesn't have to be polished at this
@@ -121,7 +121,7 @@ specification. You may skip everything else in UML, but if you're working with
 relational databases, don't skip ER diagrams :)
 
 ![ER diagram example](dbdiagram.png)
-*Credit: [dbdiagram.io](https://dbdiagram.io)*
+*Credit: [dbdiagram.io >](https://dbdiagram.io)*
 
 ## Summary
 

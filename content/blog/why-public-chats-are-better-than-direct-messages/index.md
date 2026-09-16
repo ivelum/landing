@@ -101,7 +101,7 @@ perceived as a risk of information leaks, and in some cases, it can be a risk
 indeed. However, by imposing communication barriers, companies not only
 mitigate these risks but also greatly harm their productivity. Even one of
 the most secretive companies –
-[Apple – is now reconsidering its practices](https://www.fastcompany.com/90748492/apple-airpods-pro-creation)
+[Apple – is now reconsidering its practices >](https://www.fastcompany.com/90748492/apple-airpods-pro-creation)
 because the downsides are so significant.
 
 ## Bottom line

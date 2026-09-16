@@ -95,9 +95,9 @@ may be lost, causing downtime. In most modern projects, it's handled with
 container orchestration. The main principle is simple: launch new application
 instances in parallel with the old ones and then switch traffic on the load
 balancer. Strategies may vary. It can be a
-[rolling update](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/)
+[rolling update >](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/)
 when we launch new instances one by one, or we could replace them all at once
-(so-called [blue-green deployment](https://docs.aws.amazon.com/whitepapers/latest/overview-deployment-options/bluegreen-deployments.html)).
+(so-called [blue-green deployment >](https://docs.aws.amazon.com/whitepapers/latest/overview-deployment-options/bluegreen-deployments.html)).
 
 Alternatively, some projects rely on graceful reload, supported by application
 servers like Nginx Unit, uWSGI, PHP-FPM, and others. In this case, the
@@ -151,7 +151,7 @@ Ideally, the frontend app should somehow receive a signal that a new version is
 available. After receiving such a signal, it can reload itself automatically so
 that users don't have to do anything and can continue to work normally. This
 idea can be implemented in various ways. Let's see a concrete example of how
-we did it in one of our projects, [Teamplify](https://teamplify.com):
+we did it in one of our projects, [Teamplify >](https://teamplify.com):
 
 ![App version update](app-version-update.svg)
 
@@ -223,7 +223,7 @@ updates frequently without downtime.
 
 However, this is not an exhaustive guide, and there's a chance you may run into
 a tricky situation that is not covered here. If so, please feel free to reach
-out to us via [this website](/contact/) or [on X](https://x.com/ivelum_dev),
+out to us via [this website](/contact/) or [on X >](https://x.com/ivelum_dev),
 and we'll be happy to brainstorm with you.
 
 

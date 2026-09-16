@@ -15,7 +15,7 @@ When you hire us to build your web or mobile app, you get:
 - [Cloud Costs Optimization](/services/cloud-costs-optimization) at no
   additional cost.
 - A complimentary annual [Software Project Audit](/services/software-project-audit/).
-- A complimentary [Teamplify Business subscription](https://teamplify.com)
+- A complimentary [Teamplify Business subscription >](https://teamplify.com)
   including team analytics, daily standups, time off management,
   and more.
 

@@ -20,7 +20,7 @@ programming language. The industry was already pretty active, though. PHP,
 Java, Ruby, JavaScript, CSS, MySQL, and Postgres were all introduced in
 1995-1996, and we still use these technologies today. By 2000, developers had
 already built enough websites to
-[crash the stock market](https://en.wikipedia.org/wiki/Dot-com_bubble), even
+[crash the stock market >](https://en.wikipedia.org/wiki/Dot-com_bubble), even
 without jQuery! But that was going to change.
 
 ## 2010-s: The rise of frontend frameworks
@@ -44,7 +44,7 @@ started to take off: Backbone and Angular.js were released in 2010, Ember.js
 in 2011, React.js in 2013, and so on.
 
 I'm not sure if it was pure coincidence or a result of Trello's popularity, but
-at that time [TODO list](https://todomvc.com/) had become a canonical example,
+at that time [TODO list >](https://todomvc.com/) had become a canonical example,
 showcasing the capabilities of JS frameworks.
 
 ## APIs
@@ -53,7 +53,7 @@ Simultaneously in the 2010-s there was an explosive growth of APIs:
 
 ![Growth in web APIs](growth-in-web-apis.png)
 
-*Source: [Programmable Web](https://www.programmableweb.com/news/apis-show-faster-growth-rate-2019-previous-years/research/2019/07/17)*
+*Source: [Programmable Web >](https://www.programmableweb.com/news/apis-show-faster-growth-rate-2019-previous-years/research/2019/07/17)*
 
 Many organizations realized that building APIs could be a way to save
 development efforts and move faster. The same API can be behind a web
@@ -177,8 +177,8 @@ but most importantly – it has matured:
   in our codebase. Flexbox and Grid layouts are now safe to use for most apps,
   so we can finally center a div.
 - JavaScript has improved, and it's not just
-  [leftpad](https://qz.com/646467/how-one-programmer-broke-the-internet-by-deleting-a-tiny-piece-of-code)
-  being [accepted as a standard](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart).
+  [leftpad >](https://qz.com/646467/how-one-programmer-broke-the-internet-by-deleting-a-tiny-piece-of-code)
+  being [accepted as a standard >](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart).
   There have been numerous improvements in the language, tooling, frameworks,
   libraries, package managers, bundlers, linters, and testing tools. And it's
   no longer considered a slow language – it's faster than some popular

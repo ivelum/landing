@@ -47,7 +47,7 @@ In fact, most of the global web traffic comes from mobile devices:
 
 ![68% of web traffic comes from mobile devices](traffic-share-by-platform.png)
 
-*Source: [Similarweb](https://www.similarweb.com/platforms/)*
+*Source: [Similarweb >](https://www.similarweb.com/platforms/)*
 
 ## How quickly can we iterate?
 
@@ -64,7 +64,7 @@ anything - they just get a new version all at once.
 ![Mobile vs. web - iteration speed](mobile-vs-web-iteration-speed.png)
 
 Statista's report of the Google Play Store app updates shows that
-[most mobile apps are updated monthly](https://www.statista.com/statistics/1404434/google-play-store-app-updates-by-frequency/),
+[most mobile apps are updated monthly >](https://www.statista.com/statistics/1404434/google-play-store-app-updates-by-frequency/),
 and just about a third are updated weekly. We can iterate much faster than that
 with a web application—the team can push updates multiple times a day. If we
 discover a bug in production, we can deploy a fix within minutes, and all the
@@ -112,7 +112,7 @@ Under the hood, it's still the browser, but it looks and feels like a mobile app
 
 Progressive Web Apps can work offline, just like mobile apps, with the help of
 another feature called
-[Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers).
+[Service Workers >](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers).
 It's an optional feature, and developers need to write code to enable it, but
 it's pretty much doable if we need to make our app available offline.
 
@@ -124,7 +124,7 @@ and PWAs: IndexedDB, Cache Storage, LocalStorage, and SessionStorage.
 
 This means users can return to your app later and still find their data intact,
 even if the tab was closed. Storage limits vary by browser, but it's
-[usually in gigabytes](https://whatpwacando.today/storage), which is plenty for
+[usually in gigabytes >](https://whatpwacando.today/storage), which is plenty for
 typical use cases like user preferences, drafts, or offline content. So,
 persistent, local-first web experiences are absolutely doable.
 
@@ -139,7 +139,7 @@ Apple devices, it's Face ID and Touch ID, and there are alternatives on Android.
 What some people don't know is that biometric authentication is now available
 for web apps, too, through Webauthn standard, although the user experience is
 a bit different. Here's a
-[demonstration website for this technology](https://webauthn.me). Compared to mobile apps, on the
+[demonstration website for this technology >](https://webauthn.me). Compared to mobile apps, on the
 web, it involves one extra prompt about saving a passkey, and after that, we
 can use a fingerprint or face recognition for quick authentication on that
 website.
@@ -155,7 +155,7 @@ depending on various factors. It doesn't apply if you're selling physical
 goods or services, but for digital products, it could be a deciding factor.
 
 EDIT: In April 2025, there was a court order forcing Apple to
-[allow alternative payment options](https://techcrunch.com/2025/04/30/epic-games-just-scored-a-major-win-against-apple/),
+[allow alternative payment options >](https://techcrunch.com/2025/04/30/epic-games-just-scored-a-major-win-against-apple/),
 which is a huge win for mobile app developers. However, it applies only to the
 US App Store; the situation didn't change for users in other locations.
 .
@@ -166,7 +166,7 @@ Push notifications are available for both web and mobile. There are many
 nuances here, including differences between iOS and Android, and I won't go
 into all the details. Just let's make a note that it works here and there, and
 the notifications sent from mobile and web look similar. See a
-[demo of how it works on the web](https://whatpwacando.today/notifications).
+[demo of how it works on the web >](https://whatpwacando.today/notifications).
 
 ### Geolocation, touch, and multi-touch
 
@@ -182,9 +182,9 @@ is possible. It's also possible to access the device's camera and microphone,
 with the user's permission, of course. Graphics on the web may work a bit
 slower compared to native mobile apps, but with modern technologies like
 WebGL is still decent for many applications (see
-[demo 1](https://next.junni.co.jp/), [demo 2](https://pad.dotincorp.com/)).
+[demo 1 >](https://next.junni.co.jp/), [demo 2 >](https://pad.dotincorp.com/)).
 We can even access the device accelerometer from a web app. Look at this
-[simple browser game](https://topheman.github.io/bombs/)—you can control
+[simple browser game >](https://topheman.github.io/bombs/)—you can control
 it by tilting your phone.
 
 ### Side-by-side
@@ -216,7 +216,7 @@ app distribution might represent extra friction for its adoption.
 
 ![QR code on a table](cafe-table.jpg)
 
-In Lithuania, where I live, the [Greet Menu](https://www.greet.menu)
+In Lithuania, where I live, the [Greet Menu >](https://www.greet.menu)
 application has taken local restaurants by storm. Many of them now have QR
 codes on the tables, and after scanning the code, you can browse the menu or
 pay the bill for your table. Similar apps exist in other countries as well.

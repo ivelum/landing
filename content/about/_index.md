@@ -30,7 +30,7 @@ keeping software reliable as it grows. Good engineering makes the next change
 easier. Learn more about our approach:
 
 - [Our Blog](/blog/)
-- [YouTube channel](https://youtube.com/@ivelum/videos)
+- [YouTube channel >](https://youtube.com/@ivelum/videos)
 
 ## Startup-friendly
 
@@ -38,7 +38,7 @@ Startups have been at the heart of our work for most of our history, from
 early-stage ventures to companies with $100M+ exits. We know how important
 it is to test ideas quickly, prioritize carefully, and make every development
 dollar count. Part of the reason we understand startups so well is that we're
-building one ourselves: [Teamplify](https://teamplify.com), a complete team
+building one ourselves: [Teamplify >](https://teamplify.com), a complete team
 management suite for engineering teams.
 
 When you choose us for
