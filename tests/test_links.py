@@ -20,7 +20,6 @@ def get_sitemap_paths():
 
 
 def test_links():
-    disallowed_paths = set()
     ignore_urls = {
         '/blog/index.xml',  # RSS feed
     }
@@ -42,9 +41,6 @@ def test_links():
             response.content.decode('utf-8'),
             'html.parser',
         )
-        robots_meta = contents.find('meta', {'name': 'robots'})
-        if robots_meta and robots_meta.get('content') == 'noindex':
-            disallowed_paths.add(url)
         for link in contents.find_all('a'):
             link_url = link.attrs.get('href', '').split('#')[0]
             if link_url.startswith('/') and link_url not in urls_visited:
@@ -55,5 +51,4 @@ def test_links():
 
     # Part 2: All visited pages must be in sitemap.xml,
     # and there must be nothing else in the sitemap
-    public_site_urls = urls_visited - disallowed_paths
-    assert public_site_urls == get_sitemap_paths()
+    assert urls_visited == get_sitemap_paths()

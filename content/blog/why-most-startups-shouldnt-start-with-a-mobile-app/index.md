@@ -244,5 +244,5 @@ Some cases do justify starting with mobile, though. If you need low-level
 device access, or the best performance possible, or are entering a mobile-first
 space like messaging or gaming—your startup could be one of those exceptions.
 
-Need help deciding? [Book a free consultation](/consultation) to discuss your
+Need help deciding? [Book a free consultation](/contact/#talk) to discuss your
 project idea and get a plan specifically tailored to your needs.
