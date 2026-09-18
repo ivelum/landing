@@ -6,4 +6,4 @@ image: img/cut-cloud-costs.svg
 
 On projects we join, we reduce cloud spending by up to 50% without compromising reliability.
 
-[Cloud Costs Optimization](/services/cloud-costs-optimization/)
+[Cloud Cost Optimization](/services/cloud-cost-optimization/)

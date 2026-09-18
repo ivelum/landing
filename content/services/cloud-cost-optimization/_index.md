@@ -1,5 +1,5 @@
 ---
-title: Cloud costs optimization
+title: Cloud cost optimization
 description: Save 50% or more on your cloud bill without compromising app performance or uptime. We work with AWS, Google Cloud, Azure, CloudFlare, Vercel, Hetzner, and others.
 layout: service-page
 sitemap:
@@ -9,4 +9,4 @@ cascade:
     disable: true
 ---
 
-# Cloud Costs Optimization
+# Cloud Cost Optimization

@@ -46,4 +46,4 @@ When you choose us for
 exclusive extras come included:
 
 - [Fractional CTO services](/services/fractional-cto/), free of charge
-- [Cloud Costs Optimization](/services/cloud-costs-optimization/)
+- [Cloud Cost Optimization](/services/cloud-cost-optimization/)
