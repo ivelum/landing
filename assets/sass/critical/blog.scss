@@ -37,6 +37,8 @@
 
   &--item {
     border: 1px solid $border-color-default;
+    border-bottom: 0;
+    border-left: 0;
     border-radius: $border-radius-default;
     display: flex;
     flex-direction: column;
@@ -50,20 +52,15 @@
     @include transition(opacity 0.35s);
     flex-shrink: 0;
     height: auto;
-    max-height: 300px;
-    object-fit: cover;
-    object-position: center;
     width: 100%;
     @include media-up(md) {
-      max-height: unset;
-      height: 100%;
-      width: 220px;
+      width: 320px;
     }
     @include media-up(lg) {
-      width: 400px;
+      width: 450px;
     }
     @include media-up(xl) {
-      width: 450px;
+      width: 515px;
     }
 
     &:hover {
