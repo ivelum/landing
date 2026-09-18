@@ -1,6 +1,7 @@
 ---
 title: ivelum's development team Privacy policy
 description: Here, users can view the privacy policy of the ivelum team, which develops digital products for startups and established businesses.
+thumbnail: img/og-preview.png
 layout: privacy
 sitemap:
   disable: false

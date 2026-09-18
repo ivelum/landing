@@ -4,6 +4,7 @@ description: 'Implement AI features that deliver real value. From prototypes to 
 caption: 'AI'
 order: 1
 h1: 'AI solutions that deliver real business impact'
+thumbnail: img/og-preview.png
 layout: industries-ai
 sitemap:
   disable: false

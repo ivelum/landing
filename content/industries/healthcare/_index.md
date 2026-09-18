@@ -4,6 +4,7 @@ description: 'Build secure, HIPAA-compliant healthcare systems. We ensure reliab
 caption: 'Healthcare'
 order: 5
 h1: 'Build compliant and secure healthcare software. Fast.'
+thumbnail: img/og-preview.png
 layout: industries-healthcare
 sitemap:
   disable: false

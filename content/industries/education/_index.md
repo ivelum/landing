@@ -4,6 +4,7 @@ description: 'Launch immersive learning platforms faster. Build portable, standa
 caption: 'Education'
 order: 4
 h1: 'Build immersive learning experiences that students love'
+thumbnail: img/og-preview.png
 layout: industries-education
 sitemap:
   disable: false

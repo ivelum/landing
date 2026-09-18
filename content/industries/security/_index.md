@@ -4,6 +4,7 @@ description: 'Protect your business with best-in-class security. We provide secu
 caption: 'Security'
 order: 6
 h1: 'Build real security, not just pass audits'
+thumbnail: img/og-preview.png
 layout: industries-security
 sitemap:
   disable: false
