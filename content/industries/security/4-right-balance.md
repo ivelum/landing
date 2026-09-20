@@ -1,3 +1,8 @@
+---
+category: page-block
+marker: 04 /
+---
+
 ### Strike the right balance between security and productivity
 
 Not all security measures are equally useful. Some can slow your team down without

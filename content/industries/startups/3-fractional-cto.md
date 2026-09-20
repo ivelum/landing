@@ -1,3 +1,8 @@
+---
+category: page-block
+marker: 03 /
+---
+
 ### Fractional CTO Services
 
 Even if you haven't hired your full-time in-house CTO yet, the development team
@@ -11,3 +16,5 @@ and M&A, Denis will help you navigate complex technology decisions.
 {{< /fractional-cto >}}
 
 The fractional CTO services are free for all our clients.
+
+{{< button title="Learn more and book a free consultation" link="/services/fractional-cto/" >}}

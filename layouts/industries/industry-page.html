@@ -40,40 +40,33 @@
           "LinkedIn" .Params.linkedin
         ) }}
       </div>
+    {{ else }}
+      {{ with .Content }}
+        <div class="container industries--intro">
+          <div class="industries--intro-body">
+            {{- . -}}
+          </div>
+        </div>
+      {{ end }}
     {{ end }}
 
     <div class="container">
       <div class="industries--list">
+        {{- range sort (where .Pages "Params.category" "page-block") "File.Path" }}
         <div class="industries--item">
-          <div class="industries--item-num">01 /</div>
-          <div class="industries--item-body">
-            {{- (.GetPage "meet-regulation-standards").Content }}
-            <a
-              class="btn btn-outline-violet btn-small industries--cta"
-              href="#talk"
-            >
-              Book a free consultation
-            </a>
+          <div class="industries--item-num">{{ .Params.marker }}</div>
+          <div class="industries--item-body{{- with .Params.listStyle }} industries--item-list-{{ . }}{{ end }}">
+            {{- .Content }}
+            {{ with .Params.features }}
+              <ul class="industries--features-list">
+                {{ range . }}
+                  <li>{{ . | markdownify }}</li>
+                {{ end }}
+              </ul>
+            {{ end }}
           </div>
         </div>
-        <div class="industries--item">
-          <div class="industries--item-num">02 /</div>
-          <div class="industries--item-body">
-            {{- (.GetPage "reliability-and-scale").Content }}
-          </div>
-        </div>
-        <div class="industries--item">
-          <div class="industries--item-num">03 /</div>
-          <div class="industries--item-body">
-            {{- (.GetPage "use-ai").Content }}
-            <a
-              class="btn btn-outline-violet btn-small industries--cta"
-              href="#talk"
-            >
-              Book a free consultation
-            </a>
-          </div>
-        </div>
+        {{- end }}
       </div>
     </div>
   </main>

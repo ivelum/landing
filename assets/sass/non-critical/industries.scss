@@ -29,7 +29,8 @@
     }
   }
 
-  &--logo-list {
+  // Keep text lists and feature statistics unchanged in blocks with logos.
+  &--item-list-logos > ul:has(img) {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
@@ -49,20 +50,4 @@
     }
   }
 
-  &--cta {
-    margin-top: 1.5rem;
-    @include media-up(xl) {
-      margin-top: 2rem;
-    }
-  }
-
-  &--learn-more {
-    @include link-arrow;
-    @include link-underline;
-    display: inline-block;
-    margin-top: 1.5rem;
-    @include media-up(xl) {
-      margin-top: 2rem;
-    }
-  }
 }

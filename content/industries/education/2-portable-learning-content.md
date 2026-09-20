@@ -1,3 +1,9 @@
+---
+category: page-block
+marker: 02 /
+listStyle: logos
+---
+
 ### Build portable learning content
 
 Learning content standards, such as cmi5, xAPI, and SCORM, were created to make learning
@@ -8,8 +14,8 @@ creators and unlocking additional business opportunities for learning platforms.
 We at ivelum have a lot of experience working with these standards and building additional
 learning, engagement, and analytics features on top of them.
 
-{{< logos >}}
 - {{< image src="img/logo-cmi5.png" width=130 alt="cmi5 / xAPI" >}}
 - {{< image src="img/logo-scorm.svg" width=250 alt="SCORM" >}}
 - {{< image src="img/logo-articulate.svg" width=200 alt="Articulate" >}}
-{{</ logos >}}
+
+{{< button title="Book a free consultation" link="#talk" >}}

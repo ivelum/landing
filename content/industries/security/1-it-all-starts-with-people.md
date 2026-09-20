@@ -1,3 +1,9 @@
+---
+category: page-block
+marker: 01 /
+listStyle: logos
+---
+
 ### It all starts with people
 
 Security has never been just a technical discipline — it's a social one, too. That's
@@ -11,6 +17,4 @@ that supports best security practices, including:
 - Secure configuration of developer workstations and personal devices
 - Background checks for all new hires
 
-{{< logos >}}
-- {{< image src="img/logo-owasp.svg" width=230 alt="OWASP" >}}
-{{</ logos >}}
+* {{< image src="img/logo-owasp.svg" width=230 alt="OWASP" >}}

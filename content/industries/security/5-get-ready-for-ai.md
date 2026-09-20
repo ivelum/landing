@@ -1,3 +1,8 @@
+---
+category: page-block
+marker: 04 /
+---
+
 ### Get ready for the AI era
 
 We sat down with Harshil Parikh to talk about AI in cybersecurity. It's used on

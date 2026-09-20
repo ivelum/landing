@@ -1,3 +1,8 @@
+---
+category: page-block
+marker: 01 /
+---
+
 ### Add AI features strategically
 
 AI can be a game-changer in the right context — but in the wrong one, it adds friction
