@@ -43,24 +43,10 @@
         {{ end }}
       </div>
 
-      {{ with .GetPage "testimonial" }}
+      {{ with .Content }}
         <div class="detail-page--intro">
-          <div class="detail-page--intro-body is-testimonial">
-            {{ .Content }}
-          </div>
-          {{ partial "author-card.html" (dict
-            "Avatar" (.Parent.Resources.Get .Params.avatar)
-            "Name" .Title
-            "Position" .Params.position
-            "LinkedIn" .Params.linkedin
-          ) }}
+          <div class="detail-page--intro-body">{{ . }}</div>
         </div>
-      {{ else }}
-        {{ with .Content }}
-          <div class="detail-page--intro">
-            <div class="detail-page--intro-body">{{ . }}</div>
-          </div>
-        {{ end }}
       {{ end }}
 
       <div class="detail-page--blocks">

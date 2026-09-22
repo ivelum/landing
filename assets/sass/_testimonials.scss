@@ -4,6 +4,11 @@
     font-size: 0;
   }
 
+  &--intro {
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+
   &--item {
     border-top: 1px solid $border-color-default;
     display: inline-block;

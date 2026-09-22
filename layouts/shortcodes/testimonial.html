@@ -1,13 +1,21 @@
 {{- $name := .Get "name" -}}
 {{- $avatar := .Page.CurrentSection.Resources.Get (.Get "avatar") -}}
-<div class="testimonials--item">
-  {{ partial "author-card.html" (dict
+{{- $author := partial "author-card.html" (dict
     "Avatar" $avatar
     "Name" $name
     "Position" (.Get "position")
     "LinkedIn" (.Get "linkedin")
-  ) }}
+  ) -}}
+{{- if eq (.Get "layout") "intro" -}}
+  <div class="testimonials--intro">
+    {{ .Page.RenderString (dict "display" "block") .Inner }}
+  </div>
+  {{ $author }}
+{{- else -}}
+<div class="testimonials--item">
+  {{ $author }}
   <div class="testimonials--body">
     {{ .Inner | markdownify }}
   </div>
 </div>
+{{- end -}}

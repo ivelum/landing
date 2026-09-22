@@ -1,5 +1,6 @@
 @import './article';
 @import '../author-card';
+@import '../testimonials';
 
 .detail-page {
   position: relative;
@@ -159,12 +160,10 @@
 
     &-body {
       text-wrap: balance;
-      @include media-up(xl) {
-        font-size: $font-size-bigger;
-      }
-
-      &.is-testimonial {
-        font-style: italic;
+      &:not(:has(.testimonials--intro)) {
+        @include media-up(xl) {
+          font-size: $font-size-bigger;
+        }
       }
     }
   }
