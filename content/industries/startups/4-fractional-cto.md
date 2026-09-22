@@ -1,6 +1,6 @@
 ---
 category: page-block
-marker: 03 /
+marker: 04 /
 ---
 
 ## Fractional CTO Services
@@ -17,4 +17,4 @@ and M&A, Denis will help you navigate complex technology decisions.
 
 The fractional CTO services are free for all our clients.
 
-{{< button title="Learn more and book a free consultation" link="/services/fractional-cto/" >}}
+{{< button title="Fractional CTO Services" link="/services/fractional-cto/" >}}
