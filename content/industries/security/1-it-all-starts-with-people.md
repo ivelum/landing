@@ -4,7 +4,7 @@ marker: 01 /
 listStyle: logos
 ---
 
-### It all starts with people
+## It all starts with people
 
 Security has never been just a technical discipline — it's a social one, too. That's
 why we place a strong emphasis on training our developers and creating an environment

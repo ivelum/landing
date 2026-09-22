@@ -6,7 +6,7 @@ features:
   - '**2M+** students'
 ---
 
-### Launch faster
+## Launch faster
 
 Over the years, we have launched over a hundred online learning websites in various
 industries, including corporate education, public safety, clinical research, and

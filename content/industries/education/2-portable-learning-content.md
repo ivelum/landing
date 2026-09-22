@@ -4,7 +4,7 @@ marker: 02 /
 listStyle: logos
 ---
 
-### Build portable learning content
+## Build portable learning content
 
 Learning content standards, such as cmi5, xAPI, and SCORM, were created to make learning
 content portable. This means the content can be created on one platform, such as Articulate,

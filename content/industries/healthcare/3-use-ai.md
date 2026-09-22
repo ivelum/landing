@@ -3,7 +3,7 @@ category: page-block
 marker: 03 /
 ---
 
-### Use AI while keeping humans in the loop
+## Use AI while keeping humans in the loop
 
 AI is a great productivity multiplier in all industries, and healthcare is no
 exception. We don't think it is ready to replace humans—at least, not yet, but

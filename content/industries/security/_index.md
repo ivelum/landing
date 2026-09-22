@@ -5,7 +5,6 @@ caption: 'Security'
 order: 6
 h1: 'Build real security, not just pass audits'
 thumbnail: img/og-preview.png
-layout: industry-page
 sitemap:
   disable: false
 cascade:

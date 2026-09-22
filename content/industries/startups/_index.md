@@ -5,7 +5,6 @@ caption: 'Startups'
 order: 2
 h1: 'Build what matters. Fast & secure.'
 thumbnail: img/og-preview.png
-layout: industry-page
 sitemap:
   disable: false
 cascade:

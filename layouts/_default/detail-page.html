@@ -1,0 +1,98 @@
+{{- define "styles" }}
+  {{- partial "styles.html" "detail-page" }}
+{{- end }}
+
+{{- define "header" }}
+  {{ partial "header.html" (dict
+    "RelPermalink" .RelPermalink
+    "LightHeader" true
+    "TalkToUsAbsolute" false
+  ) }}
+{{- end }}
+
+{{- define "main" }}
+  <main class="page detail-page">
+    {{ with .Params.backLink }}
+      <div class="container detail-page--back">
+        <a class="article--back-link" href="{{ .link }}">
+          {{ (resources.Get "img/ico-arrow-left.svg").Content | strings.TrimSpace | safeHTML }}
+          {{ .title }}
+        </a>
+      </div>
+    {{ end }}
+
+    <article class="container detail-page--content article--content">
+      <div class="detail-page--head">
+        <div class="detail-page--head-body">
+          {{ with .Params.caption }}
+            <div class="detail-page--head-caption">{{ . }}</div>
+          {{ end }}
+          {{ .RenderString (printf "# %s" .Params.h1) }}
+        </div>
+        {{- $page := . }}
+        {{ with .Params.headingImage }}
+          {{ with $page.Resources.Get . }}
+            <div class="detail-page--head-img">
+              {{ partial "image.html" (dict
+                "Img" .
+                "Alt" (default "" $page.Params.headingImageAlt)
+                "Width" (default 250 $page.Params.headingImageWidth)
+              ) }}
+            </div>
+          {{ end }}
+        {{ end }}
+      </div>
+
+      {{ with .GetPage "testimonial" }}
+        <div class="detail-page--intro">
+          <div class="detail-page--intro-body is-testimonial">
+            {{ .Content }}
+          </div>
+          {{ partial "author-card.html" (dict
+            "Avatar" (.Parent.Resources.Get .Params.avatar)
+            "Name" .Title
+            "Position" .Params.position
+            "LinkedIn" .Params.linkedin
+          ) }}
+        </div>
+      {{ else }}
+        {{ with .Content }}
+          <div class="detail-page--intro">
+            <div class="detail-page--intro-body">{{ . }}</div>
+          </div>
+        {{ end }}
+      {{ end }}
+
+      <div class="detail-page--blocks">
+        {{- $section := . }}
+        {{- range sort (where .Pages "Params.category" "page-block") "File.Path" }}
+          <section class="detail-page--section{{ if eq .Params.columnOrder "reverse" }} detail-page--section-column-reverse{{ end }}">
+            <div class="detail-page--section-marker">
+              {{ with .Params.marker }}{{ . }}{{ end }}
+              {{- $block := . }}
+              {{ with .Params.image }}
+                {{ with $section.Resources.Get . }}
+                  {{ partial "image.html" (dict
+                    "Img" .
+                    "Alt" (default "" $block.Params.imageAlt)
+                    "Width" (default 150 $block.Params.imageWidth)
+                  ) }}
+                {{ end }}
+              {{ end }}
+            </div>
+            <div class="detail-page--section-body{{ with .Params.listStyle }} detail-page--section-list-{{ . }}{{ end }}">
+              {{ .Content }}
+              {{ with .Params.features }}
+                <ul class="detail-page--features-list">
+                  {{ range . }}
+                    <li>{{ . | markdownify }}</li>
+                  {{ end }}
+                </ul>
+              {{ end }}
+            </div>
+          </section>
+        {{- end }}
+      </div>
+    </article>
+  </main>
+{{- end }}

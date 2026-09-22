@@ -3,7 +3,7 @@ category: page-block
 marker: 03 /
 ---
 
-### Get ready for the AI era
+## Get ready for the AI era
 
 AI overviews in search results and AI chats, like ChatGPT, are changing how
 people search the Internet. We partnered with Flexpress to help media publishers

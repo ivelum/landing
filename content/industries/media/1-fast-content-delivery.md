@@ -4,7 +4,7 @@ marker: 01 /
 listStyle: logos
 ---
 
-### Blazingly fast content delivery
+## Blazingly fast content delivery
 
 Slow load times kill engagement, hurt SEO, reduce time on site, and chip away
 at your revenue. We help you hit top Core Web Vitals and PageSpeed scores by

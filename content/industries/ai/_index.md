@@ -5,7 +5,6 @@ caption: 'AI'
 order: 1
 h1: 'AI solutions that deliver real business impact'
 thumbnail: img/og-preview.png
-layout: industry-page
 sitemap:
   disable: false
 cascade:

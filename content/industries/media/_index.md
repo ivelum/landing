@@ -5,7 +5,6 @@ caption: 'Media'
 order: 3
 h1: 'Faster websites. Lower costs. Better monetization.'
 thumbnail: img/og-preview.png
-layout: industry-page
 sitemap:
   disable: false
 cascade:

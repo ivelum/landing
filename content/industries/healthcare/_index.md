@@ -5,7 +5,6 @@ caption: 'Healthcare'
 order: 5
 h1: 'Build compliant and secure healthcare software. Fast.'
 thumbnail: img/og-preview.png
-layout: industry-page
 sitemap:
   disable: false
 cascade:

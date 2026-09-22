@@ -3,7 +3,7 @@ category: page-block
 marker: 03 /
 ---
 
-### Case study: Reach platform
+## Case study: Reach platform
 
 In collaboration with Virtual Routes, we've built the [Reach platform >](https://virtual-routes.org/reach/)
 to match students and local community organizations (LCOs) as part of

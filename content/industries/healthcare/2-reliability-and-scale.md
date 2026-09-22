@@ -4,7 +4,7 @@ marker: 02 /
 listStyle: logos
 ---
 
-### Build for reliability and scale
+## Build for reliability and scale
 
 Any IT system may eventually fail, but it may have especially dangerous, sometimes
 life-threatening consequences in healthcare. We use the best engineering practices

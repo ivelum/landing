@@ -4,7 +4,7 @@ marker: 01 /
 listStyle: logos
 ---
 
-### Meet regulation standards
+## Meet regulation standards
 
 Healthcare software handles highly sensitive Personal Health Information (PHI),
 and therefore needs to be built to the highest standards for privacy and security.

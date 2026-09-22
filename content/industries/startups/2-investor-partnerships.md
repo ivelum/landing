@@ -4,7 +4,7 @@ marker: 02 /
 listStyle: logos
 ---
 
-### Investor partnerships
+## Investor partnerships
 
 We work with startups that have raised capital from numerous venture capital
 and private equity funds, and we understand what investors are looking for from
