@@ -1,6 +1,6 @@
 ---
-title: 'Software development expertise across industries'
-description: 'Explore ivelum’s software development expertise for AI, startups, media, education, healthcare, and security.'
+title: 'Software development by industry | ivelum'
+description: 'Software development for startups, media, education, healthcare, AI, and security. See how we solve the technical challenges specific to your industry.'
 caption: 'Industries'
 h1: 'Software expertise for your industry'
 thumbnail: img/og-preview.png

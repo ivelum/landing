@@ -1,6 +1,6 @@
 ---
-title: Better than estimates
-description: People routinely use estimates for planning, prioritization, and managing expectations. But are they really the best tool for the job?
+title: 'Better than estimates: why we plan with deadlines instead'
+description: 'Software estimates are uncertain, tend to get padded, and slow teams down. Learn why deadlines work better for prioritization and how to meet them reliably.'
 thumbnail: thumbnail.png
 author: Denis Stebunov
 date: 2025-03-13T10:22:00+0200

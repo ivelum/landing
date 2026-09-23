@@ -1,6 +1,6 @@
 ---
-title: Custom software development for startups and enterprises — ivelum
-description: Web and mobile app development, cloud cost optimization, software project audits, and fractional CTO services from a senior engineering team.
+title: 'About ivelum: software engineering for startups and enterprises'
+description: 'Founded by software engineers in 2003, ivelum builds web and mobile products for startups and enterprises. Meet the team and learn more about our approach.'
 thumbnail: img/og-preview.png
 layout: about
 menus:

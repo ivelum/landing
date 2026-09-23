@@ -1,6 +1,6 @@
 ---
-title: 'Startup software development: fast, secure, and scalable'
-description: 'We help startups build robust, scalable software fast. Achieve cost savings, secure systems, and investor-ready technology with our expert team.'
+title: 'Software development for startups | ivelum'
+description: 'We help startups turn an MVP into a production-ready product, grow the team after a funding round, and make key tech decisions with a free fractional CTO.'
 caption: 'Startups'
 order: 2
 h1: 'Build what matters. Fast & secure.'

@@ -1,6 +1,6 @@
 ---
-title: Update with no fear — achieving zero-downtime deployment
-description: "The key principles of zero-downtime deployment applied to the main components of any web app: the backend, the frontend, and the database"
+title: 'Zero-downtime deployment: backend, frontend, and database'
+description: 'How to deploy web apps without downtime: monitoring, database migrations, rolling backend updates, CDN and browser caches, and updating SPAs safely.'
 thumbnail: thumbnail.png
 author: Denis Stebunov
 date: 2025-02-18T12:54:00+0200

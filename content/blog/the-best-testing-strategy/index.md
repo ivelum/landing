@@ -1,6 +1,6 @@
 ---
-title: The best testing strategy
-description: How do we balance unit, integration, and end-to-end tests? Should we follow Test Pyramid, Testing Trophy, or something else?
+title: 'Test pyramid or testing trophy? Choosing a testing strategy'
+description: 'How should you balance unit, integration, and end-to-end tests? We compare them on confidence, speed, ease of use, and coverage to find the right mix.'
 thumbnail: thumbnail.png
 author: Denis Stebunov
 date: 2025-06-15T09:15:00+0200

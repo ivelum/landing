@@ -1,6 +1,6 @@
 ---
-title: Lean app monitoring—The Starter Pack
-description: An easy, low-cost way to start your monitoring routine that covers the most basic needs. For those who lost in application monitoring, infrastructure monitoring, uptime monitoring, etc.
+title: 'Lean app monitoring: a starter pack for small teams'
+description: "Infrastructure, APM, error, and uptime monitoring explained, plus a low-cost starter pack that covers your app's basics without enterprise overhead."
 thumbnail: thumbnail.png
 author: Denis Stebunov
 date: 2025-01-16T14:37:00+0200

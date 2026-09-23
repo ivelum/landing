@@ -1,6 +1,6 @@
 ---
-title: Do you need a technical cofounder?
-description: Why would you give equity to someone technical when you can build your idea yourself with AI?
+title: 'Do you need a technical cofounder in the AI era?'
+description: 'AI makes it tempting to vibe-code your startup yourself. Learn when you still need a technical cofounder, what traits to look for, and how to pay them.'
 thumbnail: thumbnail.png
 author: Denis Stebunov
 date: 2026-08-24T23:48:00+0300

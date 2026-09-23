@@ -1,6 +1,6 @@
 ---
-title: Why go full-stack?
-description: What does it mean to be a full-stack web developer today, and what are their pros and cons for team productivity?
+title: "Why go full-stack? Aren't dedicated specialists better?"
+description: 'Frontend frameworks split web teams into narrow specialists. Learn what problems full-stack developers solve, and whether to hire them or become one.'
 thumbnail: why-go-full-stack.png
 author: Denis Stebunov
 date: 2023-02-01T12:40:00+0300

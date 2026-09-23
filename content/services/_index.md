@@ -1,6 +1,6 @@
 ---
-title: Custom software development for startups and enterprises — ivelum
-description: Web and mobile app development, cloud cost optimization, software project audits, and fractional CTO services from a senior engineering team.
+title: 'Software development services | ivelum'
+description: 'Web and mobile development, cloud cost optimization, software audits, and free fractional CTO services, all from one senior engineering team.'
 thumbnail: img/og-preview.png
 layout: services
 cascade:

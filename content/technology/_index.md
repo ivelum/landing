@@ -1,6 +1,6 @@
 ---
-title: Our technology stack for сustom web development — ivelum
-description: Explore technologies powering our web and software development services. We utilize a modern tech stack and a full-stack approach to deliver robust digital solutions.
+title: 'The technology stack behind our web and mobile apps | ivelum'
+description: 'See the technologies we use to build web and mobile apps, including Python, Django, PHP, Node.js, React, React Native, Kubernetes, AWS, GCP, Azure, and others.'
 thumbnail: img/og-preview.png
 layout: technology
 menus:

@@ -1,6 +1,6 @@
 ---
-title: 'AI development services for strategic business growth'
-description: 'Implement AI features that deliver real value. From prototypes to production-grade systems, we build smarter, faster, and more reliable AI solutions.'
+title: 'AI development and integration services | ivelum'
+description: 'Add AI features that deliver real business value. We build AI-powered products from scratch and add AI to existing ones without breaking what works.'
 caption: 'AI'
 order: 1
 h1: 'AI solutions that deliver real business impact'

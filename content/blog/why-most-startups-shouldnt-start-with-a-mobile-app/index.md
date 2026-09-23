@@ -1,6 +1,6 @@
 ---
-title: Why most startups shouldn't start with a mobile app
-description: Planning to build your MVP as a mobile app? Here's why starting with a web app might save you time, money, and frustration
+title: 'Web app or mobile app: what should your startup build first?'
+description: 'Planning to launch your MVP as a mobile app? See why most startups are better off starting with a web app: faster iteration, easier debugging, and lower costs.'
 thumbnail: thumbnail.png
 author: Denis Stebunov
 date: 2025-03-19T14:37:00+0200

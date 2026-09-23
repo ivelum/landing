@@ -1,7 +1,7 @@
 ---
 url: /
-title: Custom software development for startups and enterprises — ivelum
-description: Web and mobile app development, cloud cost optimization, software project audits, and fractional CTO services from a senior engineering team.
+title: 'Custom software development company | ivelum'
+description: 'ivelum is a custom software development company with senior full-stack engineers. We build web and mobile apps, ship daily, and include a free fractional CTO.'
 thumbnail: img/og-home.png
 cascade:
   sitemap:

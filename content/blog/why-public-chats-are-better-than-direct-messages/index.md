@@ -1,6 +1,6 @@
 ---
-title: Why public chats are better than direct messages
-description: How we communicate makes an enormous impact on our work. One of the best strategies for improving communication in a team is making it open.
+title: 'Why public chats are better than direct messages at work'
+description: 'Open team communication means fewer distractions and more shared context. Why we default to public channels over DMs, and why it isn''t just noise.'
 thumbnail: thumbnail.png
 author: Denis Stebunov
 date: 2022-09-07T17:38:00+0200

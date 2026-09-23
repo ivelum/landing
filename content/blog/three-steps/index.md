@@ -1,6 +1,6 @@
 ---
-title: Three important steps before jumping to the code
-description: Once you decide which feature you want to build, it's time to decide how to actually build it.
+title: 'Before you code: 3 steps to plan a software feature'
+description: 'Before writing code, understand why the feature matters, design the UX, and plan the data structures. A simple planning routine that saves rework later.'
 thumbnail: thumbnail.png
 author: Denis Stebunov
 date: 2024-07-08T14:37:00+0200

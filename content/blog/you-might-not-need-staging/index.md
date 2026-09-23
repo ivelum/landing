@@ -1,6 +1,6 @@
 ---
-title: You might not need staging
-description: Many engineering teams use staging to test new features before pushing them to production. But is it really the best way to test?
+title: 'You might not need a staging environment'
+description: 'Staging slows teams down and still differs from production. How we replaced it with feature flags, early access programs, and testing in production.'
 thumbnail: thumbnail.png
 author: Denis Stebunov
 date: 2025-01-29T10:30:00+0200

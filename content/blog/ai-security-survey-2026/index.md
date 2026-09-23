@@ -1,6 +1,6 @@
 ---
-title: "Survey: AI impact on security"
-description: We surveyed engineering leaders at companies of all sizes to understand how they use AI and how it affects security within their teams
+title: 'AI code security survey 2026: how engineering teams use AI'
+description: 'We surveyed engineering leaders about AI-generated code: how widely it reaches production, top security and quality concerns, and mitigations that work.'
 thumbnail: thumbnail.png
 author: Denis Stebunov
 date: 2026-07-21T14:40:00+0300
