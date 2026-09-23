@@ -1,5 +1,5 @@
 .testimonials {
-  @at-root :where(.detail-page--section-body, .container):has(> #{&}--item) {
+  @at-root :is(.detail-page--section-body, .container):has(> #{&}--item) {
     display: block;
     font-size: 0;
   }
