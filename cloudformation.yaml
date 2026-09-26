@@ -48,6 +48,48 @@ Resources:
             Resource:
               Fn::Sub: "arn:aws:s3:::${WebsiteBucket}/*"
 
+  WebsiteRedirectFunction:
+    Type: AWS::CloudFront::Function
+    Properties:
+      Name: !Sub '${AWS::StackName}-redirects'
+      AutoPublish: true
+      FunctionConfig:
+        Comment: Exact-path redirects for the website
+        Runtime: cloudfront-js-2.0
+      FunctionCode: |
+        function handler(event) {
+            // Ignore trailing slashes in both request paths and redirect keys.
+            // Destinations may be local paths or full HTTPS URLs.
+            // Original query parameters are intentionally not forwarded.
+            var redirects = {
+                '/blog/dont-start-with-mobile/': { location: '/blog/why-most-startups-shouldnt-start-with-a-mobile-app/', statusCode: 301 },
+                '/admin': { location: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', statusCode: 302 },
+                '/consultation': { location: 'https://calendly.com/ivelum/consultation', statusCode: 302 },
+            };
+
+            var request = event.request;
+            var path = request.uri.replace(/\/+$/, '') || '/';
+            var paths = Object.keys(redirects);
+            var redirect;
+            for (var i = 0; i < paths.length; i++) {
+                if ((paths[i].replace(/\/+$/, '') || '/') === path) {
+                    redirect = redirects[paths[i]];
+                    break;
+                }
+            }
+            if (!redirect) {
+                return request;
+            }
+
+            return {
+                statusCode: redirect.statusCode,
+                statusDescription: redirect.statusCode === 302 ? 'Found' : 'Moved Permanently',
+                headers: {
+                    location: { value: redirect.location }
+                }
+            };
+        }
+
   WebsiteDistribution:
     Type: AWS::CloudFront::Distribution
     DependsOn: WebsiteBucket
@@ -81,6 +123,9 @@ Resources:
           TargetOriginId:
             Ref: WebsiteBucket
           ViewerProtocolPolicy: 'redirect-to-https'
+          FunctionAssociations:
+            - EventType: viewer-request
+              FunctionARN: !GetAtt WebsiteRedirectFunction.FunctionMetadata.FunctionARN
           AllowedMethods:
             - GET
             - HEAD

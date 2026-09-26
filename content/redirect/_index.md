@@ -1,4 +1,0 @@
----
-sitemap:
-  disable: true
----
