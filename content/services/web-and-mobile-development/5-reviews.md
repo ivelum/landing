@@ -26,6 +26,15 @@ You absolutely feel like they are a part of your team.
 {{< /testimonial >}}
 
 {{< testimonial
+  name="Arjan Dehar"
+  avatar="img/avatars/arjan-dehar.jpeg"
+  linkedin="https://www.linkedin.com/in/arjandehar/"
+  position="Head of Engineering"
+>}}
+They know how to work fast and promptly respond to our needs and feedback.
+{{< /testimonial >}}
+
+{{< testimonial
   name="Ken Robinson"
   avatar="img/avatars/ken-robinson.png"
   linkedin="https://www.linkedin.com/in/kennethshenrobinson/"
