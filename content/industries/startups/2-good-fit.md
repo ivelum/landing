@@ -5,7 +5,8 @@ marker: 02 /
 
 ## We're a good fit if you need to:
 
-- Turn your MVP or prototype into a production-ready product
+- [Build an MVP](/services/mvp-development/) or turn your prototype into
+  a production-ready product
 - Ship faster, without spending months hiring an in-house team
 - Add senior engineering capacity after a funding round
 - Stabilize a fragile or rapidly growing codebase

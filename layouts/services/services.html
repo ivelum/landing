@@ -19,29 +19,22 @@
     <div class="container">
       <div class="services--index-features">
         <div class="services--index-list">
-          {{- $services := slice
-            (dict "title" "Web and Mobile Development" "path" "/services/web-and-mobile-development/")
-            (dict "title" "Fractional CTO services" "path" "/services/fractional-cto/")
-            (dict "title" "Cloud Cost Optimization" "path" "/services/cloud-cost-optimization/")
-            (dict "title" "Software Project Audit" "path" "/services/software-project-audit/")
-          }}
-          {{- range $services }}
-            <a class="services--index-item" href="{{ .path }}">
-              <div class="services--index-item-title">
-                <span>{{ .title }}</span>
-                <span class="services--index-item-arrow" aria-hidden="true"></span>
+          <div class="services--index-illustration">
+            <img src="{{ (resources.Get "img/services.svg").RelPermalink }}" width="400" height="173" alt="" fetchpriority="high">
+          </div>
+          {{- range .Pages.ByParam "listOrder" }}
+            <a class="services--index-item" href="{{ .RelPermalink }}">
+              <div class="services--index-item-content">
+                <div class="services--index-item-icon" aria-hidden="true">
+                  <img src="{{ (.Resources.Get .Params.listIcon).RelPermalink }}" alt="">
+                </div>
+                <h2 class="services--index-item-title"><span>{{ .Params.h1 }}</span></h2>
+                <p class="services--index-item-text">{{ strings.TrimSuffix "." .Description }}&nbsp;<span aria-hidden="true">→</span></p>
               </div>
-              {{- with site.GetPage .path }}
-                <div class="services--index-item-text">{{ .Description }}</div>
-              {{- end }}
             </a>
           {{- end }}
         </div>
       </div>
-    </div>
-
-    <div class="container services--index-action">
-      <a class="btn btn-big" href="https://calendly.com/ivelum/consultation">Book a free consultation</a>
     </div>
   </main>
 {{- end }}
