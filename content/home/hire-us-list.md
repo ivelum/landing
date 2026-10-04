@@ -1,6 +1,6 @@
 ---
 ---
-- Launch an MVP fast
+- [Launch an MVP fast](/services/mvp-development/)
 - Scale without spending a fortune on it
 - Modernize a legacy system
 - Implement AI in the most effective way

@@ -10,7 +10,8 @@ features:
 
 When viral moments hit, your infrastructure needs to handle them — but without
 surprise costs. We design resilient and cost-efficient architectures that scale
-seamlessly while cutting cloud bills by up to 50%.
+seamlessly while
+[cutting cloud bills by up to 50%](/services/cloud-cost-optimization/).
 
 - {{< image src="img/logo-aws.svg" width=90 alt="AWS" >}}
 - {{< image src="img/logo-fastly.svg" width=130 alt="Fastly" >}}

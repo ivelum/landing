@@ -7,7 +7,7 @@ marker: 01 /
 
 We'll happily take your preferences into account. If you want us to focus more
 on certain areas, we'll prioritize them. We can look at security, compliance,
-infrastructure costs and reliability, development practices, product UX, and
-landing pages.
+[infrastructure costs](/services/cloud-cost-optimization/) and reliability,
+development practices, product UX, and landing pages.
 
 {{< image src="img/focus-areas.svg" width=500 alt="Focus areas" >}}
