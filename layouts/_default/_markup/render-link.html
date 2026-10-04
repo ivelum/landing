@@ -3,7 +3,7 @@
 {{- if $arrow -}}
   {{- $text = replaceRE `\s*&gt;$` "" $text | safeHTML -}}
 {{- end -}}
-<a href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $arrow }} target="_blank" class="link-arrow"{{ end }}>
+<a href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $arrow }} target="_blank" rel="noopener" class="link-arrow"{{ end }}>
   {{- with $text }}{{ . }}{{ end -}}
   {{- if $arrow }}&#8288;{{ end -}}
 </a>
