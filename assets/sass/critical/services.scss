@@ -51,8 +51,9 @@
     &:focus-visible {
       color: $font-color-default;
 
-      .services--index-item-title {
-        color: $dark-orange;
+      .services--index-item-title span {
+        background-size: 0 1px;
+        color: $font-color-dark;
       }
     }
 
@@ -82,7 +83,6 @@
     }
 
     &-title {
-      @include transition(color);
       color: $primary-violet;
       font-size: $font-size-bigger;
       font-weight: $font-weight-default;
@@ -93,10 +93,7 @@
       }
 
       span {
-        text-decoration: underline;
-        text-decoration-color: $primary-orange;
-        text-decoration-thickness: 1px;
-        text-underline-offset: 5px;
+        @include link-underline;
       }
     }
 
