@@ -1,0 +1,19 @@
+<dialog class="booking-modal" aria-labelledby="booking-title" inert>
+  <div class="booking-modal--header">
+    <h2 id="booking-title">Book a call</h2>
+    <button class="booking-modal--close" type="button" aria-label="Close booking" autofocus>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
+        <path d="M4 4L16 16M16 4L4 16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+      </svg>
+    </button>
+  </div>
+  <div class="booking-modal--body">
+    <div class="booking-modal--status" role="status">
+      <p data-calendly-status>Loading available times…</p>
+      <a href="https://calendly.com/ivelum/consultation" target="_blank" rel="noopener">Open Calendly in a new tab</a>
+    </div>
+    <div class="booking-modal--widget" inert></div>
+  </div>
+</dialog>
+{{- $script := resources.Get "js/calendly.js" | minify | fingerprint }}
+<script src="{{ $script.RelPermalink }}" defer></script>
