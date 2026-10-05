@@ -14,13 +14,5 @@ cascade:
     disable: true
 ---
 
-{{< testimonial
-    layout="intro"
-    name="Alex Ford"
-    avatar="img/avatars/alex-ford.png"
-    linkedin="https://www.linkedin.com/in/alexford/"
-    position="Investor & Entrepreneur"
->}}
-I've worked with ivelum for many years on all stages – from ideation and launch
-to scaling to millions of users. They are top-notch.
-{{< /testimonial >}}
+Have a startup idea? We've helped 50+ founders go from concept to launch,
+some to $100M+ exits. Let's build your MVP!
