@@ -96,17 +96,5 @@
         }
       }
     }
-
-    &-action {
-      display: flex;
-      justify-content: center;
-      margin: 2rem auto;
-      @include media-up(lg) {
-        margin: 3rem auto;
-      }
-      @include media-up(xl) {
-        margin: 4rem auto;
-      }
-    }
   }
 }
