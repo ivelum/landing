@@ -25,10 +25,12 @@
           {{- range .Pages.ByParam "listOrder" }}
             <a class="services--index-item" href="{{ .RelPermalink }}">
               <div class="services--index-item-content">
-                <div class="services--index-item-icon" aria-hidden="true">
-                  <img src="{{ (.Resources.Get .Params.listIcon).RelPermalink }}" alt="">
+                <div class="services--index-item-header">
+                  <div class="services--index-item-icon" aria-hidden="true">
+                    <img src="{{ (.Resources.Get .Params.listIcon).RelPermalink }}" alt="">
+                  </div>
+                  <h2 class="services--index-item-title"><span>{{ .Params.h1 }}</span></h2>
                 </div>
-                <h2 class="services--index-item-title"><span>{{ .Params.h1 }}</span></h2>
                 <p class="services--index-item-text">{{ strings.TrimSuffix "." .Description }}&nbsp;<span aria-hidden="true">→</span></p>
               </div>
             </a>

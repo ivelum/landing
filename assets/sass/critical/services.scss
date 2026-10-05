@@ -70,9 +70,16 @@
       min-width: 0;
     }
 
+    &-header {
+      align-items: center;
+      display: flex;
+      gap: 1rem;
+    }
+
     &-icon {
       align-items: center;
       display: flex;
+      flex-shrink: 0;
       height: 46px;
       justify-content: center;
       width: 48px;
