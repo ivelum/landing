@@ -166,7 +166,7 @@ $header-menu-open-duration: 0.3s;
         mask-repeat: no-repeat;
         mask-size: 1rem;
         position: absolute;
-        top: 0.375rem;
+        top: 0.4375rem;
         width: 1rem;
         @include media-up(lg) {
           content: '';
@@ -271,7 +271,7 @@ $header-menu-open-duration: 0.3s;
     gap: 0.5rem;
     line-height: 1;
     outline: none;
-    padding: 1rem 1.5rem 0.8125rem;
+    padding: 1rem 1.5rem 0.875rem;
     position: relative;
     text-align: center;
     white-space: nowrap;

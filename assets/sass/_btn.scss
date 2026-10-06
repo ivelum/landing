@@ -8,12 +8,13 @@
   color: $white;
   cursor: pointer;
   display: inline-flex;
-  font-size: $font-size-default;
-  font-weight: $font-weight-default;
+  font-size: $font-size-bigger;
+  font-weight: $font-weight-semi-bold;
   gap: 1rem;
+  line-height: 1;
   justify-content: center;
   outline: none;
-  padding: 0.75rem 2.5rem 0.625rem;
+  padding: 1rem 2rem 1.125rem;
   text-align: center;
   white-space: nowrap;
 
@@ -28,11 +29,11 @@
   }
 
   &-big {
-    padding: 1rem 3rem $font-size-smaller;
+    padding: 1.125rem 2.5rem 1.0625rem;
   }
 
   &-small {
-    padding: 0.5rem 2.5rem 0.375rem;
+    padding: 0.875rem 2.25rem 0.875rem;
     @media (max-width: 370px) {
       padding-inline: 1rem;
       min-width: 100%;
