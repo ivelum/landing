@@ -12,19 +12,14 @@ continuous delivery.
 
 - **[Startups](/industries/startups/)**
 From an idea and MVP to millions of users.
-
 - **[Media](/industries/media/)**
 High-traffic platforms built for speed and reliability.
-
 - **[Education](/industries/education/)**
 Engaging learning products for students and educators.
-
 - **[Healthcare](/industries/healthcare/)**
 Scalable products built with healthcare requirements in mind.
-
 - **[AI products](/industries/ai/)**
 AI features and products focused on measurable impact.
-
 - **[Security](/industries/security/)**
 Secure systems for startups and established businesses.
 

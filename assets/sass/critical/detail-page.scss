@@ -285,12 +285,15 @@
       li {
         border: 1px solid $border-color-default;
         margin: 0;
-        padding: 0 2rem 1.25rem;
+        padding: 1rem 2rem 1.25rem;
 
         strong {
           display: block;
           font-size: 1.225rem;
-          font-weight: $font-weight-default;
+          font-weight: $font-weight-semi-bold;
+          a {
+            font-weight: $font-weight-default;
+          }
         }
       }
 

@@ -1,22 +1,24 @@
 ---
 category: page-block
 marker: 08 /
+listStyle: cards
 ---
 
 ## What's included
 
 When you hire us to build your web or mobile app, you get:
 
-- **A fully dedicated team.** The developers and designers assigned to your
-  project work exclusively on it.
-- An **AI budget and all the professional tools** needed to do the job.
-- [Fractional CTO services](/services/fractional-cto/) at no additional cost
-  for the duration of the contract.
-- [Cloud Cost Optimization](/services/cloud-cost-optimization/) at no
-  additional cost.
-- A complimentary annual [Software Project Audit](/services/software-project-audit/).
-- A complimentary [Teamplify Business subscription >](https://teamplify.com)
-  including team analytics, daily standups, time off management,
-  and more.
+- **Dedicated team**
+  Professionals who work exclusively on your project.
+- **AI and dev tools**
+  Everything developers need: AI budget, IDEs, powerful laptops, etc.
+- **[Fractional CTO](/services/fractional-cto/)**
+  Available at no additional cost to all our clients.
+- **[Cost Optimization](/services/cloud-cost-optimization/)**
+  Keep your cloud bill under control.
+- **[Project Audit](/services/software-project-audit/)**
+  A complimentary annual security and quality audit.
+- **[Teamplify >](https://teamplify.com)**
+  Team analytics, daily standups, time tracking, and more.
 
 {{< button title="Get a quote" link="#talk" >}}
