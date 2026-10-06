@@ -1,7 +1,7 @@
 ---
 category: page-block
 marker: 06 /
-listStyle: two-columns
+listStyle: cards
 ---
 
 ## Experience across industries
@@ -22,7 +22,7 @@ Engaging learning products for students and educators.
 - **[Healthcare](/industries/healthcare/)**
 Scalable products built with healthcare requirements in mind.
 
-- **[AI product companies](/industries/ai/)**
+- **[AI products](/industries/ai/)**
 AI features and products focused on measurable impact.
 
 - **[Security](/industries/security/)**

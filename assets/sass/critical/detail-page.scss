@@ -274,6 +274,36 @@
     }
   }
 
+  &--section-list-cards {
+    ul {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      grid-gap: 1.5rem;
+      list-style-type: none;
+      padding: 0;
+
+      li {
+        border: 1px solid $border-color-default;
+        margin: 0;
+        padding: 0 2rem 1.25rem;
+
+        strong {
+          display: block;
+          font-size: 1.225rem;
+          font-weight: $font-weight-default;
+        }
+      }
+
+      @include media-up(sm) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      @include media-up(md) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+  }
+
   &--section-list-logos > ul:has(img) {
     align-items: center;
     display: flex;
