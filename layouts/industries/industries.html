@@ -21,18 +21,16 @@
         <div class="industries--index-list">
         {{- range sort .Pages "Params.order" }}
           <a class="industries--index-item" href="{{ .RelPermalink }}">
-            <div class="industries--index-item-title">
+            <h2 class="industries--index-item-title"><span>{{ .Params.caption }}</span></h2>
+            <p class="industries--index-item-text">{{ strings.TrimSuffix "." .Description }}&nbsp;<span aria-hidden="true">→</span></p>
             {{- with .Resources.Get "img/head-image.svg" }}
               {{ partial "image.html" (dict
                 "Img" .
                 "Alt" ""
-                "Width" 64
+                "Width" 180
+                "Class" "industries--index-item-illustration"
               ) }}
             {{- end }}
-              <span>{{ .Params.caption }}</span>
-              <span class="industries--index-item-arrow" aria-hidden="true"></span>
-            </div>
-            <div class="industries--index-item-text">{{ .Description }}</div>
           </a>
         {{- end }}
         </div>

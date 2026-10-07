@@ -1,99 +1,125 @@
 @import './base';
 
-.industries {
+.industries--index {
   margin-top: 6.25rem;
+
   @include media-up(md) {
     margin-top: 8.75rem;
   }
+
   @include media-up(xl) {
     margin-top: 12.5rem;
   }
 
-  &--index {
-    &-features {
-      margin-top: 1.5rem;
-      @include media-up(lg) {
-        margin-top: 2.5rem;
-      }
-      @include media-up(xl) {
-        margin-top: 3.75rem;
+  &-features {
+    margin-top: 1.5rem;
+
+    @include media-up(lg) {
+      margin-top: 2.5rem;
+    }
+
+    @include media-up(xl) {
+      margin-top: 3.75rem;
+    }
+  }
+
+  &-list {
+    display: grid;
+    column-gap: 3.75rem;
+
+    @include media-up(md) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &-item {
+    align-items: center;
+    border-bottom: 1px solid $border-color-default;
+    color: $font-color-default;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: minmax(0, 1fr) 4rem;
+    min-width: 0;
+    padding: 1.5rem 0;
+    text-decoration: none;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    @include media-up(md) {
+      grid-template-columns: minmax(0, 1fr) 6rem;
+
+      &:nth-last-child(2):nth-child(odd) {
+        border-bottom: 0;
       }
     }
 
-    &-list {
-      display: grid;
-      gap: 1px;
-      @include media-up(md) {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    @include media-up(lg) {
+      align-content: start;
+      grid-template-columns: minmax(0, 1fr) clamp(6rem, 13vw, 11.25rem);
+      padding: 2rem 0;
     }
 
-    &-item {
-      @include transition(background-color, color);
-      background-color: $white;
+    @include media-up(xl) {
+      padding: 2.5rem 0;
+    }
+
+    &:hover,
+    &:focus-visible {
       color: $font-color-default;
-      outline: 1px solid $border-color-default;
-      padding: 1.5rem;
-      text-decoration: none;
-      @include media-up(lg) {
-        padding: 2rem;
-      }
-      @include media-up(xl) {
-        padding: 2.5rem;
-      }
 
-      &:hover,
-      &:focus-visible {
-        background-color: $background-darker;
-        color: $font-color-default;
-
-        .industries--index-item-arrow {
-          transform: translate3d(0.25rem, -0.25rem, 0);
-        }
-      }
-
-      &:focus-visible {
-        outline: 3px solid rgba($primary-orange, 0.45);
-        outline-offset: 2px;
-        position: relative;
-        z-index: 1;
-      }
-
-      &-title {
-        align-items: center;
+      .industries--index-item-title span {
+        background-size: 0 1px;
         color: $font-color-dark;
-        display: flex;
-        font-size: $font-size-bigger;
-        gap: 1rem;
-        @include media-up(lg) {
-          font-size: 1.375rem;
-          gap: 1.5rem;
-        }
+      }
+    }
 
-        img {
-          display: block;
-          flex: 0 0 auto;
-          height: 4rem;
-          object-fit: contain;
-          width: 4rem;
-        }
+    &:focus-visible {
+      outline: 3px solid rgba($primary-orange, 0.6);
+      outline-offset: 8px;
+      border-radius: $border-radius-default;
+    }
+
+    &-title {
+      color: $primary-violet;
+      font-size: $font-size-bigger;
+      font-weight: $font-weight-default;
+      grid-column: 1;
+      grid-row: 1;
+      line-height: $line-height-default;
+
+      @include media-up(lg) {
+        font-size: 1.375rem;
       }
 
-      &-arrow {
-        @include transition(transform 0.3s);
-        background-image: url("data:image/svg+xml,%3Csvg width='16' height='17' viewBox='0 0 16 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3.21967 13.7686C3.51256 14.0615 3.98744 14.0615 4.28033 13.7686L11.5407 6.5082V10.708C11.5407 11.1222 11.8765 11.458 12.2907 11.458C12.705 11.458 13.0407 11.1222 13.0407 10.708V4.69754C13.0407 4.28333 12.705 3.94754 12.2907 3.94754H6.28033C5.86612 3.94754 5.53033 4.28333 5.53033 4.69754C5.53033 5.11176 5.86612 5.44754 6.28033 5.44754H10.4801L3.21967 12.708C2.92678 13.0008 2.92678 13.4757 3.21967 13.7686Z' fill='%233C3A40'/%3E%3C/svg%3E");
-        display: block;
-        flex: 0 0 auto;
-        height: 1rem;
-        margin-left: auto;
-        width: 1rem;
+      span {
+        @include link-underline;
       }
+    }
 
-      &-text {
-        margin-top: 1rem;
-        @include media-up(xl) {
-          margin-top: 1.5rem;
-        }
+    &-text {
+      align-self: start;
+      grid-column: 1 / -1;
+      grid-row: 2;
+      margin: 0;
+
+      @include media-up(lg) {
+        grid-column: 1;
+      }
+    }
+
+    &-illustration {
+      display: block;
+      grid-column: 2;
+      grid-row: 1;
+      height: auto;
+      justify-self: end;
+      max-width: 100%;
+
+      @include media-up(lg) {
+        align-self: start;
+        grid-row: 2;
       }
     }
   }
