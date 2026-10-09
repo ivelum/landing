@@ -322,6 +322,34 @@
     }
   }
 
+  &--section-list-named-logos > ul {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: 1rem 0 0;
+    padding: 0;
+
+    li {
+      align-items: center;
+      border: 1px solid $border-color-default;
+      border-radius: 3rem;
+      display: flex;
+      font-size: $font-size-default;
+      height: 3.5rem;
+      margin-bottom: 1rem;
+      margin-right: 1rem;
+      padding: 0.5rem 1.5rem;
+      width: auto;
+
+      img {
+        display: inline-block;
+        margin-right: 0.75rem;
+        vertical-align: middle;
+      }
+    }
+  }
+
   .youtube-preview {
     margin-top: 1.5rem;
   }
