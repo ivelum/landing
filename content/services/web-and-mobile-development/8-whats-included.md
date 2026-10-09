@@ -14,8 +14,8 @@ When you hire us to build your web or mobile app, you get:
   Everything developers need: AI budget, IDEs, powerful laptops, etc.
 - **[Fractional CTO](/services/fractional-cto/)**
   Available at no additional cost to all our clients.
-- **[Cost Optimization](/services/cloud-cost-optimization/)**
-  Keep your cloud bill under control.
+- **[Cloud Cost Optimization](/services/cloud-cost-optimization/)**
+  Scale while keeping your cloud bill under control.
 - **[Project Audit](/services/software-project-audit/)**
   A complimentary annual security and quality audit.
 - **[Teamplify >](https://teamplify.com)**

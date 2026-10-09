@@ -300,10 +300,6 @@
       @include media-up(sm) {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
-
-      @include media-up(md) {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
     }
   }
 
