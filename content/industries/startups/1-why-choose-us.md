@@ -1,7 +1,7 @@
 ---
 category: page-block
 marker: 01 /
-listStyle: two-columns
+listStyle: cards
 ---
 
 ## Why startups work with ivelum
