@@ -3,9 +3,9 @@ title: 'MVP Development Services for Startups | ivelum'
 description: "Launch your MVP fast and within budget. From early ideas to working prototypes, ivelum helps startups build, launch, and improve with real user feedback."
 thumbnail: img/og-preview.png
 
-h1: 'MVP Development'
 listOrder: 2
 listIcon: img/mvp.svg
+h1: 'MVP Development'
 
 sitemap:
   disable: false

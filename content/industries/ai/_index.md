@@ -1,10 +1,14 @@
 ---
 title: 'AI development and integration services | ivelum'
 description: 'Add AI features that deliver real business value. We build AI-powered products from scratch and add AI to existing ones without breaking what works.'
-caption: 'AI'
-order: 1
-h1: 'AI solutions that deliver real business impact'
 thumbnail: img/og-preview.png
+
+listOrder: 1
+caption: 'AI'
+h1: 'AI solutions that deliver real business impact'
+headingImage: img/head-image.svg
+headingImageWidth: 250
+
 sitemap:
   disable: false
 cascade:

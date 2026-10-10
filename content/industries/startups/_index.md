@@ -1,10 +1,14 @@
 ---
 title: 'Software development for startups | ivelum'
 description: 'We help startups turn an MVP into a production-ready product, grow the team after a funding round, and make key tech decisions with a free fractional CTO.'
-caption: 'Startups'
-order: 2
-h1: 'Build what matters. Fast & secure.'
 thumbnail: img/og-preview.png
+
+listOrder: 2
+caption: 'Startups'
+h1: 'Build what matters. Fast & secure.'
+headingImage: img/head-image.svg
+headingImageWidth: 250
+
 sitemap:
   disable: false
 cascade:

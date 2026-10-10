@@ -1,10 +1,14 @@
 ---
 title: 'Media and publishing website development | ivelum'
 description: 'Faster media websites that handle traffic spikes without runaway cloud bills. Better content delivery, stronger monetization, and readiness for AI search.'
-caption: 'Media'
-order: 3
-h1: 'Faster websites. Lower costs. Better monetization.'
 thumbnail: img/og-preview.png
+
+listOrder: 3
+caption: 'Media'
+h1: 'Faster websites. Lower costs. Better monetization.'
+headingImage: img/head-image.svg
+headingImageWidth: 250
+
 sitemap:
   disable: false
 cascade:

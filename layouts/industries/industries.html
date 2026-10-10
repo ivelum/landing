@@ -19,7 +19,7 @@
     <div class="container">
       <div class="industries--index-features">
         <div class="industries--index-list">
-        {{- range sort .Pages "Params.order" }}
+        {{- range sort .Pages "Params.listOrder" }}
           <a class="industries--index-item" href="{{ .RelPermalink }}">
             <h2 class="industries--index-item-title"><span>{{ .Params.caption }}</span></h2>
             <p class="industries--index-item-text">{{ strings.TrimSuffix "." .Description }}&nbsp;<span aria-hidden="true">→</span></p>

@@ -1,10 +1,14 @@
 ---
 title: 'Healthcare software development services | ivelum'
 description: 'Build secure, HIPAA-compliant healthcare software fast. Reliable infrastructure that scales, compliance built in, and AI that keeps humans in the loop.'
-caption: 'Healthcare'
-order: 5
-h1: 'Build compliant and secure healthcare software. Fast.'
 thumbnail: img/og-preview.png
+
+listOrder: 5
+caption: 'Healthcare'
+h1: 'Build compliant and secure healthcare software. Fast.'
+headingImage: img/head-image.svg
+headingImageWidth: 250
+
 sitemap:
   disable: false
 cascade:

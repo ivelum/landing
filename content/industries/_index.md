@@ -9,9 +9,6 @@ cascade:
   layout: detail-page
   target:
     kind: section
-  params:
-    headingImage: img/head-image.svg
-    headingImageWidth: 250
 menus:
   main:
     name: Industries
