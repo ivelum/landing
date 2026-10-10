@@ -5,7 +5,10 @@ thumbnail: img/og-preview.png
 
 listOrder: 1
 listIcon: img/web-mobile.svg
-h1: 'Web and Mobile Development'
+caption: Full-stack
+h1: Web and Mobile Development
+headingImage: img/head-image.svg
+headingImageWidth: 340
 
 sitemap:
   disable: false

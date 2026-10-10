@@ -5,7 +5,10 @@ thumbnail: img/og-preview.png
 
 listOrder: 3
 listIcon: img/cto.svg
-h1: 'Free Fractional CTO services'
+caption: Free
+h1: Fractional CTO services
+headingImage: img/head-image.svg
+headingImageWidth: 340
 
 sitemap:
   disable: false
@@ -13,3 +16,11 @@ cascade:
   sitemap:
     disable: true
 ---
+
+A unique offering from ivelum: Free Fractional CTO services for every client.
+Whether you
+[hire a full development team](/services/web-and-mobile-development/) or
+a single developer from us, you’ll get access to a Fractional CTO at no
+additional cost.
+
+{{< button title="Book a free consultation" link="#talk" >}}

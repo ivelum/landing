@@ -5,7 +5,10 @@ thumbnail: img/og-preview.png
 
 listOrder: 2
 listIcon: img/mvp.svg
+caption: Web and mobile
 h1: 'MVP Development'
+headingImage: img/head-image.svg
+headingImageWidth: 340
 
 sitemap:
   disable: false

@@ -28,6 +28,11 @@
             <div class="detail-page--head-caption">{{ . }}</div>
           {{ end }}
           {{ .RenderString (printf "# %s" .Params.h1) }}
+          {{ with .Content }}
+            <div class="detail-page--intro">
+              <div class="detail-page--intro-body">{{ . }}</div>
+            </div>
+          {{ end }}
         </div>
         {{- $page := . }}
         {{ with .Params.headingImage }}
@@ -42,12 +47,6 @@
           {{ end }}
         {{ end }}
       </div>
-
-      {{ with .Content }}
-        <div class="detail-page--intro">
-          <div class="detail-page--intro-body">{{ . }}</div>
-        </div>
-      {{ end }}
 
       <div class="detail-page--blocks">
         {{- $section := . }}
