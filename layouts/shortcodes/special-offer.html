@@ -1,0 +1,9 @@
+<div class="special-offer">
+  <div class="special-offer--icon">
+    {{ (resources.Get "img/ico-gift.svg").Content | strings.TrimSpace | safeHTML }}
+  </div>
+  <div class="special-offer--title">{{ default "Special offer" (.Get "title") }}</div>
+  <div class="special-offer--body">
+    {{ .Inner | markdownify }}
+  </div>
+</div>

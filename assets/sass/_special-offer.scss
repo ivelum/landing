@@ -1,0 +1,61 @@
+.special-offer {
+  background-color: $background-light-orange;
+  border-radius: 2px;
+  column-gap: 1.25rem;
+  display: grid;
+  grid-template-areas:
+    'icon title'
+    'body body';
+  grid-template-columns: auto 1fr;
+  margin-top: 1rem;
+  padding: 1rem 1.25rem;
+  row-gap: 0.5rem;
+  width: 100%;
+
+  @include media-up(md) {
+    grid-template-areas:
+      'icon title'
+      'icon body';
+    padding: 1.25rem 1.5rem;
+    row-gap: 0.25rem;
+  }
+
+  &--icon {
+    align-self: center;
+    grid-area: icon;
+
+    svg {
+      display: block;
+      height: 3.125rem;
+      width: 3.125rem;
+
+      @include media-up(md) {
+        height: 3.875rem;
+        width: 3.875rem;
+      }
+    }
+  }
+
+  &--title {
+    align-self: center;
+    color: $primary-orange;
+    font-size: 1.25rem;
+    font-weight: $font-weight-bold;
+    grid-area: title;
+    line-height: 1.4;
+  }
+
+  &--body {
+    grid-area: body;
+    min-width: 0;
+  }
+
+  p {
+    line-height: 1.6;
+    margin-top: 0;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+}
