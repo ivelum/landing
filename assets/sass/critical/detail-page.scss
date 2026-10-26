@@ -368,6 +368,57 @@
     }
   }
 
+  &--section-list-steps {
+    > ol {
+      counter-reset: step;
+      display: grid;
+      grid-gap: 1.75rem;
+      list-style-type: none;
+      margin: 1.25rem 0 0;
+      padding: 0;
+      width: 100%;
+
+      @include media-up(md) {
+        grid-gap: 2.5rem;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin-top: 1.5rem;
+      }
+
+      > li {
+        margin: 0;
+
+        &::before {
+          align-items: center;
+          background-color: $primary-violet;
+          border-radius: 3px;
+          color: $white;
+          content: counter(step);
+          counter-increment: step;
+          display: flex;
+          font-size: 1.375rem;
+          font-weight: $font-weight-bold;
+          height: 2.5rem;
+          justify-content: center;
+          line-height: 1;
+          margin-bottom: 0.5rem;
+          width: 2.5rem;
+
+          @include media-up(md) {
+            border-radius: 4px;
+            font-size: 1.75rem;
+            height: 3.125rem;
+            margin-bottom: 1rem;
+            width: 3.125rem;
+          }
+        }
+
+        &:last-child::before {
+          background-color: $primary-orange;
+        }
+      }
+    }
+  }
+
   &--areas-list {
     display: grid;
     grid-gap: 0.5rem;

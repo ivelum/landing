@@ -1,6 +1,7 @@
 ---
 category: page-block
 marker: 03 /
+listStyle: steps
 ---
 
 ## How it works
