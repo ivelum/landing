@@ -368,6 +368,87 @@
     }
   }
 
+  &--areas-list {
+    display: grid;
+    grid-gap: 0.5rem;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    list-style-type: none;
+    margin: 1rem 0 0;
+    padding: 0;
+    width: 100%;
+
+    @include media-up(md) {
+      grid-gap: 1rem;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+
+    li {
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      // Two areas per row, then three in the last one.
+      grid-column: span 3;
+      justify-content: center;
+      margin: 0;
+      min-height: 6.25rem;
+      padding: 1rem;
+
+      @each $color in $area-colors {
+        $i: index($area-colors, $color);
+        &:nth-child(#{length($area-colors)}n + #{$i}) {
+          background-color: $color;
+        }
+      }
+    }
+
+    // Three in a row only once the labels fit.
+    @include media-up(360px) {
+      li:nth-child(n + 5) {
+        grid-column: span 2;
+      }
+    }
+
+    @include media-up(sm) {
+      li {
+        padding: 1rem 1.25rem;
+      }
+    }
+
+    @include media-up(md) {
+      // Three areas in the first row, four in the second one.
+      li {
+        gap: 1rem;
+        grid-column: span 4;
+        min-height: 7.5rem;
+      }
+
+      li:nth-child(n + 4) {
+        grid-column: span 3;
+      }
+    }
+
+    &-icon svg {
+      display: block;
+    }
+
+    &-title {
+      color: $primary-violet;
+      font-size: $font-size-default;
+      font-weight: $font-weight-semi-bold;
+      line-height: 1.6;
+      overflow-wrap: break-word;
+
+      @include media-up(sm) {
+        font-size: $font-size-bigger;
+      }
+
+      @include media-up(md) {
+        font-size: 1.25rem;
+      }
+    }
+  }
+
   .youtube-preview {
     margin-top: 1.5rem;
   }

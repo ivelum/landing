@@ -67,6 +67,20 @@
             </div>
             <div class="detail-page--section-body{{ with .Params.listStyle }} detail-page--section-list-{{ . }}{{ end }}">
               {{ .Content }}
+              {{ with .Params.areas }}
+                <ul class="detail-page--areas-list">
+                  {{ range . }}
+                    <li>
+                      {{ with resources.Get (printf "img/%s" .icon) }}
+                        <span class="detail-page--areas-list-icon" aria-hidden="true">
+                          {{ .Content | strings.TrimSpace | safeHTML }}
+                        </span>
+                      {{ end }}
+                      <span class="detail-page--areas-list-title">{{ .title }}</span>
+                    </li>
+                  {{ end }}
+                </ul>
+              {{ end }}
               {{ with .Params.features }}
                 <ul class="detail-page--features-list">
                   {{ range . }}
