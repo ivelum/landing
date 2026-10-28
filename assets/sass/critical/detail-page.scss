@@ -453,16 +453,13 @@
       }
     }
 
-    // Three in a row only once the labels fit.
-    @include media-up(360px) {
-      li:nth-child(n + 5) {
-        grid-column: span 2;
-      }
-    }
-
     @include media-up(sm) {
       li {
         padding: 1rem 1.25rem;
+      }
+
+      li:nth-child(n + 5) {
+        grid-column: span 2;
       }
     }
 
