@@ -4,7 +4,7 @@ html:has(.booking-modal[open]) {
 
 .booking-modal {
   position: fixed;
-  width: 1060px;
+  width: 1200px;
   height: 100vh;
   height: 100dvh;
   max-width: 100%;
@@ -15,7 +15,41 @@ html:has(.booking-modal[open]) {
   border-radius: 0;
   background: $white;
   color: $font-color-dark;
-  overflow: hidden;
+  overflow: auto;
+
+  &[open] { display: grid; }
+
+  &--contact {
+    padding: 24px;
+    background: $background-darker;
+
+    h2 {
+      margin: 0 44px 24px 0;
+      font-size: 20px;
+    }
+  }
+
+  &--contact-item {
+    margin-top: 24px;
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    a { white-space: nowrap; }
+
+    address {
+      margin-top: 8px;
+      font-style: normal;
+      line-height: 1.5;
+    }
+  }
+
+  &--booking {
+    min-width: 0;
+    height: 764px;
+  }
 
   // Calendly needs a rendered iframe to initialize. Hide it without suppressing
   // rendering; inert in the markup/script keeps the closed dialog inaccessible.
@@ -44,6 +78,10 @@ html:has(.booking-modal[open]) {
   }
 
   &--close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 1;
     display: grid;
     place-items: center;
     flex-shrink: 0;
@@ -97,5 +135,15 @@ html:has(.booking-modal[open]) {
     max-height: 90vh;
     max-height: 90dvh;
     border-radius: $border-radius-default * 2;
+  }
+
+  @include media-up(lg) {
+    grid-template-columns: 300px minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    overflow: hidden;
+
+    &--booking { height: 100%; }
+
+    &:not([open]) { display: grid; }
   }
 }
