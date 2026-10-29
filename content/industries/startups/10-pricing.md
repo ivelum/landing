@@ -15,4 +15,4 @@ in the US. Most engagements fall between $50 and $100 per hour, depending on
 the engineer's experience and the length of the project. Get in touch for a
 quote.
 
-{{< button title="Get a quote" link="#talk" >}}
+{{< contact-button title="Get a quote" >}}

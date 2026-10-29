@@ -19,4 +19,4 @@ cascade:
 Cut your cloud bill in half without compromising uptime or performance.
 Initial assessment takes just a few days.
 
-{{< button title="Book a free consultation" link="#talk" >}}
+{{< contact-button title="Book a free consultation" >}}

@@ -17,4 +17,4 @@ prices, or even for free.
 - {{< image src="img/new-relic.svg" width=175 alt="New Relic" >}}
 - {{< image src="img/posthog.svg" width=170 alt="PostHog" >}}
 
-{{< button title="Book a free consultation" link="#talk" >}}
+{{< contact-button title="Book a free consultation" >}}

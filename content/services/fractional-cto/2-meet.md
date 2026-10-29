@@ -20,4 +20,4 @@ You can find me on [LinkedIn >](https://www.linkedin.com/in/denis-stebunov/) and
 [YouTube >](https://www.youtube.com/@ivelum), where I occasionally share my
 thoughts on technology and engineering leadership.
 
-{{< button title="Book a free consultation" link="#talk" >}}
+{{< contact-button title="Book a free consultation" >}}

@@ -33,4 +33,4 @@ Our ultimate goal is to help your business succeed, even if that means
 outgrowing the need for a Fractional CTO. When the time comes, we’ll help you
 find the right full-time CTO and ensure a smooth transition.
 
-{{< button title="Book a free consultation" link="#talk" >}}
+{{< contact-button title="Book a free consultation" >}}

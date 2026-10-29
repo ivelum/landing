@@ -13,4 +13,4 @@ and media formats.
 
 - {{< image src="img/pagespeed-insights.svg" width=500 alt="Google PageSpeed Insights" >}}
 
-{{< button title="Schedule a free website audit" link="#talk" >}}
+{{< contact-button title="Schedule a free website audit" >}}

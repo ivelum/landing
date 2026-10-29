@@ -48,8 +48,8 @@
       <div class="header--button-wrapper">
         <a
           class="header--button"
-          href="{{ if .TalkToUsAbsolute }}/contact/#talk{{ else }}#talk{{ end }}"
-          {{ if not .TalkToUsAbsolute }}data-talk-to-us{{ end }}
+          href="/contact/"
+          data-contact-open
         >
           {{ (resources.Get "img/ico-talk.svg").Content | strings.TrimSpace | safeHTML }}
           Get in touch
@@ -76,13 +76,6 @@
       return scrollLock;
     });
     return scrollLockPromise;
-  };
-
-  const talkToUs = () => {
-    window.talk.scrollIntoView({ behavior: 'smooth' });
-    document.querySelector('.form-control--textarea')?.focus(
-      { preventScroll: true },
-    );
   };
 
   document.querySelectorAll('.header').forEach((header) => {
@@ -121,10 +114,10 @@
       if (event.matches) closeMenu();
     });
 
-    header.querySelector('[data-talk-to-us]')?.addEventListener('click', (event) => {
-      event.preventDefault();
+    header.querySelector('[data-contact-open]')?.addEventListener('click', (event) => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey ||
+          event.shiftKey || event.altKey) return;
       closeMenu();
-      talkToUs();
     });
 
     header.querySelectorAll('.header--submenu').forEach((submenu) => {

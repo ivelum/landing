@@ -13,4 +13,4 @@ if something can be built that fast, it can be copied just as fast, or even
 faster. On the other hand, spending months building an MVP before getting any
 user feedback is risky. That's why we see "a few weeks" as the sweet spot.
 
-{{< button title="Get a rough estimate within 48h" link="#talk" >}}
+{{< contact-button title="Get a rough estimate within 48h" >}}

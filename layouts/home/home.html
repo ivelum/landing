@@ -20,7 +20,7 @@
       </h1>
     </div>
     <div class="home--hero-footer">
-      <a href="#talk" class="btn btn-big btn-with-arrow home--hero-cta">
+      <a href="/contact/" data-contact-open class="btn btn-big btn-with-arrow home--hero-cta">
         Get in touch
         {{(resources.Get "img/arrow-button.svg").Content | strings.TrimSpace | safeHTML}}
       </a>
@@ -99,7 +99,7 @@
           "Name" "Denis Stebunov"
           "Position" "CTO at ivelum"
         ) }}
-        <a href="#talk" class="btn btn-small btn-outline-violet">
+        <a href="/contact/" data-contact-open class="btn btn-small btn-outline-violet">
           Book a free consultation
         </a>
       </div>
@@ -137,7 +137,7 @@
     <div class="home--action-text">
       {{- (.GetPage "call-to-action").Content }}
     </div>
-    <a class="btn btn-big btn-with-arrow" href="#talk">
+    <a class="btn btn-big btn-with-arrow" href="/contact/" data-contact-open>
       Get in touch
       {{(resources.Get "img/arrow-button.svg").Content | strings.TrimSpace | safeHTML}}
     </a>
@@ -192,7 +192,7 @@
   {{ end }}
 
   <div class="container home--action">
-    <a class="btn btn-big btn-with-arrow" href="#talk">
+    <a class="btn btn-big btn-with-arrow" href="/contact/" data-contact-open>
       Get in touch
       {{(resources.Get "img/arrow-button.svg").Content | strings.TrimSpace | safeHTML}}
     </a>

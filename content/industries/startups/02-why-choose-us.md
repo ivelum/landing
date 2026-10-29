@@ -18,4 +18,4 @@ a rare combination of advantages:
 - **[Investor and due diligence support](/services/software-project-audit/)**
   Uncover technical risks early and get ready for fundraising or due diligence.
 
-{{< button title="Book a free consultation" link="#talk" >}}
+{{< contact-button title="Book a free consultation" >}}

@@ -13,4 +13,4 @@ listStyle: steps
 3. After one week, we share our findings, and we can also discuss follow-up
    steps if needed.
 
-{{< button title="Book a free discovery call" link="#talk" >}}
+{{< contact-button title="Book a free discovery call" >}}

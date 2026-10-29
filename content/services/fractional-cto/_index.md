@@ -23,4 +23,4 @@ Whether you
 a single developer from us, you’ll get access to a Fractional CTO at no
 additional cost.
 
-{{< button title="Book a free consultation" link="#talk" >}}
+{{< contact-button title="Book a free consultation" >}}

@@ -19,4 +19,4 @@ cascade:
 Get an independent assessment of your project and find out where it can improve.
 Use it as technical due diligence for a startup, or to prepare for one.
 
-{{< button title="Book a free discovery call" link="#talk" >}}
+{{< contact-button title="Book a free discovery call" >}}

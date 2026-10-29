@@ -10,4 +10,4 @@ marker: 05 /
    within a few days.
 3. Together, we agree on an action plan, then put it into practice.
 
-{{< button title="Book a free consultation" link="#talk" >}}
+{{< contact-button title="Book a free consultation" >}}

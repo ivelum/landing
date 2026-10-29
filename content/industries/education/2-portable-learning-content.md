@@ -18,4 +18,4 @@ learning, engagement, and analytics features on top of them.
 - {{< image src="img/logo-scorm.svg" width=250 alt="SCORM" >}}
 - {{< image src="img/logo-articulate.svg" width=200 alt="Articulate" >}}
 
-{{< button title="Book a free consultation" link="#talk" >}}
+{{< contact-button title="Book a free consultation" >}}

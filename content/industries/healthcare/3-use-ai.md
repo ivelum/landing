@@ -12,4 +12,4 @@ it can be a powerful assistant for qualified healthcare professionals.
 We help companies implement AI features responsibly, automating mundane tasks
 and helping humans focus on what really matters.
 
-{{< button title="Book a free consultation" link="#talk" >}}
+{{< contact-button title="Book a free consultation" >}}

@@ -17,4 +17,4 @@ later. We're here to help you do just that.
 - {{< image src="img/logo-gdpr.svg" width=95 alt="GDPR" >}}
 - {{< image src="img/logo-ccpa.png" width=95 alt="CCPA" >}}
 
-{{< button title="Book a free consultation" link="#talk" >}}
+{{< contact-button title="Book a free consultation" >}}

@@ -17,4 +17,4 @@ often HL7 FHIR, which is required for organizations working with Medicare or Med
 - {{< image src="img/logo-hipaa.svg" width=150 alt="HIPAA" >}}
 - {{< image src="img/logo-fhir.png" width=200 alt="HL7 FHIR" >}}
 
-{{< button title="Book a free consultation" link="#talk" >}}
+{{< contact-button title="Book a free consultation" >}}
