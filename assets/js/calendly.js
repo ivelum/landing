@@ -76,6 +76,12 @@
     opener?.focus();
   });
 
+  if (document.readyState === 'complete') {
+    preload();
+  } else {
+    window.addEventListener('load', preload, { once: true });
+  }
+
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       if (!entries.some((entry) => entry.isIntersecting)) return;
