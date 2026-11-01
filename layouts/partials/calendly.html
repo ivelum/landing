@@ -1,3 +1,13 @@
+{{- $contact := site.GetPage "/contact" }}
+{{- $offices := sort (where $contact.Pages "Params.category" "address") "File.Path" }}
+{{- $icon := dict
+     "mail" (resources.Get "img/ico-mail.svg").Content
+     "phone" (resources.Get "img/ico-on-call.svg").Content
+     "location" (resources.Get "img/ico-location.svg").Content
+     "chat" (resources.Get "img/ico-chat.svg").Content
+     "chevronDown" (resources.Get "img/ico-chevron-down.svg").Content
+     "chevronRight" (resources.Get "img/ico-chevron-right.svg").Content
+}}
 <dialog class="booking-modal" aria-labelledby="booking-title" inert>
   <aside class="booking-modal--panel">
     <div class="booking-modal--host">
@@ -26,12 +36,52 @@
       </li>
     </ul>
 
+    {{/* Narrow screens get the contacts as a single row of chips instead of
+         the stacked block below. */}}
+    <div class="booking-modal--chips">
+      <a class="booking-modal--chip" href="mailto:info@ivelum.com">
+        {{ index $icon "mail" | strings.TrimSpace | safeHTML }}<span
+          class="booking-modal--chip-label">Email</span>
+      </a>
+      {{- range $offices }}
+      <a
+        class="booking-modal--chip"
+        href="tel:{{ replace .Params.phone " " "" }}"
+        aria-label="Call our {{ .Title }} office, {{ .Params.phone }}"
+      >
+        {{ index $icon "phone" | strings.TrimSpace | safeHTML }}<span
+          class="booking-modal--chip-label">{{ .Params.short }}</span>
+      </a>
+      {{- end }}
+      <button
+        class="booking-modal--chip"
+        type="button"
+        aria-expanded="false"
+        aria-controls="booking-offices"
+        data-offices-toggle
+      >
+        {{ index $icon "location" | strings.TrimSpace | safeHTML }}<span
+          class="booking-modal--chip-label">Offices</span>
+        <span class="booking-modal--chip-chevron">
+          {{ index $icon "chevronDown" | strings.TrimSpace | safeHTML }}
+        </span>
+      </button>
+    </div>
+
+    <div class="booking-modal--offices" id="booking-offices" hidden>
+      {{- range $offices }}
+      <div class="booking-modal--offices-item">
+        <span class="booking-modal--office-title">{{ .Title }}</span>
+        <address>{{ .Params.address }}</address>
+      </div>
+      {{- end }}
+    </div>
+
     <div class="booking-modal--contacts">
       <h3>Contact us</h3>
       <a href="mailto:info@ivelum.com">info@ivelum.com</a>
 
-      {{- $contact := site.GetPage "/contact" }}
-      {{- range sort (where $contact.Pages "Params.category" "address") "File.Path" }}
+      {{- range $offices }}
       <div class="booking-modal--office">
         <span class="booking-modal--office-title">{{ .Title }}</span>
         <a href="tel:{{ replace .Params.phone " " "" }}">{{ .Params.phone }}</a>
@@ -65,6 +115,22 @@
       <div class="booking-modal--widget" inert></div>
     </div>
   </section>
+
+  {{/* Narrow screens only: the chat moves out of the panel into a bar pinned
+       to the bottom of the dialog. */}}
+  <button class="booking-modal--chat-bar" type="button" data-chat-button data-chat-status>
+    <span class="booking-modal--chat-bar-text">
+      <span class="booking-modal--chat-bar-title">
+        {{ index $icon "chat" | strings.TrimSpace | safeHTML }}<span
+          class="booking-modal--chip-label">Chat with us</span>
+      </span>
+      <span class="booking-modal--chat-status">
+        <span class="booking-modal--chat-state" data-chat-current-status></span>
+        <span data-chat-hours></span>
+      </span>
+    </span>
+    {{ index $icon "chevronRight" | strings.TrimSpace | safeHTML }}
+  </button>
 </dialog>
 {{- $script := resources.Get "js/calendly.js" | minify | fingerprint }}
 <script src="{{ $script.RelPermalink }}" defer></script>

@@ -59,6 +59,15 @@
     });
   });
 
+  // Narrow screens keep the addresses folded behind the "Offices" chip.
+  const officesToggle = modal.querySelector('[data-offices-toggle]');
+  const offices = modal.querySelector('#booking-offices');
+  officesToggle?.addEventListener('click', () => {
+    const expanded = officesToggle.getAttribute('aria-expanded') === 'true';
+    officesToggle.setAttribute('aria-expanded', String(!expanded));
+    offices.hidden = expanded;
+  });
+
   modal.querySelector('.booking-modal--close').addEventListener('click', () => modal.close());
   let backdropPressed = false;
   const outside = (event) => {

@@ -15,14 +15,18 @@ html:has(.booking-modal[open]) {
   border-radius: 0;
   background: $white;
   color: $font-color-dark;
-  overflow: auto;
+  overflow: hidden;
+
+  // Narrow screens stack the panel, the calendar and the chat bar; only the
+  // calendar takes the leftover space.
+  grid-template-rows: auto minmax(0, 1fr) auto;
 
   &[open] { display: grid; }
 
   &--panel {
     display: flex;
     flex-direction: column;
-    padding: 24px;
+    padding: 12px 20px 20px;
     background: $background-darker;
     // Nothing shows while the contacts fit; on a short window this is what
     // keeps the chat row reachable instead of cutting it off.
@@ -37,8 +41,8 @@ html:has(.booking-modal[open]) {
   }
 
   &--avatar {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     flex-shrink: 0;
   }
@@ -60,15 +64,15 @@ html:has(.booking-modal[open]) {
   }
 
   &--panel h2 {
-    margin: 32px 0 0;
-    font-size: 26px;
-    line-height: 1.15;
+    margin: 12px 0 0;
+    font-size: 20px;
+    line-height: 1.4;
   }
 
   &--meta {
     display: flex;
     gap: 20px;
-    margin: 16px 0 0;
+    margin: 8px 0 0;
     padding: 0;
     list-style: none;
 
@@ -179,8 +183,9 @@ html:has(.booking-modal[open]) {
   }
 
   &--booking {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr);
     min-width: 0;
-    height: 764px;
   }
 
   // Calendly needs a rendered iframe to initialize. Hide it without suppressing
@@ -219,7 +224,7 @@ html:has(.booking-modal[open]) {
 
   &--body {
     position: relative;
-    height: 100%;
+    min-height: 0;
   }
 
   &--status {
@@ -232,18 +237,22 @@ html:has(.booking-modal[open]) {
   &--widget {
     position: relative;
     height: 100%;
-    overflow: hidden;
+    // Narrow screens never give the calendar its full height, and folding the
+    // offices open takes even more, so it has to be scrollable.
+    overflow-y: auto;
+    overscroll-behavior: contain;
     opacity: 0;
     pointer-events: none;
 
-    // Calendly needs roughly 700px to lay out without its own scrollbar. Give
-    // the frame that much even in a shorter dialog and clip the empty strip
-    // below the calendar.
+    // Calendly needs room to lay out without its own scrollbar. Give the frame
+    // that much even in a shorter dialog and clip the empty strip below the
+    // calendar; narrow screens need less, and anything above it is dead space
+    // the visitor would have to scroll through.
     iframe {
       display: block;
       width: 100%;
       height: 100%;
-      min-height: 760px;
+      min-height: 540px;
       border: 0;
     }
   }
@@ -254,12 +263,117 @@ html:has(.booking-modal[open]) {
   }
   &[data-ready] &--status { display: none; }
 
-  // The clipping above only ever hides Calendly's own padding. Once the dialog
-  // gets shorter than the calendar itself, scroll instead of cutting it off.
-  @media (max-height: 620px) {
-    &--widget {
-      overflow-y: auto;
-      overscroll-behavior: contain;
+  // --- Narrow screens -------------------------------------------------------
+  // The stacked contacts give way to a row of chips, the addresses fold behind
+  // "Offices", and the chat moves to a bar pinned under the calendar.
+
+  &--contacts { display: none; }
+
+  &--chips {
+    display: flex;
+    flex-wrap: wrap;
+    // 28px, as in the mock, leaves no slack at all at 360px; the row wraps as
+    // soon as the font renders a hair wider.
+    gap: 8px 22px;
+    margin-top: 18px;
+  }
+
+  &--chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    color: $link-primary-color;
+    cursor: pointer;
+    font: inherit;
+    font-size: $font-size-smaller;
+    line-height: 20px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    &:focus-visible { outline: 2px solid $primary-violet; }
+  }
+
+  &--chip-label {
+    @include link-underline;
+  }
+
+  &--chip:hover &--chip-label,
+  &--chat-bar:hover &--chip-label {
+    background-size: 0 1px;
+    color: $font-color-dark;
+  }
+
+  &--chip-chevron {
+    @include transition(transform 0.2s);
+    display: inline-flex;
+  }
+
+  [aria-expanded='true'] &--chip-chevron { transform: rotate(180deg); }
+
+  &--offices {
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: $border-radius-default;
+    background: $white;
+
+    &[hidden] { display: none; }
+  }
+
+  &--offices-item {
+    + .booking-modal--offices-item { margin-top: 12px; }
+
+    address {
+      margin-top: 2px;
+      color: $font-color-gray;
+      font-size: $font-size-smaller;
+      font-style: normal;
+      line-height: 18px;
+    }
+  }
+
+  &--chat-bar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 11px 20px;
+    border: 0;
+    border-top: 1px solid $border-color-default;
+    background: $background-darker;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+
+    > svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      color: $font-color-gray;
+    }
+
+    &:focus-visible { outline: 2px solid $primary-violet; }
+  }
+
+  &--chat-bar-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: $link-primary-color;
+    line-height: 20px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
     }
   }
 
@@ -280,6 +394,34 @@ html:has(.booking-modal[open]) {
 
     &--booking { height: 100%; }
 
+    &--chips,
+    &--offices,
+    &--chat-bar { display: none; }
+
+    &--contacts { display: block; }
+
+    &--widget {
+      overflow: hidden;
+
+      // The wide layout needs more room than the compact one.
+      iframe { min-height: 760px; }
+    }
+
+    &--panel { padding: 24px; }
+
+    &--panel h2 {
+      margin: 32px 0 0;
+      font-size: 26px;
+      line-height: 1.15;
+    }
+
+    &--meta { margin-top: 16px; }
+
+    &--avatar {
+      width: 48px;
+      height: 48px;
+    }
+
     &:not([open]) { display: grid; }
   }
 
@@ -294,5 +436,14 @@ html:has(.booking-modal[open]) {
     }
 
     &--chat-status { font-size: $font-size-smaller; }
+  }
+
+  // Wide but short windows clip the calendar rather than the padding, so give
+  // it back its scrollbar. Must come after the md rule that hides it.
+  @media (max-height: 620px) {
+    &--widget {
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
   }
 }
