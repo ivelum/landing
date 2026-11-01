@@ -91,7 +91,4 @@
       {{ partial "shared/distributed-team.html" . }}
     </div>
   </main>
-
-  {{- $chat := resources.Get "js/chat.js" | minify | fingerprint }}
-  <script src="{{ $chat.RelPermalink }}" type="module"></script>
 {{- end }}

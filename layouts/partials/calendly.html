@@ -1,38 +1,72 @@
 <dialog class="booking-modal" aria-labelledby="booking-title" inert>
-  <section class="booking-modal--contact" aria-labelledby="booking-contact-title">
-    <h2 id="booking-contact-title">Contact us</h2>
-    <div class="booking-modal--contact-item">
-      <h3>Email</h3>
-      <a href="mailto:info@ivelum.com">info@ivelum.com</a>
+  <aside class="booking-modal--panel">
+    <div class="booking-modal--host">
+      {{ partial "image.html" (dict
+           "Img" (resources.Get "img/avatars/denis-stebunov.png")
+           "Alt" "Denis Stebunov"
+           "Class" "booking-modal--avatar"
+           "Width" 56
+         ) }}
+      <div>
+        <span class="booking-modal--host-name">Denis Stebunov</span>
+        <span class="booking-modal--host-role">CTO at ivelum</span>
+      </div>
     </div>
-    <div class="booking-modal--contact-item">
-      <h3>San Francisco Bay Area</h3>
-      <a href="tel:+19548429121">+1 954 842 9121</a>
-      <address>624 Canoe Court, Redwood City, CA 94065, United States</address>
-    </div>
-    <div class="booking-modal--contact-item">
-      <h3>Vilnius, Lithuania</h3>
-      <a href="tel:+37067527718">+370 675 27718</a>
-      <address>21 Upės g., Vilnius LT-08128, Lithuania</address>
-    </div>
-  </section>
-  <section class="booking-modal--booking" aria-labelledby="booking-title">
-  <div class="booking-modal--header">
+
     <h2 id="booking-title">Book a discovery meeting</h2>
+
+    <ul class="booking-modal--meta">
+      <li>
+        {{ (resources.Get "img/ico-clock.svg").Content | strings.TrimSpace | safeHTML }}
+        30 min
+      </li>
+      <li>
+        {{ (resources.Get "img/ico-meeting.svg").Content | strings.TrimSpace | safeHTML }}
+        Online call
+      </li>
+    </ul>
+
+    <div class="booking-modal--contacts">
+      <h3>Contact us</h3>
+      <a href="mailto:info@ivelum.com">info@ivelum.com</a>
+
+      {{- $contact := site.GetPage "/contact" }}
+      {{- range sort (where $contact.Pages "Params.category" "address") "File.Path" }}
+      <div class="booking-modal--office">
+        <span class="booking-modal--office-title">{{ .Title }}</span>
+        <a href="tel:{{ replace .Params.phone " " "" }}">{{ .Params.phone }}</a>
+        <address>{{ .Params.address }}</address>
+      </div>
+      {{- end }}
+
+      <div class="booking-modal--chat" data-chat-status>
+        <button class="booking-modal--chat-button" type="button" data-chat-button>
+          Chat with us
+        </button>
+        <p class="booking-modal--chat-status">
+          <span class="booking-modal--chat-state" data-chat-current-status></span>
+          <span data-chat-hours></span>
+        </p>
+      </div>
+    </div>
+  </aside>
+
+  <section class="booking-modal--booking" aria-label="Schedule a meeting">
     <button class="booking-modal--close" type="button" aria-label="Close booking" autofocus>
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
         <path d="M4 4L16 16M16 4L4 16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
       </svg>
     </button>
-  </div>
-  <div class="booking-modal--body">
-    <div class="booking-modal--status" role="status">
-      <p data-calendly-status>Loading available times…</p>
-      <a href="https://calendly.com/ivelum/consultation" target="_blank" rel="noopener">Open Calendly in a new tab</a>
+    <div class="booking-modal--body">
+      <div class="booking-modal--status" role="status">
+        <p data-calendly-status>Loading available times…</p>
+        <a href="https://calendly.com/ivelum/consultation" target="_blank" rel="noopener">Open Calendly in a new tab</a>
+      </div>
+      <div class="booking-modal--widget" inert></div>
     </div>
-    <div class="booking-modal--widget" inert></div>
-  </div>
   </section>
 </dialog>
 {{- $script := resources.Get "js/calendly.js" | minify | fingerprint }}
 <script src="{{ $script.RelPermalink }}" defer></script>
+{{- $chat := resources.Get "js/chat.js" | minify | fingerprint }}
+<script src="{{ $chat.RelPermalink }}" type="module"></script>

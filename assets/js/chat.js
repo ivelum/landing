@@ -45,6 +45,9 @@ document.querySelectorAll('[data-chat-button]').forEach((button) => {
 
   button.addEventListener('click', async () => {
     window.posthog?.capture('live_chat_opened');
+    // A modal <dialog> owns the top layer and Crisp renders outside it, so the
+    // widget would be stuck under the backdrop. Step out of the dialog first.
+    button.closest('dialog[open]')?.close();
     setLoading(true);
     const chatInitialized = initChat();
     window.$crisp.push(['do', 'chat:show']);
@@ -120,5 +123,14 @@ document.querySelectorAll('[data-chat-status]').forEach((status) => {
         online ? 'is-online' : 'is-offline',
       );
       currentStatusElement.textContent = currentStatus();
+    }
+
+    // Compact blocks replace the long "we're online from" sentence with the
+    // working hours, or with the time we're back.
+    const hoursElement = status.querySelector('[data-chat-hours]');
+    if (hoursElement) {
+      hoursElement.textContent = isOnline()
+        ? `${formatHours(startWorkHour)} – ${formatHours(endWorkHour)} EET`
+        : `back at ${formatHours(startWorkHour)} EET`;
     }
 });

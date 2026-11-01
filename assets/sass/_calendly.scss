@@ -4,7 +4,7 @@ html:has(.booking-modal[open]) {
 
 .booking-modal {
   position: fixed;
-  width: 1200px;
+  width: 1008px;
   height: 100vh;
   height: 100dvh;
   max-width: 100%;
@@ -19,31 +19,163 @@ html:has(.booking-modal[open]) {
 
   &[open] { display: grid; }
 
-  &--contact {
+  &--panel {
+    display: flex;
+    flex-direction: column;
     padding: 24px;
     background: $background-darker;
+    // Nothing shows while the contacts fit; on a short window this is what
+    // keeps the chat row reachable instead of cutting it off.
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
 
-    h2 {
-      margin: 0 44px 24px 0;
-      font-size: 20px;
+  &--host {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &--avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  &--host-name,
+  &--host-role {
+    display: block;
+    line-height: 1.4;
+  }
+
+  &--host-name {
+    color: $font-color-dark;
+    font-weight: $font-weight-semi-bold;
+  }
+
+  &--host-role {
+    color: $font-color-gray;
+    font-size: $font-size-smaller;
+  }
+
+  &--panel h2 {
+    margin: 32px 0 0;
+    font-size: 26px;
+    line-height: 1.15;
+  }
+
+  &--meta {
+    display: flex;
+    gap: 20px;
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: $font-color-default;
+      font-size: $font-size-smaller;
+      line-height: 20px;
+    }
+
+    svg {
+      flex-shrink: 0;
+      color: $primary-violet;
     }
   }
 
-  &--contact-item {
-    margin-top: 24px;
+  // Contacts sit at the bottom of the panel, whatever is above them.
+  &--contacts {
+    margin-top: auto;
+    padding-top: 17px;
+    border-top: 1px solid $border-color-default;
 
     h3 {
-      margin: 0 0 8px;
-      font-size: 16px;
+      margin: 0 0 16px;
+      font-size: 20px;
+      line-height: 1.5;
     }
+  }
+
+  &--office {
+    margin-top: 16px;
 
     a { white-space: nowrap; }
 
     address {
-      margin-top: 8px;
+      margin-top: 4px;
+      color: $font-color-gray;
+      font-size: $font-size-smaller;
       font-style: normal;
-      line-height: 1.5;
+      line-height: 20px;
     }
+  }
+
+  &--office-title {
+    display: block;
+    margin-bottom: 4px;
+    color: $font-color-dark;
+    font-size: $font-size-smaller;
+    font-weight: $font-weight-semi-bold;
+    line-height: 20px;
+  }
+
+  &--chat {
+    margin-top: 16px;
+  }
+
+  &--chat-button {
+    @include link-underline;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    font: inherit;
+    // Browsers keep buttons inline-block, so their background fills the whole
+    // line box. Shrink the line box to the text to put the underline where the
+    // links around it have it. Must come after `font`, which resets it.
+    line-height: 1.25;
+
+    &:focus-visible { outline: 2px solid $primary-violet; }
+  }
+
+  &--chat-status {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    margin: 4px 0 0;
+    color: $font-color-gray;
+    // One notch below the rest of the panel: at 14px the status and the
+    // working hours no longer fit on a single line in the 300px panel.
+    font-size: 13px;
+    line-height: 18px;
+
+    // Break between the phrases, never inside one.
+    span { white-space: nowrap; }
+  }
+
+  // Ring with a dot inside, both drawn from the current colour.
+  &--chat-state {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    &::after {
+      content: '';
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      background: radial-gradient(circle, currentColor 0 3px, transparent 3px);
+    }
+
+    &.is-online { color: #35aa00; }
+    &.is-offline { color: #f23c3c; }
   }
 
   &--booking {
@@ -62,19 +194,6 @@ html:has(.booking-modal[open]) {
 
   &::backdrop {
     background: rgba($font-color-dark, 0.65);
-  }
-
-  &--header {
-    height: 64px;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    h2 {
-      margin: 0;
-      font-size: 20px;
-    }
   }
 
   &--close {
@@ -100,7 +219,7 @@ html:has(.booking-modal[open]) {
 
   &--body {
     position: relative;
-    height: calc(100% - 64px);
+    height: 100%;
   }
 
   &--status {
@@ -113,13 +232,18 @@ html:has(.booking-modal[open]) {
   &--widget {
     position: relative;
     height: 100%;
+    overflow: hidden;
     opacity: 0;
     pointer-events: none;
 
+    // Calendly needs roughly 700px to lay out without its own scrollbar. Give
+    // the frame that much even in a shorter dialog and clip the empty strip
+    // below the calendar.
     iframe {
       display: block;
       width: 100%;
       height: 100%;
+      min-height: 760px;
       border: 0;
     }
   }
@@ -130,14 +254,26 @@ html:has(.booking-modal[open]) {
   }
   &[data-ready] &--status { display: none; }
 
+  // The clipping above only ever hides Calendly's own padding. Once the dialog
+  // gets shorter than the calendar itself, scroll instead of cutting it off.
+  @media (max-height: 620px) {
+    &--widget {
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+  }
+
   @include media-up(sm) {
-    height: 820px;
+    height: 816px;
     max-height: 90vh;
     max-height: 90dvh;
     border-radius: $border-radius-default * 2;
   }
 
-  @include media-up(lg) {
+  @include media-up(md) {
+    // Matches the mock: the panel needs ~620px, the rest was empty space above
+    // the contacts. Same height on desktop, so no override further down.
+    height: 660px;
     grid-template-columns: 300px minmax(0, 1fr);
     grid-template-rows: minmax(0, 1fr);
     overflow: hidden;
@@ -145,5 +281,18 @@ html:has(.booking-modal[open]) {
     &--booking { height: 100%; }
 
     &:not([open]) { display: grid; }
+  }
+
+  @include media-up(lg) {
+    grid-template-columns: 340px minmax(0, 1fr);
+
+    &--panel { padding: 32px; }
+
+    &--avatar {
+      width: 56px;
+      height: 56px;
+    }
+
+    &--chat-status { font-size: $font-size-smaller; }
   }
 }
