@@ -19,7 +19,10 @@
         {{- range sort (where .Pages "Params.category" "address") "File.Path" }}
         <div class="contact--address-item">
           <h3>{{ .Title }}</h3>
-          {{ .Content }}
+          <p>
+            <a href="tel:{{ replace .Params.phone " " "" }}">{{ .Params.phone }}</a><br>
+            {{ .Params.address }}
+          </p>
         </div>
         {{- end }}
       </div>
