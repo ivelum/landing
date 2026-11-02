@@ -7,8 +7,92 @@
      "chat" (resources.Get "img/ico-chat.svg").Content
      "chevronDown" (resources.Get "img/ico-chevron-down.svg").Content
      "chevronRight" (resources.Get "img/ico-chevron-right.svg").Content
+     "arrowLeft" (resources.Get "img/ico-arrow-left.svg").Content
+     "arrowButton" (resources.Get "img/arrow-button.svg").Content
 }}
-<dialog class="booking-modal" aria-labelledby="booking-title" inert>
+<dialog class="booking-modal" data-view="book" aria-labelledby="booking-title" inert>
+  {{/* Outside the views: every one of them is closed from the same corner. */}}
+  <button class="booking-modal--close" type="button" aria-label="Close" autofocus>
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
+      <path d="M4 4L16 16M16 4L4 16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+    </svg>
+  </button>
+
+  {{/* View "hub": the contact choices, shown by buttons that are not about
+       booking a call. Its CTA switches the dialog to the calendar. */}}
+  <section class="booking-modal--hub" aria-labelledby="booking-hub-title">
+    <h2 id="booking-hub-title" class="booking-modal--hub-title">Contact us</h2>
+
+    <div class="booking-modal--card booking-modal--card-email">
+      {{ index $icon "mail" | strings.TrimSpace | safeHTML }}
+      <h3 class="booking-modal--card-title">Email</h3>
+      <p class="booking-modal--card-text">
+        Write to us about your project or any question.
+      </p>
+      <a href="mailto:info@ivelum.com">info@ivelum.com</a>
+    </div>
+
+    <div class="booking-modal--card booking-modal--card-offices">
+      {{ index $icon "location" | strings.TrimSpace | safeHTML }}
+      <h3 class="booking-modal--card-title">Offices</h3>
+      <div class="booking-modal--office-columns">
+        {{- range $offices }}
+        <div class="booking-modal--hub-office">
+          {{ index $icon "location" | strings.TrimSpace | safeHTML }}
+          <div>
+            <span class="booking-modal--office-title">{{ .Title }}</span>
+            <a href="tel:{{ replace .Params.phone " " "" }}">{{ .Params.phone }}</a>
+            <address>{{ .Params.address }}</address>
+          </div>
+        </div>
+        {{- end }}
+      </div>
+    </div>
+
+    <div class="booking-modal--card booking-modal--card-chat" data-chat-status>
+      {{ index $icon "chat" | strings.TrimSpace | safeHTML }}
+      <h3 class="booking-modal--card-title">Live chat</h3>
+      <p class="booking-modal--card-text">
+        We&rsquo;re online from 10 AM to 8 PM, EET<br />
+        <span data-chat-local-time></span>
+      </p>
+      <p class="booking-modal--hub-status">
+        <span class="booking-modal--hub-state" data-chat-current-status></span>
+      </p>
+      <p class="booking-modal--hub-hours" data-chat-hours></p>
+      <button
+        class="booking-modal--hub-chat btn btn-outline-violet btn-small"
+        type="button"
+        data-chat-button
+      >Chat now</button>
+    </div>
+
+    <div class="booking-modal--consultation">
+      <div class="booking-modal--consultation-text">
+        {{ partial "image.html" (dict
+             "Img" (resources.Get "img/avatars/denis-stebunov.png")
+             "Alt" "Denis Stebunov"
+             "Class" "booking-modal--consultation-avatar"
+             "Width" 64
+           ) }}
+        <div>
+          <span class="booking-modal--consultation-title">30-min free consultation</span>
+          <span class="booking-modal--consultation-host">with Denis Stebunov, CTO</span>
+        </div>
+        {{/* Outside the column beside the avatar: narrow screens run it the
+             full width of the card, as the mock does. */}}
+        <p class="booking-modal--consultation-copy">
+          Tell us about your project! Together, we&rsquo;ll brainstorm
+          the&nbsp;optimal approach and how we can help.
+        </p>
+      </div>
+      <button class="btn btn-big btn-with-arrow" type="button" data-view-schedule>
+        Book a discovery meeting
+        {{ index $icon "arrowButton" | strings.TrimSpace | safeHTML }}
+      </button>
+    </div>
+  </section>
+
   <aside class="booking-modal--panel">
     <div class="booking-modal--host">
       {{ partial "image.html" (dict
@@ -102,11 +186,15 @@
   </aside>
 
   <section class="booking-modal--booking" aria-label="Schedule a meeting">
-    <button class="booking-modal--close" type="button" aria-label="Close booking" autofocus>
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
-        <path d="M4 4L16 16M16 4L4 16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
-      </svg>
-    </button>
+    <button
+      class="booking-modal--back"
+      type="button"
+      aria-label="Back to contact options"
+      data-view-hub
+    >{{ index $icon "arrowLeft" | strings.TrimSpace | safeHTML }}</button>
+
+    <p class="booking-modal--schedule-title">Book a discovery meeting</p>
+
     <div class="booking-modal--body">
       <div class="booking-modal--status" role="status">
         <p data-calendly-status>Loading available times…</p>

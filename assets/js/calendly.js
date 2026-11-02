@@ -53,10 +53,36 @@
           event.shiftKey || event.altKey) return;
       event.preventDefault();
       opener = link;
+      // "contact" opens the choices, anything else goes straight to the calendar.
+      setView(link.dataset.contactOpen === 'contact' ? 'hub' : 'book');
       modal.inert = false;
       modal.showModal();
       preload();
     });
+  });
+
+  // Moving between the choices and the calendar. The widget never changes its
+  // place in the DOM, so the iframe is not reloaded.
+  // Each screen has its own heading, and the dialog has to be named after the
+  // one on show: a hidden element still counts for the accessible name.
+  const headings = {
+    hub: 'booking-hub-title',
+    book: 'booking-title',
+    schedule: 'booking-title',
+  };
+
+  const setView = (view, focus) => {
+    modal.dataset.view = view;
+    modal.setAttribute('aria-labelledby', headings[view]);
+    focus?.focus();
+  };
+
+  const back = modal.querySelector('[data-view-hub]');
+  modal.querySelector('[data-view-schedule]')?.addEventListener('click', () => {
+    setView('schedule', back);
+  });
+  back?.addEventListener('click', () => {
+    setView('hub', modal.querySelector('[data-view-schedule]'));
   });
 
   // Narrow screens keep the addresses folded behind the "Offices" chip.

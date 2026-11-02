@@ -13,4 +13,4 @@ saving you up to $2,000 total.
 Open to bootstrapped startups under five years old and VC-backed startups at
 Series B or earlier.
 
-{{< contact-button title="Claim your discount" >}}
+{{< contact-button title="Claim your discount" mode="contact" >}}

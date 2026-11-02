@@ -1,4 +1,8 @@
-<a href="/contact/" data-contact-open class="btn btn-big btn-with-arrow">
+{{- /* mode: "book" opens the calendar straight away, "contact" the choices.
+       The href is only a fallback for when the script has not run. */ -}}
+{{- $mode := .Get "mode" | default "book" -}}
+{{- $fallback := cond (eq $mode "book") "https://calendly.com/ivelum/consultation" "/contact/" -}}
+<a href="{{ $fallback }}" data-contact-open="{{ $mode }}" class="btn btn-big btn-with-arrow">
   {{- .Get "title" -}}
   {{ (resources.Get "img/arrow-button.svg").Content | strings.TrimSpace | safeHTML }}
 </a>

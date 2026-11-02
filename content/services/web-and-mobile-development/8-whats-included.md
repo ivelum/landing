@@ -21,4 +21,4 @@ When you hire us to build your web or mobile app, you get:
 - **[Teamplify >](https://teamplify.com)**
   Team analytics, daily standups, time tracking, and more.
 
-{{< contact-button title="Get a quote" >}}
+{{< contact-button title="Get a quote" mode="contact" >}}

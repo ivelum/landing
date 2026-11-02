@@ -184,7 +184,8 @@ html:has(.booking-modal[open]) {
 
   &--booking {
     display: grid;
-    grid-template-rows: minmax(0, 1fr);
+    // Row one holds the second step's title and collapses when it is hidden.
+    grid-template-rows: auto minmax(0, 1fr);
     min-width: 0;
   }
 
@@ -224,6 +225,7 @@ html:has(.booking-modal[open]) {
 
   &--body {
     position: relative;
+    grid-row: 2;
     min-height: 0;
   }
 
@@ -262,6 +264,290 @@ html:has(.booking-modal[open]) {
     pointer-events: auto;
   }
   &[data-ready] &--status { display: none; }
+
+  // --- Views ----------------------------------------------------------------
+  // One dialog, three screens. The calendar keeps its place in the DOM, so
+  // switching never reloads the Calendly iframe.
+
+  &--hub,
+  &--back,
+  &--schedule-title { display: none; }
+
+  &[data-view='hub'] &--hub { display: flex; }
+
+  &[data-view='hub'] &--panel,
+  &[data-view='hub'] &--booking,
+  &[data-view='hub'] &--chat-bar { display: none; }
+
+  &[data-view='schedule'] &--panel,
+  &[data-view='schedule'] &--chat-bar { display: none; }
+
+  &[data-view='schedule'] &--back { display: grid; }
+  &[data-view='schedule'] &--schedule-title { display: block; }
+
+  // --- Hub ------------------------------------------------------------------
+
+  &--hub {
+    flex-direction: column;
+    padding: 20px 20px 24px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  &--hub-title {
+    margin: 0 44px 24px 0;
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  // Icon in a gutter of its own, everything else beside it.
+  &--card {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 14px;
+    align-content: start;
+    padding: 12px 18px;
+    background: $background-darker;
+
+    > svg {
+      width: 22px;
+      height: 22px;
+      grid-column: 1;
+      grid-row: 1 / -1;
+      margin-top: 1px;
+      color: $primary-violet;
+    }
+
+    > :not(svg) { grid-column: 2; }
+
+    a {
+      justify-self: start;
+      // A grid item is a block, so the underline would otherwise follow the
+      // inherited line-height instead of hugging the text the way it does
+      // under the inline links everywhere else.
+      line-height: 1.25;
+      word-break: break-word;
+    }
+
+    // One block on a narrow screen, its rows told apart by a rule that runs
+    // the width of the text.
+    + .booking-modal--card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 18px;
+      left: 18px;
+      border-top: 1px solid $border-color-default;
+    }
+  }
+
+  // The three of them read as one block on a narrow screen.
+  &--card-email { border-radius: $border-radius-default $border-radius-default 0 0; }
+  &--card-chat { border-radius: 0 0 $border-radius-default $border-radius-default; }
+
+  &--card-title {
+    margin: 0 0 4px;
+    font-size: $font-size-default;
+    line-height: 22px;
+  }
+
+  // The compact rows carry the status and the hours instead.
+  &--card-text { display: none; }
+
+  // Dot first, then the status — the hub shows it the other way round from the
+  // booking panel. The line height follows the text inside it, or the
+  // paragraph's own strut would add a few pixels of its own.
+  &--hub-status {
+    margin: 0;
+    line-height: 18px;
+  }
+
+  &--hub-state {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: $font-size-smaller;
+    line-height: 18px;
+    white-space: nowrap;
+
+    &::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    &.is-online { color: #35aa00; }
+    &.is-offline { color: #f23c3c; }
+  }
+
+  &--hub-hours {
+    margin: 4px 0 0;
+    color: $font-color-gray;
+    font-size: $font-size-smaller;
+    line-height: 18px;
+    white-space: nowrap;
+  }
+
+  // Beside the whole block, not just its first line. The rows are spelled out
+  // because "1 / -1" spans the explicit grid only, and without them the button
+  // would land in the title's row.
+  &--card-chat {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-rows: repeat(3, auto);
+
+    > .booking-modal--hub-chat {
+      grid-column: 3;
+      grid-row: 1 / -1;
+      align-self: center;
+    }
+  }
+
+  // The popup's own, smaller buttons; the site-wide sizes are a size up.
+  &--hub-chat.btn {
+    // btn-small stretches to the full width below 370px, which would squeeze
+    // the status out of its column.
+    min-width: 0;
+    padding: 9px 15px;
+    font-size: $font-size-smaller;
+    line-height: 18px;
+  }
+
+  &--consultation .btn {
+    gap: 9px;
+    padding: 13px 18px;
+    font-size: $font-size-default;
+    line-height: 20px;
+  }
+
+  // Narrow screens drop the "Offices" heading; every office carries its own pin.
+  &--card-offices {
+    > svg,
+    > .booking-modal--card-title { display: none; }
+
+    > .booking-modal--office-columns { grid-column: 1 / -1; }
+  }
+
+  &--hub-office {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 14px;
+
+    // The two offices are rows of the same block as the email and the chat.
+    + .booking-modal--hub-office {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid $border-color-default;
+    }
+
+    > svg {
+      width: 22px;
+      height: 22px;
+      margin-top: 1px;
+      color: $primary-violet;
+    }
+
+    .booking-modal--office-title {
+      font-size: $font-size-default;
+      line-height: 22px;
+    }
+
+    a {
+      display: block;
+      width: fit-content;
+      line-height: 1.25;
+    }
+
+    address {
+      margin-top: 4px;
+      color: $font-color-gray;
+      font-size: $font-size-smaller;
+      font-style: normal;
+      line-height: 18px;
+    }
+  }
+
+  &--consultation {
+    margin-top: 24px;
+    padding: 20px;
+    border-radius: $border-radius-default;
+    background: $primary-violet;
+    color: $white;
+
+    .btn { width: 100%; }
+  }
+
+  &--consultation-text {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  &--consultation-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+  }
+
+  &--consultation-title,
+  &--consultation-host {
+    display: block;
+  }
+
+  &--consultation-title {
+    font-weight: $font-weight-semi-bold;
+    line-height: 22px;
+  }
+
+  &--consultation-host {
+    margin-top: 2px;
+    color: rgba($white, 0.8);
+    font-size: $font-size-smaller;
+    line-height: 20px;
+  }
+
+  &--consultation-copy {
+    grid-column: 1 / -1;
+    margin: 16px 0 0;
+    font-size: $font-size-smaller;
+    line-height: 21px;
+  }
+
+  // --- Second step ----------------------------------------------------------
+
+  &--back {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    z-index: 1;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: $border-radius-default;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+
+    svg { width: 22px; height: 22px; }
+
+    &:hover { background: $background-darker; }
+    &:focus-visible { outline: 2px solid $primary-violet; }
+  }
+
+  &--schedule-title {
+    width: fit-content;
+    margin: 0;
+    padding: 64px 20px 0;
+    font-size: 20px;
+    font-weight: $font-weight-bold;
+    line-height: 28px;
+  }
 
   // --- Narrow screens -------------------------------------------------------
   // The stacked contacts give way to a row of chips, the addresses fold behind
@@ -384,6 +670,15 @@ html:has(.booking-modal[open]) {
     border-radius: $border-radius-default * 2;
   }
 
+  // Calendly swaps its compact "Select a Day" calendar for the wide one
+  // somewhere between 640 and 660 wide, and the wide one does not fit in the
+  // compact frame: it would scroll inside the frame as well as outside it,
+  // putting two scrollbars side by side. Measured just above the last width
+  // that still gets the compact calendar.
+  @media (min-width: 641px) {
+    &--widget iframe { min-height: 760px; }
+  }
+
   @include media-up(md) {
     // Matches the mock: the panel needs ~620px, the rest was empty space above
     // the contacts. Same height on desktop, so no override further down.
@@ -392,7 +687,14 @@ html:has(.booking-modal[open]) {
     grid-template-rows: minmax(0, 1fr);
     overflow: hidden;
 
-    &--booking { height: 100%; }
+    // Row one is the close button's own strip, as in the mock, and holds the
+    // second step's title. Calendly draws its own panels (the time-zone list)
+    // across the whole frame, and anything of ours floating over one reads as
+    // part of it, so the frame has to start below the button.
+    &--booking {
+      height: 100%;
+      grid-template-rows: minmax(64px, auto) minmax(0, 1fr);
+    }
 
     &--chips,
     &--offices,
@@ -400,11 +702,227 @@ html:has(.booking-modal[open]) {
 
     &--contacts { display: block; }
 
+    // With a strip of its own the frame gets exactly the room that is left,
+    // and the calendar fits in it: no scrollbar on either side of the border.
     &--widget {
       overflow: hidden;
 
-      // The wide layout needs more room than the compact one.
-      iframe { min-height: 760px; }
+      iframe { min-height: 0; }
+    }
+
+    // Unless the window is too short for it — below this the dialog itself
+    // shrinks (90% of the window, against the 660 it is meant to be), and the
+    // calendar has to be scrolled to instead.
+    @media (max-height: 732px) {
+      &--widget {
+        overflow-y: auto;
+        overscroll-behavior: contain;
+
+        iframe { min-height: 700px; }
+      }
+    }
+
+    // Same specificity as the view rule above, which would otherwise win.
+    &[data-view='hub'] &--hub {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-content: start;
+      gap: 24px;
+      padding: 32px 56px 20px;
+    }
+
+    // Placed explicitly: the markup order is the narrow one (email, offices,
+    // chat), and auto-placement cannot lift the chat back up beside the email.
+    &--hub-title {
+      grid-column: 1 / -1;
+      grid-row: 1;
+      margin: 0;
+      font-size: 32px;
+      line-height: 40px;
+    }
+
+    &--card-email {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    &--card-chat {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    &--card-offices {
+      grid-column: 1 / -1;
+      grid-row: 3;
+    }
+
+    &--consultation {
+      grid-column: 1 / -1;
+      grid-row: 4;
+    }
+
+    &--card {
+      column-gap: 10px;
+      padding: 24px;
+      border-radius: $border-radius-default;
+
+      > svg {
+        width: 24px;
+        height: 24px;
+        grid-row: 1;
+        margin-top: 0;
+      }
+
+      // Only the title shares its row with the icon; the rest of the card runs
+      // the full width, flush with the padding.
+      > :not(svg) { grid-column: 1 / -1; }
+      > .booking-modal--card-title { grid-column: 2; grid-row: 1; }
+    }
+
+    // Boxes of their own up here, with gaps between them.
+    &--card + &--card::before { content: none; }
+
+    &--card-offices {
+      > svg,
+      > .booking-modal--card-title { display: block; }
+
+      // The columns below bring their own spacing.
+      > .booking-modal--card-title { margin-bottom: 0; }
+    }
+
+    &--office-columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 72px;
+      margin-top: 16px;
+    }
+
+    &--hub-office {
+      display: block;
+
+      > svg { display: none; }
+
+      .booking-modal--office-title {
+        margin-bottom: 2px;
+        font-size: $font-size-smaller;
+        line-height: 20px;
+      }
+
+      address { margin-top: 2px; }
+
+      + .booking-modal--hub-office {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: 0;
+      }
+    }
+
+    &--consultation {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 0;
+      padding: 22px 32px;
+
+      // A tablet keeps the narrow screen's smaller button: at the mock's size
+      // it would leave the copy beside it a column four words wide.
+      .btn {
+        width: auto;
+        flex-shrink: 0;
+      }
+    }
+
+    // The wide card spells the hours out in the sentence above.
+    &--hub-hours { display: none; }
+
+    &--card-title {
+      margin-bottom: 12px;
+      font-size: $font-size-bigger;
+      line-height: 24px;
+    }
+
+    &--card-text {
+      display: block;
+      margin: 0 0 12px;
+      color: $font-color-default;
+      font-size: $font-size-smaller;
+      line-height: 20px;
+    }
+
+    &--card-chat {
+      grid-template-columns: auto minmax(0, 1fr);
+      grid-template-rows: none;
+    }
+
+    &--hub-status { line-height: 20px; }
+
+    &--hub-state {
+      font-size: $font-size-default;
+      line-height: 20px;
+    }
+
+    // Under the text, not beside it: the wide card has the room for a full
+    // sentence and puts the button on its own line.
+    &--card-chat > &--hub-chat {
+      grid-column: 1 / -1;
+      grid-row: auto;
+      align-self: auto;
+      justify-self: start;
+      margin-top: 12px;
+    }
+
+    &--hub-chat.btn {
+      padding: 9px 23px;
+      font-size: $font-size-default;
+      line-height: 20px;
+    }
+
+    &--consultation-text {
+      flex: 1;
+      column-gap: 20px;
+      margin-bottom: 0;
+    }
+
+    &--consultation-title {
+      font-size: $font-size-bigger;
+      line-height: 26px;
+    }
+
+    &--consultation-host { display: none; }
+
+    // Back under the title, beside the avatar.
+    &--consultation-copy {
+      grid-column: 2;
+      margin-top: 0;
+    }
+
+    &--consultation-avatar {
+      width: 64px;
+      height: 64px;
+    }
+
+    // Beside the whole copy, not only the title: the grid item is the picture
+    // around the image, so the row span goes on that.
+    &--consultation-text > picture {
+      grid-row: 1 / 3;
+      align-self: center;
+    }
+
+    &--schedule-title {
+      margin-inline: auto;
+      padding: 72px 0 0;
+    }
+
+    // The mock gives the calendar a column of its own rather than the width of
+    // the dialog, and that is also what keeps it short: at full width Calendly
+    // surrounds the card with a lot of padding, which is what the step used to
+    // scroll through. In a column this size the card is the same one that sits
+    // beside the panel in the booking view.
+    &[data-view='schedule'] &--widget iframe {
+      width: 668px;
+      max-width: 100%;
+      margin-inline: auto;
     }
 
     &--panel { padding: 24px; }
@@ -428,6 +946,13 @@ html:has(.booking-modal[open]) {
   @include media-up(lg) {
     grid-template-columns: 340px minmax(0, 1fr);
 
+    &--consultation .btn {
+      gap: 10px;
+      padding: 14px 30px;
+      font-size: $font-size-bigger;
+      line-height: 22px;
+    }
+
     &--panel { padding: 32px; }
 
     &--avatar {
@@ -440,10 +965,27 @@ html:has(.booking-modal[open]) {
 
   // Wide but short windows clip the calendar rather than the padding, so give
   // it back its scrollbar. Must come after the md rule that hides it.
-  @media (max-height: 620px) {
-    &--widget {
-      overflow-y: auto;
-      overscroll-behavior: contain;
+  // The hub and the second step have no side panel, so they take the full width.
+  &[data-view='hub'],
+  &[data-view='schedule'] {
+    @include media-up(md) { grid-template-columns: minmax(0, 1fr); }
+  }
+
+  // The choices are as tall as they need to be. 660 is the mock's height, and
+  // what a wide screen gets; a tablet wraps the cards into more lines than fit
+  // in it, and would rather have the dialog grow than scroll inside it.
+  &[data-view='hub'] {
+    @include media-up(md) {
+      // Not `auto`: a modal dialog is pinned top and bottom, and an auto
+      // height there fills the window instead of the content.
+      height: fit-content;
+      // A minimum beats a maximum, so it has to yield to a short window
+      // itself: at a flat 660 the dialog would hang off both edges of a
+      // 600px-tall one with no way to scroll to what it hides.
+      // Quoted so Sass passes the CSS function through instead of trying to
+      // work out a minimum of two units it cannot compare.
+      min-height: #{'min(660px, 90vh)'};
+      min-height: #{'min(660px, 90dvh)'};
     }
   }
 }
