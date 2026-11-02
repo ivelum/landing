@@ -229,16 +229,27 @@ html:has(.booking-modal[open]) {
     color: $primary-violet;
   }
 
-  // The buttons do what the contact page does: the label fades and the logo
+  // The pill does what the contact page does: the label fades and the logo
   // stands in for it, in the button's own colour. It is laid over the label
-  // rather than placed beside it, because these buttons are sized to the mock
-  // and a logo in the flow would widen them mid-click.
-  &--hub-chat,
-  &--chat-button { position: relative; }
+  // rather than placed beside it, because the button is sized to the mock and
+  // a logo in the flow would widen it mid-click.
+  &--hub-chat { position: relative; }
 
-  // The underline belongs to the words. With the label faded it would hang
-  // under an empty button, so it goes while the logo is up.
-  &--chat-button:disabled { background-image: none; }
+  // The panel's chat is a line of text, not a pill: emptying it left the logo
+  // floating on its own, so it keeps its words and takes the logo on the
+  // right, the way the bar does. Out of the line box, or an 18px logo would
+  // deepen it and carry the underline down with it.
+  &--chat-button {
+    position: relative;
+
+    .booking-modal--chat-loading {
+      position: absolute;
+      top: 50%;
+      left: calc(100% + 8px);
+      margin-top: 0;
+      transform: translateY(-50%);
+    }
+  }
 
   &--chat-logo {
     position: absolute;
