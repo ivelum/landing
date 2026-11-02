@@ -3,6 +3,7 @@
   if (!modal || typeof modal.showModal !== 'function') return;
 
   const widget = modal.querySelector('.booking-modal--widget');
+  const close = modal.querySelector('.booking-modal--close');
   const status = modal.querySelector('[data-calendly-status]');
   let loading;
   let readyTimer;
@@ -57,6 +58,11 @@
       setView(link.dataset.contactOpen === 'contact' ? 'hub' : 'book');
       modal.inert = false;
       modal.showModal();
+      // The dialog itself takes the focus, not a control in it: landing on a
+      // button or a link draws a focus ring the moment the popup opens, and
+      // Safari picks a different one from everybody else. Tabbing from here
+      // still walks the controls in order.
+      modal.focus();
       preload();
     });
   });
@@ -71,18 +77,21 @@
     schedule: 'booking-title',
   };
 
-  const setView = (view, focus) => {
+  // Switching screens moves the focus back to the dialog rather than to the
+  // control that leads out of the new one: the keyboard carries on from the
+  // top of what is now on show, and nothing is left outlined after a click.
+  const setView = (view) => {
     modal.dataset.view = view;
     modal.setAttribute('aria-labelledby', headings[view]);
-    focus?.focus();
+    if (modal.open) modal.focus();
   };
 
   const back = modal.querySelector('[data-view-hub]');
   modal.querySelector('[data-view-schedule]')?.addEventListener('click', () => {
-    setView('schedule', back);
+    setView('schedule');
   });
   back?.addEventListener('click', () => {
-    setView('hub', modal.querySelector('[data-view-schedule]'));
+    setView('hub');
   });
 
   // Narrow screens keep the addresses folded behind the "Offices" chip.
@@ -94,7 +103,7 @@
     offices.hidden = expanded;
   });
 
-  modal.querySelector('.booking-modal--close').addEventListener('click', () => modal.close());
+  close.addEventListener('click', () => modal.close());
   let backdropPressed = false;
   const outside = (event) => {
     const rect = modal.getBoundingClientRect();

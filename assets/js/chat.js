@@ -1,31 +1,37 @@
 const timeoutAfter = 15000;
 const timeoutError = new Error('Crisp timed out');
 
-function initChat() {
-  return new Promise((resolve, reject) => {
-    if (window.CRISP_WEBSITE_ID) {
-      resolve();
-      return;
-    }
+// Resolves when Crisp has a session, not when its script has merely been
+// asked for: a later click has to wait for a widget that can actually open.
+let chatReady;
 
+function loadChat() {
+  chatReady ||= new Promise((resolve) => {
     window.$crisp = [];
     window.$crisp.push(['safe', true]);
     // Sentry instruments methods document.addEventListener() and
     // document.removeEventListener(), and Crisp complains about it. Disable
     // the warnings.
-    $crisp.push(['on', 'session:loaded', () => {
-      clearTimeout(timeoutID);
-      resolve();
-    }]);
-    const timeoutID = setTimeout(() => {
-      reject(timeoutError);
-    }, timeoutAfter);
+    $crisp.push(['on', 'session:loaded', resolve]);
     window.CRISP_WEBSITE_ID = '2aa7bcb2-8094-4624-b64e-112c2ca3a174';
 
     const script = document.createElement('script');
     script.src = 'https://client.crisp.chat/l.js';
     script.async = 1;
     document.getElementsByTagName('head')[0].appendChild(script);
+  });
+  return chatReady;
+}
+
+// Each click waits on its own clock, so a widget that turns up late is still
+// usable on the next try.
+function initChat() {
+  return new Promise((resolve, reject) => {
+    const timeoutID = setTimeout(() => reject(timeoutError), timeoutAfter);
+    loadChat().then(() => {
+      clearTimeout(timeoutID);
+      resolve();
+    });
   });
 }
 
@@ -45,21 +51,24 @@ document.querySelectorAll('[data-chat-button]').forEach((button) => {
 
   button.addEventListener('click', async () => {
     window.posthog?.capture('live_chat_opened');
-    // A modal <dialog> owns the top layer and Crisp renders outside it, so the
-    // widget would be stuck under the backdrop. Step out of the dialog first.
-    button.closest('dialog[open]')?.close();
     setLoading(true);
-    const chatInitialized = initChat();
-    window.$crisp.push(['do', 'chat:show']);
-    window.$crisp.push(['do', 'chat:open']);
+    // Crisp takes a moment to answer. Closing the popup before it does leaves
+    // the visitor looking at a bare page, which reads as a failure, so wait
+    // here with the loader running and only then hand over.
     try {
-      await chatInitialized;
+      await initChat();
     } catch (error) {
-      if (error === timeoutError) return;
-      throw error;
+      if (error !== timeoutError) throw error;
+      // Timed out: stay where we are rather than close onto nothing.
+      return;
     } finally {
       setLoading(false);
     }
+    // A modal <dialog> owns the top layer and Crisp renders outside it, so the
+    // widget would be stuck under the backdrop. Step out of the dialog first.
+    button.closest('dialog[open]')?.close();
+    window.$crisp.push(['do', 'chat:show']);
+    window.$crisp.push(['do', 'chat:open']);
   });
 });
 

@@ -203,8 +203,49 @@ html:has(.booking-modal[open]) {
     inset: 0;
   }
 
+  // The dialog takes the focus when it opens so the keyboard starts inside it.
+  // It is a container, not a control, so it is never the thing to outline;
+  // everything focusable in it keeps its own ring.
+  &:focus,
+  &:focus-visible { outline: none; }
+
   &::backdrop {
     background: rgba($font-color-dark, 0.65);
+  }
+
+  // The bar keeps its text while Crisp loads and swaps its chevron for the
+  // logo, which therefore sits in the chevron's slot, at its size and
+  // baseline, so nothing shifts between the two.
+  &--chat-loading {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin-top: 1px;
+    // The same violet the logo takes in the buttons, where it comes from the
+    // button's own colour.
+    color: $primary-violet;
+  }
+
+  // The buttons do what the contact page does: the label fades and the logo
+  // stands in for it, in the button's own colour. It is laid over the label
+  // rather than placed beside it, because these buttons are sized to the mock
+  // and a logo in the flow would widen them mid-click.
+  &--hub-chat,
+  &--chat-button { position: relative; }
+
+  // The underline belongs to the words. With the label faded it would hang
+  // under an empty button, so it goes while the logo is up.
+  &--chat-button:disabled { background-image: none; }
+
+  &--chat-logo {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inset: 0;
   }
 
   &--close {
@@ -651,6 +692,10 @@ html:has(.booking-modal[open]) {
       color: $font-color-gray;
     }
 
+    // The script disables the bar while Crisp loads; that is when the logo
+    // takes the chevron's place, and the chevron comes back after.
+    &:disabled > svg { display: none; }
+
     &:focus-visible { outline: 2px solid $primary-violet; }
   }
 
@@ -685,9 +730,17 @@ html:has(.booking-modal[open]) {
   }
 
   @include media-up(md) {
-    // Matches the mock: the panel needs ~620px, the rest was empty space above
-    // the contacts. Same height on desktop, so no override further down.
-    height: 660px;
+    // Centred again: `max-height` below keeps the dialog inside the window
+    // here, so the overflow that made `auto` hide the close button on a phone
+    // cannot happen at this width.
+    margin-block: auto;
+
+    // The mock's 660 left the calendar card clipped at the bottom and gave
+    // Calendly a frame shorter than it lays out in, so it scrolled inside its
+    // own card. 780 is the first height at which the card ends above the
+    // border in both views; `max-height` below keeps shorter windows as they
+    // were, so no window loses anything by this.
+    height: 780px;
     grid-template-columns: 300px minmax(0, 1fr);
     grid-template-rows: minmax(0, 1fr);
     overflow: hidden;
@@ -984,8 +1037,6 @@ html:has(.booking-modal[open]) {
       // Not `auto`: a modal dialog is pinned top and bottom, and an auto
       // height there fills the window instead of the content.
       height: fit-content;
-      // Shorter than the screen here, so it is centred again.
-      margin-block: auto;
       // A minimum beats a maximum, so it has to yield to a short window
       // itself: at a flat 660 the dialog would hang off both edges of a
       // 600px-tall one with no way to scroll to what it hides.

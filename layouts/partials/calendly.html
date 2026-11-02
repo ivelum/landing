@@ -10,9 +10,11 @@
      "arrowLeft" (resources.Get "img/ico-arrow-left.svg").Content
      "arrowButton" (resources.Get "img/arrow-button.svg").Content
 }}
-<dialog class="booking-modal" data-view="book" aria-labelledby="booking-title" inert>
+{{/* The bouncing logo the contact page already shows while Crisp loads. */}}
+{{- $loading := ($contact.Resources.Get "img/loading.svg").Content | strings.TrimSpace | safeHTML }}
+<dialog class="booking-modal" data-view="book" aria-labelledby="booking-title" tabindex="-1" inert>
   {{/* Outside the views: every one of them is closed from the same corner. */}}
-  <button class="booking-modal--close" type="button" aria-label="Close" autofocus>
+  <button class="booking-modal--close" type="button" aria-label="Close">
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
       <path d="M4 4L16 16M16 4L4 16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
     </svg>
@@ -64,7 +66,11 @@
         class="booking-modal--hub-chat btn btn-outline-violet btn-small"
         type="button"
         data-chat-button
-      >Chat now</button>
+      ><span data-chat-button-label>Chat now</span><span
+        class="booking-modal--chat-logo"
+        data-chat-loading
+        style="display: none"
+      >{{ $loading }}</span></button>
     </div>
 
     <div class="booking-modal--consultation">
@@ -175,7 +181,11 @@
 
       <div class="booking-modal--chat" data-chat-status>
         <button class="booking-modal--chat-button" type="button" data-chat-button>
-          Chat with us
+          <span data-chat-button-label>Chat with us</span><span
+            class="booking-modal--chat-logo"
+            data-chat-loading
+            style="display: none"
+          >{{ $loading }}</span>
         </button>
         <p class="booking-modal--chat-status">
           <span class="booking-modal--chat-state" data-chat-current-status></span>
@@ -217,6 +227,11 @@
         <span data-chat-hours></span>
       </span>
     </span>
+    <span
+      class="booking-modal--chat-loading"
+      data-chat-loading
+      style="display: none"
+    >{{ $loading }}</span>
     {{ index $icon "chevronRight" | strings.TrimSpace | safeHTML }}
   </button>
 </dialog>
