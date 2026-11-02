@@ -5,11 +5,16 @@ html:has(.booking-modal[open]) {
 .booking-modal {
   position: fixed;
   width: 1008px;
-  height: 100vh;
-  height: 100dvh;
+  // Per cent of the box the browser gives an open modal, not of the viewport:
+  // on iOS `dvh` can come out taller than what is actually on screen.
+  height: 100%;
   max-width: 100%;
   max-height: 100%;
-  margin: auto;
+  // Centred across, but never down: when the dialog does end up taller than
+  // the screen, `auto` splits the overflow in two and takes the close button
+  // off the top edge. Let the bottom go instead.
+  margin-inline: auto;
+  margin-block: 0;
   padding: 0;
   border: 0;
   border-radius: 0;
@@ -979,6 +984,8 @@ html:has(.booking-modal[open]) {
       // Not `auto`: a modal dialog is pinned top and bottom, and an auto
       // height there fills the window instead of the content.
       height: fit-content;
+      // Shorter than the screen here, so it is centred again.
+      margin-block: auto;
       // A minimum beats a maximum, so it has to yield to a short window
       // itself: at a flat 660 the dialog would hang off both edges of a
       // 600px-tall one with no way to scroll to what it hides.
