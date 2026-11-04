@@ -431,6 +431,8 @@
     }
 
     img {
+      // article--content centres its images; this one sits flush left
+      margin: 0;
       // Fill the column on phones (320 and 375 CSS px); past that the 320px
       // artwork is not enlarged any further
       max-width: 21rem;
