@@ -368,6 +368,39 @@
     }
   }
 
+  &--section-list-scores > ul {
+    display: grid;
+    gap: 0.625rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    list-style-type: none;
+    margin: 1rem 0 0;
+    max-width: 21.25rem;
+    padding: 0;
+    width: 100%;
+
+    @include media-up(md) {
+      gap: 1.25rem;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      max-width: 44.5rem;
+    }
+
+    li {
+      border: 1px solid $border-color-default;
+      border-radius: 2px;
+      margin: 0;
+      padding: 0 0.75rem 1.25rem;
+      text-align: center;
+    }
+
+    strong {
+      color: $primary-violet;
+      display: block;
+      font-size: 3.25rem;
+      font-weight: $font-weight-bold;
+      margin-bottom: -1.75rem;
+    }
+  }
+
   &--section-list-steps {
     > ol {
       counter-reset: step;
