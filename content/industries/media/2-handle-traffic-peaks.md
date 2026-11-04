@@ -1,7 +1,7 @@
 ---
 category: page-block
 marker: 02 /
-listStyle: logos
+listStyle: named-logos
 features:
   - '**300M+** visitors served per month'
 ---
@@ -13,6 +13,6 @@ surprise costs. We design resilient and cost-efficient architectures that scale
 seamlessly while
 [cutting cloud bills by up to 50%](/services/cloud-cost-optimization/).
 
-- {{< image src="img/logo-aws.svg" width=90 alt="AWS" >}}
-- {{< image src="img/logo-fastly.svg" width=130 alt="Fastly" >}}
-- {{< image src="img/logo-flexpress.png" width=200 alt="Flexpress" >}}
+- {{< image src="img/aws.svg" width=32 alt="AWS" >}} AWS
+- {{< image src="img/fastly.svg" width=29 alt="Fastly" >}} Fastly
+- {{< image src="img/flexpress.svg" width=32 alt="Flexpress" >}} Flexpress

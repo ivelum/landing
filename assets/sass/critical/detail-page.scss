@@ -340,7 +340,7 @@
     }
   }
 
-  &--section-list-named-logos > ul {
+  &--section-list-named-logos > ul:has(img) {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
