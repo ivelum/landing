@@ -22,8 +22,7 @@
     border: 0;
   }
 
-  &:hover,
-  &:focus-visible {
+  @include hover-focus {
     background-color: lighten($dark-orange, 10%);
     color: $white;
   }
@@ -45,8 +44,7 @@
     border: 2px solid $primary-violet;
     color: $primary-violet;
 
-    &:hover,
-    &:focus-visible {
+    @include hover-focus {
       background-color: $white;
       border-color: $primary-orange;
       color: $primary-orange;
@@ -74,15 +72,11 @@
       transform-origin: left center;
     }
 
-    &:hover,
-    &:focus-visible {
+    @include hover-focus {
       .arrow-head {
         transform: translateX(6px);
       }
-    }
 
-    &:hover,
-    &:focus-visible {
       .arrow-body {
         opacity: 1;
         transform: scaleX(2);

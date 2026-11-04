@@ -41,7 +41,13 @@ $header-menu-open-duration: 0.3s;
     top: 0;
     z-index: 150;
     clip-path: circle(0px at calc(100% - 36px) 36px);
-    transition: clip-path 0.2s ease-out;
+    // Закрытое меню — это всё ещё `position: fixed` на весь экран, и одного
+    // `clip-path` мало: на iOS невидимый слой забирает тач-жесты себе и
+    // страница перестаёт скроллиться. `visibility` убирает его из хит-теста
+    // целиком и гасится только после того, как кружок схлопнулся.
+    pointer-events: none;
+    visibility: hidden;
+    transition: clip-path 0.2s ease-out, visibility 0s linear 0.2s;
     @include media-up(lg) {
       align-items: center;
       background: none;
@@ -49,12 +55,17 @@ $header-menu-open-duration: 0.3s;
       clip-path: initial;
       flex-direction: row;
       max-height: none;
+      pointer-events: auto;
       position: static;
+      transition: none;
+      visibility: visible;
     }
 
     &.is-open {
       clip-path: circle((1000px * 2 + 200) at calc(100% - 36px) 36px);
-      transition: clip-path $header-menu-open-duration ease-in;
+      pointer-events: auto;
+      visibility: visible;
+      transition: clip-path $header-menu-open-duration ease-in, visibility 0s;
     }
   }
 

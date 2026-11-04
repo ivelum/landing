@@ -9,6 +9,18 @@
   let readyTimer;
   let opener;
 
+  // Страницу под открытым попапом держим инлайновым стилем, а не правилом
+  // `html:has(.booking-modal[open])`: на iOS пересчёт `:has()` на корневом
+  // элементе срабатывает не всегда, и `overflow: hidden` остаётся на <html>
+  // после закрытия — страница выглядит живой, но не скроллится.
+  const lockPage = () => {
+    document.documentElement.style.overflow = 'hidden';
+  };
+
+  const unlockPage = () => {
+    document.documentElement.style.overflow = '';
+  };
+
   const failed = () => {
     status.textContent = 'Unable to load available times. Please open Calendly directly.';
   };
@@ -58,6 +70,7 @@
       setView(link.dataset.contactOpen === 'contact' ? 'hub' : 'book');
       modal.inert = false;
       modal.showModal();
+      lockPage();
       // The dialog itself takes the focus, not a control in it: landing on a
       // button or a link draws a focus ring the moment the popup opens, and
       // Safari picks a different one from everybody else. Tabbing from here
@@ -117,6 +130,7 @@
   });
   modal.addEventListener('close', () => {
     modal.inert = true;
+    unlockPage();
     opener?.focus();
   });
 
