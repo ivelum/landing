@@ -71,15 +71,20 @@
       <p class="contact-form-modal--subtitle">We’ll get back to you within 24 hours.</p>
     </div>
 
-    {{/* `data-endpoint` stays empty until the backend hands over an address.
-         While it is empty nothing is sent anywhere: on production the form
-         shows the error block with the email address, so a request is never
-         lost in silence, and in development it shows the success screen, so
-         that screen can be looked at. Either one can be asked for by URL on
-         any build: `&send=success` and `&send=error`. Once the address
-         exists, this whole arrangement goes away from contact-form.js. */}}
-    <form class="contact-form-modal--form" novalidate data-endpoint=""
-      {{- if not hugo.IsProduction }} data-offline-send="success"{{ else }} data-offline-send="error"{{ end }}>
+    {{/* The endpoint is only filled in on a production build: in
+         development a request would leave as a real email to info@ivelum.com.
+         Without it, contact-form.js replaces sending with a delay, and the
+         screen to show afterwards is picked by the page URL, `&send=success`
+         or `&send=error`.
+
+         The address itself is the lambda's Function URL, route `/contact`.
+         If the stack moves, the new value is in the CloudFormation output:
+         `aws cloudformation describe-stacks --stack-name ivelum-landing
+         --region us-east-2 --query "Stacks[0].Outputs"`. */}}
+    {{- $endpoint := "https://glf5vzq7bih7fvc2kp4nuuiaom0gnnqb.lambda-url.us-east-2.on.aws/contact" }}
+    <form class="contact-form-modal--form" novalidate
+      {{- if hugo.IsProduction }} data-endpoint="{{ $endpoint }}"
+      {{- else }} data-offline-send="success"{{ end }}>
       {{- range $field := $fields }}
       {{- $id := printf "contact-form-%s" $field.name }}
       <div class="contact-form-modal--field">

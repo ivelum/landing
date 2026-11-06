@@ -86,13 +86,9 @@ import { isPlainClick, setupModal } from './modal.js';
 
   const wait = (ms) => new Promise((resolve) => { setTimeout(resolve, ms); });
 
-  // TEMPORARY, until the endpoint exists. `data-endpoint` is empty, there is
-  // nowhere to send — and staying quiet about that is not an option: on
-  // production the form shows the error block with the email address, in
-  // development it reports success so the screen can be looked at. Either
-  // branch can be asked for by URL, `&send=success` or `&send=error`, which
-  // is how the screens are checked on a real device. Once the endpoint
-  // exists, this whole block goes away along with `data-offline-send`.
+  // There is no endpoint in development: a real request would reach actual
+  // people as an email. Sending is replaced by a delay, and either screen
+  // can be asked for with `&send=success` or `&send=error` in the URL.
   const offlineSend = async () => {
     await wait(1200);
     const forced = new URLSearchParams(location.search).get('send');
@@ -121,11 +117,22 @@ import { isPlainClick, setupModal } from './modal.js';
     sendError.hidden = true;
     if (!validate()) return;
 
+    // Read the values before `setBusy`: it disables the fields, and disabled
+    // fields are left out of `FormData`, so only the two keys added by hand
+    // would reach the backend.
+    const data = {
+      ...Object.fromEntries(
+        [...new FormData(form)].map(([key, value]) => [key, value.trim()]),
+      ),
+      // Where the request came from: which button opened the popup and
+      // which page it was on. Both get their own line in the email.
+      source: modal.dataset.variant || 'general',
+      page: location.pathname,
+    };
+
     setBusy(true);
     try {
-      await send(Object.fromEntries(
-        [...new FormData(form)].map(([key, value]) => [key, value.trim()]),
-      ));
+      await send(data);
       lockHeight();
       setScreen('success');
     } catch (error) {
