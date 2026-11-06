@@ -9,9 +9,14 @@ $white: #fff;
 $background-darker: #f6f7fc;
 $background-light-orange: #fdf2ea;
 $border-color-default: #e6e6e6;
-// Form fields: the site had no equivalent for these three, so the values
-// come from the mock
-$form-placeholder-color: #9e9ba3;
+// Form fields: the site had no equivalent, so these come from the mock —
+// except the placeholder, which is lighter than the mock's #9E9BA3. The
+// lightest Montserrat weight on the site is 500, which made the 16px
+// placeholder look heavier than the label above it. A disabled field keeps
+// the mock's colour: it shows what the person typed, so there is no reason
+// to fade it all the way down to placeholder grey.
+$form-placeholder-color: #b0adb7;
+$form-disabled-color: #9e9ba3;
 $form-border-hover-color: #c9c7ce;
 $error-color: #d92d20;
 $error-background: #fdecea;
