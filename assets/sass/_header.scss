@@ -41,10 +41,11 @@ $header-menu-open-duration: 0.3s;
     top: 0;
     z-index: 150;
     clip-path: circle(0px at calc(100% - 36px) 36px);
-    // Закрытое меню — это всё ещё `position: fixed` на весь экран, и одного
-    // `clip-path` мало: на iOS невидимый слой забирает тач-жесты себе и
-    // страница перестаёт скроллиться. `visibility` убирает его из хит-теста
-    // целиком и гасится только после того, как кружок схлопнулся.
+    // A closed menu is still `position: fixed` over the whole screen, and
+    // `clip-path` alone is not enough: on iOS the invisible layer swallows
+    // touch gestures and the page stops scrolling. `visibility` takes it out
+    // of hit testing entirely, and only switches off once the circle has
+    // finished collapsing.
     pointer-events: none;
     visibility: hidden;
     transition: clip-path 0.2s ease-out, visibility 0s linear 0.2s;

@@ -197,12 +197,12 @@
     opacity: 0;
     pointer-events: none;
     inset: 0;
-    // Закрытый диалог — полноэкранный `position: fixed` слой с живым iframe
-    // Calendly, и лежит он поверх контента на каждой странице. Увести его за
-    // экран нельзя: WebKit перестаёт отрисовывать ушедший фрейм, и Calendly
-    // не успевает проинициализироваться до открытия. Вместо этого уводим слой
-    // ПОД страницу — он остаётся отрисованным, но при хит-тесте сверху всегда
-    // оказывается контент, а не он.
+    // A closed dialog is still a full-screen `position: fixed` layer holding
+    // a live Calendly iframe, and it sits over the content of every page.
+    // Moving it off-screen is not an option: WebKit stops painting a frame
+    // that has left the viewport, so Calendly never finishes initialising
+    // before the dialog opens. Put the layer UNDER the page instead — it keeps
+    // painting, but hit testing always lands on the content, never on it.
     z-index: -1;
   }
 

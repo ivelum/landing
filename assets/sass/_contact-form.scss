@@ -1,23 +1,23 @@
-// Попап с формой заявки. Значения цветов и отступов — по макету
-// `Contact form popup — proposal`, кроме тех, у которых на сайте уже есть
-// свой аналог: там выигрывает сайт. Поэтому серый текст здесь
-// `$font-color-gray`, а не #6B6870 из макета, и рамка поля
-// `$border-color-default`, а не #E1E2EB.
+// The request form popup. Colours and spacing follow the
+// `Contact form popup — proposal` mock, except where the site already has an
+// equivalent: there the site wins. That is why grey text here is
+// `$font-color-gray` rather than the mock's #6B6870, and the field border is
+// `$border-color-default` rather than #E1E2EB.
 //
-// Начертаний у Montserrat на сайте три: 500, 600 и 700. «Regular» и «Medium»
-// из макета — это одно и то же `$font-weight-default`, так что подпись поля
-// и пометка «(optional)» рядом с ней различаются только цветом.
+// The site loads Montserrat in three weights: 500, 600 and 700. The mock's
+// "Regular" and "Medium" are both `$font-weight-default`, so a field label
+// and the "(optional)" note beside it differ only in colour.
 .contact-form-modal {
   position: fixed;
   width: 100%;
   max-width: 100%;
-  // Процент от коробки, которую браузер даёт открытой модалке, а не от
-  // вьюпорта: на iOS `dvh` бывает выше реально видимой области.
+  // A percentage of the box the browser gives an open modal, not of the
+  // viewport: on iOS `dvh` can be taller than what is actually visible.
   height: 100%;
   max-height: 100%;
-  // По горизонтали по центру, по вертикали — нет: когда содержимое выше
-  // экрана, `auto` делит переполнение поровну и уводит крестик за верхний
-  // край. Пусть уезжает низ.
+  // Centred horizontally but not vertically: when the content is taller than
+  // the screen, `auto` splits the overflow evenly and pushes the close button
+  // past the top edge. Let the bottom go instead.
   margin-inline: auto;
   margin-block: 0;
   padding: 0;
@@ -25,8 +25,8 @@
   border-radius: 0;
   background: $white;
   color: $font-color-dark;
-  // Прокручивается внутренняя обёртка, а не сам диалог: крестик лежит
-  // снаружи неё и потому остаётся на месте, когда содержимое выше экрана.
+  // The inner wrapper scrolls, not the dialog itself: the close button sits
+  // outside it and so stays put when the content is taller than the screen.
   overflow: hidden;
 
   &[open] {
@@ -34,8 +34,8 @@
     flex-direction: column;
   }
 
-  // Фокус при открытии забирает сам диалог: он контейнер, а не контрол, и
-  // обводить его незачем. Всё, что внутри, свою обводку сохраняет.
+  // The dialog takes focus on open: it is a container, not a control, and
+  // there is no reason to outline it. Everything inside keeps its own.
   &:focus,
   &:focus-visible { outline: none; }
 
@@ -45,19 +45,20 @@
 
   @include media-up(md) {
     width: 600px;
-    // Не `auto`: браузер держит у модального диалога `inset-block: 0`, и при
-    // `height: auto` высота считается от этих краёв, то есть во весь экран.
-    // `fit-content` даёт высоту по содержимому и при этом остаётся
-    // определённой, так что `margin-block: auto` снова центрирует.
-    height: -webkit-fit-content; // Safari до 16.4
+    // Not `auto`: the browser keeps `inset-block: 0` on a modal dialog, so
+    // with `height: auto` the height is measured from those edges — the full
+    // screen. `fit-content` sizes to the content and still counts as a
+    // definite height, so `margin-block: auto` centres again.
+    height: -webkit-fit-content; // Safari before 16.4
     height: fit-content;
     margin-block: auto;
     border-radius: 12px;
   }
 
   &--scroll {
-    // Отступы модалки живут здесь: у диалога их нет, иначе нижний отступ
-    // оставался бы на месте, а содержимое уезжало под него.
+    // The modal's padding lives here, not on the dialog: otherwise the
+    // bottom padding would stay in place while the content scrolled under
+    // it.
     flex: 1 1 auto;
     min-height: 0;
     padding: 12px 20px 32px;
@@ -81,9 +82,10 @@
     padding: 0;
     border: 0;
     border-radius: $border-radius-default;
-    // Не прозрачный: на низком окне содержимое проезжает под крестиком.
-    // Белая подложка с мягким ореолом гасит строки и рамки у самого значка,
-    // а не разрезает их по краю кнопки.
+    // Not transparent: in a short window the content scrolls underneath the
+    // close button. A white backing with a soft halo fades out lines and
+    // field borders near the icon instead of slicing them at the button's
+    // edge.
     background: $white;
     box-shadow: 0 0 10px 8px $white;
     color: inherit;
@@ -98,7 +100,7 @@
     }
   }
 
-  // Плашка — только у попапа, открытого с кнопки скидки.
+  // The badge belongs only to the popup opened from the discount button.
   &--badge {
     display: none;
     align-items: flex-start;
@@ -115,13 +117,13 @@
 
     svg {
       flex-shrink: 0;
-      // Иконка 16px при строке 20px встаёт по центру первой строки.
+      // A 16px icon on a 20px line sits centred on the first line.
       margin-top: 2px;
     }
 
     @include media-up(md) {
-      // Плашка в одну строку, и крестик рядом с ней заметно выше: этот
-      // отступ ставит её по центру его 44 пикселей.
+      // Here the badge is a single line and the close button beside it is
+      // much taller: this offset centres the badge against its 44 pixels.
       margin-top: 4px;
       padding-block: 6px;
     }
@@ -145,14 +147,14 @@
     @include media-up(md) {
       font-size: 28px;
       line-height: 36px;
-      // Крестик лежит абсолютом и ширину у заголовка не отнимает, поэтому
-      // длинный заголовок надо увести из-под него руками.
+      // The close button is absolutely positioned and takes no width from
+      // the heading, so a long heading has to be kept clear of it by hand.
       padding-right: 28px;
     }
   }
 
-  // Без плашки заголовок оказывается первым, и на узком экране лезет под
-  // крестик: с плашкой он висит ниже и места ему хватает.
+  // Without the badge the heading comes first and, on a narrow screen, runs
+  // under the close button; with the badge it sits lower and has room.
   &:not([data-variant='startup-discount']) &--title {
     padding-right: 48px;
 
@@ -175,11 +177,11 @@
     margin-top: 20px;
   }
 
-  // В макете подпись — Medium 14, а текст в поле — Regular 16: подпись
-  // меньше, но плотнее. На сайте Regular и Medium — одно и то же
-  // начертание 500, других Montserrat не загружен, и подпись проигрывала
-  // плейсхолдеру просто по кеглю. Поэтому здесь 600: это восстанавливает
-  // ту разницу, что нарисована, а не её числа.
+  // In the mock the label is Medium 14 and the field text Regular 16: the
+  // label is smaller but denser. On the site Regular and Medium are the same
+  // weight 500 — no other Montserrat is loaded — so the label simply lost to
+  // the placeholder on size alone. Hence 600 here: it restores the contrast
+  // that was drawn, rather than the numbers it was drawn with.
   &--label {
     display: block;
     margin-bottom: 8px;
@@ -189,7 +191,7 @@
     line-height: 20px;
   }
 
-  // Пометка рядом с подписью, наоборот, легче её — и начертанием тоже.
+  // The note beside the label is the lighter of the two, in weight as well.
   &--optional {
     color: $font-color-gray;
     font-weight: $font-weight-default;
@@ -211,13 +213,13 @@
     line-height: 24px;
 
     &::placeholder {
-      // Firefox сам приглушает плейсхолдер, поэтому прозрачность возвращаем.
+      // Firefox dims the placeholder on its own, so put the opacity back.
       opacity: 1;
       color: $form-placeholder-color;
     }
 
-    // Ховер отдельно от фокуса: мягкая рамка не должна перебивать
-    // фиолетовую, когда поле и под курсором, и в фокусе.
+    // Hover is kept apart from focus: the soft border must not override the
+    // violet one while the field is both hovered and focused.
     @media (hover: hover) {
       &:hover { border-color: $form-border-hover-color; }
     }
@@ -273,16 +275,17 @@
     }
   }
 
-  // Во время отправки у кнопки остаётся только надпись: стрелка обещает
-  // переход, которого в этот момент не происходит.
+  // While sending, the button keeps only its label: the arrow promises a
+  // transition that is not happening at that moment.
   &[data-sending] &--submit svg {
     display: none;
   }
 
   &--send-error {
     display: flex;
-    // `display` из класса сильнее, чем `display: none` у атрибута `hidden`
-    // из таблицы браузера, поэтому скрытие приходится вернуть руками.
+    // `display` from a class outranks the `display: none` the browser's own
+    // stylesheet gives the `hidden` attribute, so hiding has to be restored
+    // by hand.
     &[hidden] { display: none; }
 
     align-items: flex-start;
@@ -311,21 +314,23 @@
     }
   }
 
-  // Блок ошибки встаёт между полями и кнопкой, поэтому отступ сверху у
-  // кнопки в этом случае лишний — его уже дал сам блок.
+  // The error block sits between the fields and the button, so the button's
+  // own top margin is redundant then — the block has already provided it.
   &--send-error:not([hidden]) + &--submit {
     margin-top: 24px;
 
     @include media-up(md) { margin-top: 28px; }
   }
 
-  // Экран успеха занимает место формы. Высоту модалки перед заменой
-  // фиксирует скрипт, а содержимое встаёт по центру того, что осталось.
+  // The success screen takes the place of the form. The script pins the
+  // modal's height before the swap, and the content centres in what is
+  // left.
   &[data-screen='success'] &--scroll {
     display: flex;
     flex-direction: column;
-    // `safe` на случай, когда сообщение всё-таки выше окна: обычный
-    // `center` в этом случае срезал бы верх, и прокрутка его не достала бы.
+    // `safe` covers the case where the message is taller than the window
+    // after all: a plain `center` would cut off the top, and scrolling could
+    // not reach it.
     justify-content: center;
     justify-content: safe center;
   }

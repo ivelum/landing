@@ -17,8 +17,8 @@ import { isPlainClick, setupModal } from './modal.js';
 
   const popup = setupModal(modal, { onClose: reset });
 
-  // Каждый экран со своим заголовком, и диалог должен называться тем, что
-  // сейчас на виду: скрытый элемент всё равно попадает в доступное имя.
+  // Each screen has its own heading, and the dialog has to be named after
+  // the one on show: a hidden element still counts for the accessible name.
   const setScreen = (screen) => {
     const done = screen === 'success';
     header.hidden = done;
@@ -29,15 +29,16 @@ import { isPlainClick, setupModal } from './modal.js';
       'aria-labelledby',
       done ? 'contact-form-success-title' : 'contact-form-title',
     );
-    // Фокус возвращается на сам диалог, а не на кнопку нового экрана: так
-    // клавиатура начинает сверху того, что показано, и после замены
-    // ничего не остаётся обведённым.
+    // Focus goes back to the dialog itself rather than to a control on the
+    // new screen: the keyboard then starts from the top of what is on show,
+    // and nothing is left outlined after the swap.
     if (modal.open) modal.focus();
   };
 
-  // Пустое поле и поле с мусором — разные сообщения, оба лежат на самом
-  // поле в разметке. Формат почты проверяет браузер: он разбирает адреса
-  // строже и единообразнее любого нашего выражения.
+  // An empty field and a malformed one get different messages, both carried
+  // by the field itself in the markup. The email format is checked by the
+  // browser: it parses addresses more strictly and more consistently than
+  // any expression we would write.
   const errorFor = (input) => {
     if (!input.required) return '';
     if (!input.value.trim()) return input.dataset.errorRequired;
@@ -49,7 +50,7 @@ import { isPlainClick, setupModal } from './modal.js';
     const error = document.getElementById(`${input.id}-error`);
     error.textContent = message;
     error.hidden = !message;
-    // Именно `="true"`: пустое значение атрибута ARIA читает как «false».
+    // It has to be `="true"`: ARIA reads an empty value as false.
     if (message) input.setAttribute('aria-invalid', 'true');
     else input.removeAttribute('aria-invalid');
   };
@@ -65,8 +66,9 @@ import { isPlainClick, setupModal } from './modal.js';
     return !first;
   };
 
-  // Ошибка поля гаснет, как только его исправили, а не по следующей
-  // отправке: иначе подсказка противоречит тому, что человек видит.
+  // A field's error clears as soon as the field is fixed, not on the next
+  // submit: otherwise the message contradicts what the person is looking
+  // at.
   inputs.forEach((input) => {
     input.addEventListener('input', () => {
       if (input.hasAttribute('aria-invalid') && !errorFor(input)) showError(input, '');
@@ -84,12 +86,13 @@ import { isPlainClick, setupModal } from './modal.js';
 
   const wait = (ms) => new Promise((resolve) => { setTimeout(resolve, ms); });
 
-  // ВРЕМЕННО, до появления эндпоинта. `data-endpoint` пуст, отправлять
-  // некуда — и молчать об этом нельзя: на бою форма показывает блок ошибки
-  // с почтой, в разработке отдаёт успех, чтобы было видно экран. Любую из
-  // двух веток можно вызвать адресом, `&send=success` или `&send=error`, —
-  // этим проверяют экраны на реальном устройстве. Когда адрес появится,
-  // весь этот кусок вместе с `data-offline-send` удаляется.
+  // TEMPORARY, until the endpoint exists. `data-endpoint` is empty, there is
+  // nowhere to send — and staying quiet about that is not an option: on
+  // production the form shows the error block with the email address, in
+  // development it reports success so the screen can be looked at. Either
+  // branch can be asked for by URL, `&send=success` or `&send=error`, which
+  // is how the screens are checked on a real device. Once the endpoint
+  // exists, this whole block goes away along with `data-offline-send`.
   const offlineSend = async () => {
     await wait(1200);
     const forced = new URLSearchParams(location.search).get('send');
@@ -107,8 +110,9 @@ import { isPlainClick, setupModal } from './modal.js';
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     });
-    // Успех определяем по коду ответа, а не по полю в теле: два прежних
-    // обработчика сайта отвечали по-разному, и повторять это незачем.
+    // Success is decided by the status code, not by a field in the body:
+    // the site's two earlier handlers answered differently, and there is no
+    // reason to repeat that.
     if (!response.ok) throw new Error(`Contact form request failed: ${response.status}`);
   };
 
@@ -126,8 +130,9 @@ import { isPlainClick, setupModal } from './modal.js';
       setScreen('success');
     } catch (error) {
       sendError.hidden = false;
-      // На узком экране блок появляется ниже видимой части попапа, и без
-      // этого человек видит только, что кнопка снова нажимается.
+      // On a narrow screen the block appears below the visible part of the
+      // popup, and without this all the person sees is the button becoming
+      // clickable again.
       sendError.scrollIntoView({ block: 'nearest' });
       console.error(error);
     } finally {
@@ -135,17 +140,17 @@ import { isPlainClick, setupModal } from './modal.js';
     }
   });
 
-  // Модалка не должна схлопнуться до размера короткого сообщения, поэтому
-  // перед заменой формы запоминаем её высоту. На узком экране попап и так
-  // во весь экран, там фиксировать нечего.
+  // The modal must not collapse to the size of a short message, so its
+  // height is remembered before the form is replaced. On a narrow screen the
+  // popup already fills the screen and there is nothing to pin.
   function lockHeight() {
     const { height } = modal.getBoundingClientRect();
     if (height < window.innerHeight) modal.style.height = `${height}px`;
   }
 
-  // Состояние живёт до закрытия: показанный экран успеха не должен
-  // пропадать сам по себе. А вот открытый заново попап начинается с чистой
-  // формы — повторно слать то же самое незачем.
+  // State lives until the popup is closed: a success screen on show must not
+  // disappear by itself. Reopening the popup, though, starts from a clean
+  // form — there is no reason to send the same thing twice.
   function reset() {
     modal.style.height = '';
     if (modal.dataset.screen !== 'success') return;
@@ -160,9 +165,9 @@ import { isPlainClick, setupModal } from './modal.js';
     popup.open(trigger);
   };
 
-  // Попап универсальный: со скидочной кнопки он показывает плашку, со всех
-  // остальных — нет. Вариант правит только плашку, поэтому держим его
-  // атрибутом на диалоге, а показ отдаём стилям.
+  // The popup is shared: opened from the discount button it shows the badge,
+  // from any other button it does not. The variant only affects the badge, so
+  // it is kept as an attribute on the dialog and the showing is left to CSS.
   document.querySelectorAll('[data-contact-open="form"]').forEach((link) => {
     link.addEventListener('click', (event) => {
       if (!isPlainClick(event)) return;
@@ -176,9 +181,9 @@ import { isPlainClick, setupModal } from './modal.js';
 
   setScreen('form');
 
-  // Вход по адресу: форму можно открыть на любой странице, не заводя для
-  // неё кнопку. Этим же проверяют попап на бою, пока кнопка скидки ведёт
-  // в хаб.
+  // URL entry: the form can be opened on any page without giving it a
+  // button. It is also how the popup is checked on production while the
+  // discount button still leads to the hub.
   const entry = new URLSearchParams(location.search).get('contact-form');
   if (entry !== null) open(null, entry === 'startup-discount' ? entry : '');
 })();

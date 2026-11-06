@@ -1,13 +1,14 @@
-{{/* Попап с формой заявки. Отдельный <dialog>, а не ещё один вид внутри
-     booking-modal: там в закрытом виде висит живой iframe Calendly со своими
-     обходами багов WebKit, и форме в этом соседстве делать нечего. Общая
-     механика обоих попапов — в assets/js/modal.js.
+{{/* The request form popup. A separate <dialog> rather than another view
+     inside booking-modal: that one keeps a live Calendly iframe alive while
+     closed, along with its WebKit workarounds, and the form has no business
+     in that company. The mechanics both popups share live in
+     assets/js/modal.js.
 
-     Вариант `startup-discount` добавляет плашку со скидкой; со всех прочих
-     кнопок попап открывается без неё и больше ничем не отличается.
+     The `startup-discount` variant adds the discount badge; from every other
+     button the popup opens without it and is otherwise identical.
 
-     Попап можно открыть и адресом: `?contact-form=1` на любой странице,
-     `?contact-form=startup-discount` — с плашкой. */}}
+     The popup can also be opened by URL: `?contact-form=1` on any page, or
+     `?contact-form=startup-discount` to get the badge. */}}
 {{- $fields := slice
      (dict
        "name" "name"
@@ -50,17 +51,19 @@
     </svg>
   </button>
 
-  {{/* Прокручивается не сам диалог, а эта обёртка: иначе на низком окне
-       крестик уезжал бы вверх вместе с содержимым. Он лежит снаружи и
-       остаётся на месте. */}}
+  {{/* This wrapper scrolls, not the dialog itself: otherwise, in a short
+       window, the close button would slide up with the content. It sits
+       outside the wrapper and stays put. */}}
   <div class="contact-form-modal--scroll">
-    {{/* Шапка уходит вместе с формой: на экране успеха своё сообщение и свой
-         заголовок, а второе обещание ответить за 24 часа читалось бы дважды. */}}
+    {{/* The header goes away with the form: the success screen has its own
+         heading and message, and a second promise to answer within 24 hours
+         would read twice. */}}
     <div class="contact-form-modal--header">
       <p class="contact-form-modal--badge">
         {{ (resources.Get "img/ico-gift-small.svg").Content | strings.TrimSpace | safeHTML }}
-        {{/* На узком экране плашка идёт в две строки, перенос задан явно:
-             ширина у неё по содержимому, и переносить по месту нечему. */}}
+        {{/* On a narrow screen the badge runs to two lines, and the break
+             is explicit: the badge is only as wide as its content, so there
+             is nothing for the browser to wrap against. */}}
         <span>Startup discount:<br class="contact-form-modal--badge-wrap"> 20% off, up to $2,000</span>
       </p>
 
@@ -68,12 +71,13 @@
       <p class="contact-form-modal--subtitle">We’ll get back to you within 24 hours.</p>
     </div>
 
-    {{/* `data-endpoint` пустой, пока бэкенд не отдал адрес. Пока он пуст,
-         отправка никуда не уходит: в проде форма показывает блок ошибки с
-         почтой, чтобы заявка не пропала молча, а в разработке — экран успеха,
-         чтобы его можно было смотреть. Оба экрана на любой сборке вызываются
-         адресом: `&send=success` и `&send=error`. Когда адрес появится, этот
-         кусок в contact-form.js удаляется целиком. */}}
+    {{/* `data-endpoint` stays empty until the backend hands over an address.
+         While it is empty nothing is sent anywhere: on production the form
+         shows the error block with the email address, so a request is never
+         lost in silence, and in development it shows the success screen, so
+         that screen can be looked at. Either one can be asked for by URL on
+         any build: `&send=success` and `&send=error`. Once the address
+         exists, this whole arrangement goes away from contact-form.js. */}}
     <form class="contact-form-modal--form" novalidate data-endpoint=""
       {{- if not hugo.IsProduction }} data-offline-send="success"{{ else }} data-offline-send="error"{{ end }}>
       {{- range $field := $fields }}
@@ -83,9 +87,9 @@
           {{- $field.label -}}
           {{- with $field.optional }} <span class="contact-form-modal--optional">(optional)</span>{{ end -}}
         </label>
-        {{/* Скрытые элементы в `aria-describedby` экранный диктор пропускает,
-             поэтому текст ошибки можно указать здесь сразу, а не навешивать
-             ссылку на него в момент появления. */}}
+        {{/* A screen reader skips hidden elements listed in
+             `aria-describedby`, so the error text can be referenced from the
+             start instead of being wired up the moment it appears. */}}
         <input
           class="contact-form-modal--input"
           id="{{ $id }}"
@@ -116,9 +120,9 @@
       </button>
     </form>
 
-    {{/* Экран успеха занимает место формы в той же модалке. Высоту модалки
-         перед заменой фиксирует скрипт, иначе окно схлопнулось бы до размера
-         короткого сообщения. */}}
+    {{/* The success screen takes the place of the form in the same modal.
+         The script pins the modal's height before the swap, otherwise the
+         window would collapse to the size of a short message. */}}
     <div class="contact-form-modal--success" role="status" hidden>
       <p class="contact-form-modal--success-icon">
         {{ (resources.Get "img/ico-check.svg").Content | strings.TrimSpace | safeHTML }}

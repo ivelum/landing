@@ -95,10 +95,10 @@
   }
 }
 
-// Ховер только там, где есть настоящий курсор. На тач-экране `:hover`
-// залипает на последнем нажатом элементе до следующего тапа — кнопка
-// остаётся подсвеченной после того, как с неё ушли (например, когда поверх
-// открылся попап).
+// Hover only where there is a real pointer. On a touch screen `:hover`
+// sticks to the last tapped element until the next tap, so a button stays
+// highlighted after you have left it — for example once a popup has opened
+// over it.
 @mixin hover-focus {
   &:focus-visible {
     @content;

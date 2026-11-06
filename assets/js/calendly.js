@@ -50,8 +50,8 @@ import { isPlainClick, setupModal } from './modal.js';
     modal.dataset.ready = '';
   });
 
-  // Кнопки с mode="form" ведут в попап с формой заявки и обрабатываются
-  // в contact-form.js — этот попап их не трогает.
+  // Buttons with mode="form" open the request form popup and are handled in
+  // contact-form.js; this popup leaves them alone.
   document.querySelectorAll('[data-contact-open]:not([data-contact-open="form"])').forEach((link) => {
     link.addEventListener('click', (event) => {
       if (!isPlainClick(event)) return;

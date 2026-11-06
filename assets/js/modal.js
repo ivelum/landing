@@ -1,12 +1,12 @@
-// Общая механика попапов сайта на <dialog>: блокировка страницы под ними,
-// закрытие кликом по затемнению, фокус при открытии и возврат фокуса при
-// закрытии. Лежит отдельно, потому что обходы багов WebKit здесь выстраданы
-// на живых устройствах, и две расходящиеся копии этого кода нам не нужны.
+// Shared mechanics for the site's <dialog> popups: locking the page beneath
+// them, closing on a backdrop click, taking focus on open and giving it back
+// on close. It lives on its own because the WebKit workarounds in here were
+// earned on real devices, and two copies of them would drift apart.
 
-// Страницу под открытым попапом держим инлайновым стилем, а не правилом
-// `html:has(dialog[open])`: на iOS пересчёт `:has()` на корневом элементе
-// срабатывает не всегда, и `overflow: hidden` остаётся на <html> после
-// закрытия — страница выглядит живой, но не скроллится.
+// The page under an open popup is locked with an inline style rather than a
+// `html:has(dialog[open])` rule: on iOS `:has()` on the root element is not
+// always re-evaluated, and `overflow: hidden` stays on <html> after closing —
+// the page looks alive but will not scroll.
 const lockPage = () => {
   document.documentElement.style.overflow = 'hidden';
 };
@@ -15,10 +15,10 @@ const unlockPage = () => {
   document.documentElement.style.overflow = '';
 };
 
-// Клик по затемнению: сам <dialog> занимает весь экран, поэтому «снаружи» —
-// это за пределами его отрисованной коробки. Нажатие и отпускание должны
-// оба попасть мимо, иначе выделение текста, уехавшее за край модалки,
-// закрывало бы её.
+// Backdrop clicks: the <dialog> itself fills the screen, so "outside" means
+// outside its painted box. Both the press and the release have to miss it,
+// otherwise a text selection dragged past the edge of the modal would close
+// it.
 export function setupModal(modal, { onClose } = {}) {
   let opener;
   let backdropPressed = false;
@@ -46,10 +46,10 @@ export function setupModal(modal, { onClose } = {}) {
   });
 
   return {
-    // Фокус забирает сам диалог, а не контрол внутри: приземление на кнопку
-    // или ссылку рисует обводку в момент открытия, и Safari выбирает для
-    // этого не тот элемент, что остальные. Табуляция отсюда всё равно идёт
-    // по контролам по порядку.
+    // The dialog takes focus itself rather than a control inside it: landing
+    // on a button or a link draws an outline the moment the popup opens, and
+    // Safari picks a different element for that than the other browsers.
+    // Tabbing from here still walks the controls in order.
     open(trigger) {
       opener = trigger;
       modal.inert = false;
@@ -60,9 +60,9 @@ export function setupModal(modal, { onClose } = {}) {
   };
 }
 
-// Клик по ссылке-кнопке, который должен открыть попап, а не уйти по href:
-// средняя кнопка мыши и клик с модификатором остаются за браузером, чтобы
-// ссылка по-прежнему открывалась в новой вкладке.
+// A click on a link-shaped button that should open the popup instead of
+// following the href. The middle button and modifier clicks are left to the
+// browser, so the link still opens in a new tab.
 export function isPlainClick(event) {
   return event.button === 0 && !event.metaKey && !event.ctrlKey &&
     !event.shiftKey && !event.altKey;
