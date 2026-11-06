@@ -235,6 +235,16 @@ Resources:
       FunctionUrlAuthType: 'NONE'
       Principal: '*'
 
+  # Function URLs created since October 2025 also need lambda:InvokeFunction,
+  # even with AuthType NONE; without it every request is answered 403.
+  LandingInvokePermission:
+    Type: 'AWS::Lambda::Permission'
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref LandingLambda
+      InvokedViaFunctionUrl: true
+      Principal: '*'
+
 Outputs:
   LandingInvokeURL:
     Value: !GetAtt LandingLambdaUrl.FunctionUrl
