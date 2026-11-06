@@ -7,6 +7,14 @@
 // The site loads Montserrat in three weights: 500, 600 and 700. The mock's
 // "Regular" and "Medium" are both `$font-weight-default`, so a field label
 // and the "(optional)" note beside it differ only in colour.
+//
+// The site's base styles hand paragraphs their own margins
+// (`p { margin-top: 1rem }`, `p:first-of-type { margin-top: 0 }`), and
+// `p:first-of-type` outranks a single class. So every `<p>` in the popup is
+// addressed with a doubled selector, `& &--…`: otherwise the margin is
+// silently zeroed the moment a paragraph happens to be first in its block —
+// which is how the badge, the hint, the field error and the send-error block
+// all lost their spacing.
 .contact-form-modal {
   position: fixed;
   width: 100%;
@@ -101,7 +109,7 @@
   }
 
   // The badge belongs only to the popup opened from the discount button.
-  &--badge {
+  & &--badge {
     display: none;
     align-items: flex-start;
     gap: 8px;
@@ -161,7 +169,7 @@
     @include media-up(md) { padding-right: 28px; }
   }
 
-  &--subtitle {
+  & &--subtitle {
     margin: 12px 0 0;
     color: $font-color-gray;
     font-size: 16px;
@@ -244,7 +252,7 @@
     }
   }
 
-  &--hint {
+  & &--hint {
     margin: 6px 0 0;
     color: $font-color-gray;
     font-size: 13px;
@@ -252,7 +260,7 @@
     line-height: 18px;
   }
 
-  &--error {
+  & &--error {
     margin: 8px 0 0;
     color: $error-color;
     font-size: 13px;
@@ -281,7 +289,7 @@
     display: none;
   }
 
-  &--send-error {
+  & &--send-error {
     display: flex;
     // `display` from a class outranks the `display: none` the browser's own
     // stylesheet gives the `hidden` attribute, so hiding has to be restored
@@ -335,7 +343,7 @@
     justify-content: safe center;
   }
 
-  &--success-icon {
+  & &--success-icon {
     display: grid;
     place-items: center;
     width: 56px;
@@ -359,7 +367,7 @@
     }
   }
 
-  &--success-text {
+  & &--success-text {
     margin: 8px 0 0;
     color: $font-color-gray;
     font-size: 16px;
