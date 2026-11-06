@@ -1,0 +1,371 @@
+// Попап с формой заявки. Значения цветов и отступов — по макету
+// `Contact form popup — proposal`, кроме тех, у которых на сайте уже есть
+// свой аналог: там выигрывает сайт. Поэтому серый текст здесь
+// `$font-color-gray`, а не #6B6870 из макета, и рамка поля
+// `$border-color-default`, а не #E1E2EB.
+//
+// Начертаний у Montserrat на сайте три: 500, 600 и 700. «Regular» и «Medium»
+// из макета — это одно и то же `$font-weight-default`, так что подпись поля
+// и пометка «(optional)» рядом с ней различаются только цветом.
+.contact-form-modal {
+  position: fixed;
+  width: 100%;
+  max-width: 100%;
+  // Процент от коробки, которую браузер даёт открытой модалке, а не от
+  // вьюпорта: на iOS `dvh` бывает выше реально видимой области.
+  height: 100%;
+  max-height: 100%;
+  // По горизонтали по центру, по вертикали — нет: когда содержимое выше
+  // экрана, `auto` делит переполнение поровну и уводит крестик за верхний
+  // край. Пусть уезжает низ.
+  margin-inline: auto;
+  margin-block: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: $white;
+  color: $font-color-dark;
+  // Прокручивается внутренняя обёртка, а не сам диалог: крестик лежит
+  // снаружи неё и потому остаётся на месте, когда содержимое выше экрана.
+  overflow: hidden;
+
+  &[open] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Фокус при открытии забирает сам диалог: он контейнер, а не контрол, и
+  // обводить его незачем. Всё, что внутри, свою обводку сохраняет.
+  &:focus,
+  &:focus-visible { outline: none; }
+
+  &::backdrop {
+    background: rgba($font-color-dark, 0.65);
+  }
+
+  @include media-up(md) {
+    width: 600px;
+    // Не `auto`: браузер держит у модального диалога `inset-block: 0`, и при
+    // `height: auto` высота считается от этих краёв, то есть во весь экран.
+    // `fit-content` даёт высоту по содержимому и при этом остаётся
+    // определённой, так что `margin-block: auto` снова центрирует.
+    height: -webkit-fit-content; // Safari до 16.4
+    height: fit-content;
+    margin-block: auto;
+    border-radius: 12px;
+  }
+
+  &--scroll {
+    // Отступы модалки живут здесь: у диалога их нет, иначе нижний отступ
+    // оставался бы на месте, а содержимое уезжало под него.
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: 12px 20px 32px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    @include media-up(md) {
+      padding: 24px 40px 40px;
+    }
+  }
+
+  &--close {
+    position: absolute;
+    top: 8px;
+    right: 4px;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: $border-radius-default;
+    // Не прозрачный: на низком окне содержимое проезжает под крестиком.
+    // Белая подложка с мягким ореолом гасит строки и рамки у самого значка,
+    // а не разрезает их по краю кнопки.
+    background: $white;
+    box-shadow: 0 0 10px 8px $white;
+    color: inherit;
+    cursor: pointer;
+
+    &:hover { background: $background-darker; }
+    &:focus-visible { outline: 2px solid $primary-violet; }
+
+    @include media-up(md) {
+      top: 24px;
+      right: 24px;
+    }
+  }
+
+  // Плашка — только у попапа, открытого с кнопки скидки.
+  &--badge {
+    display: none;
+    align-items: flex-start;
+    gap: 8px;
+    width: fit-content;
+    margin: 0 0 12px;
+    padding: 8px 12px 8px 10px;
+    border-radius: 2px;
+    background: $background-light-orange;
+    color: $primary-orange;
+    font-size: 14px;
+    font-weight: $font-weight-semi-bold;
+    line-height: 20px;
+
+    svg {
+      flex-shrink: 0;
+      // Иконка 16px при строке 20px встаёт по центру первой строки.
+      margin-top: 2px;
+    }
+
+    @include media-up(md) {
+      // Плашка в одну строку, и крестик рядом с ней заметно выше: этот
+      // отступ ставит её по центру его 44 пикселей.
+      margin-top: 4px;
+      padding-block: 6px;
+    }
+  }
+
+  &[data-variant='startup-discount'] &--badge {
+    display: flex;
+  }
+
+  &--badge-wrap {
+    @include media-up(md) { display: none; }
+  }
+
+  &--title {
+    margin: 0;
+    color: $font-color-dark;
+    font-size: 22px;
+    font-weight: $font-weight-bold;
+    line-height: 28px;
+
+    @include media-up(md) {
+      font-size: 28px;
+      line-height: 36px;
+      // Крестик лежит абсолютом и ширину у заголовка не отнимает, поэтому
+      // длинный заголовок надо увести из-под него руками.
+      padding-right: 28px;
+    }
+  }
+
+  // Без плашки заголовок оказывается первым, и на узком экране лезет под
+  // крестик: с плашкой он висит ниже и места ему хватает.
+  &:not([data-variant='startup-discount']) &--title {
+    padding-right: 48px;
+
+    @include media-up(md) { padding-right: 28px; }
+  }
+
+  &--subtitle {
+    margin: 12px 0 0;
+    color: $font-color-gray;
+    font-size: 16px;
+    font-weight: $font-weight-default;
+    line-height: 24px;
+  }
+
+  &--form {
+    margin-top: 24px;
+  }
+
+  &--field + &--field {
+    margin-top: 20px;
+  }
+
+  // В макете подпись — Medium 14, а текст в поле — Regular 16: подпись
+  // меньше, но плотнее. На сайте Regular и Medium — одно и то же
+  // начертание 500, других Montserrat не загружен, и подпись проигрывала
+  // плейсхолдеру просто по кеглю. Поэтому здесь 600: это восстанавливает
+  // ту разницу, что нарисована, а не её числа.
+  &--label {
+    display: block;
+    margin-bottom: 8px;
+    color: $font-color-default;
+    font-size: 14px;
+    font-weight: $font-weight-semi-bold;
+    line-height: 20px;
+  }
+
+  // Пометка рядом с подписью, наоборот, легче её — и начертанием тоже.
+  &--optional {
+    color: $font-color-gray;
+    font-weight: $font-weight-default;
+  }
+
+  &--input {
+    @include transition(border-color 0.2s, box-shadow 0.2s);
+    appearance: none;
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid $border-color-default;
+    border-radius: 8px;
+    background: $white;
+    color: $font-color-dark;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: $font-weight-default;
+    line-height: 24px;
+
+    &::placeholder {
+      // Firefox сам приглушает плейсхолдер, поэтому прозрачность возвращаем.
+      opacity: 1;
+      color: $form-placeholder-color;
+    }
+
+    // Ховер отдельно от фокуса: мягкая рамка не должна перебивать
+    // фиолетовую, когда поле и под курсором, и в фокусе.
+    @media (hover: hover) {
+      &:hover { border-color: $form-border-hover-color; }
+    }
+
+    &:focus {
+      border-color: $primary-violet;
+      box-shadow: 0 0 0 3px rgba($primary-violet, 0.15);
+      outline: none;
+    }
+
+    &[aria-invalid='true'] {
+      border-color: $error-color;
+
+      &:focus {
+        box-shadow: 0 0 0 3px rgba($error-color, 0.15);
+      }
+    }
+
+    &:disabled {
+      background: $background-darker;
+      color: $form-placeholder-color;
+    }
+  }
+
+  &--hint {
+    margin: 6px 0 0;
+    color: $font-color-gray;
+    font-size: 13px;
+    font-weight: $font-weight-default;
+    line-height: 18px;
+  }
+
+  &--error {
+    margin: 8px 0 0;
+    color: $error-color;
+    font-size: 13px;
+    font-weight: $font-weight-default;
+    line-height: 18px;
+  }
+
+  &--submit {
+    width: 100%;
+    margin-top: 24px;
+
+    @include media-up(md) {
+      width: auto;
+      margin-top: 28px;
+    }
+
+    &:disabled {
+      cursor: default;
+      opacity: 0.6;
+    }
+  }
+
+  // Во время отправки у кнопки остаётся только надпись: стрелка обещает
+  // переход, которого в этот момент не происходит.
+  &[data-sending] &--submit svg {
+    display: none;
+  }
+
+  &--send-error {
+    display: flex;
+    // `display` из класса сильнее, чем `display: none` у атрибута `hidden`
+    // из таблицы браузера, поэтому скрытие приходится вернуть руками.
+    &[hidden] { display: none; }
+
+    align-items: flex-start;
+    gap: 12px;
+    margin: 24px 0 0;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: $error-background;
+    color: $font-color-dark;
+    font-size: 14px;
+    font-weight: $font-weight-default;
+    line-height: 20px;
+
+    svg {
+      flex-shrink: 0;
+      color: $error-color;
+    }
+
+    a {
+      color: $primary-violet;
+      text-decoration: underline;
+    }
+
+    @include media-up(md) {
+      margin-top: 28px;
+    }
+  }
+
+  // Блок ошибки встаёт между полями и кнопкой, поэтому отступ сверху у
+  // кнопки в этом случае лишний — его уже дал сам блок.
+  &--send-error:not([hidden]) + &--submit {
+    margin-top: 24px;
+
+    @include media-up(md) { margin-top: 28px; }
+  }
+
+  // Экран успеха занимает место формы. Высоту модалки перед заменой
+  // фиксирует скрипт, а содержимое встаёт по центру того, что осталось.
+  &[data-screen='success'] &--scroll {
+    display: flex;
+    flex-direction: column;
+    // `safe` на случай, когда сообщение всё-таки выше окна: обычный
+    // `center` в этом случае срезал бы верх, и прокрутка его не достала бы.
+    justify-content: center;
+    justify-content: safe center;
+  }
+
+  &--success-icon {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    margin: 0;
+    border-radius: 50%;
+    background: $violet-light-background;
+    color: $primary-violet;
+  }
+
+  &--success-title {
+    margin: 24px 0 0;
+    color: $font-color-dark;
+    font-size: 22px;
+    font-weight: $font-weight-bold;
+    line-height: 28px;
+
+    @include media-up(md) {
+      font-size: 28px;
+      line-height: 36px;
+    }
+  }
+
+  &--success-text {
+    margin: 8px 0 0;
+    color: $font-color-gray;
+    font-size: 16px;
+    font-weight: $font-weight-default;
+    line-height: 24px;
+  }
+
+  &--success-close {
+    width: 100%;
+    margin-top: 32px;
+
+    @include media-up(md) { width: auto; }
+  }
+}

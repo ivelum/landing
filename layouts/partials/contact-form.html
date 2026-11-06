@@ -1,0 +1,133 @@
+{{/* Попап с формой заявки. Отдельный <dialog>, а не ещё один вид внутри
+     booking-modal: там в закрытом виде висит живой iframe Calendly со своими
+     обходами багов WebKit, и форме в этом соседстве делать нечего. Общая
+     механика обоих попапов — в assets/js/modal.js.
+
+     Вариант `startup-discount` добавляет плашку со скидкой; со всех прочих
+     кнопок попап открывается без неё и больше ничем не отличается.
+
+     Попап можно открыть и адресом: `?contact-form=1` на любой странице,
+     `?contact-form=startup-discount` — с плашкой. */}}
+{{- $fields := slice
+     (dict
+       "name" "name"
+       "label" "Name"
+       "placeholder" "Your name"
+       "type" "text"
+       "autocomplete" "name"
+       "required" "Please enter your name"
+     )
+     (dict
+       "name" "email"
+       "label" "Email"
+       "placeholder" "you@company.com"
+       "type" "email"
+       "autocomplete" "email"
+       "required" "Please enter your email"
+       "invalid" "Please enter a valid email address"
+     )
+     (dict
+       "name" "company"
+       "label" "Company name or website"
+       "placeholder" "Acme Inc. or acme.com"
+       "type" "text"
+       "autocomplete" "organization"
+       "required" "Please enter your company name or website"
+     )
+     (dict
+       "name" "accelerator"
+       "label" "Startup accelerator"
+       "placeholder" "e.g. Y Combinator, Techstars"
+       "type" "text"
+       "optional" true
+       "hint" "If you’re in an accelerator program, tell us which one."
+     )
+}}
+<dialog class="contact-form-modal" aria-labelledby="contact-form-title" tabindex="-1" inert>
+  <button class="contact-form-modal--close" type="button" aria-label="Close">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
+      <path d="M4 4L16 16M16 4L4 16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+    </svg>
+  </button>
+
+  {{/* Прокручивается не сам диалог, а эта обёртка: иначе на низком окне
+       крестик уезжал бы вверх вместе с содержимым. Он лежит снаружи и
+       остаётся на месте. */}}
+  <div class="contact-form-modal--scroll">
+    {{/* Шапка уходит вместе с формой: на экране успеха своё сообщение и свой
+         заголовок, а второе обещание ответить за 24 часа читалось бы дважды. */}}
+    <div class="contact-form-modal--header">
+      <p class="contact-form-modal--badge">
+        {{ (resources.Get "img/ico-gift-small.svg").Content | strings.TrimSpace | safeHTML }}
+        {{/* На узком экране плашка идёт в две строки, перенос задан явно:
+             ширина у неё по содержимому, и переносить по месту нечему. */}}
+        <span>Startup discount:<br class="contact-form-modal--badge-wrap"> 20% off, up to $2,000</span>
+      </p>
+
+      <h2 class="contact-form-modal--title" id="contact-form-title">Tell us about your project</h2>
+      <p class="contact-form-modal--subtitle">We’ll get back to you within 24 hours.</p>
+    </div>
+
+    {{/* `data-endpoint` пустой, пока бэкенд не отдал адрес. Пока он пуст,
+         отправка никуда не уходит: в проде форма показывает блок ошибки с
+         почтой, чтобы заявка не пропала молча, а в разработке — экран успеха,
+         чтобы его можно было смотреть. Оба экрана на любой сборке вызываются
+         адресом: `&send=success` и `&send=error`. Когда адрес появится, этот
+         кусок в contact-form.js удаляется целиком. */}}
+    <form class="contact-form-modal--form" novalidate data-endpoint=""
+      {{- if not hugo.IsProduction }} data-offline-send="success"{{ else }} data-offline-send="error"{{ end }}>
+      {{- range $field := $fields }}
+      {{- $id := printf "contact-form-%s" $field.name }}
+      <div class="contact-form-modal--field">
+        <label class="contact-form-modal--label" for="{{ $id }}">
+          {{- $field.label -}}
+          {{- with $field.optional }} <span class="contact-form-modal--optional">(optional)</span>{{ end -}}
+        </label>
+        {{/* Скрытые элементы в `aria-describedby` экранный диктор пропускает,
+             поэтому текст ошибки можно указать здесь сразу, а не навешивать
+             ссылку на него в момент появления. */}}
+        <input
+          class="contact-form-modal--input"
+          id="{{ $id }}"
+          name="{{ $field.name }}"
+          type="{{ $field.type }}"
+          placeholder="{{ $field.placeholder }}"
+          autocomplete="{{ $field.autocomplete | default "off" }}"
+          aria-describedby="{{ with $field.hint }}{{ $id }}-hint {{ end }}{{ $id }}-error"
+          {{- with $field.required }} required data-error-required="{{ . }}"{{ end }}
+          {{- with $field.invalid }} data-error-invalid="{{ . }}"{{ end }}
+        >
+        {{- with $field.hint }}
+        <p class="contact-form-modal--hint" id="{{ $id }}-hint">{{ . }}</p>
+        {{- end }}
+        <p class="contact-form-modal--error" id="{{ $id }}-error" hidden></p>
+      </div>
+      {{- end }}
+
+      <p class="contact-form-modal--send-error" role="alert" hidden>
+        {{ (resources.Get "img/ico-alert.svg").Content | strings.TrimSpace | safeHTML }}
+        <span>Something went wrong and your request wasn’t sent. Please try again or email us at <a href="mailto:info@ivelum.com">info@ivelum.com</a>.</span>
+      </p>
+
+      <button class="contact-form-modal--submit btn btn-big btn-with-arrow" type="submit">
+        <span data-submit-idle>Send request</span>
+        <span data-submit-busy hidden>Sending…</span>
+        {{ (resources.Get "img/arrow-button.svg").Content | strings.TrimSpace | safeHTML }}
+      </button>
+    </form>
+
+    {{/* Экран успеха занимает место формы в той же модалке. Высоту модалки
+         перед заменой фиксирует скрипт, иначе окно схлопнулось бы до размера
+         короткого сообщения. */}}
+    <div class="contact-form-modal--success" role="status" hidden>
+      <p class="contact-form-modal--success-icon">
+        {{ (resources.Get "img/ico-check.svg").Content | strings.TrimSpace | safeHTML }}
+      </p>
+      <h2 class="contact-form-modal--success-title" id="contact-form-success-title">Thank you! We’ve got your request</h2>
+      <p class="contact-form-modal--success-text">We’ll get back to you within 24 hours. Keep an eye on your inbox — and your spam folder, just in case.</p>
+      <button class="contact-form-modal--success-close btn btn-big btn-outline-violet" type="button">Close</button>
+    </div>
+  </div>
+</dialog>
+{{- $script := resources.Get "js/contact-form.js" | js.Build (dict "minify" true) | fingerprint }}
+<script src="{{ $script.RelPermalink }}" defer></script>

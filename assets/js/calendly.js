@@ -1,3 +1,5 @@
+import { isPlainClick, setupModal } from './modal.js';
+
 (() => {
   const modal = document.querySelector('.booking-modal');
   if (!modal || typeof modal.showModal !== 'function') return;
@@ -5,21 +7,9 @@
   const widget = modal.querySelector('.booking-modal--widget');
   const close = modal.querySelector('.booking-modal--close');
   const status = modal.querySelector('[data-calendly-status]');
+  const popup = setupModal(modal);
   let loading;
   let readyTimer;
-  let opener;
-
-  // Страницу под открытым попапом держим инлайновым стилем, а не правилом
-  // `html:has(.booking-modal[open])`: на iOS пересчёт `:has()` на корневом
-  // элементе срабатывает не всегда, и `overflow: hidden` остаётся на <html>
-  // после закрытия — страница выглядит живой, но не скроллится.
-  const lockPage = () => {
-    document.documentElement.style.overflow = 'hidden';
-  };
-
-  const unlockPage = () => {
-    document.documentElement.style.overflow = '';
-  };
 
   const failed = () => {
     status.textContent = 'Unable to load available times. Please open Calendly directly.';
@@ -60,22 +50,15 @@
     modal.dataset.ready = '';
   });
 
-  document.querySelectorAll('[data-contact-open]').forEach((link) => {
+  // Кнопки с mode="form" ведут в попап с формой заявки и обрабатываются
+  // в contact-form.js — этот попап их не трогает.
+  document.querySelectorAll('[data-contact-open]:not([data-contact-open="form"])').forEach((link) => {
     link.addEventListener('click', (event) => {
-      if (event.button !== 0 || event.metaKey || event.ctrlKey ||
-          event.shiftKey || event.altKey) return;
+      if (!isPlainClick(event)) return;
       event.preventDefault();
-      opener = link;
       // "contact" opens the choices, anything else goes straight to the calendar.
       setView(link.dataset.contactOpen === 'contact' ? 'hub' : 'book');
-      modal.inert = false;
-      modal.showModal();
-      lockPage();
-      // The dialog itself takes the focus, not a control in it: landing on a
-      // button or a link draws a focus ring the moment the popup opens, and
-      // Safari picks a different one from everybody else. Tabbing from here
-      // still walks the controls in order.
-      modal.focus();
+      popup.open(link);
       preload();
     });
   });
@@ -117,22 +100,6 @@
   });
 
   close.addEventListener('click', () => modal.close());
-  let backdropPressed = false;
-  const outside = (event) => {
-    const rect = modal.getBoundingClientRect();
-    return event.clientX < rect.left || event.clientX > rect.right ||
-      event.clientY < rect.top || event.clientY > rect.bottom;
-  };
-  modal.addEventListener('pointerdown', (event) => { backdropPressed = outside(event); });
-  modal.addEventListener('click', (event) => {
-    if (backdropPressed && outside(event)) modal.close();
-    backdropPressed = false;
-  });
-  modal.addEventListener('close', () => {
-    modal.inert = true;
-    unlockPage();
-    opener?.focus();
-  });
 
   if (document.readyState === 'complete') {
     preload();

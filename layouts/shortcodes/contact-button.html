@@ -1,8 +1,12 @@
-{{- /* mode: "book" opens the calendar straight away, "contact" the choices.
+{{- /* mode: "book" opens the calendar straight away, "contact" the choices,
+       "form" the request form. variant is passed on to the form popup, where
+       "startup-discount" is the one that shows the discount badge.
        The href is only a fallback for when the script has not run. */ -}}
 {{- $mode := .Get "mode" | default "book" -}}
+{{- $variant := .Get "variant" -}}
 {{- $fallback := cond (eq $mode "book") "https://calendly.com/ivelum/consultation" "/contact/" -}}
-<a href="{{ $fallback }}" data-contact-open="{{ $mode }}" class="btn btn-big btn-with-arrow">
+<a href="{{ $fallback }}" data-contact-open="{{ $mode }}"
+  {{- with $variant }} data-contact-variant="{{ . }}"{{ end }} class="btn btn-big btn-with-arrow">
   {{- .Get "title" -}}
   {{ (resources.Get "img/arrow-button.svg").Content | strings.TrimSpace | safeHTML }}
 </a>

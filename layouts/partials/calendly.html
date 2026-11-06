@@ -235,7 +235,7 @@
     {{ index $icon "chevronRight" | strings.TrimSpace | safeHTML }}
   </button>
 </dialog>
-{{- $script := resources.Get "js/calendly.js" | minify | fingerprint }}
+{{- $script := resources.Get "js/calendly.js" | js.Build (dict "minify" true) | fingerprint }}
 <script src="{{ $script.RelPermalink }}" defer></script>
 {{- $chat := resources.Get "js/chat.js" | minify | fingerprint }}
 <script src="{{ $chat.RelPermalink }}" type="module"></script>
