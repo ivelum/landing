@@ -77,8 +77,8 @@ def send_email(form_data):
         },
     }
 
-    # A reply to the email goes straight to the person, not to the sender
-    # address, which nobody reads.
+    # A reply to the email goes straight to the person, not back to the
+    # sender address, which is our own inbox.
     # ASCII only: SES rejects a non-ASCII address outright, which would lose
     # the whole request instead of merely sending it without a Reply-To.
     extra = {}

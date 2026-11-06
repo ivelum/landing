@@ -5,7 +5,7 @@ AWS_ACCOUNT_ID = '063992876227'
 PROJECT_NAME = 'ivelum-landing'
 
 # The sender address has to be verified in SES in AWS_REGION.
-CONTACT_FORM_FROM_EMAIL = 'contact@new.ivelum.com'
+CONTACT_FORM_FROM_EMAIL = 'info@ivelum.com'
 CONTACT_FORM_TO_EMAIL = 'info@ivelum.com'
 
 # WARNING: Crisp Development Token is connected to the PRODUCTION environment,

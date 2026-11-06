@@ -65,7 +65,7 @@ def lambda_module(monkeypatch):
     monkeypatch.setitem(sys.modules, 'boto3', boto3)
     monkeypatch.setitem(sys.modules, 'sentry_sdk', sentry_sdk)
     monkeypatch.syspath_prepend(str(LAMBDA_PATH))
-    monkeypatch.setenv('CONTACT_FORM_FROM_EMAIL', 'contact@new.ivelum.com')
+    monkeypatch.setenv('CONTACT_FORM_FROM_EMAIL', 'info@ivelum.com')
     monkeypatch.setenv('CONTACT_FORM_TO_EMAIL', 'info@ivelum.com')
     monkeypatch.delitem(sys.modules, 'contact_form', raising=False)
 
@@ -89,7 +89,7 @@ def test_full_request_sends_one_plain_text_email(lambda_module):
     assert json.loads(response['body']) == {'success': True}
 
     mail, = store['sent']
-    assert mail['Source'] == 'contact@new.ivelum.com'
+    assert mail['Source'] == 'info@ivelum.com'
     assert mail['Destination']['ToAddresses'] == ['info@ivelum.com']
     assert 'Html' not in mail['Message']['Body']
     # Replying to the email means replying to whoever sent the request.
