@@ -108,32 +108,43 @@
     }
   }
 
+  // The heading comes first in the markup, which is the reading order on a
+  // phone. Above the breakpoint the badge moves back above it, so the two
+  // are laid out as a column and the badge is reordered there.
+  &--header {
+    display: flex;
+    flex-direction: column;
+  }
+
   // The badge belongs only to the popup opened from the discount button.
   & &--badge {
     display: none;
-    align-items: flex-start;
+    align-items: center;
     gap: 8px;
-    width: fit-content;
-    margin: 0 0 12px;
-    padding: 8px 12px 8px 10px;
+    // A band across the column, under the heading and clear of the close
+    // button, so nothing has to be kept out of the button's way.
+    margin: 16px 0 0;
+    padding: 8px 8px 8px 12px;
     border-radius: 2px;
     background: $violet-light-background;
     color: $primary-violet;
-    font-size: 14px;
+    // A point smaller than on a wide window: at 360 the line needs every
+    // pixel of the column to stay a single line.
+    font-size: 13px;
     font-weight: $font-weight-semi-bold;
     line-height: 20px;
 
-    svg {
-      flex-shrink: 0;
-      // A 16px icon on a 20px line sits centred on the first line.
-      margin-top: 2px;
-    }
+    svg { flex-shrink: 0; }
 
     @include media-up(md) {
-      // Here the badge is a single line and the close button beside it is
-      // much taller: this offset centres the badge against its 44 pixels.
-      margin-top: 4px;
-      padding-block: 6px;
+      // Above the breakpoint the badge goes back above the heading and hugs
+      // its own text. The top offset centres it against the 44 pixels of the
+      // close button standing beside it.
+      order: -1;
+      width: fit-content;
+      margin: 4px 0 12px;
+      padding: 6px 12px 6px 10px;
+      font-size: 14px;
     }
   }
 
@@ -141,32 +152,35 @@
     display: flex;
   }
 
-  &--badge-wrap {
-    @include media-up(md) { display: none; }
+  // On a screen too narrow for one line, the break belongs after the colon
+  // rather than wherever the last word happens to fall.
+  &--badge-amount {
+    white-space: nowrap;
   }
 
   &--title {
-    margin: 0;
+    // The close button stands beside the heading rather than above it, and
+    // the heading starts below the button's own top inset. The right padding
+    // is the button plus the reach of the white halo it casts: a heading
+    // running into that halo has its last letters bleached away.
+    margin: 20px 0 0;
+    padding-right: 48px;
     color: $font-color-dark;
-    font-size: 22px;
+    // 20px rather than 22: what is left of the column beside the close
+    // button holds the heading on one line down to a 360 wide screen. The
+    // line box keeps its 28px, so the badge below it does not move.
+    font-size: 20px;
     font-weight: $font-weight-bold;
     line-height: 28px;
 
     @include media-up(md) {
+      margin-top: 0;
       font-size: 28px;
       line-height: 36px;
       // The close button is absolutely positioned and takes no width from
       // the heading, so a long heading has to be kept clear of it by hand.
       padding-right: 28px;
     }
-  }
-
-  // Without the badge the heading comes first and, on a narrow screen, runs
-  // under the close button; with the badge it sits lower and has room.
-  &:not([data-variant='startup-discount']) &--title {
-    padding-right: 48px;
-
-    @include media-up(md) { padding-right: 28px; }
   }
 
   &--form {

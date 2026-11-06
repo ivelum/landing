@@ -58,15 +58,15 @@
     {{/* The header goes away with the form: the success screen brings its
          own heading and message. */}}
     <div class="contact-form-modal--header">
+      {{/* The heading leads, which is the reading order and the order on a
+           phone. On a wide window the stylesheet lifts the badge above it. */}}
+      <h2 class="contact-form-modal--title" id="contact-form-title">Tell us about your project</h2>
+
       <p class="contact-form-modal--badge">
         {{ (resources.Get "img/ico-gift-small.svg").Content | strings.TrimSpace | safeHTML }}
-        {{/* On a narrow screen the badge runs to two lines, and the break
-             is explicit: the badge is only as wide as its content, so there
-             is nothing for the browser to wrap against. */}}
-        <span>Startup discount:<br class="contact-form-modal--badge-wrap"> 20% off, up to $2,000</span>
+        <span>Startup discount:
+          <span class="contact-form-modal--badge-amount">20% off, up to $2,000</span></span>
       </p>
-
-      <h2 class="contact-form-modal--title" id="contact-form-title">Tell us about your project</h2>
     </div>
 
     {{/* The endpoint is only filled in on a production build: in
