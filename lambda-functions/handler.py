@@ -1,6 +1,7 @@
 import logging
 
 import sentry_sdk
+from contact_form import handle_contact_form
 from newsletter_sign_up import handle_newsletter_sign_up
 from sentry_sdk.integrations.aws_lambda import AwsLambdaIntegration
 
@@ -23,6 +24,8 @@ def lambda_handler(event, context):
     try:
         rawPath = event['rawPath']
         match rawPath:
+            case '/contact':
+                return handle_contact_form(event, context)
             case '/newsletter':
                 return handle_newsletter_sign_up(event, context)
             case _:

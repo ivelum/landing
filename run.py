@@ -32,7 +32,8 @@ def deploy_lambda():
 
     run(f'zip -qr ../{code_archive_name} .', cwd=package_deps_path)
     run(
-        f'zip -qg {code_archive_name} handler.py newsletter_sign_up.py',
+        f'zip -qg {code_archive_name} '
+        'handler.py contact_form.py newsletter_sign_up.py',
         cwd=package_path,
     )
 
@@ -71,6 +72,8 @@ def deploy_lambda():
 
     environment = {
         'Variables': {
+            'CONTACT_FORM_FROM_EMAIL': settings.CONTACT_FORM_FROM_EMAIL,
+            'CONTACT_FORM_TO_EMAIL': settings.CONTACT_FORM_TO_EMAIL,
             'CRISP_WEBSITE_ID': settings.CRISP_WEBSITE_ID,
             'CRISP_TOKEN_ID': os.environ['CRISP_TOKEN_ID'],
             'CRISP_TOKEN_KEY': os.environ['CRISP_TOKEN_KEY'],
