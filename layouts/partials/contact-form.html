@@ -55,9 +55,8 @@
        window, the close button would slide up with the content. It sits
        outside the wrapper and stays put. */}}
   <div class="contact-form-modal--scroll">
-    {{/* The header goes away with the form: the success screen has its own
-         heading and message, and a second promise to answer within 24 hours
-         would read twice. */}}
+    {{/* The header goes away with the form: the success screen brings its
+         own heading and message. */}}
     <div class="contact-form-modal--header">
       <p class="contact-form-modal--badge">
         {{ (resources.Get "img/ico-gift-small.svg").Content | strings.TrimSpace | safeHTML }}
@@ -68,7 +67,6 @@
       </p>
 
       <h2 class="contact-form-modal--title" id="contact-form-title">Tell us about your project</h2>
-      <p class="contact-form-modal--subtitle">We’ll get back to you within 24 hours.</p>
     </div>
 
     {{/* The endpoint is only filled in on a production build: in
