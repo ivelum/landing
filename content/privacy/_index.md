@@ -12,6 +12,8 @@ cascade:
 
 # Privacy policy
 
+_Last updated: November 15, 2026_
+
 Thanks for entrusting **ivelum** with your information. Holding on to your
 private information is a serious responsibility, and we want you to know how
 we're handling it.
@@ -65,6 +67,8 @@ Why we collect this information:
   okay, and only for the reasons you've said that's okay.
 - We collect Technical Information to monitor and protect the security of the
   website.
+- With your consent, we use analytics to understand how our website is used, so
+  that we can improve it.
 - We use your User Personal Information and Technical Information for internal
   purposes, such as to maintain logs for security reasons, for training
   purposes, and for legal documentation and compliance.
@@ -87,8 +91,7 @@ parties for their commercial purposes, except where you have specifically told
 us to.
 
 We do not host advertising on **ivelum**. We may occasionally embed content
-from third-party sites, such as YouTube or Vimeo, and that content may include
-ads. While we try to minimize the amount of ads our embedded content contains,
+from third-party sites, such as YouTube, and that content may include ads. While we try to minimize the amount of ads our embedded content contains,
 we can't always control what third parties show. Any advertisements on our site
 are not sponsored or tracked by **ivelum**.
 
@@ -124,20 +127,25 @@ mobile device, which your browser sends to us when you return to our site.
 Cookies do not necessarily identify you if you are merely visiting
 **ivelum**.
 
-We use cookies to enhance your browsing experience, analyze usage patterns, and
-deliver personalized content. Cookies also help us remember your preferences and
-settings. For security reasons, we use cookies to identify a device. Using our
-website, you agree that we can place these types of cookies on your computer or
-device.
+We only set cookies that are not strictly necessary, such as analytics cookies,
+after you agree to them in the cookie banner. You can change your choice at any
+time with the "Cookie settings" link at the bottom of every page, and you can
+also block or delete cookies in your browser settings; our website will keep
+working without them.
 
-**ivelum** sets the following cookies on our users for the following reasons:
+**ivelum** and the services we use set the following cookies:
 
-- crisp-client* – two cookies with variable names used by Crisp chat.
+- cc_cookie – remembers your cookie choice; strictly necessary.
+- ph_* – PostHog analytics; only if you accept analytics cookies.
+- \_\_cf_bm, cf_clearance – set by Clutch (through Cloudflare) when its reviews
+  widget is shown; only if you accept third-party content.
+- crisp-client* – two cookies with variable names used by Crisp chat, set when
+  you open the chat.
+- Calendly sets its own cookies, including cookies from Stripe and Google
+  reCAPTCHA, when you open the booking calendar.
 
-We use a number of third party service providers to help us improve website
-performance and provide customer support. All of them have signed data
-protection agreements with us that limit the type of personal information they
-can collect and the purpose for which they can process the information.
+The services that set these cookies are described below, under
+Subprocessors and Third-party services we embed.
 
 ### How we respond to compelled disclosure
 
@@ -162,8 +170,7 @@ We may also send marketing emails based on your choices and in accordance with
 applicable laws and regulations. There's an unsubscribe link located at the
 bottom of each of the notification or marketing emails we send you. Please note
 that you can not opt out of receiving critical communications from us, such as
-emails from our Support team or system emails, but you can configure your
-notifications settings in your profile.
+emails from our Support team or system emails.
 
 ### Subprocessors
 
@@ -180,8 +187,31 @@ The full list of our subprocessors, their location, and description of
 processing:
 
 - [Amazon Web Services (AWS) >](https://aws.amazon.com/), Europe, Stockholm – data
-  hosting;
-- [Crisp, Europe >](https://crisp.chat/) – customer support
+  hosting and email delivery for our contact form (Amazon SES);
+- [Crisp, Europe >](https://crisp.chat/) – customer support;
+- [PostHog >](https://posthog.com/), Europe, Frankfurt – website analytics, only
+  if you accept analytics cookies;
+- [Sentry >](https://sentry.io/), United States – error monitoring; if sending
+  our contact form fails, Sentry receives the details you entered so that we
+  can still answer you;
+- [Calendly >](https://calendly.com/), United States – meeting scheduling.
+
+### Third-party services we embed
+
+Some features of our website are provided directly by third parties, which
+process your data under their own privacy policies rather than on our behalf.
+They load only when you use the feature or accept the related cookies. They also
+participate in the
+[EU-U.S. Data Privacy Framework >](https://www.dataprivacyframework.gov/).
+
+- [Stripe >](https://stripe.com/), United States – fraud prevention in the
+  Calendly scheduling widget;
+- [Google reCAPTCHA >](https://www.google.com/recaptcha/), United States – bot
+  protection in the Calendly scheduling widget;
+- [YouTube (Google) >](https://www.youtube.com/), United States – embedded
+  videos, loaded when you play one;
+- [Clutch >](https://clutch.co/), United States – client reviews widget, shown
+  only if you accept third-party content.
 
 ### Resolving complaints
 
