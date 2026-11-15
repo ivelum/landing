@@ -2,7 +2,9 @@
 //
 // Nothing that needs consent runs until the visitor accepts its category:
 // - analytics: PostHog, started through window.loadPostHog (posthog.html);
-// - thirdparty: the Clutch reviews widget (layouts/shortcodes/testimonial-clutch.html).
+// - thirdparty: the Clutch reviews widget (layouts/shortcodes/testimonial-clutch.html);
+// - marketing: RB2B visitor identification, started through window.loadRb2b
+//   (rb2b.html).
 // Calendly, Crisp and YouTube are not here: they load only when the visitor
 // clicks to use them.
 //
@@ -23,16 +25,17 @@ const deleteCookie = (name) => {
   document.cookie = `${name}=; Max-Age=0; path=/`;
 };
 
-const forgetPostHog = () => {
+// Removes the cookies and stored values whose names start with any of the
+// given prefixes.
+const forget = (...prefixes) => {
+  const matches = (name) => prefixes.some((prefix) => name.startsWith(prefix));
   document.cookie.split(';')
     .map((cookie) => cookie.split('=')[0].trim())
-    .filter((name) => name.startsWith('ph_'))
+    .filter(matches)
     .forEach(deleteCookie);
   [window.localStorage, window.sessionStorage].forEach((storage) => {
     try {
-      Object.keys(storage)
-        .filter((key) => key.startsWith('ph_') || key.startsWith('__ph'))
-        .forEach((key) => storage.removeItem(key));
+      Object.keys(storage).filter(matches).forEach((key) => storage.removeItem(key));
     } catch {
       // Storage can be unavailable, e.g. when blocked by the browser.
     }
@@ -59,6 +62,7 @@ const loadClutch = () => {
 const startAccepted = () => {
   if (CookieConsent.acceptedCategory('analytics')) window.loadPostHog?.();
   if (CookieConsent.acceptedCategory('thirdparty')) loadClutch();
+  if (CookieConsent.acceptedCategory('marketing')) window.loadRb2b?.();
 };
 
 // Scripts that already ran cannot be unloaded, so withdrawing consent clears
@@ -71,7 +75,8 @@ const onChange = ({ changedCategories }) => {
     startAccepted();
     return;
   }
-  if (revoked.includes('analytics')) forgetPostHog();
+  if (revoked.includes('analytics')) forget('ph_', '__ph');
+  if (revoked.includes('marketing')) forget('_reb2b', 'reb2b');
   window.location.reload();
 };
 
@@ -85,7 +90,7 @@ const loadStylesheet = () => new Promise((resolve) => {
 });
 
 loadStylesheet().then(() => CookieConsent.run({
-  revision: 1,
+  revision: 2,
   guiOptions: {
     consentModal: { layout: 'box', position: 'bottom left', equalWeightButtons: true },
     preferencesModal: { layout: 'box', equalWeightButtons: true },
@@ -94,6 +99,7 @@ loadStylesheet().then(() => CookieConsent.run({
     necessary: { enabled: true, readOnly: true },
     analytics: {},
     thirdparty: {},
+    marketing: {},
   },
   onConsent: startAccepted,
   onChange,
@@ -103,7 +109,7 @@ loadStylesheet().then(() => CookieConsent.run({
       en: {
         consentModal: {
           title: 'Cookies',
-          description: 'We’d like to use cookies to understand how people use our site and to show reviews from a third-party platform. We don’t set them unless you accept. See our <a href="/privacy/#our-use-of-cookies">privacy policy</a>.',
+          description: 'We’d like to use cookies to understand how people use our site, to show reviews from a third-party platform, and to recognize business visitors so that we can follow up with them. We don’t set them unless you accept. See our <a href="/privacy/#our-use-of-cookies">privacy policy</a>.',
           acceptAllBtn: 'Accept all',
           acceptNecessaryBtn: 'Reject all',
           showPreferencesBtn: 'Customize',
@@ -132,6 +138,11 @@ loadStylesheet().then(() => CookieConsent.run({
               title: 'Third-party content',
               description: 'The Clutch reviews widget, which may set its own cookies.',
               linkedCategory: 'thirdparty',
+            },
+            {
+              title: 'Marketing',
+              description: 'RB2B recognizes business visitors located in the United States and shares details such as their name, job title, company and LinkedIn profile with us, so that we can follow up with them.',
+              linkedCategory: 'marketing',
             },
             {
               title: 'More information',

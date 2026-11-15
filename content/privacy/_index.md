@@ -20,8 +20,8 @@ we're handling it.
 
 ### The short version
 
-We only collect the information you choose to give us, and we process it with
-your consent, or on another legal basis; we only require the minimum amount of
+We only collect the information you choose to give us or agree to let us
+collect, and we process it with your consent, or on another legal basis; we only require the minimum amount of
 personal information that is necessary to fulfill the purpose of your
 interaction with us; we don't sell it to third parties; and we only use it as
 this Privacy Policy describes. We are compliant with the General Data Protection
@@ -69,6 +69,10 @@ Why we collect this information:
   website.
 - With your consent, we use analytics to understand how our website is used, so
   that we can improve it.
+- With your consent, we use a visitor identification service (RB2B) to
+  recognize business visitors located in the United States, with details such
+  as their name, job title, company and LinkedIn profile, so that we can follow
+  up with them.
 - We use your User Personal Information and Technical Information for internal
   purposes, such as to maintain logs for security reasons, for training
   purposes, and for legal documentation and compliance.
@@ -137,6 +141,7 @@ working without them.
 
 - cc_cookie – remembers your cookie choice; strictly necessary.
 - ph_* – PostHog analytics; only if you accept analytics cookies.
+- \_reb2b* – RB2B visitor identification; only if you accept marketing cookies.
 - \_\_cf_bm, cf_clearance – set by Clutch (through Cloudflare) when its reviews
   widget is shown; only if you accept third-party content.
 - crisp-client* – two cookies with variable names used by Crisp chat, set when
@@ -180,8 +185,9 @@ to maintain your trust when we bring on new vendors, and we require all vendors
 to enter into data protection agreements with us that restrict their processing
 of Users&apos; Personal Information (as defined in this policy).
 
-All our subprocessors in the United States participate in the [EU-U.S. Data
-Privacy Framework >](https://www.dataprivacyframework.gov/).
+All our subprocessors in the United States, except RB2B, participate in the
+[EU-U.S. Data Privacy Framework >](https://www.dataprivacyframework.gov/). RB2B
+identifies only visitors located in the United States.
 
 The full list of our subprocessors, their location, and description of
 processing:
@@ -194,7 +200,9 @@ processing:
 - [Sentry >](https://sentry.io/), United States – error monitoring; if sending
   our contact form fails, Sentry receives the details you entered so that we
   can still answer you;
-- [Calendly >](https://calendly.com/), United States – meeting scheduling.
+- [Calendly >](https://calendly.com/), United States – meeting scheduling;
+- [RB2B >](https://www.rb2b.com/), United States – identifying business
+  visitors located in the United States, only if you accept marketing cookies.
 
 ### Third-party services we embed
 
