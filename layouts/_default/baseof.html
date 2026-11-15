@@ -87,7 +87,8 @@
 {{- end }}
 
 {{- /* vanilla-cookieconsent comes from the import map above, not the bundle. */}}
-{{- $consent := resources.Get "js/consent.js" | js.Build (dict "minify" true "format" "esm" "externals" (slice "vanilla-cookieconsent")) | fingerprint }}
+{{- $consentParams := dict "cookieConsent" site.Params.cookieConsent }}
+{{- $consent := resources.Get "js/consent.js" | js.Build (dict "minify" true "format" "esm" "externals" (slice "vanilla-cookieconsent") "params" $consentParams) | fingerprint }}
 <script src="{{ $consent.RelPermalink }}" type="module"></script>
 
 <script type="module">

@@ -16,6 +16,11 @@ style = 'friendly'
 home = ['html']
 section = ['html']
 
+[params]
+# The cookie consent banner (assets/js/consent.js). While it's false, there is
+# no banner and every cookie category counts as accepted.
+cookieConsent = false
+
 [deployment]
 maxDeletes = -1
 

@@ -10,7 +10,11 @@
 //
 // Bump `revision` whenever the list of cookies or services changes, so that
 // everyone is asked again.
+//
+// `cookieConsent` in hugo.toml switches the banner off. Everything then starts
+// as if the visitor had accepted every category.
 import * as CookieConsent from 'vanilla-cookieconsent';
+import * as params from '@params';
 
 const STYLESHEET = '/vendor/vanilla-cookieconsent@3.2.1.css';
 
@@ -59,11 +63,13 @@ const loadClutch = () => {
     .then(() => window.CLUTCHCO?.Init());
 };
 
-const startAccepted = () => {
-  if (CookieConsent.acceptedCategory('analytics')) window.loadPostHog?.();
-  if (CookieConsent.acceptedCategory('thirdparty')) loadClutch();
-  if (CookieConsent.acceptedCategory('marketing')) window.loadRb2b?.();
+const start = (accepted) => {
+  if (accepted('analytics')) window.loadPostHog?.();
+  if (accepted('thirdparty')) loadClutch();
+  if (accepted('marketing')) window.loadRb2b?.();
 };
+
+const startAccepted = () => start(CookieConsent.acceptedCategory);
 
 // Scripts that already ran cannot be unloaded, so withdrawing consent clears
 // what they stored and reloads the page without them.
@@ -89,7 +95,7 @@ const loadStylesheet = () => new Promise((resolve) => {
   document.head.appendChild(link);
 });
 
-loadStylesheet().then(() => CookieConsent.run({
+const runBanner = () => loadStylesheet().then(() => CookieConsent.run({
   revision: 2,
   guiOptions: {
     consentModal: { layout: 'box', position: 'bottom left', equalWeightButtons: true },
@@ -154,3 +160,6 @@ loadStylesheet().then(() => CookieConsent.run({
     },
   },
 }));
+
+if (params.cookieConsent) runBanner();
+else start(() => true);
