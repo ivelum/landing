@@ -15,8 +15,10 @@ import { isPlainClick, setupModal } from './modal.js';
     status.textContent = 'Unable to load available times. Please open Calendly directly.';
   };
 
-  // Share one script request and one iframe across preloading and every opening.
-  const preload = () => {
+  // Calendly (and the Stripe and reCAPTCHA frames it brings along) sets
+  // cookies, so it loads only once the visitor asks for the calendar, never
+  // ahead of time. One script request and one iframe serve every opening.
+  const load = () => {
     if (loading) return loading;
     readyTimer = setTimeout(failed, 20000);
     loading = loadWidget().catch(failed);
@@ -59,7 +61,6 @@ import { isPlainClick, setupModal } from './modal.js';
       // "contact" opens the choices, anything else goes straight to the calendar.
       setView(link.dataset.contactOpen === 'contact' ? 'hub' : 'book');
       popup.open(link);
-      preload();
     });
   });
 
@@ -80,6 +81,7 @@ import { isPlainClick, setupModal } from './modal.js';
     modal.dataset.view = view;
     modal.setAttribute('aria-labelledby', headings[view]);
     if (modal.open) modal.focus();
+    if (view !== 'hub') load();
   };
 
   const back = modal.querySelector('[data-view-hub]');
@@ -100,19 +102,4 @@ import { isPlainClick, setupModal } from './modal.js';
   });
 
   close.addEventListener('click', () => modal.close());
-
-  if (document.readyState === 'complete') {
-    preload();
-  } else {
-    window.addEventListener('load', preload, { once: true });
-  }
-
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      if (!entries.some((entry) => entry.isIntersecting)) return;
-      observer.disconnect();
-      preload();
-    }, { rootMargin: '600px 0px' });
-    observer.observe(document.querySelector('.footer--default'));
-  }
 })();
