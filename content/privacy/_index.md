@@ -101,8 +101,7 @@ acquisition. If any such change of ownership happens, we will ensure that it is
 under terms that preserve the confidentiality of User Personal Information, and
 we will notify you on our website or by email before any transfer of your User
 Personal Information. The organization receiving any User Personal Information
-will have to honor any promises we have made in our Privacy Policy or our Terms
-of Service.
+will have to honor any promises we have made in this Privacy Policy.
 
 ### How you can access and control the information we collect
 
