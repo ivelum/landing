@@ -58,7 +58,8 @@
         "swiper": "/vendor/swiper@11.1.15.js",
         "swiper/css": "/vendor/swiper@11.1.15-css.js",
         "swiper/css/pagination": "/vendor/swiper@11.1.15-css-pagination.js",
-        "swiper/modules/pagination": "/vendor/swiper@11.1.15-modules-pagination.js"
+        "swiper/modules/pagination": "/vendor/swiper@11.1.15-modules-pagination.js",
+        "vanilla-cookieconsent": "/vendor/vanilla-cookieconsent@3.2.1.js"
       }
     }
   </script>
@@ -83,6 +84,10 @@
 {{- block "footer" . }}
   {{ partial "footer.html" }}
 {{- end }}
+
+{{- /* vanilla-cookieconsent comes from the import map above, not the bundle. */}}
+{{- $consent := resources.Get "js/consent.js" | js.Build (dict "minify" true "format" "esm" "externals" (slice "vanilla-cookieconsent")) | fingerprint }}
+<script src="{{ $consent.RelPermalink }}" type="module"></script>
 
 <script type="module">
   window.addEventListener('load', function () {

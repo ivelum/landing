@@ -1,0 +1,28 @@
+// Brings the vanilla-cookieconsent banner (static/vendor) in line with the
+// site. #cc-main beats the library's :root defaults whatever the load order.
+#cc-main {
+  --cc-font-family: 'Montserrat', sans-serif;
+  --cc-modal-border-radius: #{$border-radius-default * 2};
+  --cc-btn-border-radius: 2rem;
+  --cc-primary-color: #{$font-color-dark};
+  --cc-secondary-color: #{$font-color-default};
+  --cc-link-color: #{$primary-violet};
+  --cc-btn-primary-bg: #{$dark-orange};
+  --cc-btn-primary-border-color: #{$dark-orange};
+  --cc-btn-primary-hover-bg: #{lighten($dark-orange, 10%)};
+  --cc-btn-primary-hover-border-color: #{lighten($dark-orange, 10%)};
+  --cc-btn-secondary-bg: #{$white};
+  --cc-btn-secondary-color: #{$primary-violet};
+  --cc-btn-secondary-border-color: #{$primary-violet};
+  --cc-btn-secondary-hover-bg: #{$white};
+  --cc-btn-secondary-hover-color: #{$primary-orange};
+  --cc-btn-secondary-hover-border-color: #{$primary-orange};
+  --cc-toggle-on-bg: #{$primary-violet};
+  --cc-cookie-category-block-bg: #{$background-darker};
+  --cc-cookie-category-block-border: #{$background-darker};
+  --cc-footer-bg: #{$background-darker};
+}
+
+.footer--cookie-settings {
+  white-space: nowrap;
+}
