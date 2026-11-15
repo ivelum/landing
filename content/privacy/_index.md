@@ -174,8 +174,8 @@ to maintain your trust when we bring on new vendors, and we require all vendors
 to enter into data protection agreements with us that restrict their processing
 of Users&apos; Personal Information (as defined in this policy).
 
-All our subprocessors in the United States comply with the [EU-US and Swiss-US
-Privacy Shield Frameworks >](https://www.privacyshield.gov/).
+All our subprocessors in the United States participate in the [EU-U.S. Data
+Privacy Framework >](https://www.dataprivacyframework.gov/).
 
 The full list of our subprocessors, their location, and description of
 processing:
