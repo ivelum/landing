@@ -33,7 +33,7 @@ import { isPlainClick, setupModal } from './modal.js';
     document.head.appendChild(script);
   }).then(() => {
     window.Calendly.initInlineWidget({
-      url: 'https://calendly.com/ivelum/consultation?hide_event_type_details=1',
+      url: 'https://calendly.com/ivelum/consultation?hide_gdpr_banner=1&hide_event_type_details=1',
       parentElement: widget,
     });
     widget.querySelector('iframe').title = 'Schedule a consultation with ivelum';
