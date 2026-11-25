@@ -17,55 +17,12 @@ import * as params from '@params';
 
 const STYLESHEET = '/vendor/vanilla-cookieconsent@3.2.1.css';
 
-// Deletes a cookie on the current host and on every parent domain, since
-// PostHog sets its cookie on the top-level domain (.ivelum.com).
-const deleteCookie = (name) => {
-  const parts = window.location.hostname.split('.');
-  for (let i = 0; i < parts.length - 1 || i === 0; i += 1) {
-    const domain = parts.slice(i).join('.');
-    document.cookie = `${name}=; Max-Age=0; path=/; domain=${domain}`;
-  }
-  document.cookie = `${name}=; Max-Age=0; path=/`;
-};
-
-// Removes the cookies and stored values whose names start with any of the
-// given prefixes.
-const forget = (...prefixes) => {
-  const matches = (name) => prefixes.some((prefix) => name.startsWith(prefix));
-  document.cookie.split(';')
-    .map((cookie) => cookie.split('=')[0].trim())
-    .filter(matches)
-    .forEach(deleteCookie);
-  [window.localStorage, window.sessionStorage].forEach((storage) => {
-    try {
-      Object.keys(storage).filter(matches).forEach((key) => storage.removeItem(key));
-    } catch {
-      // Storage can be unavailable, e.g. when blocked by the browser.
-    }
-  });
-};
-
 const start = (accepted) => {
   if (accepted('analytics')) window.loadPostHog?.();
   if (accepted('marketing')) window.loadRb2b?.();
 };
 
 const startAccepted = () => start(CookieConsent.acceptedCategory);
-
-// Scripts that already ran cannot be unloaded, so withdrawing consent clears
-// what they stored and reloads the page without them.
-const onChange = ({ changedCategories }) => {
-  const revoked = changedCategories.filter(
-    (category) => !CookieConsent.acceptedCategory(category),
-  );
-  if (revoked.length === 0) {
-    startAccepted();
-    return;
-  }
-  if (revoked.includes('analytics')) forget('ph_', '__ph');
-  if (revoked.includes('marketing')) forget('_reb2b', 'reb2b');
-  window.location.reload();
-};
 
 const loadStylesheet = () => new Promise((resolve) => {
   const link = document.createElement('link');
@@ -79,8 +36,7 @@ const loadStylesheet = () => new Promise((resolve) => {
 const runBanner = () => loadStylesheet().then(() => CookieConsent.run({
   revision: 3,
   guiOptions: {
-    consentModal: { layout: 'box', position: 'bottom left', equalWeightButtons: true },
-    preferencesModal: { layout: 'box', equalWeightButtons: true },
+    consentModal: { layout: 'box', position: 'bottom left', equalWeightButtons: false },
   },
   categories: {
     necessary: { enabled: true, readOnly: true },
@@ -88,48 +44,15 @@ const runBanner = () => loadStylesheet().then(() => CookieConsent.run({
     marketing: {},
   },
   onConsent: startAccepted,
-  onChange,
   language: {
     default: 'en',
     translations: {
       en: {
         consentModal: {
           title: 'Cookies',
-          description: 'We’d like to use cookies to understand how people use our site and to recognize business visitors so that we can follow up with them. We don’t set them unless you accept. See our <a href="/privacy/#our-use-of-cookies">privacy policy</a>.',
+          description: 'We’d like to use cookies to understand how people use our site. We don’t set them unless you accept. Learn more in our <a href="/privacy/#our-use-of-cookies">privacy policy</a>.',
           acceptAllBtn: 'Accept all',
-          acceptNecessaryBtn: 'Reject all',
-          showPreferencesBtn: 'Customize',
-        },
-        preferencesModal: {
-          title: 'Cookie settings',
-          acceptAllBtn: 'Accept all',
-          acceptNecessaryBtn: 'Reject all',
-          savePreferencesBtn: 'Save settings',
-          closeIconLabel: 'Close',
-          sections: [
-            {
-              description: 'Choose which cookies we may use. You can change this at any time with the “Cookie settings” link at the bottom of every page.',
-            },
-            {
-              title: 'Strictly necessary',
-              description: 'Needed for the site to work, so they can’t be turned off. We only use one: it saves the choice you make here, so we don’t ask again on every page.',
-              linkedCategory: 'necessary',
-            },
-            {
-              title: 'Analytics',
-              description: 'PostHog, hosted in the EU, tells us which pages are visited and how the site is used.',
-              linkedCategory: 'analytics',
-            },
-            {
-              title: 'Marketing',
-              description: 'RB2B recognizes business visitors located in the United States and shares details such as their name, job title, company and LinkedIn profile with us, so that we can follow up with them.',
-              linkedCategory: 'marketing',
-            },
-            {
-              title: 'More information',
-              description: 'Booking a call (Calendly, which also uses Stripe and Google reCAPTCHA), the chat (Crisp) and videos (YouTube) load only when you use them. See our <a href="/privacy/#our-use-of-cookies">privacy policy</a> for details.',
-            },
-          ],
+          acceptNecessaryBtn: 'Only necessary',
         },
       },
     },

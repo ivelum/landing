@@ -132,16 +132,15 @@ Cookies do not necessarily identify you if you are merely visiting
 **ivelum**.
 
 We only set cookies that are not strictly necessary, such as analytics cookies,
-after you agree to them in the cookie banner. You can change your choice at any
-time with the "Cookie settings" link at the bottom of every page, and you can
-also block or delete cookies in your browser settings; our website will keep
-working without them.
+after you choose "Accept all" in the cookie banner. Choose "Only necessary" to
+keep optional cookies disabled. You can also block or delete cookies in your
+browser settings; our website will keep working without them.
 
 **ivelum** and the services we use set the following cookies:
 
 - cc_cookie – remembers your cookie choice; strictly necessary.
-- ph_* – PostHog analytics; only if you accept analytics cookies.
-- \_reb2b* – RB2B visitor identification; only if you accept marketing cookies.
+- ph_* – PostHog analytics; only if you choose "Accept all".
+- \_reb2b* – RB2B visitor identification; only if you choose "Accept all".
 - crisp-client* – two cookies with variable names used by Crisp chat, set when
   you open the chat.
 - Calendly sets its own cookies, including cookies from Stripe and Google
@@ -200,7 +199,7 @@ processing:
   can still answer you;
 - [Calendly >](https://calendly.com/), United States – meeting scheduling;
 - [RB2B >](https://www.rb2b.com/), United States – identifying business
-  visitors located in the United States, only if you accept marketing cookies.
+  visitors located in the United States, only if you choose "Accept all".
 
 ### Third-party services we embed
 
