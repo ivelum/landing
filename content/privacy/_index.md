@@ -142,8 +142,6 @@ working without them.
 - cc_cookie – remembers your cookie choice; strictly necessary.
 - ph_* – PostHog analytics; only if you accept analytics cookies.
 - \_reb2b* – RB2B visitor identification; only if you accept marketing cookies.
-- \_\_cf_bm, cf_clearance – set by Clutch (through Cloudflare) when its reviews
-  widget is shown; only if you accept third-party content.
 - crisp-client* – two cookies with variable names used by Crisp chat, set when
   you open the chat.
 - Calendly sets its own cookies, including cookies from Stripe and Google
@@ -208,8 +206,7 @@ processing:
 
 Some features of our website are provided directly by third parties, which
 process your data under their own privacy policies rather than on our behalf.
-They load only when you use the feature or accept the related cookies. They also
-participate in the
+They load only when you use the feature. They also participate in the
 [EU-U.S. Data Privacy Framework >](https://www.dataprivacyframework.gov/).
 
 - [Stripe >](https://stripe.com/), United States – fraud prevention in the
@@ -217,9 +214,7 @@ participate in the
 - [Google reCAPTCHA >](https://www.google.com/recaptcha/), United States – bot
   protection in the Calendly scheduling widget;
 - [YouTube (Google) >](https://www.youtube.com/), United States – embedded
-  videos, loaded when you play one;
-- [Clutch >](https://clutch.co/), United States – client reviews widget, shown
-  only if you accept third-party content.
+  videos, loaded when you play one.
 
 ### Resolving complaints
 

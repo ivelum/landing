@@ -116,8 +116,11 @@
     }
   }
 
-  &--clutch-widget {
+  &--clutch-rating {
     display: block;
-    max-width: 215px;
+    height: auto;
+    margin: 0 !important;
+    max-width: 100%;
+    width: 213px;
   }
 }

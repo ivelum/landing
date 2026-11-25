@@ -2,7 +2,6 @@
 //
 // Nothing that needs consent runs until the visitor accepts its category:
 // - analytics: PostHog, started through window.loadPostHog (posthog.html);
-// - thirdparty: the Clutch reviews widget (layouts/shortcodes/testimonial-clutch.html);
 // - marketing: RB2B visitor identification, started through window.loadRb2b
 //   (rb2b.html).
 // Calendly, Crisp and YouTube are not here: they load only when the visitor
@@ -46,26 +45,8 @@ const forget = (...prefixes) => {
   });
 };
 
-const pageLoaded = () => new Promise((resolve) => {
-  if (document.readyState === 'complete') resolve();
-  else window.addEventListener('load', resolve, { once: true });
-});
-
-// Clutch's script initialises itself on `readystatechange`, which has passed
-// by the time a visitor accepts, so it is started by hand. It never marks
-// itself as started, so loading it before the page is complete would let the
-// final `readystatechange` start it a second time.
-let clutchLoading;
-const loadClutch = () => {
-  if (clutchLoading || !document.querySelector('.clutch-widget')) return;
-  clutchLoading = pageLoaded()
-    .then(() => CookieConsent.loadScript('https://widget.clutch.co/static/js/widget.js'))
-    .then(() => window.CLUTCHCO?.Init());
-};
-
 const start = (accepted) => {
   if (accepted('analytics')) window.loadPostHog?.();
-  if (accepted('thirdparty')) loadClutch();
   if (accepted('marketing')) window.loadRb2b?.();
 };
 
@@ -96,7 +77,7 @@ const loadStylesheet = () => new Promise((resolve) => {
 });
 
 const runBanner = () => loadStylesheet().then(() => CookieConsent.run({
-  revision: 2,
+  revision: 3,
   guiOptions: {
     consentModal: { layout: 'box', position: 'bottom left', equalWeightButtons: true },
     preferencesModal: { layout: 'box', equalWeightButtons: true },
@@ -104,7 +85,6 @@ const runBanner = () => loadStylesheet().then(() => CookieConsent.run({
   categories: {
     necessary: { enabled: true, readOnly: true },
     analytics: {},
-    thirdparty: {},
     marketing: {},
   },
   onConsent: startAccepted,
@@ -115,7 +95,7 @@ const runBanner = () => loadStylesheet().then(() => CookieConsent.run({
       en: {
         consentModal: {
           title: 'Cookies',
-          description: 'We’d like to use cookies to understand how people use our site, to show reviews from a third-party platform, and to recognize business visitors so that we can follow up with them. We don’t set them unless you accept. See our <a href="/privacy/#our-use-of-cookies">privacy policy</a>.',
+          description: 'We’d like to use cookies to understand how people use our site and to recognize business visitors so that we can follow up with them. We don’t set them unless you accept. See our <a href="/privacy/#our-use-of-cookies">privacy policy</a>.',
           acceptAllBtn: 'Accept all',
           acceptNecessaryBtn: 'Reject all',
           showPreferencesBtn: 'Customize',
@@ -139,11 +119,6 @@ const runBanner = () => loadStylesheet().then(() => CookieConsent.run({
               title: 'Analytics',
               description: 'PostHog, hosted in the EU, tells us which pages are visited and how the site is used.',
               linkedCategory: 'analytics',
-            },
-            {
-              title: 'Third-party content',
-              description: 'The Clutch reviews widget, which may set its own cookies.',
-              linkedCategory: 'thirdparty',
             },
             {
               title: 'Marketing',

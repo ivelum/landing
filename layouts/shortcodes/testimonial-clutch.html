@@ -1,4 +1,5 @@
 {{- $badge := .Page.CurrentSection.Resources.Get "img/clutch-spring-champion-2024.svg" -}}
+{{- $rating := .Page.CurrentSection.Resources.Get "img/clutch-rating.png" -}}
 <div class="testimonials--item testimonials--item--clutch">
   <a
     class="testimonials--clutch-winner"
@@ -13,21 +14,17 @@
     />
   </a>
   <div class="testimonials--clutch-reviews">
-    {{- /* assets/js/consent.js loads the Clutch script into this widget once
-      the visitor accepts third-party cookies. */}}
-    <div
-      class="clutch-widget testimonials--clutch-widget"
-      data-url="https://widget.clutch.co"
-      data-widget-type="14"
-      data-height="50"
-      data-nofollow="true"
-      data-expandifr="true"
-      data-scale="100"
-      data-clutchcompany-id="2181885">
-    </div>
+    <img
+      class="testimonials--clutch-rating"
+      src="{{ $rating.RelPermalink }}"
+      alt="Rated 5.0 out of 5 based on 18 Clutch reviews"
+      width="213"
+      height="50"
+      loading="lazy"
+    />
     <div class="testimonials--clutch-link">
       <a href="https://clutch.co/profile/ivelum#reviews" target="_blank">
-        Verified reviews on Clutch
+        More reviews on Clutch
       </a>
     </div>
   </div>
