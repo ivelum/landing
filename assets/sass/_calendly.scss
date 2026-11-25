@@ -326,24 +326,16 @@
   &[data-ready] &--status { display: none; }
 
   // --- Views ----------------------------------------------------------------
-  // One dialog, three screens. The calendar keeps its place in the DOM, so
+  // One dialog, two screens. The calendar keeps its place in the DOM, so
   // switching never reloads the Calendly iframe.
 
-  &--hub,
-  &--back,
-  &--schedule-title { display: none; }
+  &--hub { display: none; }
 
   &[data-view='hub'] &--hub { display: flex; }
 
   &[data-view='hub'] &--panel,
   &[data-view='hub'] &--booking,
   &[data-view='hub'] &--chat-bar { display: none; }
-
-  &[data-view='schedule'] &--panel,
-  &[data-view='schedule'] &--chat-bar { display: none; }
-
-  &[data-view='schedule'] &--back { display: grid; }
-  &[data-view='schedule'] &--schedule-title { display: block; }
 
   // --- Hub ------------------------------------------------------------------
 
@@ -575,38 +567,6 @@
     margin: 16px 0 0;
     font-size: $font-size-smaller;
     line-height: 21px;
-  }
-
-  // --- Second step ----------------------------------------------------------
-
-  &--back {
-    position: absolute;
-    top: 10px;
-    left: 20px;
-    z-index: 1;
-    place-items: center;
-    width: 44px;
-    height: 44px;
-    padding: 0;
-    border: 0;
-    border-radius: $border-radius-default;
-    background: transparent;
-    color: inherit;
-    cursor: pointer;
-
-    svg { width: 22px; height: 22px; }
-
-    &:hover { background: $background-darker; }
-    &:focus-visible { outline: 2px solid $primary-violet; }
-  }
-
-  &--schedule-title {
-    width: fit-content;
-    margin: 0;
-    padding: 64px 20px 0;
-    font-size: 20px;
-    font-weight: $font-weight-bold;
-    line-height: 28px;
   }
 
   // --- Narrow screens -------------------------------------------------------
@@ -981,22 +941,6 @@
       align-self: center;
     }
 
-    &--schedule-title {
-      margin-inline: auto;
-      padding: 72px 0 0;
-    }
-
-    // The mock gives the calendar a column of its own rather than the width of
-    // the dialog, and that is also what keeps it short: at full width Calendly
-    // surrounds the card with a lot of padding, which is what the step used to
-    // scroll through. In a column this size the card is the same one that sits
-    // beside the panel in the booking view.
-    &[data-view='schedule'] &--widget iframe {
-      width: 668px;
-      max-width: 100%;
-      margin-inline: auto;
-    }
-
     &--panel { padding: 24px; }
 
     &--panel h2 {
@@ -1035,11 +979,8 @@
     &--chat-status { font-size: $font-size-smaller; }
   }
 
-  // Wide but short windows clip the calendar rather than the padding, so give
-  // it back its scrollbar. Must come after the md rule that hides it.
-  // The hub and the second step have no side panel, so they take the full width.
-  &[data-view='hub'],
-  &[data-view='schedule'] {
+  // The hub has no side panel, so it takes the full width.
+  &[data-view='hub'] {
     @include media-up(md) { grid-template-columns: minmax(0, 1fr); }
   }
 

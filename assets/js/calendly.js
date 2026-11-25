@@ -70,7 +70,6 @@ import { isPlainClick, setupModal } from './modal.js';
   const headings = {
     hub: 'booking-hub-title',
     book: 'booking-title',
-    schedule: 'booking-title',
   };
 
   // Switching screens moves the focus back to the dialog rather than to the
@@ -82,12 +81,8 @@ import { isPlainClick, setupModal } from './modal.js';
     if (modal.open) modal.focus();
   };
 
-  const back = modal.querySelector('[data-view-hub]');
-  modal.querySelector('[data-view-schedule]')?.addEventListener('click', () => {
-    setView('schedule');
-  });
-  back?.addEventListener('click', () => {
-    setView('hub');
+  modal.querySelector('[data-view-book]')?.addEventListener('click', () => {
+    setView('book');
   });
 
   // Narrow screens keep the addresses folded behind the "Offices" chip.

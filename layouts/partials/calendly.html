@@ -7,7 +7,6 @@
      "chat" (resources.Get "img/ico-chat.svg").Content
      "chevronDown" (resources.Get "img/ico-chevron-down.svg").Content
      "chevronRight" (resources.Get "img/ico-chevron-right.svg").Content
-     "arrowLeft" (resources.Get "img/ico-arrow-left.svg").Content
      "arrowButton" (resources.Get "img/arrow-button.svg").Content
 }}
 {{/* The bouncing logo the contact page already shows while Crisp loads. */}}
@@ -92,7 +91,7 @@
           the&nbsp;optimal approach and how we can help.
         </p>
       </div>
-      <button class="btn btn-big btn-with-arrow" type="button" data-view-schedule>
+      <button class="btn btn-big btn-with-arrow" type="button" data-view-book>
         Book a discovery meeting
         {{ index $icon "arrowButton" | strings.TrimSpace | safeHTML }}
       </button>
@@ -196,15 +195,6 @@
   </aside>
 
   <section class="booking-modal--booking" aria-label="Schedule a meeting">
-    <button
-      class="booking-modal--back"
-      type="button"
-      aria-label="Back to contact options"
-      data-view-hub
-    >{{ index $icon "arrowLeft" | strings.TrimSpace | safeHTML }}</button>
-
-    <p class="booking-modal--schedule-title">Book a discovery meeting</p>
-
     <div class="booking-modal--body">
       <div class="booking-modal--status" role="status">
         <p data-calendly-status>Loading available times…</p>
