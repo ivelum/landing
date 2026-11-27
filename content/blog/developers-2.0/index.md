@@ -120,7 +120,7 @@ of narrow specialists, and it’s obviously cheaper. For larger projects, we may
 still need more people. Even if someone is very good at launching agents and
 guiding them, they can’t scale the number of those agents indefinitely.
 
-![How many agents developers run](no-of-agents-developers-run.png)
+![How many agents developers run](no-of-agents-chart.png)
 
 *Poll: How many agents you can run while paying enough attention to them?*
 
